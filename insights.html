@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Insights — Anjish Bhondwe | Thought Leadership on AI, Agile & Digital Transformation</title>
+  <meta name="description" content="Articles and perspectives by Anjish Bhondwe on AI governance, enterprise agility, digital transformation, K-12 EdTech, and the EU AI Act.">
+  <meta name="author" content="Anjish Bhondwe">
+  <link rel="canonical" href="https://anjish.io/insights.html">
+
+  <meta property="og:title"       content="Insights — Anjish Bhondwe">
+  <meta property="og:description" content="Thought leadership on AI strategy, Agile transformation, EU AI Act, and digital change.">
+  <meta property="og:url"         content="https://anjish.io/insights.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <div class="cursor"      aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">Anjish<span>.</span></a>
+        <ul class="nav__links" role="list">
+          <li><a href="index.html#expertise">Expertise</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html" class="nav__cta">Let's Talk</a></li>
+        </ul>
+        <button class="nav__burger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav__mobile">
+      <a href="index.html#expertise">Expertise</a>
+      <a href="work.html">Work</a>
+      <a href="insights.html">Insights</a>
+      <a href="contact.html">Let's Talk</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero__bg" aria-hidden="true"></div>
+      <div class="container">
+        <p class="label page-hero__label reveal">Thought Leadership</p>
+        <h1 class="page-hero__title reveal reveal-delay-1">
+          Insights &amp;<br>
+          <em style="color:var(--clr-gold); font-style:italic;">Perspectives</em>
+        </h1>
+        <p class="page-hero__subtitle reveal reveal-delay-2">
+          Writing on AI governance, enterprise agility, digital transformation, and the
+          systems that shape how organisations evolve.
+        </p>
+        <div class="reveal reveal-delay-3" style="margin-top:var(--space-md);">
+          <a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener" class="btn btn-outline">
+            Follow on LinkedIn →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter bar (static topics as UI element) -->
+    <section style="padding: var(--space-md) 0; border-bottom: 1px solid var(--clr-border); background: var(--clr-surface);">
+      <div class="container">
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;" role="list" aria-label="Topic filters">
+          <button class="tag active-filter" data-filter="all" style="font-size:0.75rem;padding:0.4rem 1rem;background:var(--clr-gold-dim);color:var(--clr-gold);border:1px solid rgba(201,169,110,0.3);border-radius:100px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:none;">All Topics</button>
+          <button class="tag-filter" data-filter="AI"           style="font-size:0.75rem;padding:0.4rem 1rem;background:transparent;color:var(--clr-muted);border:1px solid var(--clr-border);border-radius:100px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:none;">AI</button>
+          <button class="tag-filter" data-filter="Agile"        style="font-size:0.75rem;padding:0.4rem 1rem;background:transparent;color:var(--clr-muted);border:1px solid var(--clr-border);border-radius:100px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:none;">Agile</button>
+          <button class="tag-filter" data-filter="Governance"   style="font-size:0.75rem;padding:0.4rem 1rem;background:transparent;color:var(--clr-muted);border:1px solid var(--clr-border);border-radius:100px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:none;">Governance</button>
+          <button class="tag-filter" data-filter="EdTech"       style="font-size:0.75rem;padding:0.4rem 1rem;background:transparent;color:var(--clr-muted);border:1px solid var(--clr-border);border-radius:100px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:none;">EdTech</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section aria-labelledby="articles-heading">
+      <div class="container">
+        <header class="section-header reveal">
+          <p class="label">Published Articles</p>
+          <div class="divider"></div>
+          <h2 id="articles-heading">Latest Writing</h2>
+        </header>
+        <div class="insights-grid" id="insights-grid" role="list"></div>
+      </div>
+    </section>
+
+    <!-- LinkedIn CTA -->
+    <section style="padding: var(--space-xl) 0; background: var(--clr-surface); border-top:1px solid var(--clr-border); text-align:center;">
+      <div class="container" style="max-width:560px; margin:0 auto;">
+        <p class="label reveal">Stay in the Loop</p>
+        <div class="divider reveal" style="margin: var(--space-sm) auto var(--space-md);"></div>
+        <h2 class="reveal" style="color:var(--clr-white); margin-bottom:var(--space-sm);">
+          New articles published<br>regularly on LinkedIn
+        </h2>
+        <p class="reveal reveal-delay-1" style="margin-bottom:var(--space-md);">
+          Follow for perspectives on AI governance, enterprise agility, and the future of digital work.
+        </p>
+        <div class="reveal reveal-delay-2">
+          <a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener" class="btn btn-primary">Follow on LinkedIn →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__logo">Anjish<span>.</span></div>
+          <p class="footer__tagline">Digital Transformation Lead · Enterprise Agile Coach · AI Strategist.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Navigate</div>
+          <ul class="footer__links">
+            <li><a href="index.html#expertise">Expertise</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="insights.html">Insights</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Connect</div>
+          <ul class="footer__links">
+            <li><a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://iostring.com" target="_blank" rel="noopener">iostring.com</a></li>
+            <li><a href="mailto:anjish.bhondwe@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2024 Anjish Bhondwe. All rights reserved.</span>
+        <span>Brussels, Belgium · Benelux</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initCursor }    from './js/cursor.js';
+    import { initNav }       from './js/nav.js';
+    import { initAnimations } from './js/animations.js';
+    import { renderInsights } from './js/components.js';
+    import { insights }       from './js/data/insights.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initCursor();
+      initNav();
+      renderInsights('insights-grid');
+      setTimeout(() => initAnimations(), 50);
+
+      // Simple topic filter
+      document.querySelectorAll('[data-filter]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.filter;
+          const grid   = document.getElementById('insights-grid');
+
+          // Re-render with filter
+          const filtered = filter === 'all'
+            ? insights
+            : insights.filter(a => a.tags.some(t => t.toLowerCase().includes(filter.toLowerCase())));
+
+          // Inline render for filtered results
+          grid.innerHTML = filtered.map((art, i) => `
+            <article class="insight-card reveal is-visible">
+              <div class="insight-card__topic">${art.topic}</div>
+              <h3 class="insight-card__title">${art.title}</h3>
+              <p class="insight-card__excerpt">${art.excerpt}</p>
+              <div class="insight-card__meta">
+                <span>${art.date} · ${art.readTime} read</span>
+                <a href="${art.url}" target="_blank" rel="noopener" class="insight-card__link">Read →</a>
+              </div>
+            </article>
+          `).join('');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
