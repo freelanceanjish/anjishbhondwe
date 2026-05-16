@@ -52,9 +52,9 @@ button { cursor: pointer; font-family: inherit; }
   font-family: var(--fm); font-size: .7rem; color: var(--li-blue);
   letter-spacing: .12em; text-transform: uppercase; margin-bottom: .75rem;
 }
-.stag::before { content: ''; display: block; width: 1.2rem; height: 1.5px; background: var(--li-blue); }
+.stag::before { display: none; }
 .stag.center  { justify-content: center; }
-.stag.center::before, .stag.center::after { content: ''; display: block; width: 1.2rem; height: 1.5px; background: var(--li-blue); }
+.stag.center::before, .stag.center::after { display: none; }
 
 h2.stitle {
   font-family: var(--fd);
@@ -154,7 +154,7 @@ nav.scrolled { padding: .7rem 5%; }
   letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.2rem;
   opacity: 0; animation: fup .8s ease .2s forwards;
 }
-.hero-eyebrow::before { content: ''; display: block; width: 1.8rem; height: 1.5px; background: var(--li-blue); }
+.hero-eyebrow::before { display: none; }
 .hero-name {
   font-family: var(--fd);
   font-size: clamp(3.5rem, 7vw, 7rem);
