@@ -297,7 +297,7 @@ section { padding: 6rem 5%; }
 .job-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: .6rem; }
 .job-role { font-family: var(--fd); font-size: 1.25rem; font-weight: 600; }
 .job-co { display: inline-flex; align-items: center; gap: .5rem; background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); border-radius: var(--r-sm); padding: .25rem .7rem; font-family: var(--fb); font-size: .78rem; font-weight: 500; color: var(--vl); }
-.job-co img { height: 20px; object-fit: contain; filter: brightness(0) invert(1); opacity: .85; }
+.job-co img { height: 20px; object-fit: contain; filter: grayscale(.3) brightness(1.1); opacity: .9; }
 .job-co-group { display: flex; gap: .5rem; flex-wrap: wrap; }
 .job-location { font-family: var(--fm); font-size: .7rem; color: var(--g5); letter-spacing: .05em; margin-bottom: 1rem; }
 .job-bullets li { font-family: var(--fb); color: var(--g3); font-size: .87rem; line-height: 1.65; padding-left: 1.2rem; position: relative; margin-bottom: .5rem; }
@@ -315,11 +315,14 @@ section { padding: 6rem 5%; }
 .client-logo:hover::before { opacity: 1; }
 .client-logo img {
   max-width: 130px; max-height: 50px; width: 100%; object-fit: contain;
-  filter: brightness(0) invert(1);   /* make any logo white on dark bg */
-  opacity: .55;
+  filter: grayscale(.4) brightness(1.05);
+  opacity: .85;
   transition: filter .35s, opacity .35s;
 }
 .client-logo:hover img {
+  filter: grayscale(0) brightness(1.1);
+  opacity: 1;
+}
   filter: brightness(1) invert(0);   /* restore original colour on hover */
   opacity: 1;
 }
