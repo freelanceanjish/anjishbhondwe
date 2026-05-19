@@ -240,7 +240,7 @@ nav.scrolled { border-bottom-color: var(--border); }
 #hero {
   min-height: 100vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   padding: 8rem var(--s6) 6rem;
   position: relative;
   overflow: hidden;
@@ -266,7 +266,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   display: grid;
   grid-template-columns: 1fr 420px;
   gap: 4rem;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .hero-eyebrow {
