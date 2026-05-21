@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EU AI Act: Governance Pillars, Risk Framework & What Organisations Must Do Now — Anjish Bhondwe</title>
+<meta name="description" content="A comprehensive breakdown of the EU AI Act's six governance pillars, four-tier risk classification, Annex III high-risk categories, and the compliance obligations every organisation in Europe must meet by 2026.">
+<meta name="author" content="Anjish Bhondwe">
+<link rel="canonical" href="https://anjishbhondwe.com/blog-eu-ai-act.html">
+<meta property="og:title" content="EU AI Act: Governance Pillars, Risk Framework & What Organisations Must Do Now">
+<meta property="og:description" content="The world's first comprehensive AI regulation explained — risk tiers, compliance obligations, timelines, and what it means for your delivery organisation.">
+<meta property="og:url" content="https://anjishbhondwe.com/blog-eu-ai-act.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<style>
+  /* ── Article layout ── */
+  .article-hero { padding: 5.5rem 0 3.5rem; position: relative; overflow: hidden; border-bottom: 1px solid var(--clr-border); }
+  .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(201,169,110,0.08) 0%, transparent 65%); pointer-events: none; }
+  .article-hero__back { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--clr-muted); text-decoration: none; letter-spacing: 0.05em; margin-bottom: 2rem; transition: color 0.2s; }
+  .article-hero__back:hover { color: var(--clr-gold); }
+  .article-hero__topic { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--clr-gold); margin-bottom: 1.25rem; }
+  .article-hero__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 500; color: var(--clr-white); line-height: 1.15; max-width: 800px; margin-bottom: 1.5rem; }
+  .article-hero__meta { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .article-hero__author { display: flex; align-items: center; gap: 0.65rem; }
+  .article-hero__avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(201,169,110,0.15); border: 1px solid rgba(201,169,110,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: var(--clr-gold); flex-shrink: 0; }
+  .article-hero__author-name { font-size: 0.82rem; font-weight: 600; color: var(--clr-white); }
+  .article-hero__author-role { font-size: 0.72rem; color: var(--clr-muted); }
+  .article-hero__divider { width: 1px; height: 28px; background: var(--clr-border); }
+  .article-hero__date { font-size: 0.75rem; color: var(--clr-muted); }
+  .article-hero__readtime { font-size: 0.75rem; color: var(--clr-muted); }
+  .article-hero__tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .article-hero__tag { font-size: 0.65rem; padding: 0.25rem 0.6rem; border-radius: 100px; background: rgba(201,169,110,0.1); color: var(--clr-gold); border: 1px solid rgba(201,169,110,0.2); }
+
+  /* Article body layout */
+  .article-layout { display: grid; grid-template-columns: 1fr 260px; gap: 4rem; padding: 4rem 0 6rem; align-items: start; }
+  @media (max-width: 900px) { .article-layout { grid-template-columns: 1fr; } .article-toc { display: none; } }
+
+  /* Article body prose */
+  .article-body { max-width: 720px; }
+  .article-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 500; color: var(--clr-white); margin: 3rem 0 1rem; line-height: 1.25; }
+  .article-body h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--clr-white); margin: 2rem 0 0.75rem; }
+  .article-body p { font-size: 1rem; color: var(--clr-muted); line-height: 1.8; margin-bottom: 1.25rem; }
+  .article-body strong { color: var(--clr-white); font-weight: 600; }
+  .article-body a { color: var(--clr-gold); text-decoration: underline; text-underline-offset: 3px; }
+  .article-body ul, .article-body ol { margin: 0 0 1.25rem 0; padding-left: 1.5rem; }
+  .article-body li { font-size: 1rem; color: var(--clr-muted); line-height: 1.75; margin-bottom: 0.4rem; }
+  .article-body li strong { color: var(--clr-white); }
+
+  /* Pull quote */
+  .pull-quote { border-left: 3px solid var(--clr-gold); padding: 1rem 1.5rem; margin: 2.5rem 0; background: rgba(201,169,110,0.05); border-radius: 0 8px 8px 0; }
+  .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--clr-white); line-height: 1.55; margin: 0; }
+
+  /* Info boxes */
+  .info-box { border: 1px solid var(--clr-border); border-radius: 10px; padding: 1.5rem; margin: 2rem 0; background: var(--clr-surface); }
+  .info-box--gold { border-color: rgba(201,169,110,0.3); background: rgba(201,169,110,0.05); }
+  .info-box--red { border-color: rgba(192,57,43,0.3); background: rgba(192,57,43,0.05); }
+  .info-box--green { border-color: rgba(26,122,74,0.3); background: rgba(26,122,74,0.05); }
+  .info-box__label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.65rem; }
+  .info-box--gold .info-box__label { color: var(--clr-gold); }
+  .info-box--red .info-box__label { color: #e07060; }
+  .info-box--green .info-box__label { color: #4ade80; }
+  .info-box p { font-size: 0.88rem; color: var(--clr-muted); line-height: 1.7; margin: 0; }
+  .info-box p + p { margin-top: 0.65rem; }
+
+  /* Risk tier table */
+  .risk-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-size: 0.85rem; }
+  .risk-table th { text-align: left; padding: 0.65rem 1rem; border-bottom: 1px solid var(--clr-border); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clr-muted); }
+  .risk-table td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; line-height: 1.55; color: var(--clr-muted); }
+  .risk-table td:first-child { font-weight: 600; white-space: nowrap; }
+  .risk-table tr:last-child td { border-bottom: none; }
+  .tier-badge { display: inline-block; font-size: 0.65rem; padding: 0.2rem 0.6rem; border-radius: 100px; font-weight: 700; letter-spacing: 0.05em; }
+  .tier-prohibited { background: rgba(192,57,43,0.15); color: #e07060; border: 1px solid rgba(192,57,43,0.3); }
+  .tier-high { background: rgba(181,69,13,0.15); color: #f9a050; border: 1px solid rgba(181,69,13,0.3); }
+  .tier-limited { background: rgba(196,154,0,0.15); color: #e0b840; border: 1px solid rgba(196,154,0,0.3); }
+  .tier-minimal { background: rgba(26,122,74,0.15); color: #4ade80; border: 1px solid rgba(26,122,74,0.3); }
+
+  /* Pillar cards */
+  .pillars-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0 2rem; }
+  @media (max-width: 560px) { .pillars-grid { grid-template-columns: 1fr; } }
+  .pillar-card { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: 10px; padding: 1.15rem 1.25rem; }
+  .pillar-card__num { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; color: var(--clr-gold); margin-bottom: 0.4rem; }
+  .pillar-card__title { font-size: 0.88rem; font-weight: 600; color: var(--clr-white); margin-bottom: 0.35rem; }
+  .pillar-card__desc { font-size: 0.78rem; color: var(--clr-muted); line-height: 1.6; margin: 0; }
+
+  /* Timeline */
+  .timeline-list { list-style: none; padding: 0; margin: 1.5rem 0 2rem; position: relative; }
+  .timeline-list::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--clr-gold), rgba(201,169,110,0.1)); }
+  .timeline-list li { padding: 0 0 1.5rem 2.25rem; position: relative; }
+  .timeline-list li::before { content: ''; position: absolute; left: 2px; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--clr-gold); border: 2px solid var(--clr-surface, #0f0f0f); }
+  .tl-date { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clr-gold); margin-bottom: 0.2rem; }
+  .tl-event { font-size: 0.88rem; font-weight: 600; color: var(--clr-white); margin-bottom: 0.25rem; }
+  .tl-note { font-size: 0.8rem; color: var(--clr-muted); line-height: 1.55; }
+
+  /* Obligation grid */
+  .obligation-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 1.5rem 0 2rem; }
+  @media (max-width: 560px) { .obligation-grid { grid-template-columns: 1fr; } }
+  .obl-item { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: 8px; padding: 1rem; display: flex; gap: 0.75rem; align-items: flex-start; }
+  .obl-item__check { width: 20px; height: 20px; border-radius: 50%; background: rgba(26,122,74,0.2); border: 1px solid rgba(26,122,74,0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.7rem; color: #4ade80; margin-top: 1px; }
+  .obl-item__text { font-size: 0.8rem; color: var(--clr-muted); line-height: 1.55; }
+  .obl-item__text strong { color: var(--clr-white); display: block; margin-bottom: 2px; font-size: 0.82rem; }
+
+  /* TOC sidebar */
+  .article-toc { position: sticky; top: 100px; }
+  .article-toc__label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clr-muted); margin-bottom: 1rem; }
+  .article-toc__list { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--clr-border); }
+  .article-toc__list li { padding: 0.35rem 0 0.35rem 1rem; }
+  .article-toc__list a { font-size: 0.78rem; color: var(--clr-muted); text-decoration: none; transition: color 0.2s; line-height: 1.5; display: block; }
+  .article-toc__list a:hover, .article-toc__list a.active { color: var(--clr-gold); }
+
+  /* Author bio */
+  .author-bio { border-top: 1px solid var(--clr-border); margin-top: 4rem; padding-top: 2.5rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+  .author-bio__avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid rgba(201,169,110,0.3); }
+  .author-bio__avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .author-bio__name { font-size: 1rem; font-weight: 600; color: var(--clr-white); margin-bottom: 0.25rem; }
+  .author-bio__title { font-size: 0.78rem; color: var(--clr-gold); margin-bottom: 0.65rem; }
+  .author-bio__desc { font-size: 0.85rem; color: var(--clr-muted); line-height: 1.65; margin-bottom: 0.75rem; }
+  .author-bio__links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .author-bio__link { font-size: 0.75rem; font-weight: 600; color: var(--clr-gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- ── NAV ── -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Anjish<span>.</span></a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html#expertise">Expertise</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="blogs.html" class="nav__active">Blogs</a></li>
+        <li><a href="contact.html" class="nav__cta">Let's Talk</a></li>
+      </ul>
+      <button class="nav__burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav__mobile">
+    <a href="index.html#expertise">Expertise</a>
+    <a href="work.html">Work</a>
+    <a href="insights.html">Insights</a>
+    <a href="blogs.html">Blogs</a>
+    <a href="contact.html">Let's Talk</a>
+  </div>
+</nav>
+
+<main>
+  <!-- ── ARTICLE HERO ── -->
+  <section class="article-hero">
+    <div class="container">
+      <a href="blogs.html" class="article-hero__back">← Back to Blogs</a>
+      <p class="article-hero__topic">AI Governance · EU AI Act</p>
+      <h1 class="article-hero__title">EU AI Act: Governance Pillars, Risk Framework &amp; What Organisations Must Do Now</h1>
+      <div class="article-hero__meta">
+        <div class="article-hero__author">
+          <div class="article-hero__avatar">AB</div>
+          <div>
+            <div class="article-hero__author-name">Anjish Bhondwe</div>
+            <div class="article-hero__author-role">AI Governance Lead · Enterprise Agile Coach</div>
+          </div>
+        </div>
+        <div class="article-hero__divider"></div>
+        <span class="article-hero__date">May 2025</span>
+        <div class="article-hero__divider"></div>
+        <span class="article-hero__readtime">12 min read</span>
+      </div>
+      <div class="article-hero__tags">
+        <span class="article-hero__tag">EU AI Act</span>
+        <span class="article-hero__tag">Annex III</span>
+        <span class="article-hero__tag">Risk Framework</span>
+        <span class="article-hero__tag">GPAI</span>
+        <span class="article-hero__tag">Compliance 2026</span>
+        <span class="article-hero__tag">High-Risk AI</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ARTICLE BODY + TOC ── -->
+  <div class="container">
+    <div class="article-layout">
+
+      <!-- MAIN BODY -->
+      <article class="article-body">
+
+        <p>
+          On 1 August 2024, the EU AI Act entered into force as <strong>Regulation (EU) 2024/1689</strong> — the world's first comprehensive, horizontal legal framework for artificial intelligence. For organisations operating in the European Union, deploying AI systems, or placing AI products on the European market, this is not a future consideration. It is a present operational obligation with hard deadlines and significant penalties.
+        </p>
+        <p>
+          This post breaks down what the regulation actually requires, how its risk-based framework works in practice, and the specific steps regulated organisations — particularly in financial services — need to take before the August 2026 compliance cliff.
+        </p>
+
+        <div class="pull-quote">
+          <p>"The higher the risk to society, the stricter the rules. Minimal compliance burden for low-risk AI, stringent obligations for high-risk systems, and outright prohibition where risks are unacceptable."</p>
+        </div>
+
+        <div class="info-box info-box--gold">
+          <div class="info-box__label">Regulation at a glance</div>
+          <p><strong>Full title:</strong> Regulation (EU) 2024/1689 of the European Parliament and of the Council. <strong>In force:</strong> 1 August 2024. <strong>Extra-territorial scope:</strong> applies to any AI system affecting persons in the EU, regardless of where the provider is established. <strong>Maximum penalty:</strong> €35 million or 7% of global annual turnover (whichever is higher) for the most serious violations.</p>
+        </div>
+
+        <!-- ── SECTION 1 ── -->
+        <h2 id="why-it-matters">Why this matters for delivery organisations</h2>
+        <p>
+          Most regulatory frameworks arrive as an audit event — a compliance team reviews documentation, a gap is found, a remediation project is raised. The EU AI Act cannot be approached this way. Its obligations are embedded across the AI system lifecycle: from the data used in training, through the conformity assessment before market placement, to continuous post-market monitoring and incident reporting after deployment.
+        </p>
+        <p>
+          For organisations already using Agile delivery, this means governance is not a phase — it is a permanent backlog item. Risk management documentation must be maintained and updated as the system evolves. Logs must be kept. Human oversight mechanisms must be functional and accessible to deployers. This is the governance architecture that must be built into sprint ceremonies, not bolted on at a release gate.
+        </p>
+
+        <!-- ── SECTION 2 ── -->
+        <h2 id="risk-framework">The four-tier risk classification framework</h2>
+        <p>
+          The Act organises AI systems into four risk levels. The framework is proportional: the higher the potential harm to persons, fundamental rights, or society, the more demanding the obligations.
+        </p>
+
+        <table class="risk-table">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Classification</th>
+              <th>Approach</th>
+              <th>Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tier-badge tier-prohibited">Prohibited</span></td>
+              <td>Unacceptable risk</td>
+              <td>Outright ban from 2 Feb 2025</td>
+              <td>Social scoring, subliminal manipulation, real-time biometric ID in public spaces, predictive policing by profile</td>
+            </tr>
+            <tr>
+              <td><span class="tier-badge tier-high">High risk</span></td>
+              <td>Annex III systems</td>
+              <td>Full compliance obligations from Aug 2026</td>
+              <td>Credit scoring, CV screening, medical devices, critical infrastructure management, law enforcement tools</td>
+            </tr>
+            <tr>
+              <td><span class="tier-badge tier-limited">Limited risk</span></td>
+              <td>Transparency obligations</td>
+              <td>Disclosure requirements only</td>
+              <td>Chatbots, AI-generated content, emotion recognition systems</td>
+            </tr>
+            <tr>
+              <td><span class="tier-badge tier-minimal">Minimal risk</span></td>
+              <td>Free to deploy</td>
+              <td>Voluntary codes of conduct</td>
+              <td>Spam filters, AI games, recommendation engines, creative writing tools</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="info-box info-box--red">
+          <div class="info-box__label">Important: prohibited AI is already banned</div>
+          <p>The prohibited practices list (Chapter II, Articles 5–6) applied from <strong>2 February 2025</strong>. If your organisation operates any system that scores citizens based on behaviour, uses subliminal techniques to influence behaviour, exploits vulnerabilities of specific groups, or performs real-time biometric identification in public spaces, these are already non-compliant and must be ceased immediately.</p>
+        </div>
+
+        <!-- ── SECTION 3 ── -->
+        <h2 id="high-risk">Annex III: the high-risk AI categories in detail</h2>
+        <p>
+          Annex III of the regulation defines eight sectors where AI systems are classified as high-risk. This is where the vast majority of financial services, HR, and enterprise AI deployments will fall. Understanding which sector your system falls under is the first step in any compliance programme.
+        </p>
+
+        <h3>The eight Annex III sectors</h3>
+        <ul>
+          <li><strong>Biometric identification and categorisation (III.1):</strong> Remote biometric identification systems used in public spaces. Real-time use is severely restricted; post-hoc use requires prior authorisation from a judicial authority or independent body.</li>
+          <li><strong>Critical infrastructure (III.2):</strong> AI used as a safety component in the management of roads, water, electricity, heating, internet, and digital infrastructure networks.</li>
+          <li><strong>Education and vocational training (III.3):</strong> Systems that determine access to educational institutions, assess student performance, monitor prohibited behaviour during tests, or evaluate competence.</li>
+          <li><strong>Employment, workers management, and access to self-employment (III.4):</strong> CV screening tools, interview scoring systems, performance and behaviour monitoring, task allocation and prioritisation. This is high exposure for any organisation using AI in HR workflows.</li>
+          <li><strong>Access to essential private services and benefits (III.5):</strong> AI used in credit scoring, insurance risk assessment, and emergency services prioritisation. Directly relevant to financial services organisations.</li>
+          <li><strong>Law enforcement (III.6):</strong> Individual risk assessment tools, polygraph-like lie detection, crime analytics platforms, tools that evaluate the reliability of evidence.</li>
+          <li><strong>Migration, asylum, and border control (III.7):</strong> Risk assessment for asylum applications, lie detection tools at borders, document authenticity verification, irregular migration prediction.</li>
+          <li><strong>Administration of justice and democratic processes (III.8):</strong> AI that researches facts or interprets law, tools that predict court outcomes, systems that influence elections or referenda.</li>
+        </ul>
+
+        <div class="info-box info-box--gold">
+          <div class="info-box__label">2025 draft update: Annex III expansion</div>
+          <p>The EU AI Office and the European Commission have been evaluating Annex III expansion through delegated acts. Areas under active consideration include general-purpose AI systems integrated into Annex III applications, and additional use cases in critical infrastructure and financial services risk assessment. Organisations should monitor the EU AI Office's regulatory sandbox outputs and the ongoing standardisation work by CEN/CENELEC JTC 21, which is developing harmonised standards that will underpin conformity assessment procedures.</p>
+        </div>
+
+        <!-- ── SECTION 4 ── -->
+        <h2 id="six-pillars">The six governance pillars every high-risk AI system must meet</h2>
+        <p>
+          For any system classified as high-risk under Annex III, Articles 9 through 15 of the regulation define six core governance obligations. These are not optional add-ons — they are mandatory pre-conditions for market placement and continued operation.
+        </p>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-card__num">Pillar 01</div>
+            <div class="pillar-card__title">Risk Management System</div>
+            <p class="pillar-card__desc">A continuous, iterative process throughout the system lifecycle. Identify, analyse, estimate, and mitigate risks before placement and on an ongoing basis as the system evolves. Must be documented and reviewed at each significant update.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card__num">Pillar 02</div>
+            <div class="pillar-card__title">Data Governance</div>
+            <p class="pillar-card__desc">Training, validation, and test datasets must be subject to governance practices covering relevance, representativeness, and freedom from biases that could cause discriminatory outputs. Data lineage and quality controls must be documented.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card__num">Pillar 03</div>
+            <div class="pillar-card__title">Technical Documentation</div>
+            <p class="pillar-card__desc">Comprehensive documentation enabling competent authorities to assess conformity — including system design rationale, development choices, performance metrics, known limitations, and post-market monitoring plans. Must be maintained for 10 years post-market placement.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card__num">Pillar 04</div>
+            <div class="pillar-card__title">Transparency &amp; Human Oversight</div>
+            <p class="pillar-card__desc">Users must be informed they are interacting with an AI system. High-risk systems must enable human oversight: the ability to understand, monitor, and intervene on outputs. Deployers must designate natural persons capable of exercising meaningful oversight.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card__num">Pillar 05</div>
+            <div class="pillar-card__title">Accuracy, Robustness &amp; Cybersecurity</div>
+            <p class="pillar-card__desc">Systems must perform at declared accuracy levels throughout their lifecycle. They must resist adversarial attacks, model poisoning, data poisoning, and other cybersecurity threats. Residual risks must be acceptable and documented.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card__num">Pillar 06</div>
+            <div class="pillar-card__title">Conformity Assessment &amp; Post-Market Monitoring</div>
+            <p class="pillar-card__desc">Providers must complete a conformity assessment (self-assessment or third-party, depending on system type) before market placement. CE marking is required. Post-market monitoring via logging and a documented plan is mandatory, with serious incident reporting to authorities.</p>
+          </div>
+        </div>
+
+        <!-- ── SECTION 5 ── -->
+        <h2 id="gpai">General Purpose AI: a separate but parallel obligation</h2>
+        <p>
+          Chapter V of the regulation introduces specific obligations for providers of <strong>General Purpose AI (GPAI) models</strong> — the large foundation models such as large language models and multi-modal systems that underpin many downstream applications. These rules applied from <strong>2 August 2025</strong>.
+        </p>
+        <p>
+          All GPAI model providers must maintain technical documentation, provide information to downstream providers, publish a policy on copyright compliance, and publish a summary of training data used. Providers of GPAI models with systemic risk — defined as those trained with compute exceeding 10²⁵ FLOPs — face additional obligations including adversarial testing, incident reporting, and cybersecurity protections.
+        </p>
+        <p>
+          For delivery organisations using GPAI models as the foundation for their AI products, understanding where the boundary of provider obligation ends and where your own obligations as a deployer begin is critical. The regulation distinguishes these roles carefully and the obligations do not simply cascade — they accumulate.
+        </p>
+
+        <!-- ── SECTION 6 ── -->
+        <h2 id="timeline">The compliance timeline: what applies when</h2>
+
+        <ul class="timeline-list">
+          <li>
+            <div class="tl-date">1 August 2024</div>
+            <div class="tl-event">Regulation enters into force</div>
+            <div class="tl-note">Published in the Official Journal of the EU. The 20-day period after publication ends, and the regulation is binding. Governance preparations should begin immediately.</div>
+          </li>
+          <li>
+            <div class="tl-date">2 February 2025</div>
+            <div class="tl-event">Prohibited AI practices banned</div>
+            <div class="tl-note">Chapter I general provisions and Chapter II prohibited practices fully apply. All systems listed in the prohibition must cease operation. Penalties for violations of this chapter are the most severe: up to €35M or 7% of global turnover.</div>
+          </li>
+          <li>
+            <div class="tl-date">2 August 2025</div>
+            <div class="tl-event">GPAI model obligations apply</div>
+            <div class="tl-note">Chapter V (GPAI models) and Chapter VII (governance bodies, including national competent authorities) apply. The EU AI Office is operational. Penalty provisions (Chapter XII) come into force.</div>
+          </li>
+          <li>
+            <div class="tl-date">2 August 2026</div>
+            <div class="tl-event">High-risk AI obligations fully apply</div>
+            <div class="tl-note">Chapters III and IV (high-risk AI obligations) apply in full. Conformity assessments, technical documentation, EU database registration, and post-market monitoring are mandatory. This is the critical compliance deadline for the vast majority of AI providers and deployers.</div>
+          </li>
+          <li>
+            <div class="tl-date">2 August 2027</div>
+            <div class="tl-event">Annex I product safety systems</div>
+            <div class="tl-note">High-risk AI systems embedded within products regulated under existing Union harmonisation legislation (medical devices, machinery, vehicles) are fully covered. Transition period for legacy systems ends.</div>
+          </li>
+        </ul>
+
+        <!-- ── SECTION 7 ── -->
+        <h2 id="obligations">What deployers specifically must do</h2>
+        <p>
+          The regulation makes a fundamental distinction between <strong>providers</strong> (who develop and place AI systems on the market) and <strong>deployers</strong> (who use AI systems in their operations). Both have direct obligations. For most regulated organisations — banks, insurers, HR technology users, public authorities — the primary role is deployer, not provider.
+        </p>
+
+        <div class="obligation-grid">
+          <div class="obl-item">
+            <div class="obl-item__check">✓</div>
+            <div class="obl-item__text"><strong>Conduct a fundamental rights impact assessment</strong> before deploying any high-risk AI system in the context of public services or critical private services. Document findings and make available to competent authorities on request.</div>
+          </div>
+          <div class="obl-item">
+            <div class="obl-item__check">✓</div>
+            <div class="obl-item__text"><strong>Implement human oversight measures</strong> as defined by the provider. Designate natural persons with the competence, authority, and resources to understand, monitor, and where necessary override AI system outputs.</div>
+          </div>
+          <div class="obl-item">
+            <div class="obl-item__check">✓</div>
+            <div class="obl-item__text"><strong>Maintain logs</strong> automatically generated by the AI system for the minimum retention periods specified. Logs must be available to competent national authorities upon request within defined timeframes.</div>
+          </div>
+          <div class="obl-item">
+            <div class="obl-item__check">✓</div>
+            <div class="obl-item__text"><strong>Register the system</strong> in the EU database maintained by the EU AI Office before deploying any high-risk AI system in the areas of employment, education, essential services, or law enforcement.</div>
+          </div>
+          <div class="obl-item">
+            <div class="obl-item__check">✓</div>
+            <div class="obl-item__text"><strong>Report serious incidents</strong> to the market surveillance authority of the Member State where the incident occurred. Timelines are 15 days for serious incidents and 2 years for near-misses.</div>
+          </div>
+          <div class="obl-item">
+            <div class="obl-item__check">✓</div>
+            <div class="obl-item__text"><strong>Ensure AI literacy</strong> of all staff using or affected by high-risk AI systems. Deployers must provide appropriate training and information. This is a named obligation under Article 4.</div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 8 ── -->
+        <h2 id="delivery">What this means for Agile delivery teams</h2>
+        <p>
+          The EU AI Act is, fundamentally, a product governance regulation. It defines obligations that must be woven into product development, not appended to it. For teams delivering AI systems under Agile frameworks, the practical implications are significant:
+        </p>
+        <ul>
+          <li><strong>Risk management is a backlog item:</strong> The risk management system required by Article 9 must be iterative and documented. Every sprint that modifies a high-risk AI system potentially triggers a risk management update. Build this into your Definition of Done.</li>
+          <li><strong>Data governance stories are not optional:</strong> Training data quality, bias assessments, and data lineage documentation must be maintained. These are not one-time activities — they must be revisited at each significant model update.</li>
+          <li><strong>Human oversight is a feature, not a process:</strong> The requirement that deployers can override, correct, or halt AI system outputs is a functional requirement. It must be designed into the product, not documented in a policy document.</li>
+          <li><strong>Post-market monitoring is continuous delivery applied to compliance:</strong> Logging, performance monitoring, and incident reporting are operational capabilities that must be built and maintained by the delivery team.</li>
+        </ul>
+        <p>
+          The organisations that will be best positioned for August 2026 are those that have already started integrating these obligations into their current delivery cycles — not those planning a compliance sprint in early 2026.
+        </p>
+
+        <!-- ── CLOSING ── -->
+        <h2 id="conclusion">Where to start</h2>
+        <p>
+          If you are unsure where your AI systems land on the risk spectrum, the single most valuable first action is an <strong>AI system inventory</strong>: catalogue every AI system in operation or in development, document its primary purpose and the decisions it influences, identify the users and affected persons, and map it against the Annex III sector list.
+        </p>
+        <p>
+          From that inventory, the path to compliance is systematic: risk classification, gap assessment against the six pillars, prioritised remediation roadmap, conformity assessment preparation, and registration. It is a programme of work, not a project — because the regulation does not end at market placement.
+        </p>
+
+        <div class="info-box info-box--green">
+          <div class="info-box__label">Further reading</div>
+          <p>Official text: <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">EUR-Lex — Regulation (EU) 2024/1689</a></p>
+          <p>EU AI Office guidance and regulatory sandbox: <a href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener">European Commission — EU AI Office</a></p>
+          <p>Harmonised standards in development: CEN/CENELEC Joint Technical Committee 21 (JTC 21)</p>
+        </div>
+
+        <!-- ── AUTHOR BIO ── -->
+        <div class="author-bio">
+          <div class="author-bio__avatar">
+            <img src="profile.jpg" alt="Anjish Bhondwe" onerror="this.style.display='none'">
+          </div>
+          <div>
+            <div class="author-bio__name">Anjish Bhondwe</div>
+            <div class="author-bio__title">Director, Agile CoE · AI Governance Professional (AIGP candidate) · IAPP Member</div>
+            <p class="author-bio__desc">
+              16+ years delivering high-stakes transformations inside European financial services. Currently studying AI Regulation at Delft University of Technology and KU Leuven. Advising organisations on EU AI Act readiness, building Agile CoEs, and embedding governance into delivery from day one.
+            </p>
+            <div class="author-bio__links">
+              <a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener" class="author-bio__link">LinkedIn →</a>
+              <a href="contact.html" class="author-bio__link">Work together →</a>
+              <a href="blogs.html" class="author-bio__link">More posts →</a>
+            </div>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR TOC -->
+      <aside class="article-toc" aria-label="Table of contents">
+        <div class="article-toc__label">Contents</div>
+        <ul class="article-toc__list">
+          <li><a href="#why-it-matters">Why it matters for delivery</a></li>
+          <li><a href="#risk-framework">Four-tier risk framework</a></li>
+          <li><a href="#high-risk">Annex III high-risk categories</a></li>
+          <li><a href="#six-pillars">Six governance pillars</a></li>
+          <li><a href="#gpai">General Purpose AI</a></li>
+          <li><a href="#timeline">Compliance timeline</a></li>
+          <li><a href="#obligations">Deployer obligations</a></li>
+          <li><a href="#delivery">Impact on Agile delivery</a></li>
+          <li><a href="#conclusion">Where to start</a></li>
+        </ul>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__logo">Anjish<span>.</span></div>
+        <p class="footer__tagline">Digital Transformation Lead · Enterprise Agile Coach · AI Strategist.</p>
+      </div>
+      <div>
+        <div class="footer__col-title">Navigate</div>
+        <ul class="footer__links">
+          <li><a href="index.html#expertise">Expertise</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Connect</div>
+        <ul class="footer__links">
+          <li><a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://iostring.com" target="_blank" rel="noopener">iostring.com</a></li>
+          <li><a href="mailto:freelanceanjish@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2025 Anjish Bhondwe. All rights reserved.</span>
+      <span>Brussels, Belgium · Benelux</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initCursor } from './js/cursor.js';
+  import { initNav } from './js/nav.js';
+  import { initAnimations } from './js/animations.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof initCursor === 'function') initCursor();
+    if (typeof initNav === 'function') initNav();
+    setTimeout(() => { if (typeof initAnimations === 'function') initAnimations(); }, 50);
+
+    // Active TOC highlighting on scroll
+    const headings = document.querySelectorAll('.article-body h2[id], .article-body h3[id]');
+    const tocLinks = document.querySelectorAll('.article-toc__list a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const link = document.querySelector(`.article-toc__list a[href="#${entry.target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+    headings.forEach(h => observer.observe(h));
+  });
+</script>
+</body>
+</html>
