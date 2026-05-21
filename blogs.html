@@ -6,110 +6,173 @@
 <title>Blogs — Anjish Bhondwe | AI Governance, Agile & Digital Transformation</title>
 <meta name="description" content="In-depth blog posts by Anjish Bhondwe on EU AI Act, AI governance frameworks, enterprise agility, and digital transformation leadership.">
 <meta name="author" content="Anjish Bhondwe">
-<link rel="canonical" href="https://anjishbhondwe.com/blogs.html">
-<meta property="og:title" content="Blogs — Anjish Bhondwe">
-<meta property="og:description" content="Deep-dive posts on EU AI Act governance, enterprise agility, and digital transformation.">
-<meta property="og:url" content="https://anjishbhondwe.com/blogs.html">
+<link rel="canonical" href="https://anjish.io/blogs.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/variables.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/components.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;600;700&family=IBM+Plex+Serif:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  /* ── Blog-specific overrides, all scoped ── */
-  .blog-hero { padding: 6rem 0 4rem; position: relative; overflow: hidden; }
-  .blog-hero__bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 60% 0%, rgba(201,169,110,0.07) 0%, transparent 70%); pointer-events: none; }
-  .blog-hero__label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--clr-gold); font-weight: 600; margin-bottom: 1rem; }
-  .blog-hero__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 400; line-height: 1.1; color: var(--clr-white); margin-bottom: 1.25rem; }
-  .blog-hero__subtitle { font-size: 1.05rem; color: var(--clr-muted); max-width: 540px; line-height: 1.7; }
+:root {
+  --bg:#161616; --bg2:#262626; --surface:#2d2d2d; --surface2:#393939;
+  --border-sm:#393939; --border:#525252;
+  --blue:#0f62fe; --blue-h:#0043ce; --blue-20:#d0e2ff; --blue-40:#78a9ff;
+  --teal:#3ddbd9; --green:#42be65; --red:#fa4d56;
+  --text:#f4f4f4; --text-2:#c6c6c6; --text-3:#8d8d8d; --text-inv:#161616;
+  --fserif:'IBM Plex Serif',Georgia,serif;
+  --fsans:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  --fmono:'IBM Plex Mono','Courier New',monospace;
+  --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2rem; --s6:3rem; --s8:4rem;
+  --t:.11s cubic-bezier(.2,0,.38,.9);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--fsans);font-size:1rem;line-height:1.5;letter-spacing:.16px;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{cursor:pointer;font-family:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--blue)}
 
-  .filter-bar { padding: 1.25rem 0; border-bottom: 1px solid var(--clr-border); background: var(--clr-surface); position: sticky; top: 68px; z-index: 90; }
-  .filter-bar__inner { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
-  .filter-btn { font-size: 0.72rem; padding: 0.35rem 0.9rem; border-radius: 100px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; border: 1px solid var(--clr-border); background: transparent; color: var(--clr-muted); font-family: 'Plus Jakarta Sans', sans-serif; }
-  .filter-btn:hover, .filter-btn.active { background: var(--clr-gold-dim, rgba(201,169,110,0.15)); color: var(--clr-gold); border-color: rgba(201,169,110,0.35); }
+.smax{max-width:1584px;margin:0 auto;padding:0 var(--s6)}
+.label{font-family:var(--fmono);font-size:.75rem;font-weight:400;letter-spacing:.32px;text-transform:uppercase;color:var(--blue-40)}
+.grid-rule{height:1px;background:var(--border-sm)}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
 
-  .blogs-section { padding: 4rem 0 6rem; }
-  .blogs-section__header { margin-bottom: 3rem; }
-  .blogs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--s6);background:#161616;border-bottom:1px solid var(--border-sm);transition:border-color var(--t)}
+nav.scrolled{border-bottom-color:var(--border)}
+.nav-logo{font-family:var(--fsans);font-size:.875rem;font-weight:600;letter-spacing:.32px;color:var(--text)}
+.nav-logo span{color:var(--blue-40)}
+.nav-links{display:flex;gap:0}
+.nav-links a{display:flex;align-items:center;height:48px;padding:0 1rem;font-family:var(--fsans);font-size:.875rem;font-weight:400;color:var(--text-2);letter-spacing:.16px;border-bottom:2px solid transparent;transition:all var(--t)}
+.nav-links a:hover,.nav-links a.active{background:var(--surface);color:var(--text);border-bottom-color:var(--blue)}
+.nav-cta{height:48px;display:flex;align-items:center;padding:0 1.5rem;background:var(--blue);color:#fff;font-family:var(--fsans);font-size:.875rem;font-weight:400;letter-spacing:.16px;transition:background var(--t);white-space:nowrap}
+.nav-cta:hover{background:var(--blue-h)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:.5rem;height:48px;align-items:center;justify-content:center}
+.nav-hamburger span{display:block;width:18px;height:1.5px;background:var(--text-2);transition:all .2s}
+#mobile-menu{display:none;position:fixed;top:48px;left:0;right:0;z-index:199;background:var(--bg2);border-bottom:1px solid var(--border);padding:var(--s2) var(--s6)}
+#mobile-menu.open{display:block}
+#mobile-menu ul{display:flex;flex-direction:column}
+#mobile-menu a{display:block;padding:var(--s1) 0;font-size:.875rem;color:var(--text-2);border-bottom:1px solid var(--border-sm)}
+#mobile-menu a:hover{color:var(--text)}
 
-  .blog-card { background: var(--clr-surface, #0f0f0f); border: 1px solid var(--clr-border, rgba(255,255,255,0.08)); border-radius: 12px; overflow: hidden; transition: transform 0.25s, border-color 0.25s; display: flex; flex-direction: column; }
-  .blog-card:hover { transform: translateY(-4px); border-color: rgba(201,169,110,0.3); }
-  .blog-card--featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
-  @media (max-width: 680px) { .blog-card--featured { grid-template-columns: 1fr; } }
+/* HERO */
+.blog-hero{padding:7rem 0 4rem;border-bottom:1px solid var(--border-sm)}
+.blog-hero__eyebrow{font-family:var(--fmono);font-size:.75rem;color:var(--blue-40);letter-spacing:.32px;text-transform:uppercase;margin-bottom:var(--s2)}
+.blog-hero__title{font-family:var(--fserif);font-size:clamp(2.5rem,5vw,4rem);font-weight:400;color:var(--text);line-height:1.1;margin-bottom:var(--s3)}
+.blog-hero__title em{font-style:italic;color:var(--blue-40)}
+.blog-hero__subtitle{font-size:1.05rem;color:var(--text-2);max-width:560px;line-height:1.7;letter-spacing:.16px}
 
-  .blog-card__accent { height: 3px; background: linear-gradient(90deg, var(--clr-gold, #c9a96e), transparent); }
-  .blog-card--featured .blog-card__accent { width: 3px; height: auto; background: linear-gradient(180deg, var(--clr-gold, #c9a96e), transparent); grid-row: 1; }
+/* FILTER */
+.filter-bar{padding:var(--s2) 0;border-bottom:1px solid var(--border-sm);background:var(--bg2);position:sticky;top:48px;z-index:90}
+.filter-bar__inner{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.filter-btn{font-size:.72rem;padding:.3rem .85rem;border:1px solid var(--border);background:transparent;color:var(--text-3);font-family:var(--fmono);letter-spacing:.32px;text-transform:uppercase;transition:all var(--t)}
+.filter-btn:hover,.filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
 
-  .blog-card__body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
-  .blog-card__meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
-  .blog-card__topic { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clr-gold, #c9a96e); background: rgba(201,169,110,0.1); padding: 0.25rem 0.65rem; border-radius: 100px; border: 1px solid rgba(201,169,110,0.2); }
-  .blog-card__date { font-size: 0.72rem; color: var(--clr-muted); }
-  .blog-card__readtime { font-size: 0.72rem; color: var(--clr-muted); }
-  .blog-card__title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 500; color: var(--clr-white); line-height: 1.3; margin-bottom: 0.85rem; }
-  .blog-card--featured .blog-card__title { font-size: 1.75rem; }
-  .blog-card__excerpt { font-size: 0.88rem; color: var(--clr-muted); line-height: 1.7; flex: 1; margin-bottom: 1.5rem; }
-  .blog-card__footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; padding-top: 1.25rem; border-top: 1px solid var(--clr-border); }
-  .blog-card__tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-  .blog-card__tag { font-size: 0.65rem; padding: 0.2rem 0.55rem; border-radius: 100px; background: rgba(255,255,255,0.05); color: var(--clr-muted); border: 1px solid var(--clr-border); }
-  .blog-card__link { font-size: 0.78rem; font-weight: 600; color: var(--clr-gold); text-decoration: none; letter-spacing: 0.03em; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
-  .blog-card__link:hover { opacity: 0.75; }
-  .blog-card__featured-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clr-gold); background: rgba(201,169,110,0.12); border: 1px solid rgba(201,169,110,0.25); border-radius: 100px; padding: 0.2rem 0.65rem; margin-bottom: 0.75rem; }
+/* BLOG GRID */
+.blogs-section{padding:var(--s8) 0}
+.section-rule{display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s6)}
+.section-rule h2{font-family:var(--fserif);font-size:1.75rem;font-weight:400;color:var(--text);white-space:nowrap}
+.section-rule::after{content:'';flex:1;height:1px;background:var(--border-sm)}
+.blogs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1px;background:var(--border-sm)}
 
-  .cta-section { padding: 5rem 0; background: var(--clr-surface); border-top: 1px solid var(--clr-border); text-align: center; }
-  .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 400; color: var(--clr-white); margin-bottom: 1rem; }
-  .cta-section p { color: var(--clr-muted); max-width: 480px; margin: 0 auto 2rem; line-height: 1.7; }
+/* BLOG CARD */
+.blog-card{background:var(--bg);padding:var(--s4);display:flex;flex-direction:column;transition:background var(--t)}
+.blog-card:hover{background:var(--bg2)}
+.blog-card--featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;background:var(--bg2)}
+.blog-card--featured:hover{background:var(--surface)}
+@media(max-width:700px){.blog-card--featured{grid-template-columns:1fr}}
+.blog-card__accent{width:3px;height:3rem;background:var(--blue);margin-bottom:var(--s3)}
+.blog-card--featured .blog-card__accent{display:none}
+.blog-card__featured-bar{height:2px;background:var(--blue);margin-bottom:var(--s4);grid-column:1/-1}
+.blog-card__eyebrow{display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s2);flex-wrap:wrap}
+.blog-card__topic{font-family:var(--fmono);font-size:.68rem;letter-spacing:.32px;text-transform:uppercase;color:var(--blue-40)}
+.blog-card__featured-badge{font-family:var(--fmono);font-size:.65rem;letter-spacing:.32px;text-transform:uppercase;color:var(--teal);background:rgba(61,219,217,.08);padding:.2rem .6rem;border:1px solid rgba(61,219,217,.25)}
+.blog-card__date{font-family:var(--fmono);font-size:.68rem;color:var(--text-3);letter-spacing:.16px}
+.blog-card__readtime{font-family:var(--fmono);font-size:.68rem;color:var(--text-3);letter-spacing:.16px}
+.blog-card__title{font-family:var(--fserif);font-size:1.35rem;font-weight:400;color:var(--text);line-height:1.3;margin-bottom:var(--s2)}
+.blog-card--featured .blog-card__title{font-size:1.75rem}
+.blog-card__excerpt{font-size:.875rem;color:var(--text-2);line-height:1.7;letter-spacing:.16px;flex:1;margin-bottom:var(--s3)}
+.blog-card__footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;padding-top:var(--s2);border-top:1px solid var(--border-sm);margin-top:auto}
+.blog-card__tags{display:flex;gap:.35rem;flex-wrap:wrap}
+.blog-card__tag{font-family:var(--fmono);font-size:.62rem;padding:.15rem .5rem;background:var(--surface);color:var(--text-3);letter-spacing:.16px}
+.blog-card__link{font-family:var(--fmono);font-size:.72rem;color:var(--blue-40);letter-spacing:.32px;text-transform:uppercase;transition:color var(--t);white-space:nowrap}
+.blog-card__link:hover{color:var(--blue-20)}
+.blog-card__coming{font-family:var(--fmono);font-size:.68rem;color:var(--text-3);letter-spacing:.16px}
+
+/* CTA */
+.cta-section{padding:var(--s8) 0;border-top:1px solid var(--border-sm);text-align:center}
+.cta-section h2{font-family:var(--fserif);font-size:clamp(1.5rem,3vw,2.5rem);font-weight:400;color:var(--text);margin-bottom:var(--s2)}
+.cta-section p{font-size:.95rem;color:var(--text-2);max-width:480px;margin:0 auto var(--s4);line-height:1.7}
+.btn-row{display:flex;gap:1px;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:1rem;height:48px;padding:0 var(--s4);background:var(--blue);color:#fff;font-family:var(--fsans);font-size:.875rem;letter-spacing:.16px;transition:background var(--t)}
+.btn-primary:hover{background:var(--blue-h)}
+.btn-ghost{display:inline-flex;align-items:center;gap:1rem;height:48px;padding:0 var(--s4);background:transparent;color:var(--text-2);font-family:var(--fsans);font-size:.875rem;letter-spacing:.16px;border:1px solid var(--border);transition:all var(--t)}
+.btn-ghost:hover{background:var(--surface);color:var(--text);border-color:var(--blue-40)}
+
+/* FOOTER */
+footer{background:#000;padding:var(--s4) var(--s6);display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border-sm);flex-wrap:wrap;gap:var(--s2)}
+footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-spacing:.32px}
+.footer-links{display:flex;gap:var(--s4)}
+.footer-links a{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-spacing:.32px;transition:color var(--t)}
+.footer-links a:hover{color:var(--text)}
+
+@media(max-width:768px){
+  nav{padding:0 var(--s2)}
+  .smax{padding:0 var(--s2)}
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:flex}
+  .blogs-grid{grid-template-columns:1fr}
+  .blog-card--featured{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<div class="cursor" aria-hidden="true"></div>
-<div class="cursor-ring" aria-hidden="true"></div>
 
-<!-- ── NAV ── -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <div class="container">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__logo">Anjish<span>.</span></a>
-      <ul class="nav__links" role="list">
-        <li><a href="index.html#expertise">Expertise</a></li>
-        <li><a href="work.html">Work</a></li>
-        <li><a href="insights.html">Insights</a></li>
-        <li><a href="blogs.html" class="nav__active">Blogs</a></li>
-        <li><a href="contact.html" class="nav__cta">Let's Talk</a></li>
-      </ul>
-      <button class="nav__burger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-  <div class="nav__mobile">
-    <a href="index.html#expertise">Expertise</a>
-    <a href="work.html">Work</a>
-    <a href="insights.html">Insights</a>
-    <a href="blogs.html">Blogs</a>
-    <a href="contact.html">Let's Talk</a>
-  </div>
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Anjish <span>Bhondwe</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#expertise">Expertise</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="insights.html">Insights</a></li>
+    <li><a href="blogs.html" class="active">Blogs</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Let's Connect</a>
+  <button class="nav-hamburger" aria-label="Toggle menu" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div id="mobile-menu">
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#expertise">Expertise</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="insights.html">Insights</a></li>
+    <li><a href="blogs.html">Blogs</a></li>
+    <li><a href="index.html#contact">Let's Connect</a></li>
+  </ul>
+</div>
 
 <main>
-  <!-- ── HERO ── -->
+  <!-- HERO -->
   <section class="blog-hero">
-    <div class="blog-hero__bg" aria-hidden="true"></div>
-    <div class="container">
-      <p class="blog-hero__label reveal">Deep-Dive Writing</p>
-      <h1 class="blog-hero__title reveal reveal-delay-1">
-        Blogs &amp;<br>
-        <em style="color:var(--clr-gold);font-style:italic;">Long-form Analysis</em>
-      </h1>
-      <p class="blog-hero__subtitle reveal reveal-delay-2">
-        In-depth explorations of AI governance, the EU AI Act, enterprise agility, and the governance frameworks shaping how organisations deliver responsibly.
-      </p>
+    <div class="smax">
+      <p class="blog-hero__eyebrow reveal">Deep-dive writing</p>
+      <h1 class="blog-hero__title reveal reveal-d1">Blogs &amp;<br><em>Long-form Analysis</em></h1>
+      <p class="blog-hero__subtitle reveal reveal-d2">In-depth explorations of AI governance, the EU AI Act, enterprise agility, and the frameworks shaping how organisations deliver responsibly.</p>
     </div>
   </section>
 
-  <!-- ── FILTER BAR ── -->
+  <div class="grid-rule"></div>
+
+  <!-- FILTER -->
   <div class="filter-bar">
-    <div class="container">
+    <div class="smax">
       <div class="filter-bar__inner">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="ai-governance">AI Governance</button>
@@ -120,33 +183,26 @@
     </div>
   </div>
 
-  <!-- ── BLOGS GRID ── -->
+  <!-- GRID -->
   <section class="blogs-section">
-    <div class="container">
-      <div class="blogs-section__header reveal">
-        <p class="label">Published posts</p>
-        <div class="divider"></div>
-        <h2>Latest Blogs</h2>
+    <div class="smax">
+      <div class="section-rule reveal">
+        <h2>Published</h2>
       </div>
-
       <div class="blogs-grid" id="blogs-grid">
 
         <!-- Featured post -->
         <article class="blog-card blog-card--featured reveal" data-tags="ai-governance eu-ai-act">
-          <div class="blog-card__accent"></div>
-          <div class="blog-card__body">
-            <div class="blog-card__featured-badge">
-              ★ Featured Post
-            </div>
-            <div class="blog-card__meta">
+          <div class="blog-card__featured-bar"></div>
+          <div style="padding:0 var(--s4) var(--s4)">
+            <div class="blog-card__eyebrow">
+              <span class="blog-card__featured-badge">★ Featured</span>
               <span class="blog-card__topic">AI Governance</span>
               <span class="blog-card__date">May 2025</span>
-              <span class="blog-card__readtime">12 min read</span>
+              <span class="blog-card__readtime">· 12 min read</span>
             </div>
             <h2 class="blog-card__title">EU AI Act: Governance Pillars, Risk Framework &amp; What Organisations Must Do Now</h2>
-            <p class="blog-card__excerpt">
-              The EU AI Act is the world's first comprehensive horizontal regulation for artificial intelligence. But beyond the headlines, what does it actually require — and how do the six governance pillars translate into operational obligations for providers, deployers, and AI system manufacturers? This deep-dive breaks down the risk-based framework, the four-tier classification system, Annex III high-risk categories, and the concrete compliance steps every regulated organisation in Europe needs to take before August 2026.
-            </p>
+            <p class="blog-card__excerpt">The EU AI Act is the world's first comprehensive horizontal regulation for artificial intelligence. But beyond the headlines, what does it actually require — and how do the six governance pillars translate into operational obligations for providers, deployers, and AI system manufacturers? This deep-dive breaks down the risk-based framework, the four-tier classification system, Annex III high-risk categories, and the concrete compliance steps every regulated organisation in Europe needs to take before August 2026.</p>
             <div class="blog-card__footer">
               <div class="blog-card__tags">
                 <span class="blog-card__tag">EU AI Act</span>
@@ -158,47 +214,45 @@
               <a href="blog-eu-ai-act.html" class="blog-card__link">Read post →</a>
             </div>
           </div>
-        </article>
-
-        <!-- Placeholder card 2 -->
-        <article class="blog-card reveal" data-tags="agile digital-transformation">
-          <div class="blog-card__accent"></div>
-          <div class="blog-card__body">
-            <div class="blog-card__meta">
-              <span class="blog-card__topic">Enterprise Agile</span>
-              <span class="blog-card__date">Coming soon</span>
-            </div>
-            <h3 class="blog-card__title">Why Most Agile Transformations Fail Before They Start</h3>
-            <p class="blog-card__excerpt">The structural patterns I see repeated across European financial institutions — and the three things a Centre of Excellence must fix in the first 90 days.</p>
-            <div class="blog-card__footer">
-              <div class="blog-card__tags">
-                <span class="blog-card__tag">Agile CoE</span>
-                <span class="blog-card__tag">SAFe</span>
-                <span class="blog-card__tag">Change Management</span>
-              </div>
-              <span style="font-size:0.72rem;color:var(--clr-muted);">Coming soon</span>
-            </div>
+          <div style="padding:0 var(--s4) var(--s4)">
+            <p style="font-family:var(--fserif);font-size:1.15rem;color:var(--text-2);line-height:1.75;font-style:italic;border-left:2px solid var(--blue);padding-left:var(--s2);margin-top:var(--s3)">"The EU AI Act introduces a risk-based approach that places the greatest obligations on systems that pose the greatest threat to health, safety, and fundamental rights — while leaving low-risk innovation largely unencumbered."</p>
+            <p style="font-family:var(--fmono);font-size:.72rem;color:var(--text-3);margin-top:var(--s2);letter-spacing:.16px">Covering: 6 governance pillars · 4 risk tiers · Annex III categories · GPAI obligations · Compliance timeline to 2027</p>
           </div>
         </article>
 
-        <!-- Placeholder card 3 -->
+        <!-- Placeholder 2 -->
+        <article class="blog-card reveal" data-tags="agile digital-transformation">
+          <div class="blog-card__accent"></div>
+          <div class="blog-card__eyebrow">
+            <span class="blog-card__topic">Enterprise Agile</span>
+          </div>
+          <h3 class="blog-card__title">Why Most Agile Transformations Fail Before They Start</h3>
+          <p class="blog-card__excerpt">The structural patterns I see repeated across European financial institutions — and the three things a Centre of Excellence must fix in the first 90 days.</p>
+          <div class="blog-card__footer">
+            <div class="blog-card__tags">
+              <span class="blog-card__tag">Agile CoE</span>
+              <span class="blog-card__tag">SAFe</span>
+              <span class="blog-card__tag">Change Management</span>
+            </div>
+            <span class="blog-card__coming">Coming soon</span>
+          </div>
+        </article>
+
+        <!-- Placeholder 3 -->
         <article class="blog-card reveal" data-tags="ai-governance digital-transformation">
           <div class="blog-card__accent"></div>
-          <div class="blog-card__body">
-            <div class="blog-card__meta">
-              <span class="blog-card__topic">AI Strategy</span>
-              <span class="blog-card__date">Coming soon</span>
+          <div class="blog-card__eyebrow">
+            <span class="blog-card__topic">AI Strategy</span>
+          </div>
+          <h3 class="blog-card__title">Embedding AI Governance Into Agile Delivery from Day One</h3>
+          <p class="blog-card__excerpt">How to bake EU AI Act compliance into sprint ceremonies, backlog hygiene, and team rituals so governance is never a bolt-on audit event.</p>
+          <div class="blog-card__footer">
+            <div class="blog-card__tags">
+              <span class="blog-card__tag">AI Governance</span>
+              <span class="blog-card__tag">Delivery</span>
+              <span class="blog-card__tag">Compliance</span>
             </div>
-            <h3 class="blog-card__title">Embedding AI Governance Into Agile Delivery from Day One</h3>
-            <p class="blog-card__excerpt">How to bake EU AI Act compliance into sprint ceremonies, backlog hygiene, and team ceremonies so governance is never a bolt-on audit event.</p>
-            <div class="blog-card__footer">
-              <div class="blog-card__tags">
-                <span class="blog-card__tag">AI Governance</span>
-                <span class="blog-card__tag">Delivery</span>
-                <span class="blog-card__tag">Compliance</span>
-              </div>
-              <span style="font-size:0.72rem;color:var(--clr-muted);">Coming soon</span>
-            </div>
+            <span class="blog-card__coming">Coming soon</span>
           </div>
         </article>
 
@@ -206,82 +260,59 @@
     </div>
   </section>
 
-  <!-- ── CTA ── -->
+  <!-- CTA -->
   <section class="cta-section">
-    <div class="container">
-      <p class="label reveal">Stay Updated</p>
-      <div class="divider reveal" style="margin:1rem auto 1.5rem;"></div>
-      <h2 class="reveal">More posts published regularly</h2>
-      <p class="reveal reveal-delay-1">Follow on LinkedIn for shorter perspectives, or check back here for long-form analysis on AI governance and enterprise delivery.</p>
-      <div class="reveal reveal-delay-2" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener" class="btn btn-primary">Follow on LinkedIn →</a>
-        <a href="insights.html" class="btn btn-outline">View Articles →</a>
+    <div class="smax">
+      <p class="label reveal" style="margin-bottom:var(--s2)">Stay updated</p>
+      <h2 class="reveal reveal-d1">More posts published regularly</h2>
+      <p class="reveal reveal-d2">Follow on LinkedIn for shorter perspectives, or check back here for long-form analysis on AI governance and enterprise delivery.</p>
+      <div class="btn-row reveal">
+        <a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener" class="btn-primary">Follow on LinkedIn →</a>
+        <a href="insights.html" class="btn-ghost">View Articles →</a>
       </div>
     </div>
   </section>
 </main>
 
-<!-- ── FOOTER ── -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__inner">
-      <div>
-        <div class="footer__logo">Anjish<span>.</span></div>
-        <p class="footer__tagline">Digital Transformation Lead · Enterprise Agile Coach · AI Strategist.</p>
-      </div>
-      <div>
-        <div class="footer__col-title">Navigate</div>
-        <ul class="footer__links">
-          <li><a href="index.html#expertise">Expertise</a></li>
-          <li><a href="work.html">Work</a></li>
-          <li><a href="insights.html">Insights</a></li>
-          <li><a href="blogs.html">Blogs</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer__col-title">Connect</div>
-        <ul class="footer__links">
-          <li><a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://iostring.com" target="_blank" rel="noopener">iostring.com</a></li>
-          <li><a href="mailto:freelanceanjish@gmail.com">Email</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <span>© 2025 Anjish Bhondwe. All rights reserved.</span>
-      <span>Brussels, Belgium · Benelux</span>
-    </div>
+<footer>
+  <p>© 2025 Anjish Bhondwe. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="insights.html">Insights</a>
+    <a href="blogs.html">Blogs</a>
+    <a href="index.html#contact">Contact</a>
   </div>
 </footer>
 
-<script type="module">
-  import { initCursor } from './js/cursor.js';
-  import { initNav } from './js/nav.js';
-  import { initAnimations } from './js/animations.js';
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>10);
+});
 
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof initCursor === 'function') initCursor();
-    if (typeof initNav === 'function') initNav();
-    setTimeout(() => { if (typeof initAnimations === 'function') initAnimations(); }, 50);
+// Mobile menu
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
 
-    // Filter logic
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.blog-card').forEach(card => {
-          const tags = card.dataset.tags || '';
-          if (filter === 'all' || tags.includes(filter)) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
+// Reveal on scroll
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Filter
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.blog-card').forEach(card=>{
+      const tags = card.dataset.tags || '';
+      card.style.display = (filter==='all' || tags.includes(filter)) ? '' : 'none';
     });
   });
+});
 </script>
 </body>
 </html>

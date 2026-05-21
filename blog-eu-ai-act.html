@@ -6,196 +6,274 @@
 <title>EU AI Act: Governance Pillars, Risk Framework & What Organisations Must Do Now — Anjish Bhondwe</title>
 <meta name="description" content="A comprehensive breakdown of the EU AI Act's six governance pillars, four-tier risk classification, Annex III high-risk categories, and the compliance obligations every organisation in Europe must meet by 2026.">
 <meta name="author" content="Anjish Bhondwe">
-<link rel="canonical" href="https://anjishbhondwe.com/blog-eu-ai-act.html">
-<meta property="og:title" content="EU AI Act: Governance Pillars, Risk Framework & What Organisations Must Do Now">
-<meta property="og:description" content="The world's first comprehensive AI regulation explained — risk tiers, compliance obligations, timelines, and what it means for your delivery organisation.">
-<meta property="og:url" content="https://anjishbhondwe.com/blog-eu-ai-act.html">
+<link rel="canonical" href="https://anjish.io/blog-eu-ai-act.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/variables.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/components.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;600;700&family=IBM+Plex+Serif:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  /* ── Article layout ── */
-  .article-hero { padding: 5.5rem 0 3.5rem; position: relative; overflow: hidden; border-bottom: 1px solid var(--clr-border); }
-  .article-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(201,169,110,0.08) 0%, transparent 65%); pointer-events: none; }
-  .article-hero__back { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--clr-muted); text-decoration: none; letter-spacing: 0.05em; margin-bottom: 2rem; transition: color 0.2s; }
-  .article-hero__back:hover { color: var(--clr-gold); }
-  .article-hero__topic { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--clr-gold); margin-bottom: 1.25rem; }
-  .article-hero__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 500; color: var(--clr-white); line-height: 1.15; max-width: 800px; margin-bottom: 1.5rem; }
-  .article-hero__meta { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
-  .article-hero__author { display: flex; align-items: center; gap: 0.65rem; }
-  .article-hero__avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(201,169,110,0.15); border: 1px solid rgba(201,169,110,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: var(--clr-gold); flex-shrink: 0; }
-  .article-hero__author-name { font-size: 0.82rem; font-weight: 600; color: var(--clr-white); }
-  .article-hero__author-role { font-size: 0.72rem; color: var(--clr-muted); }
-  .article-hero__divider { width: 1px; height: 28px; background: var(--clr-border); }
-  .article-hero__date { font-size: 0.75rem; color: var(--clr-muted); }
-  .article-hero__readtime { font-size: 0.75rem; color: var(--clr-muted); }
-  .article-hero__tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-  .article-hero__tag { font-size: 0.65rem; padding: 0.25rem 0.6rem; border-radius: 100px; background: rgba(201,169,110,0.1); color: var(--clr-gold); border: 1px solid rgba(201,169,110,0.2); }
+:root {
+  --bg:#161616; --bg2:#262626; --surface:#2d2d2d; --surface2:#393939;
+  --border-sm:#393939; --border:#525252;
+  --blue:#0f62fe; --blue-h:#0043ce; --blue-20:#d0e2ff; --blue-40:#78a9ff;
+  --teal:#3ddbd9; --green:#42be65; --red:#fa4d56;
+  --text:#f4f4f4; --text-2:#c6c6c6; --text-3:#8d8d8d; --text-inv:#161616;
+  --fserif:'IBM Plex Serif',Georgia,serif;
+  --fsans:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  --fmono:'IBM Plex Mono','Courier New',monospace;
+  --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2rem; --s6:3rem; --s8:4rem;
+  --t:.11s cubic-bezier(.2,0,.38,.9);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--fsans);font-size:1rem;line-height:1.5;letter-spacing:.16px;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{cursor:pointer;font-family:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--blue)}
 
-  /* Article body layout */
-  .article-layout { display: grid; grid-template-columns: 1fr 260px; gap: 4rem; padding: 4rem 0 6rem; align-items: start; }
-  @media (max-width: 900px) { .article-layout { grid-template-columns: 1fr; } .article-toc { display: none; } }
+.smax{max-width:1200px;margin:0 auto;padding:0 var(--s6)}
+.label{font-family:var(--fmono);font-size:.75rem;font-weight:400;letter-spacing:.32px;text-transform:uppercase;color:var(--blue-40)}
+.grid-rule{height:1px;background:var(--border-sm)}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
 
-  /* Article body prose */
-  .article-body { max-width: 720px; }
-  .article-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 500; color: var(--clr-white); margin: 3rem 0 1rem; line-height: 1.25; }
-  .article-body h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--clr-white); margin: 2rem 0 0.75rem; }
-  .article-body p { font-size: 1rem; color: var(--clr-muted); line-height: 1.8; margin-bottom: 1.25rem; }
-  .article-body strong { color: var(--clr-white); font-weight: 600; }
-  .article-body a { color: var(--clr-gold); text-decoration: underline; text-underline-offset: 3px; }
-  .article-body ul, .article-body ol { margin: 0 0 1.25rem 0; padding-left: 1.5rem; }
-  .article-body li { font-size: 1rem; color: var(--clr-muted); line-height: 1.75; margin-bottom: 0.4rem; }
-  .article-body li strong { color: var(--clr-white); }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--s6);background:#161616;border-bottom:1px solid var(--border-sm);transition:border-color var(--t)}
+nav.scrolled{border-bottom-color:var(--border)}
+.nav-logo{font-family:var(--fsans);font-size:.875rem;font-weight:600;letter-spacing:.32px;color:var(--text)}
+.nav-logo span{color:var(--blue-40)}
+.nav-links{display:flex;gap:0}
+.nav-links a{display:flex;align-items:center;height:48px;padding:0 1rem;font-family:var(--fsans);font-size:.875rem;font-weight:400;color:var(--text-2);letter-spacing:.16px;border-bottom:2px solid transparent;transition:all var(--t)}
+.nav-links a:hover,.nav-links a.active{background:var(--surface);color:var(--text);border-bottom-color:var(--blue)}
+.nav-cta{height:48px;display:flex;align-items:center;padding:0 1.5rem;background:var(--blue);color:#fff;font-family:var(--fsans);font-size:.875rem;font-weight:400;letter-spacing:.16px;transition:background var(--t);white-space:nowrap}
+.nav-cta:hover{background:var(--blue-h)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:.5rem;height:48px;align-items:center;justify-content:center}
+.nav-hamburger span{display:block;width:18px;height:1.5px;background:var(--text-2)}
+#mobile-menu{display:none;position:fixed;top:48px;left:0;right:0;z-index:199;background:var(--bg2);border-bottom:1px solid var(--border);padding:var(--s2) var(--s6)}
+#mobile-menu.open{display:block}
+#mobile-menu ul{display:flex;flex-direction:column}
+#mobile-menu a{display:block;padding:var(--s1) 0;font-size:.875rem;color:var(--text-2);border-bottom:1px solid var(--border-sm)}
+#mobile-menu a:hover{color:var(--text)}
 
-  /* Pull quote */
-  .pull-quote { border-left: 3px solid var(--clr-gold); padding: 1rem 1.5rem; margin: 2.5rem 0; background: rgba(201,169,110,0.05); border-radius: 0 8px 8px 0; }
-  .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--clr-white); line-height: 1.55; margin: 0; }
+/* ARTICLE HERO */
+.article-hero{padding:6rem 0 3rem;border-bottom:1px solid var(--border-sm)}
+.article-hero__back{display:inline-flex;align-items:center;gap:6px;font-family:var(--fmono);font-size:.72rem;color:var(--text-3);letter-spacing:.32px;text-transform:uppercase;margin-bottom:var(--s3);transition:color var(--t)}
+.article-hero__back:hover{color:var(--blue-40)}
+.article-hero__topic{font-family:var(--fmono);font-size:.72rem;color:var(--blue-40);letter-spacing:.32px;text-transform:uppercase;margin-bottom:var(--s2)}
+.article-hero__title{font-family:var(--fserif);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:400;color:var(--text);line-height:1.15;max-width:820px;margin-bottom:var(--s3)}
+.article-hero__meta{display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap;margin-bottom:var(--s3)}
+.hero-author{display:flex;align-items:center;gap:.65rem}
+.hero-avatar{width:38px;height:38px;border-radius:0;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fmono);font-size:.72rem;font-weight:500;flex-shrink:0}
+.hero-author-name{font-size:.82rem;font-weight:600;color:var(--text)}
+.hero-author-role{font-family:var(--fmono);font-size:.68rem;color:var(--text-3);letter-spacing:.16px}
+.hero-divider{width:1px;height:28px;background:var(--border)}
+.hero-date,.hero-readtime{font-family:var(--fmono);font-size:.72rem;color:var(--text-3);letter-spacing:.16px}
+.hero-tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.hero-tag{font-family:var(--fmono);font-size:.62rem;padding:.2rem .55rem;background:var(--surface);color:var(--blue-40);letter-spacing:.16px}
 
-  /* Info boxes */
-  .info-box { border: 1px solid var(--clr-border); border-radius: 10px; padding: 1.5rem; margin: 2rem 0; background: var(--clr-surface); }
-  .info-box--gold { border-color: rgba(201,169,110,0.3); background: rgba(201,169,110,0.05); }
-  .info-box--red { border-color: rgba(192,57,43,0.3); background: rgba(192,57,43,0.05); }
-  .info-box--green { border-color: rgba(26,122,74,0.3); background: rgba(26,122,74,0.05); }
-  .info-box__label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.65rem; }
-  .info-box--gold .info-box__label { color: var(--clr-gold); }
-  .info-box--red .info-box__label { color: #e07060; }
-  .info-box--green .info-box__label { color: #4ade80; }
-  .info-box p { font-size: 0.88rem; color: var(--clr-muted); line-height: 1.7; margin: 0; }
-  .info-box p + p { margin-top: 0.65rem; }
+/* ARTICLE LAYOUT */
+.article-layout{display:grid;grid-template-columns:1fr 220px;gap:var(--s8);padding:var(--s8) 0 6rem;align-items:start}
+@media(max-width:900px){.article-layout{grid-template-columns:1fr}.article-toc{display:none}}
 
-  /* Risk tier table */
-  .risk-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 2rem; font-size: 0.85rem; }
-  .risk-table th { text-align: left; padding: 0.65rem 1rem; border-bottom: 1px solid var(--clr-border); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clr-muted); }
-  .risk-table td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; line-height: 1.55; color: var(--clr-muted); }
-  .risk-table td:first-child { font-weight: 600; white-space: nowrap; }
-  .risk-table tr:last-child td { border-bottom: none; }
-  .tier-badge { display: inline-block; font-size: 0.65rem; padding: 0.2rem 0.6rem; border-radius: 100px; font-weight: 700; letter-spacing: 0.05em; }
-  .tier-prohibited { background: rgba(192,57,43,0.15); color: #e07060; border: 1px solid rgba(192,57,43,0.3); }
-  .tier-high { background: rgba(181,69,13,0.15); color: #f9a050; border: 1px solid rgba(181,69,13,0.3); }
-  .tier-limited { background: rgba(196,154,0,0.15); color: #e0b840; border: 1px solid rgba(196,154,0,0.3); }
-  .tier-minimal { background: rgba(26,122,74,0.15); color: #4ade80; border: 1px solid rgba(26,122,74,0.3); }
+/* ARTICLE BODY */
+.article-body{max-width:740px}
+.article-body h2{font-family:var(--fserif);font-size:1.75rem;font-weight:400;color:var(--text);margin:3rem 0 1rem;line-height:1.25;border-left:3px solid var(--blue);padding-left:var(--s2)}
+.article-body h3{font-family:var(--fsans);font-size:1rem;font-weight:600;color:var(--text);margin:2rem 0 .75rem}
+.article-body p{font-size:.95rem;color:var(--text-2);line-height:1.8;margin-bottom:1.25rem;letter-spacing:.16px}
+.article-body strong{color:var(--text);font-weight:600}
+.article-body a{color:var(--blue-40);text-decoration:underline;text-underline-offset:3px}
+.article-body ul,.article-body ol{margin:0 0 1.25rem 0;padding-left:1.5rem;list-style:none}
+.article-body li{font-size:.95rem;color:var(--text-2);line-height:1.75;margin-bottom:.5rem;padding-left:var(--s2);position:relative;letter-spacing:.16px}
+.article-body li::before{content:'—';position:absolute;left:0;color:var(--blue-40);font-size:.7rem;top:.35rem}
+.article-body li strong{color:var(--text)}
 
-  /* Pillar cards */
-  .pillars-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1.5rem 0 2rem; }
-  @media (max-width: 560px) { .pillars-grid { grid-template-columns: 1fr; } }
-  .pillar-card { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: 10px; padding: 1.15rem 1.25rem; }
-  .pillar-card__num { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; color: var(--clr-gold); margin-bottom: 0.4rem; }
-  .pillar-card__title { font-size: 0.88rem; font-weight: 600; color: var(--clr-white); margin-bottom: 0.35rem; }
-  .pillar-card__desc { font-size: 0.78rem; color: var(--clr-muted); line-height: 1.6; margin: 0; }
+/* Pull quote */
+.pull-quote{border-left:3px solid var(--blue);padding:1rem var(--s3);margin:2.5rem 0;background:var(--bg2)}
+.pull-quote p{font-family:var(--fserif);font-size:1.2rem;font-style:italic;color:var(--text);line-height:1.55;margin:0}
 
-  /* Timeline */
-  .timeline-list { list-style: none; padding: 0; margin: 1.5rem 0 2rem; position: relative; }
-  .timeline-list::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--clr-gold), rgba(201,169,110,0.1)); }
-  .timeline-list li { padding: 0 0 1.5rem 2.25rem; position: relative; }
-  .timeline-list li::before { content: ''; position: absolute; left: 2px; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--clr-gold); border: 2px solid var(--clr-surface, #0f0f0f); }
-  .tl-date { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clr-gold); margin-bottom: 0.2rem; }
-  .tl-event { font-size: 0.88rem; font-weight: 600; color: var(--clr-white); margin-bottom: 0.25rem; }
-  .tl-note { font-size: 0.8rem; color: var(--clr-muted); line-height: 1.55; }
+/* Info boxes */
+.info-box{border:1px solid var(--border-sm);padding:var(--s3);margin:2rem 0;background:var(--bg2)}
+.info-box--gold{border-left:3px solid var(--blue-40)}
+.info-box--red{border-left:3px solid var(--red)}
+.info-box--green{border-left:3px solid var(--green)}
+.info-box__label{font-family:var(--fmono);font-size:.68rem;font-weight:500;letter-spacing:.32px;text-transform:uppercase;margin-bottom:.65rem}
+.info-box--gold .info-box__label{color:var(--blue-40)}
+.info-box--red .info-box__label{color:var(--red)}
+.info-box--green .info-box__label{color:var(--green)}
+.info-box p{font-size:.875rem;color:var(--text-2);line-height:1.7;margin:0}
+.info-box p+p{margin-top:.65rem}
 
-  /* Obligation grid */
-  .obligation-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 1.5rem 0 2rem; }
-  @media (max-width: 560px) { .obligation-grid { grid-template-columns: 1fr; } }
-  .obl-item { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: 8px; padding: 1rem; display: flex; gap: 0.75rem; align-items: flex-start; }
-  .obl-item__check { width: 20px; height: 20px; border-radius: 50%; background: rgba(26,122,74,0.2); border: 1px solid rgba(26,122,74,0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.7rem; color: #4ade80; margin-top: 1px; }
-  .obl-item__text { font-size: 0.8rem; color: var(--clr-muted); line-height: 1.55; }
-  .obl-item__text strong { color: var(--clr-white); display: block; margin-bottom: 2px; font-size: 0.82rem; }
+/* Risk table */
+.risk-table{width:100%;border-collapse:collapse;margin:1.5rem 0 2rem;font-size:.85rem}
+.risk-table th{text-align:left;padding:.65rem 1rem;border-bottom:1px solid var(--border);font-family:var(--fmono);font-size:.68rem;font-weight:500;letter-spacing:.32px;text-transform:uppercase;color:var(--text-3)}
+.risk-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border-sm);vertical-align:top;line-height:1.55;color:var(--text-2);font-size:.875rem}
+.risk-table td:first-child{white-space:nowrap}
+.risk-table tr:last-child td{border-bottom:none}
+.risk-table tr:hover td{background:var(--bg2)}
+.tier-badge{display:inline-block;font-family:var(--fmono);font-size:.62rem;padding:.2rem .6rem;font-weight:500;letter-spacing:.16px}
+.tier-prohibited{background:rgba(250,77,86,.12);color:var(--red);border:1px solid rgba(250,77,86,.3)}
+.tier-high{background:rgba(255,131,0,.12);color:#ff8300;border:1px solid rgba(255,131,0,.3)}
+.tier-limited{background:rgba(255,214,0,.12);color:#ffd600;border:1px solid rgba(255,214,0,.3)}
+.tier-minimal{background:rgba(66,190,101,.12);color:var(--green);border:1px solid rgba(66,190,101,.3)}
 
-  /* TOC sidebar */
-  .article-toc { position: sticky; top: 100px; }
-  .article-toc__label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clr-muted); margin-bottom: 1rem; }
-  .article-toc__list { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--clr-border); }
-  .article-toc__list li { padding: 0.35rem 0 0.35rem 1rem; }
-  .article-toc__list a { font-size: 0.78rem; color: var(--clr-muted); text-decoration: none; transition: color 0.2s; line-height: 1.5; display: block; }
-  .article-toc__list a:hover, .article-toc__list a.active { color: var(--clr-gold); }
+/* Pillars grid */
+.pillars-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin:1.5rem 0 2rem;background:var(--border-sm)}
+@media(max-width:560px){.pillars-grid{grid-template-columns:1fr}}
+.pillar-card{background:var(--bg2);padding:var(--s3);transition:background var(--t)}
+.pillar-card:hover{background:var(--surface)}
+.pillar-card__num{font-family:var(--fmono);font-size:.68rem;color:var(--blue-40);letter-spacing:.32px;margin-bottom:.4rem}
+.pillar-card__title{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.35rem}
+.pillar-card__desc{font-size:.8rem;color:var(--text-2);line-height:1.65;margin:0;letter-spacing:.16px}
 
-  /* Author bio */
-  .author-bio { border-top: 1px solid var(--clr-border); margin-top: 4rem; padding-top: 2.5rem; display: flex; gap: 1.5rem; align-items: flex-start; }
-  .author-bio__avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid rgba(201,169,110,0.3); }
-  .author-bio__avatar img { width: 100%; height: 100%; object-fit: cover; }
-  .author-bio__name { font-size: 1rem; font-weight: 600; color: var(--clr-white); margin-bottom: 0.25rem; }
-  .author-bio__title { font-size: 0.78rem; color: var(--clr-gold); margin-bottom: 0.65rem; }
-  .author-bio__desc { font-size: 0.85rem; color: var(--clr-muted); line-height: 1.65; margin-bottom: 0.75rem; }
-  .author-bio__links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-  .author-bio__link { font-size: 0.75rem; font-weight: 600; color: var(--clr-gold); text-decoration: none; }
+/* Timeline */
+.timeline-list{list-style:none;padding:0;margin:1.5rem 0 2rem;position:relative}
+.timeline-list::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--blue),rgba(15,98,254,.1))}
+.timeline-list li{padding:0 0 1.5rem 2.25rem;position:relative}
+.timeline-list li::before{content:'';position:absolute;left:2px;top:7px;width:10px;height:10px;border-radius:0;background:var(--blue);border:2px solid var(--bg)}
+.tl-date{font-family:var(--fmono);font-size:.7rem;font-weight:500;letter-spacing:.32px;text-transform:uppercase;color:var(--blue-40);margin-bottom:.2rem}
+.tl-event{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.25rem}
+.tl-note{font-size:.82rem;color:var(--text-2);line-height:1.6;letter-spacing:.16px}
+
+/* Obligation grid */
+.obligation-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin:1.5rem 0 2rem;background:var(--border-sm)}
+@media(max-width:560px){.obligation-grid{grid-template-columns:1fr}}
+.obl-item{background:var(--bg2);padding:var(--s3);display:flex;gap:var(--s2)}
+.obl-item__check{font-family:var(--fmono);font-size:.9rem;color:var(--green);flex-shrink:0;margin-top:2px}
+.obl-item__text{font-size:.82rem;color:var(--text-2);line-height:1.65;letter-spacing:.16px}
+.obl-item__text strong{color:var(--text)}
+
+/* Author bio */
+.author-bio{display:flex;gap:var(--s3);margin-top:var(--s8);padding:var(--s4);background:var(--bg2);border-left:3px solid var(--blue)}
+.author-bio__avatar{width:56px;height:56px;flex-shrink:0;overflow:hidden;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--fmono);font-size:1rem;color:#fff}
+.author-bio__name{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
+.author-bio__title{font-family:var(--fmono);font-size:.68rem;color:var(--blue-40);letter-spacing:.16px;margin-bottom:.65rem}
+.author-bio__desc{font-size:.82rem;color:var(--text-2);line-height:1.7;margin-bottom:.75rem;letter-spacing:.16px}
+.author-bio__links{display:flex;gap:var(--s2);flex-wrap:wrap}
+.author-bio__link{font-family:var(--fmono);font-size:.72rem;color:var(--blue-40);letter-spacing:.32px;text-transform:uppercase;transition:color var(--t)}
+.author-bio__link:hover{color:var(--blue-20)}
+
+/* TOC */
+.article-toc{position:sticky;top:72px}
+.article-toc__label{font-family:var(--fmono);font-size:.68rem;color:var(--text-3);letter-spacing:.32px;text-transform:uppercase;margin-bottom:var(--s2);padding-bottom:var(--s1);border-bottom:1px solid var(--border-sm)}
+.article-toc__list li{margin-bottom:.35rem}
+.article-toc__list a{font-family:var(--fmono);font-size:.72rem;color:var(--text-3);letter-spacing:.16px;transition:color var(--t);display:block;padding:.2rem 0 .2rem .75rem;border-left:2px solid transparent}
+.article-toc__list a:hover,.article-toc__list a.active{color:var(--blue-40);border-left-color:var(--blue)}
+
+/* Live updates widget */
+.live-widget{background:var(--bg2);border:1px solid var(--border-sm);margin:var(--s6) 0}
+.live-widget__header{background:#001a5e;padding:var(--s3);display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.live-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,215,0,.18);border:1px solid rgba(255,215,0,.35);color:#FFD700;font-family:var(--fmono);font-size:.65rem;letter-spacing:.32px;padding:3px 10px;margin-bottom:.5rem}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#42be65;flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.live-widget__title{font-family:var(--fserif);font-size:1.1rem;color:#fff;line-height:1.3;margin-bottom:.25rem}
+.live-widget__sub{font-family:var(--fmono);font-size:.65rem;color:rgba(255,255,255,.5);letter-spacing:.16px}
+.refresh-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);font-family:var(--fmono);font-size:.68rem;padding:6px 12px;letter-spacing:.16px;cursor:pointer;white-space:nowrap;transition:background var(--t)}
+.refresh-btn:hover{background:rgba(255,255,255,.2)}
+.refresh-btn.spinning{animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.live-widget__stamp{background:#00143d;padding:.5rem var(--s3);font-family:var(--fmono);font-size:.65rem;color:rgba(255,255,255,.4);letter-spacing:.16px;display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06)}
+.live-widget__body{padding:var(--s3)}
+.update-item{background:var(--bg);border:1px solid var(--border-sm);padding:var(--s2) var(--s3);margin-bottom:8px}
+.update-item:last-child{margin-bottom:0}
+.update-head{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.35rem}
+.update-icon{width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.8rem;background:var(--surface);color:var(--blue-40)}
+.update-title{font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.update-date{font-family:var(--fmono);font-size:.65rem;color:var(--text-3);letter-spacing:.16px}
+.update-body{font-size:.78rem;color:var(--text-2);line-height:1.65;letter-spacing:.16px;padding-left:2.15rem;margin-bottom:.35rem}
+.update-tags{display:flex;gap:.35rem;flex-wrap:wrap;padding-left:2.15rem}
+.utag{font-family:var(--fmono);font-size:.6rem;padding:.15rem .45rem;background:var(--surface);color:var(--text-3);letter-spacing:.16px}
+.loading-state{text-align:center;padding:2rem;color:var(--text-3);font-family:var(--fmono);font-size:.78rem}
+.loading-spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:.5rem}
+.error-state{background:rgba(250,77,86,.08);border:1px solid rgba(250,77,86,.25);padding:var(--s2);font-size:.82rem;color:var(--text-2)}
+
+/* FOOTER */
+footer{background:#000;padding:var(--s4) var(--s6);display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border-sm);flex-wrap:wrap;gap:var(--s2)}
+footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-spacing:.32px}
+.footer-links{display:flex;gap:var(--s4)}
+.footer-links a{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-spacing:.32px;transition:color var(--t)}
+.footer-links a:hover{color:var(--text)}
+
+@media(max-width:768px){
+  nav{padding:0 var(--s2)}
+  .smax{padding:0 var(--s2)}
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:flex}
+  .article-hero{padding:5rem 0 2.5rem}
+  .pillars-grid,.obligation-grid{grid-template-columns:1fr}
+  .author-bio{flex-direction:column}
+}
 </style>
 </head>
 <body>
-<div class="cursor" aria-hidden="true"></div>
-<div class="cursor-ring" aria-hidden="true"></div>
 
-<!-- ── NAV ── -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <div class="container">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__logo">Anjish<span>.</span></a>
-      <ul class="nav__links" role="list">
-        <li><a href="index.html#expertise">Expertise</a></li>
-        <li><a href="work.html">Work</a></li>
-        <li><a href="insights.html">Insights</a></li>
-        <li><a href="blogs.html" class="nav__active">Blogs</a></li>
-        <li><a href="contact.html" class="nav__cta">Let's Talk</a></li>
-      </ul>
-      <button class="nav__burger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-  <div class="nav__mobile">
-    <a href="index.html#expertise">Expertise</a>
-    <a href="work.html">Work</a>
-    <a href="insights.html">Insights</a>
-    <a href="blogs.html">Blogs</a>
-    <a href="contact.html">Let's Talk</a>
-  </div>
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">Anjish <span>Bhondwe</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#expertise">Expertise</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="insights.html">Insights</a></li>
+    <li><a href="blogs.html" class="active">Blogs</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Let's Connect</a>
+  <button class="nav-hamburger" aria-label="Toggle menu" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div id="mobile-menu">
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#expertise">Expertise</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="insights.html">Insights</a></li>
+    <li><a href="blogs.html">Blogs</a></li>
+    <li><a href="index.html#contact">Let's Connect</a></li>
+  </ul>
+</div>
 
 <main>
-  <!-- ── ARTICLE HERO ── -->
+  <!-- HERO -->
   <section class="article-hero">
-    <div class="container">
+    <div class="smax">
       <a href="blogs.html" class="article-hero__back">← Back to Blogs</a>
       <p class="article-hero__topic">AI Governance · EU AI Act</p>
       <h1 class="article-hero__title">EU AI Act: Governance Pillars, Risk Framework &amp; What Organisations Must Do Now</h1>
       <div class="article-hero__meta">
-        <div class="article-hero__author">
-          <div class="article-hero__avatar">AB</div>
+        <div class="hero-author">
+          <div class="hero-avatar">AB</div>
           <div>
-            <div class="article-hero__author-name">Anjish Bhondwe</div>
-            <div class="article-hero__author-role">AI Governance Lead · Enterprise Agile Coach</div>
+            <div class="hero-author-name">Anjish Bhondwe</div>
+            <div class="hero-author-role">AI Governance Lead · Enterprise Agile Coach</div>
           </div>
         </div>
-        <div class="article-hero__divider"></div>
-        <span class="article-hero__date">May 2025</span>
-        <div class="article-hero__divider"></div>
-        <span class="article-hero__readtime">12 min read</span>
+        <div class="hero-divider"></div>
+        <span class="hero-date">May 2025</span>
+        <div class="hero-divider"></div>
+        <span class="hero-readtime">12 min read</span>
       </div>
-      <div class="article-hero__tags">
-        <span class="article-hero__tag">EU AI Act</span>
-        <span class="article-hero__tag">Annex III</span>
-        <span class="article-hero__tag">Risk Framework</span>
-        <span class="article-hero__tag">GPAI</span>
-        <span class="article-hero__tag">Compliance 2026</span>
-        <span class="article-hero__tag">High-Risk AI</span>
+      <div class="hero-tags">
+        <span class="hero-tag">EU AI Act</span>
+        <span class="hero-tag">Annex III</span>
+        <span class="hero-tag">Risk Framework</span>
+        <span class="hero-tag">GPAI</span>
+        <span class="hero-tag">Compliance 2026</span>
+        <span class="hero-tag">High-Risk AI</span>
       </div>
     </div>
   </section>
 
-  <!-- ── ARTICLE BODY + TOC ── -->
-  <div class="container">
+  <!-- ARTICLE -->
+  <div class="smax">
     <div class="article-layout">
 
-      <!-- MAIN BODY -->
+      <!-- BODY -->
       <article class="article-body">
 
-        <p>
-          On 1 August 2024, the EU AI Act entered into force as <strong>Regulation (EU) 2024/1689</strong> — the world's first comprehensive, horizontal legal framework for artificial intelligence. For organisations operating in the European Union, deploying AI systems, or placing AI products on the European market, this is not a future consideration. It is a present operational obligation with hard deadlines and significant penalties.
-        </p>
-        <p>
-          This post breaks down what the regulation actually requires, how its risk-based framework works in practice, and the specific steps regulated organisations — particularly in financial services — need to take before the August 2026 compliance cliff.
-        </p>
+        <p>On 1 August 2024, the EU AI Act entered into force as <strong>Regulation (EU) 2024/1689</strong> — the world's first comprehensive, horizontal legal framework for artificial intelligence. For organisations operating in the European Union, deploying AI systems, or placing AI products on the European market, this is not a future consideration. It is a present operational obligation with hard deadlines and significant penalties.</p>
+        <p>This post breaks down what the regulation actually requires, how its risk-based framework works in practice, and the specific steps regulated organisations — particularly in financial services — need to take before the August 2026 compliance cliff.</p>
 
         <div class="pull-quote">
           <p>"The higher the risk to society, the stricter the rules. Minimal compliance burden for low-risk AI, stringent obligations for high-risk systems, and outright prohibition where risks are unacceptable."</p>
@@ -206,29 +284,16 @@
           <p><strong>Full title:</strong> Regulation (EU) 2024/1689 of the European Parliament and of the Council. <strong>In force:</strong> 1 August 2024. <strong>Extra-territorial scope:</strong> applies to any AI system affecting persons in the EU, regardless of where the provider is established. <strong>Maximum penalty:</strong> €35 million or 7% of global annual turnover (whichever is higher) for the most serious violations.</p>
         </div>
 
-        <!-- ── SECTION 1 ── -->
         <h2 id="why-it-matters">Why this matters for delivery organisations</h2>
-        <p>
-          Most regulatory frameworks arrive as an audit event — a compliance team reviews documentation, a gap is found, a remediation project is raised. The EU AI Act cannot be approached this way. Its obligations are embedded across the AI system lifecycle: from the data used in training, through the conformity assessment before market placement, to continuous post-market monitoring and incident reporting after deployment.
-        </p>
-        <p>
-          For organisations already using Agile delivery, this means governance is not a phase — it is a permanent backlog item. Risk management documentation must be maintained and updated as the system evolves. Logs must be kept. Human oversight mechanisms must be functional and accessible to deployers. This is the governance architecture that must be built into sprint ceremonies, not bolted on at a release gate.
-        </p>
+        <p>Most regulatory frameworks arrive as an audit event — a compliance team reviews documentation, a gap is found, a remediation project is raised. The EU AI Act cannot be approached this way. Its obligations are embedded across the AI system lifecycle: from the data used in training, through the conformity assessment before market placement, to continuous post-market monitoring and incident reporting after deployment.</p>
+        <p>For organisations already using Agile delivery, this means governance is not a phase — it is a permanent backlog item. Risk management documentation must be maintained and updated as the system evolves. Logs must be kept. Human oversight mechanisms must be functional and accessible to deployers. This is the governance architecture that must be built into sprint ceremonies, not bolted on at a release gate.</p>
 
-        <!-- ── SECTION 2 ── -->
         <h2 id="risk-framework">The four-tier risk classification framework</h2>
-        <p>
-          The Act organises AI systems into four risk levels. The framework is proportional: the higher the potential harm to persons, fundamental rights, or society, the more demanding the obligations.
-        </p>
+        <p>The Act organises AI systems into four risk levels. The framework is proportional: the higher the potential harm to persons, fundamental rights, or society, the more demanding the obligations.</p>
 
         <table class="risk-table">
           <thead>
-            <tr>
-              <th>Tier</th>
-              <th>Classification</th>
-              <th>Approach</th>
-              <th>Examples</th>
-            </tr>
+            <tr><th>Tier</th><th>Classification</th><th>Approach</th><th>Examples</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -263,11 +328,8 @@
           <p>The prohibited practices list (Chapter II, Articles 5–6) applied from <strong>2 February 2025</strong>. If your organisation operates any system that scores citizens based on behaviour, uses subliminal techniques to influence behaviour, exploits vulnerabilities of specific groups, or performs real-time biometric identification in public spaces, these are already non-compliant and must be ceased immediately.</p>
         </div>
 
-        <!-- ── SECTION 3 ── -->
         <h2 id="high-risk">Annex III: the high-risk AI categories in detail</h2>
-        <p>
-          Annex III of the regulation defines eight sectors where AI systems are classified as high-risk. This is where the vast majority of financial services, HR, and enterprise AI deployments will fall. Understanding which sector your system falls under is the first step in any compliance programme.
-        </p>
+        <p>Annex III of the regulation defines eight sectors where AI systems are classified as high-risk. This is where the vast majority of financial services, HR, and enterprise AI deployments will fall. Understanding which sector your system falls under is the first step in any compliance programme.</p>
 
         <h3>The eight Annex III sectors</h3>
         <ul>
@@ -281,16 +343,30 @@
           <li><strong>Administration of justice and democratic processes (III.8):</strong> AI that researches facts or interprets law, tools that predict court outcomes, systems that influence elections or referenda.</li>
         </ul>
 
-        <div class="info-box info-box--gold">
-          <div class="info-box__label">2025 draft update: Annex III expansion</div>
-          <p>The EU AI Office and the European Commission have been evaluating Annex III expansion through delegated acts. Areas under active consideration include general-purpose AI systems integrated into Annex III applications, and additional use cases in critical infrastructure and financial services risk assessment. Organisations should monitor the EU AI Office's regulatory sandbox outputs and the ongoing standardisation work by CEN/CENELEC JTC 21, which is developing harmonised standards that will underpin conformity assessment procedures.</p>
+        <!-- LIVE UPDATES WIDGET -->
+        <div class="live-widget">
+          <div class="live-widget__header">
+            <div>
+              <div class="live-badge"><span class="live-dot"></span>Live regulatory feed</div>
+              <div class="live-widget__title">EU AI Act — High-Risk AI Updates</div>
+              <div class="live-widget__sub">Auto-refreshed via AI web search · Annex III &amp; implementing acts</div>
+            </div>
+            <button class="refresh-btn" id="refreshBtn" onclick="loadUpdates()">↻ Refresh</button>
+          </div>
+          <div class="live-widget__stamp">
+            <span id="last-updated-txt">Fetching latest data...</span>
+            <span>Source: Claude + web search · EU Official Journal</span>
+          </div>
+          <div class="live-widget__body" id="updates-container">
+            <div class="loading-state">
+              <div class="loading-spinner"></div>
+              <div>Searching EU AI Act high-risk updates...</div>
+            </div>
+          </div>
         </div>
 
-        <!-- ── SECTION 4 ── -->
         <h2 id="six-pillars">The six governance pillars every high-risk AI system must meet</h2>
-        <p>
-          For any system classified as high-risk under Annex III, Articles 9 through 15 of the regulation define six core governance obligations. These are not optional add-ons — they are mandatory pre-conditions for market placement and continued operation.
-        </p>
+        <p>For any system classified as high-risk under Annex III, Articles 9 through 15 of the regulation define six core governance obligations. These are not optional add-ons — they are mandatory pre-conditions for market placement and continued operation.</p>
 
         <div class="pillars-grid">
           <div class="pillar-card">
@@ -306,7 +382,7 @@
           <div class="pillar-card">
             <div class="pillar-card__num">Pillar 03</div>
             <div class="pillar-card__title">Technical Documentation</div>
-            <p class="pillar-card__desc">Comprehensive documentation enabling competent authorities to assess conformity — including system design rationale, development choices, performance metrics, known limitations, and post-market monitoring plans. Must be maintained for 10 years post-market placement.</p>
+            <p class="pillar-card__desc">Comprehensive documentation enabling competent authorities to assess conformity — including system design rationale, development choices, performance metrics, known limitations, and post-market monitoring plans. Must be maintained for 10 years.</p>
           </div>
           <div class="pillar-card">
             <div class="pillar-card__num">Pillar 04</div>
@@ -316,114 +392,91 @@
           <div class="pillar-card">
             <div class="pillar-card__num">Pillar 05</div>
             <div class="pillar-card__title">Accuracy, Robustness &amp; Cybersecurity</div>
-            <p class="pillar-card__desc">Systems must perform at declared accuracy levels throughout their lifecycle. They must resist adversarial attacks, model poisoning, data poisoning, and other cybersecurity threats. Residual risks must be acceptable and documented.</p>
+            <p class="pillar-card__desc">Systems must perform at declared accuracy levels throughout their lifecycle. They must resist adversarial attacks, model poisoning, and data poisoning. Residual risks must be acceptable and documented.</p>
           </div>
           <div class="pillar-card">
             <div class="pillar-card__num">Pillar 06</div>
-            <div class="pillar-card__title">Conformity Assessment &amp; Post-Market Monitoring</div>
-            <p class="pillar-card__desc">Providers must complete a conformity assessment (self-assessment or third-party, depending on system type) before market placement. CE marking is required. Post-market monitoring via logging and a documented plan is mandatory, with serious incident reporting to authorities.</p>
+            <div class="pillar-card__title">Conformity Assessment &amp; Monitoring</div>
+            <p class="pillar-card__desc">Providers must complete a conformity assessment before market placement. CE marking is required. Post-market monitoring via logging and a documented plan is mandatory, with serious incident reporting to authorities.</p>
           </div>
         </div>
 
-        <!-- ── SECTION 5 ── -->
         <h2 id="gpai">General Purpose AI: a separate but parallel obligation</h2>
-        <p>
-          Chapter V of the regulation introduces specific obligations for providers of <strong>General Purpose AI (GPAI) models</strong> — the large foundation models such as large language models and multi-modal systems that underpin many downstream applications. These rules applied from <strong>2 August 2025</strong>.
-        </p>
-        <p>
-          All GPAI model providers must maintain technical documentation, provide information to downstream providers, publish a policy on copyright compliance, and publish a summary of training data used. Providers of GPAI models with systemic risk — defined as those trained with compute exceeding 10²⁵ FLOPs — face additional obligations including adversarial testing, incident reporting, and cybersecurity protections.
-        </p>
-        <p>
-          For delivery organisations using GPAI models as the foundation for their AI products, understanding where the boundary of provider obligation ends and where your own obligations as a deployer begin is critical. The regulation distinguishes these roles carefully and the obligations do not simply cascade — they accumulate.
-        </p>
+        <p>Chapter V of the regulation introduces specific obligations for providers of <strong>General Purpose AI (GPAI) models</strong> — the large foundation models such as large language models and multi-modal systems that underpin many downstream applications. These rules applied from <strong>2 August 2025</strong>.</p>
+        <p>All GPAI model providers must maintain technical documentation, provide information to downstream providers, publish a policy on copyright compliance, and publish a summary of training data used. Providers of GPAI models with systemic risk — defined as those trained with compute exceeding 10²⁵ FLOPs — face additional obligations including adversarial testing, incident reporting, and cybersecurity protections.</p>
+        <p>For delivery organisations using GPAI models as the foundation for their AI products, understanding where the boundary of provider obligation ends and where your own obligations as a deployer begin is critical. The regulation distinguishes these roles carefully and the obligations do not simply cascade — they accumulate.</p>
 
-        <!-- ── SECTION 6 ── -->
         <h2 id="timeline">The compliance timeline: what applies when</h2>
-
         <ul class="timeline-list">
           <li>
             <div class="tl-date">1 August 2024</div>
             <div class="tl-event">Regulation enters into force</div>
-            <div class="tl-note">Published in the Official Journal of the EU. The 20-day period after publication ends, and the regulation is binding. Governance preparations should begin immediately.</div>
+            <div class="tl-note">Published in the Official Journal of the EU. The regulation is binding. Governance preparations should begin immediately.</div>
           </li>
           <li>
             <div class="tl-date">2 February 2025</div>
             <div class="tl-event">Prohibited AI practices banned</div>
-            <div class="tl-note">Chapter I general provisions and Chapter II prohibited practices fully apply. All systems listed in the prohibition must cease operation. Penalties for violations of this chapter are the most severe: up to €35M or 7% of global turnover.</div>
+            <div class="tl-note">Chapter I and Chapter II prohibited practices fully apply. Penalties for violations: up to €35M or 7% of global turnover.</div>
           </li>
           <li>
             <div class="tl-date">2 August 2025</div>
             <div class="tl-event">GPAI model obligations apply</div>
-            <div class="tl-note">Chapter V (GPAI models) and Chapter VII (governance bodies, including national competent authorities) apply. The EU AI Office is operational. Penalty provisions (Chapter XII) come into force.</div>
+            <div class="tl-note">Chapter V (GPAI models) and Chapter VII (governance bodies) apply. The EU AI Office is operational. Penalty provisions (Chapter XII) come into force.</div>
           </li>
           <li>
             <div class="tl-date">2 August 2026</div>
             <div class="tl-event">High-risk AI obligations fully apply</div>
-            <div class="tl-note">Chapters III and IV (high-risk AI obligations) apply in full. Conformity assessments, technical documentation, EU database registration, and post-market monitoring are mandatory. This is the critical compliance deadline for the vast majority of AI providers and deployers.</div>
+            <div class="tl-note">Chapters III and IV fully apply. Conformity assessments, technical documentation, EU database registration, and post-market monitoring are mandatory.</div>
           </li>
           <li>
             <div class="tl-date">2 August 2027</div>
             <div class="tl-event">Annex I product safety systems</div>
-            <div class="tl-note">High-risk AI systems embedded within products regulated under existing Union harmonisation legislation (medical devices, machinery, vehicles) are fully covered. Transition period for legacy systems ends.</div>
+            <div class="tl-note">High-risk AI embedded in products regulated under existing Union harmonisation legislation (medical devices, machinery, vehicles) fully covered.</div>
           </li>
         </ul>
 
-        <!-- ── SECTION 7 ── -->
         <h2 id="obligations">What deployers specifically must do</h2>
-        <p>
-          The regulation makes a fundamental distinction between <strong>providers</strong> (who develop and place AI systems on the market) and <strong>deployers</strong> (who use AI systems in their operations). Both have direct obligations. For most regulated organisations — banks, insurers, HR technology users, public authorities — the primary role is deployer, not provider.
-        </p>
+        <p>The regulation makes a fundamental distinction between <strong>providers</strong> (who develop and place AI systems on the market) and <strong>deployers</strong> (who use AI systems in their operations). Both have direct obligations.</p>
 
         <div class="obligation-grid">
           <div class="obl-item">
             <div class="obl-item__check">✓</div>
-            <div class="obl-item__text"><strong>Conduct a fundamental rights impact assessment</strong> before deploying any high-risk AI system in the context of public services or critical private services. Document findings and make available to competent authorities on request.</div>
+            <div class="obl-item__text"><strong>Conduct a fundamental rights impact assessment</strong> before deploying any high-risk AI system in public services or critical private services.</div>
           </div>
           <div class="obl-item">
             <div class="obl-item__check">✓</div>
-            <div class="obl-item__text"><strong>Implement human oversight measures</strong> as defined by the provider. Designate natural persons with the competence, authority, and resources to understand, monitor, and where necessary override AI system outputs.</div>
+            <div class="obl-item__text"><strong>Implement human oversight measures</strong> as defined by the provider. Designate natural persons with the competence and authority to override AI system outputs.</div>
           </div>
           <div class="obl-item">
             <div class="obl-item__check">✓</div>
-            <div class="obl-item__text"><strong>Maintain logs</strong> automatically generated by the AI system for the minimum retention periods specified. Logs must be available to competent national authorities upon request within defined timeframes.</div>
+            <div class="obl-item__text"><strong>Maintain logs</strong> automatically generated by the AI system for the minimum retention periods specified. Logs must be available to national authorities on request.</div>
           </div>
           <div class="obl-item">
             <div class="obl-item__check">✓</div>
-            <div class="obl-item__text"><strong>Register the system</strong> in the EU database maintained by the EU AI Office before deploying any high-risk AI system in the areas of employment, education, essential services, or law enforcement.</div>
+            <div class="obl-item__text"><strong>Register the system</strong> in the EU database before deploying any high-risk AI system in employment, education, essential services, or law enforcement.</div>
           </div>
           <div class="obl-item">
             <div class="obl-item__check">✓</div>
-            <div class="obl-item__text"><strong>Report serious incidents</strong> to the market surveillance authority of the Member State where the incident occurred. Timelines are 15 days for serious incidents and 2 years for near-misses.</div>
+            <div class="obl-item__text"><strong>Report serious incidents</strong> to the market surveillance authority of the Member State. Timelines: 15 days for serious incidents.</div>
           </div>
           <div class="obl-item">
             <div class="obl-item__check">✓</div>
-            <div class="obl-item__text"><strong>Ensure AI literacy</strong> of all staff using or affected by high-risk AI systems. Deployers must provide appropriate training and information. This is a named obligation under Article 4.</div>
+            <div class="obl-item__text"><strong>Ensure AI literacy</strong> of all staff using or affected by high-risk AI systems. A named obligation under Article 4.</div>
           </div>
         </div>
 
-        <!-- ── SECTION 8 ── -->
         <h2 id="delivery">What this means for Agile delivery teams</h2>
-        <p>
-          The EU AI Act is, fundamentally, a product governance regulation. It defines obligations that must be woven into product development, not appended to it. For teams delivering AI systems under Agile frameworks, the practical implications are significant:
-        </p>
+        <p>The EU AI Act is, fundamentally, a product governance regulation. It defines obligations that must be woven into product development, not appended to it. For teams delivering AI systems under Agile frameworks, the practical implications are significant:</p>
         <ul>
           <li><strong>Risk management is a backlog item:</strong> The risk management system required by Article 9 must be iterative and documented. Every sprint that modifies a high-risk AI system potentially triggers a risk management update. Build this into your Definition of Done.</li>
-          <li><strong>Data governance stories are not optional:</strong> Training data quality, bias assessments, and data lineage documentation must be maintained. These are not one-time activities — they must be revisited at each significant model update.</li>
-          <li><strong>Human oversight is a feature, not a process:</strong> The requirement that deployers can override, correct, or halt AI system outputs is a functional requirement. It must be designed into the product, not documented in a policy document.</li>
+          <li><strong>Data governance stories are not optional:</strong> Training data quality, bias assessments, and data lineage documentation must be maintained at each significant model update.</li>
+          <li><strong>Human oversight is a feature, not a process:</strong> The requirement that deployers can override or halt AI system outputs is a functional requirement. It must be designed into the product, not documented in a policy.</li>
           <li><strong>Post-market monitoring is continuous delivery applied to compliance:</strong> Logging, performance monitoring, and incident reporting are operational capabilities that must be built and maintained by the delivery team.</li>
         </ul>
-        <p>
-          The organisations that will be best positioned for August 2026 are those that have already started integrating these obligations into their current delivery cycles — not those planning a compliance sprint in early 2026.
-        </p>
 
-        <!-- ── CLOSING ── -->
         <h2 id="conclusion">Where to start</h2>
-        <p>
-          If you are unsure where your AI systems land on the risk spectrum, the single most valuable first action is an <strong>AI system inventory</strong>: catalogue every AI system in operation or in development, document its primary purpose and the decisions it influences, identify the users and affected persons, and map it against the Annex III sector list.
-        </p>
-        <p>
-          From that inventory, the path to compliance is systematic: risk classification, gap assessment against the six pillars, prioritised remediation roadmap, conformity assessment preparation, and registration. It is a programme of work, not a project — because the regulation does not end at market placement.
-        </p>
+        <p>If you are unsure where your AI systems land on the risk spectrum, the single most valuable first action is an <strong>AI system inventory</strong>: catalogue every AI system in operation or in development, document its primary purpose and the decisions it influences, identify the users and affected persons, and map it against the Annex III sector list.</p>
+        <p>From that inventory, the path to compliance is systematic: risk classification, gap assessment against the six pillars, prioritised remediation roadmap, conformity assessment preparation, and registration. It is a programme of work, not a project — because the regulation does not end at market placement.</p>
 
         <div class="info-box info-box--green">
           <div class="info-box__label">Further reading</div>
@@ -432,20 +485,16 @@
           <p>Harmonised standards in development: CEN/CENELEC Joint Technical Committee 21 (JTC 21)</p>
         </div>
 
-        <!-- ── AUTHOR BIO ── -->
+        <!-- AUTHOR BIO -->
         <div class="author-bio">
-          <div class="author-bio__avatar">
-            <img src="profile.jpg" alt="Anjish Bhondwe" onerror="this.style.display='none'">
-          </div>
+          <div class="author-bio__avatar">AB</div>
           <div>
             <div class="author-bio__name">Anjish Bhondwe</div>
             <div class="author-bio__title">Director, Agile CoE · AI Governance Professional (AIGP candidate) · IAPP Member</div>
-            <p class="author-bio__desc">
-              16+ years delivering high-stakes transformations inside European financial services. Currently studying AI Regulation at Delft University of Technology and KU Leuven. Advising organisations on EU AI Act readiness, building Agile CoEs, and embedding governance into delivery from day one.
-            </p>
+            <p class="author-bio__desc">16+ years delivering high-stakes transformations inside European financial services. Currently studying AI Regulation at Delft University of Technology and KU Leuven. Advising organisations on EU AI Act readiness, building Agile CoEs, and embedding governance into delivery from day one.</p>
             <div class="author-bio__links">
               <a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener" class="author-bio__link">LinkedIn →</a>
-              <a href="contact.html" class="author-bio__link">Work together →</a>
+              <a href="index.html#contact" class="author-bio__link">Work together →</a>
               <a href="blogs.html" class="author-bio__link">More posts →</a>
             </div>
           </div>
@@ -459,7 +508,7 @@
         <ul class="article-toc__list">
           <li><a href="#why-it-matters">Why it matters for delivery</a></li>
           <li><a href="#risk-framework">Four-tier risk framework</a></li>
-          <li><a href="#high-risk">Annex III high-risk categories</a></li>
+          <li><a href="#high-risk">Annex III categories</a></li>
           <li><a href="#six-pillars">Six governance pillars</a></li>
           <li><a href="#gpai">General Purpose AI</a></li>
           <li><a href="#timeline">Compliance timeline</a></li>
@@ -473,64 +522,118 @@
   </div>
 </main>
 
-<!-- ── FOOTER ── -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__inner">
-      <div>
-        <div class="footer__logo">Anjish<span>.</span></div>
-        <p class="footer__tagline">Digital Transformation Lead · Enterprise Agile Coach · AI Strategist.</p>
-      </div>
-      <div>
-        <div class="footer__col-title">Navigate</div>
-        <ul class="footer__links">
-          <li><a href="index.html#expertise">Expertise</a></li>
-          <li><a href="work.html">Work</a></li>
-          <li><a href="insights.html">Insights</a></li>
-          <li><a href="blogs.html">Blogs</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer__col-title">Connect</div>
-        <ul class="footer__links">
-          <li><a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://iostring.com" target="_blank" rel="noopener">iostring.com</a></li>
-          <li><a href="mailto:freelanceanjish@gmail.com">Email</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <span>© 2025 Anjish Bhondwe. All rights reserved.</span>
-      <span>Brussels, Belgium · Benelux</span>
-    </div>
+<footer>
+  <p>© 2025 Anjish Bhondwe. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="insights.html">Insights</a>
+    <a href="blogs.html">Blogs</a>
+    <a href="index.html#contact">Contact</a>
   </div>
 </footer>
 
-<script type="module">
-  import { initCursor } from './js/cursor.js';
-  import { initNav } from './js/nav.js';
-  import { initAnimations } from './js/animations.js';
-
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof initCursor === 'function') initCursor();
-    if (typeof initNav === 'function') initNav();
-    setTimeout(() => { if (typeof initAnimations === 'function') initAnimations(); }, 50);
-
-    // Active TOC highlighting on scroll
-    const headings = document.querySelectorAll('.article-body h2[id], .article-body h3[id]');
-    const tocLinks = document.querySelectorAll('.article-toc__list a');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          tocLinks.forEach(l => l.classList.remove('active'));
-          const link = document.querySelector(`.article-toc__list a[href="#${entry.target.id}"]`);
-          if (link) link.classList.add('active');
-        }
-      });
-    }, { rootMargin: '-10% 0px -80% 0px' });
-    headings.forEach(h => observer.observe(h));
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>10);
+});
+// Mobile menu
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+// Reveal
+const revealObserver = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+// TOC active on scroll
+const headings = document.querySelectorAll('.article-body h2[id]');
+const tocLinks = document.querySelectorAll('.article-toc__list a');
+const tocObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      tocLinks.forEach(l=>l.classList.remove('active'));
+      const link = document.querySelector(`.article-toc__list a[href="#${entry.target.id}"]`);
+      if(link) link.classList.add('active');
+    }
   });
+},{rootMargin:'-10% 0px -80% 0px'});
+headings.forEach(h=>tocObserver.observe(h));
+
+// Live updates
+async function loadUpdates(){
+  const btn = document.getElementById('refreshBtn');
+  const container = document.getElementById('updates-container');
+  const stamp = document.getElementById('last-updated-txt');
+  btn.classList.add('spinning');
+  btn.disabled = true;
+  container.innerHTML = '<div class="loading-state"><div class="loading-spinner"></div><div>Searching EU AI Act high-risk updates, Annex III amendments, and EU AI Office guidance...</div></div>';
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        tools:[{"type":"web_search_20250305","name":"web_search"}],
+        system:`You are an EU AI Act regulatory intelligence assistant. Search for the latest news and updates about EU AI Act high-risk AI systems, Annex III changes, implementing acts, delegated regulations, EU AI Office guidance, and any amendments published in 2024-2025. Return ONLY a JSON array (no markdown, no preamble) of update objects:
+{"title":"short headline max 10 words","date":"Month YYYY","type":"amendment|guidance|deadline|draft|enforcement","summary":"2-3 sentence factual summary","tags":["tag1","tag2"],"source":"EUR-Lex|EU AI Office|EC Press|Official Journal"}
+Return 4-6 items most recent first. Focus on high-risk AI (Annex III), conformity assessments, and implementing acts. Return ONLY the JSON array.`,
+        messages:[{role:'user',content:'Search for and return the latest EU AI Act high-risk AI regulatory updates, Annex III amendments, implementing acts, and EU AI Office guidance published in 2024-2025. Return as JSON array only.'}]
+      })
+    });
+    const data = await res.json();
+    let raw = data.content.filter(b=>b.type==='text').map(b=>b.text).join('');
+    const s = raw.indexOf('['), e = raw.lastIndexOf(']');
+    if(s===-1||e===-1) throw new Error('No JSON found');
+    const updates = JSON.parse(raw.slice(s,e+1));
+    const icons = {amendment:'✎',guidance:'📖',deadline:'📅',draft:'📄',enforcement:'⚖'};
+    container.innerHTML = updates.map(u=>`
+      <div class="update-item">
+        <div class="update-head">
+          <div class="update-icon">${icons[u.type]||'ℹ'}</div>
+          <div>
+            <div class="update-title">${u.title}</div>
+            <div class="update-date">${u.date} · ${u.source||'EU Source'}</div>
+          </div>
+        </div>
+        <div class="update-body">${u.summary}</div>
+        <div class="update-tags">${(u.tags||[]).map(t=>`<span class="utag">${t}</span>`).join('')}</div>
+      </div>`).join('');
+    const now = new Date();
+    stamp.textContent = `Last updated: ${now.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})} at ${now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})}`;
+  } catch(err) {
+    container.innerHTML = `<div class="error-state"><strong>Could not fetch live updates.</strong> Showing cached baseline data. ${err.message}</div>` + renderFallback();
+    stamp.textContent = 'Live fetch failed — showing baseline data';
+  } finally {
+    btn.classList.remove('spinning');
+    btn.disabled = false;
+  }
+}
+
+function renderFallback(){
+  const fallback=[
+    {title:'High-risk AI application date confirmed: Aug 2026',date:'Aug 2024',type:'deadline',summary:'The European Commission confirmed that Chapter III (high-risk AI obligations) will fully apply from 2 August 2026. Providers must complete conformity assessments, technical documentation, and register in the EU database by this date.',tags:['Annex III','Conformity','Deadline'],source:'Official Journal'},
+    {title:'EU AI Office established under Commission',date:'Feb 2025',type:'guidance',summary:'The EU AI Office became operational as the central enforcement body for GPAI models and coordination for high-risk AI oversight. National competent authorities are required to be designated by August 2025.',tags:['Enforcement','AI Office','GPAI'],source:'EC Press'},
+    {title:'Prohibited AI practices banned from Feb 2025',date:'Feb 2025',type:'enforcement',summary:'From 2 February 2025, all prohibited AI practices under Annex I are banned. This includes social scoring, subliminal manipulation, exploitation of vulnerabilities, and most real-time biometric identification in public spaces.',tags:['Prohibited','Annex I','Enforcement'],source:'EU AI Office'},
+    {title:'Standardisation work underway for Annex III systems',date:'Q1 2025',type:'draft',summary:'CEN/CENELEC Joint Technical Committee (JTC 21) is developing harmonised standards for high-risk AI requirements including risk management, data governance, and technical documentation to support conformity assessments.',tags:['Standards','CEN','Harmonisation'],source:'EC Press'}
+  ];
+  const icons={amendment:'✎',guidance:'📖',deadline:'📅',draft:'📄',enforcement:'⚖'};
+  return fallback.map(u=>`
+    <div class="update-item">
+      <div class="update-head">
+        <div class="update-icon">${icons[u.type]||'ℹ'}</div>
+        <div>
+          <div class="update-title">${u.title}</div>
+          <div class="update-date">${u.date} · ${u.source}</div>
+        </div>
+      </div>
+      <div class="update-body">${u.summary}</div>
+      <div class="update-tags">${(u.tags||[]).map(t=>`<span class="utag">${t}</span>`).join('')}</div>
+    </div>`).join('');
+}
+
+loadUpdates();
 </script>
 </body>
 </html>
