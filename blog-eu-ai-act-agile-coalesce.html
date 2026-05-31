@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EU AI Act + Agile Delivery: How They Technically Coalesce — Anjish Bhondwe</title>
-<meta name="description" content="A deep structural analysis of how the EU AI Act's obligations map precisely onto Agile and SAFe artefacts — from sprint stories to PI planning to portfolio governance.">
+<meta name="description" content="The EU AI Act and Agile are not two systems in tension. At the level of technical artefacts, they are structurally the same lifecycle — and understanding that changes everything about how you build compliant AI.">
 <meta name="author" content="Anjish Bhondwe">
 <link rel="canonical" href="https://anjish.io/blog-eu-ai-act-agile-coalesce.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,6 @@ button{cursor:pointer;font-family:inherit}
 ::-webkit-scrollbar-thumb{background:var(--blue)}
 
 .smax{max-width:1200px;margin:0 auto;padding:0 var(--s6)}
-.label{font-family:var(--fmono);font-size:.75rem;font-weight:400;letter-spacing:.32px;text-transform:uppercase;color:var(--blue-40)}
 .grid-rule{height:1px;background:var(--border-sm)}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
@@ -110,52 +109,54 @@ nav.scrolled{border-bottom-color:var(--border)}
 
 /* Figure / diagram wrapper */
 .article-figure{margin:2.5rem 0;border:1px solid var(--border-sm);background:var(--bg2);overflow:hidden}
-.article-figure__caption{font-family:var(--fmono);font-size:.68rem;color:var(--text-3);letter-spacing:.16px;padding:.75rem var(--s3);border-top:1px solid var(--border-sm);display:flex;gap:.5rem;align-items:flex-start}
-.article-figure__caption strong{color:var(--blue-40)}
-.article-figure__inner{padding:var(--s4) var(--s3);display:flex;align-items:center;justify-content:center;background:var(--bg2)}
+.article-figure__label{font-family:var(--fmono);font-size:.68rem;color:var(--blue-40);letter-spacing:.32px;text-transform:uppercase;padding:.75rem var(--s3) 0;display:block}
+.article-figure__inner{padding:var(--s3);display:flex;align-items:center;justify-content:center}
 .article-figure__inner svg{max-width:100%;height:auto}
+.article-figure__caption{font-family:var(--fmono);font-size:.68rem;color:var(--text-3);letter-spacing:.16px;padding:.75rem var(--s3);border-top:1px solid var(--border-sm)}
 
-/* Mapping table */
-.mapping-table{width:100%;border-collapse:collapse;margin:1.5rem 0 2rem;font-size:.85rem}
-.mapping-table th{text-align:left;padding:.65rem 1rem;border-bottom:1px solid var(--border);font-family:var(--fmono);font-size:.68rem;font-weight:500;letter-spacing:.32px;text-transform:uppercase;color:var(--text-3)}
-.mapping-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border-sm);vertical-align:top;line-height:1.55;color:var(--text-2);font-size:.875rem}
-.mapping-table td:first-child{white-space:nowrap;font-family:var(--fmono);font-size:.8rem;color:var(--blue-40)}
-.mapping-table tr:last-child td{border-bottom:none}
-.mapping-table tr:hover td{background:var(--bg2)}
-.mapping-table .badge{display:inline-block;font-family:var(--fmono);font-size:.62rem;padding:.15rem .5rem;letter-spacing:.16px}
-.mapping-table .badge--blue{background:rgba(15,98,254,.12);color:var(--blue-40)}
-.mapping-table .badge--teal{background:rgba(61,219,217,.08);color:var(--teal)}
-.mapping-table .badge--green{background:rgba(66,190,101,.08);color:var(--green)}
+/* Artefact specification cards */
+.spec-stack{display:flex;flex-direction:column;gap:1px;margin:1.5rem 0 2rem;background:var(--border-sm)}
+.spec-card{background:var(--bg2);padding:var(--s3);display:grid;grid-template-columns:160px 1fr;gap:var(--s3);transition:background var(--t)}
+.spec-card:hover{background:var(--surface)}
+@media(max-width:600px){.spec-card{grid-template-columns:1fr}}
+.spec-card__ref{font-family:var(--fmono);font-size:.72rem;color:var(--blue-40);letter-spacing:.32px}
+.spec-card__ref small{display:block;color:var(--text-3);font-size:.65rem;margin-top:.2rem;letter-spacing:.16px}
+.spec-card__body{}
+.spec-card__title{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.35rem}
+.spec-card__desc{font-size:.82rem;color:var(--text-2);line-height:1.7;margin:0;letter-spacing:.16px}
+.spec-card__verdict{display:inline-block;font-family:var(--fmono);font-size:.62rem;padding:.2rem .55rem;margin-top:.5rem;letter-spacing:.16px}
+.spec-card__verdict--exists{background:rgba(66,190,101,.08);color:var(--green)}
+.spec-card__verdict--gap{background:rgba(250,77,86,.08);color:var(--red)}
+.spec-card__verdict--extend{background:rgba(120,169,255,.08);color:var(--blue-40)}
 
-/* Pillars grid */
-.pillars-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin:1.5rem 0 2rem;background:var(--border-sm)}
-@media(max-width:560px){.pillars-grid{grid-template-columns:1fr}}
-.pillar-card{background:var(--bg2);padding:var(--s3);transition:background var(--t)}
-.pillar-card:hover{background:var(--surface)}
-.pillar-card__num{font-family:var(--fmono);font-size:.68rem;color:var(--blue-40);letter-spacing:.32px;margin-bottom:.4rem}
-.pillar-card__title{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.35rem}
-.pillar-card__desc{font-size:.8rem;color:var(--text-2);line-height:1.65;margin:0;letter-spacing:.16px}
+/* Two-col comparison */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:1.5rem 0 2rem;background:var(--border-sm)}
+@media(max-width:560px){.compare-grid{grid-template-columns:1fr}}
+.compare-col{background:var(--bg2);padding:var(--s3)}
+.compare-col__header{font-family:var(--fmono);font-size:.72rem;letter-spacing:.32px;text-transform:uppercase;margin-bottom:var(--s2);padding-bottom:var(--s1);border-bottom:1px solid var(--border-sm)}
+.compare-col--act .compare-col__header{color:var(--teal)}
+.compare-col--agile .compare-col__header{color:var(--blue-40)}
+.compare-col ul{list-style:none;padding:0;margin:0}
+.compare-col li{font-size:.82rem;color:var(--text-2);line-height:1.65;padding:.3rem 0;border-bottom:1px solid var(--border-sm);letter-spacing:.16px}
+.compare-col li:last-child{border-bottom:none}
+.compare-col li span{font-family:var(--fmono);font-size:.68rem;color:var(--text-3);display:block;margin-top:.1rem}
 
-/* Three-col obligation grid */
-.obligation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:1.5rem 0 2rem;background:var(--border-sm)}
-@media(max-width:700px){.obligation-grid{grid-template-columns:1fr}}
-.obl-item{background:var(--bg2);padding:var(--s3);display:flex;gap:var(--s2)}
-.obl-item__check{font-family:var(--fmono);font-size:.9rem;color:var(--green);flex-shrink:0;margin-top:2px}
-.obl-item__text{font-size:.82rem;color:var(--text-2);line-height:1.65;letter-spacing:.16px}
-.obl-item__text strong{color:var(--text)}
-
-/* Timeline */
-.timeline-list{list-style:none;padding:0;margin:1.5rem 0 2rem;position:relative}
-.timeline-list::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--blue),rgba(15,98,254,.1))}
-.timeline-list li{padding:0 0 1.5rem 2.25rem;position:relative}
-.timeline-list li::before{content:'';position:absolute;left:2px;top:7px;width:10px;height:10px;border-radius:0;background:var(--blue);border:2px solid var(--bg)}
-.tl-date{font-family:var(--fmono);font-size:.7rem;font-weight:500;letter-spacing:.32px;text-transform:uppercase;color:var(--blue-40);margin-bottom:.2rem}
-.tl-event{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.25rem}
-.tl-note{font-size:.82rem;color:var(--text-2);line-height:1.6;letter-spacing:.16px}
+/* Obligation checklist */
+.checklist{display:flex;flex-direction:column;gap:.5rem;margin:1.5rem 0 2rem}
+.checklist-item{display:flex;gap:var(--s2);padding:var(--s2) var(--s3);background:var(--bg2);border-left:2px solid var(--border)}
+.checklist-item--pass{border-left-color:var(--green)}
+.checklist-item--warn{border-left-color:var(--gold)}
+.checklist-item--fail{border-left-color:var(--red)}
+.checklist-item__icon{font-family:var(--fmono);font-size:.8rem;flex-shrink:0;margin-top:2px}
+.checklist-item--pass .checklist-item__icon{color:var(--green)}
+.checklist-item--warn .checklist-item__icon{color:var(--gold)}
+.checklist-item--fail .checklist-item__icon{color:var(--red)}
+.checklist-item__text{font-size:.85rem;color:var(--text-2);line-height:1.65;letter-spacing:.16px}
+.checklist-item__text strong{color:var(--text)}
 
 /* Author bio */
 .author-bio{display:flex;gap:var(--s3);margin-top:var(--s8);padding:var(--s4);background:var(--bg2);border-left:3px solid var(--blue)}
-.author-bio__avatar{width:56px;height:56px;flex-shrink:0;overflow:hidden;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--fmono);font-size:1rem;color:#fff}
+.author-bio__avatar{width:56px;height:56px;flex-shrink:0;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--fmono);font-size:1rem;color:#fff}
 .author-bio__name{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
 .author-bio__title{font-family:var(--fmono);font-size:.68rem;color:var(--blue-40);letter-spacing:.16px;margin-bottom:.65rem}
 .author-bio__desc{font-size:.82rem;color:var(--text-2);line-height:1.7;margin-bottom:.75rem;letter-spacing:.16px}
@@ -183,9 +184,8 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
   .nav-links,.nav-cta{display:none}
   .nav-hamburger{display:flex}
   .article-hero{padding:5rem 0 2.5rem}
-  .pillars-grid,.obligation-grid{grid-template-columns:1fr}
   .author-bio{flex-direction:column}
-  .article-figure__inner{padding:var(--s2) var(--s1)}
+  .article-figure__inner{padding:var(--s1)}
 }
 </style>
 </head>
@@ -218,11 +218,10 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 
 <main>
 
-  <!-- HERO -->
   <section class="article-hero">
     <div class="smax">
       <a href="blogs.html" class="article-hero__back">← Back to Blogs</a>
-      <p class="article-hero__topic">AI Governance · Technical Analysis</p>
+      <p class="article-hero__topic">Technical Analysis · Compliance Architecture</p>
       <h1 class="article-hero__title">EU AI Act + Agile Delivery: How They Technically Coalesce</h1>
       <div class="article-hero__meta">
         <div class="hero-author">
@@ -233,241 +232,201 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
           </div>
         </div>
         <div class="hero-divider"></div>
-        <span class="hero-date">July 2025</span>
-        <span class="hero-readtime">· 14 min read</span>
+        <span class="hero-date">August 2025</span>
+        <span class="hero-readtime">· 13 min read</span>
       </div>
       <div class="hero-tags">
         <span class="hero-tag">EU AI Act</span>
         <span class="hero-tag">Agile</span>
         <span class="hero-tag">SAFe</span>
-        <span class="hero-tag">Compliance Engineering</span>
-        <span class="hero-tag">Delivery Architecture</span>
+        <span class="hero-tag">Compliance Architecture</span>
+        <span class="hero-tag">Artefact Design</span>
       </div>
     </div>
   </section>
 
   <div class="grid-rule"></div>
 
-  <!-- ARTICLE -->
   <div class="smax">
     <div class="article-layout">
 
-      <!-- BODY -->
       <article class="article-body reveal">
 
-        <p>Most discussions about the EU AI Act and Agile delivery treat them as two separate systems that need to be reconciled — a regulatory framework that imposes obligations, and a delivery framework that needs to absorb them. This framing is wrong, and the wrongness is consequential. It leads organisations to build translation layers, compliance mappers, and governance overlays that inevitably lag behind delivery and accumulate as technical and regulatory debt.</p>
+        <p>The standard framing for EU AI Act compliance in Agile organisations goes like this: the regulation imposes a set of obligations, and the delivery team must find somewhere to absorb them. Committees are formed. A compliance workstream is chartered. A mapping exercise is commissioned that takes six weeks and produces a spreadsheet nobody reads.</p>
 
-        <p>The more accurate framing: the EU AI Act and well-structured Agile delivery are not in tension. At the level of technical artefacts — the things teams actually produce — they are structurally isomorphic. The Act defines what must exist at each stage of an AI system's lifecycle. Agile and SAFe define when and how teams produce artefacts at each stage of a delivery cycle. The coalescing point is the artefact: a sprint story's acceptance criteria, a risk register entry, a data lineage record, a post-market monitoring report. These are not compliance translations of Agile work. They <em>are</em> Agile work, properly defined.</p>
+        <p>This framing is not just inefficient. It is technically incorrect — and the incorrectness matters because it leads organisations to build the wrong infrastructure. The EU AI Act and a well-structured Agile or SAFe delivery model are not two independent systems that need bridging. They are descriptions of the same engineering lifecycle, written by different authors for different audiences, using different vocabulary for identical concepts.</p>
+
+        <p>This piece makes that case at the level of technical artefacts — the actual objects that teams produce. Not as a loose analogy. As a structural claim.</p>
 
         <div class="pull-quote">
-          <p>"The EU AI Act does not describe a compliance process. It describes an engineering lifecycle. Agile teams already live inside that lifecycle — they just need to see it clearly."</p>
+          <p>"The EU AI Act is not a compliance overlay on top of engineering. It is a specification of what rigorous AI engineering looks like. If your Agile delivery is producing the right artefacts, you are already building the evidence base. The question is whether you know it."</p>
         </div>
 
-        <h2 id="architecture">The Structural Alignment</h2>
+        <h2 id="lifecycle">Two Descriptions of One Lifecycle</h2>
 
-        <p>Let's be precise about what the EU AI Act actually mandates for high-risk AI systems under Annex III, and where those mandates fall in an Agile delivery model. The Act organises its requirements around the system lifecycle: design, development, validation, deployment, and post-market monitoring. Agile organises its work around iterations: sprint, PI, release, and programme. These are not competing structures — they are the same structure at different levels of resolution.</p>
+        <p>Start with what the EU AI Act is actually doing structurally. For high-risk AI systems under Annex III, the Act defines obligations at five stages: design intent, data preparation, development and testing, deployment, and post-market operation. It specifies what must be documented, tested, monitored, and revisable at each stage — and crucially, it requires that the evidence of these activities be generated <em>during</em> the stage, not reconstructed afterward.</p>
 
-        <p>Nine articles carry the operational weight for high-risk systems. Each maps to a specific class of Agile artefact — not as a loose analogy, but as a precise structural match:</p>
+        <p>Now look at what a two-week sprint in a mature Agile team actually produces. Sprint planning produces a committed backlog with acceptance criteria. Development produces tested, reviewed code with associated data artefacts. The sprint review produces a demonstrated increment with stakeholder sign-off. The retrospective produces a record of process decisions. Across PIs, the system demo, I&A workshop, and inspect-and-adapt cycle produce programme-level documentation of architectural decisions, risk evolution, and quality trends.</p>
 
-        <table class="mapping-table">
-          <thead>
-            <tr>
-              <th>EU AI Act Article</th>
-              <th>Obligation</th>
-              <th>Agile Artefact</th>
-              <th>Cadence</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Article 4</td>
-              <td>AI literacy obligations for personnel involved in operation</td>
-              <td>Team training records; competency matrix in PI objectives</td>
-              <td><span class="badge badge--blue">Per PI</span></td>
-            </tr>
-            <tr>
-              <td>Article 9</td>
-              <td>Risk management system — continuous throughout lifecycle</td>
-              <td>Risk register (story-level); acceptance criteria; Definition of Done</td>
-              <td><span class="badge badge--teal">Per Sprint</span></td>
-            </tr>
-            <tr>
-              <td>Article 10</td>
-              <td>Data governance — training, validation, testing datasets</td>
-              <td>Data lineage records; dataset cards; data quality gates in CI/CD</td>
-              <td><span class="badge badge--teal">Per Sprint</span></td>
-            </tr>
-            <tr>
-              <td>Article 12</td>
-              <td>Record-keeping — automatic logging of events during operation</td>
-              <td>Observability stack; structured logging specs; monitoring stories</td>
-              <td><span class="badge badge--teal">Per Sprint</span></td>
-            </tr>
-            <tr>
-              <td>Article 13</td>
-              <td>Transparency — sufficient information to enable informed use</td>
-              <td>User-facing model cards; API documentation; explainability features</td>
-              <td><span class="badge badge--blue">Per Release</span></td>
-            </tr>
-            <tr>
-              <td>Article 14</td>
-              <td>Human oversight — technical measures enabling effective oversight</td>
-              <td>Override mechanisms; escalation pathway stories; review queue UX</td>
-              <td><span class="badge badge--teal">Per Sprint</span></td>
-            </tr>
-            <tr>
-              <td>Article 17</td>
-              <td>Quality management system — written policies covering development</td>
-              <td>Engineering standards docs; team working agreements; CoE policies</td>
-              <td><span class="badge badge--green">Per Programme</span></td>
-            </tr>
-            <tr>
-              <td>Annex IV</td>
-              <td>Technical documentation — comprehensive technical file</td>
-              <td>Architecture decision records; version-controlled technical file</td>
-              <td><span class="badge badge--blue">Per Release</span></td>
-            </tr>
-            <tr>
-              <td>Article 72</td>
-              <td>Post-market monitoring — active tracking of performance in deployment</td>
-              <td>Monitoring dashboards; drift detection pipelines; incident log</td>
-              <td><span class="badge badge--teal">Per Sprint</span></td>
-            </tr>
-          </tbody>
-        </table>
+        <p>Lay these two structures side by side:</p>
 
-        <!-- FIGURE 1: EU AI Act ↔ Agile complete mapping -->
+        <div class="compare-grid">
+          <div class="compare-col compare-col--act">
+            <div class="compare-col__header">EU AI Act — Lifecycle Stage</div>
+            <ul>
+              <li>Design intent &amp; intended purpose definition<span>Annex IV §1 — documented before development begins</span></li>
+              <li>Training data governance &amp; quality validation<span>Article 10 — prior to model training</span></li>
+              <li>Risk identification &amp; mitigation across development<span>Article 9 — continuous, not point-in-time</span></li>
+              <li>Accuracy, robustness &amp; bias testing<span>Article 15 — against pre-defined metrics</span></li>
+              <li>Human oversight mechanism — built &amp; verified<span>Article 14 — technically implemented</span></li>
+              <li>Technical documentation — versioned &amp; current<span>Annex IV — updated at each change</span></li>
+              <li>Post-market performance monitoring<span>Article 72 — active, not passive</span></li>
+            </ul>
+          </div>
+          <div class="compare-col compare-col--agile">
+            <div class="compare-col__header">Agile / SAFe — Delivery Artefact</div>
+            <ul>
+              <li>Feature vision + PI objectives + system intent<span>PI Planning — sprint zero for new systems</span></li>
+              <li>Dataset card + data lineage record + quality gate<span>Definition of Done on data-touching stories</span></li>
+              <li>Risk register — story-level, version-controlled<span>Updated per sprint as acceptance criterion</span></li>
+              <li>Test results + model evaluation report + fairness metrics<span>CI/CD pipeline output, gated per build</span></li>
+              <li>Override mechanism + review queue + escalation spec<span>Acceptance-tested story, not a policy doc</span></li>
+              <li>Architecture Decision Records + Annex IV technical file<span>System Architect ownership, release-bumped</span></li>
+              <li>Observability dashboard + drift alerts + incident log<span>MLOps pipeline output, sprint-maintained</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <p>The rows align not because someone cleverly mapped one to the other. They align because both the Act and Agile are describing the same underlying engineering discipline: build with intent, validate your data, track your risks, test against defined criteria, make oversight technically real, keep your documentation current, watch your system in production. The regulation codifies what good engineering practice already requires.</p>
+
+        <h2 id="artefact-gap">The Artefact Gap Is Narrower Than You Think</h2>
+
+        <p>The practical implication of this alignment is that most mature Agile teams are closer to compliance than their legal counsel believes — and further than their engineers realise. The gap is rarely about missing artefacts. It is almost always about artefact quality and generation timing.</p>
+
+        <p>Here is what that looks like in practice across the four artefact categories that Notified Bodies scrutinise most closely:</p>
+
+        <div class="spec-stack">
+          <div class="spec-card">
+            <div class="spec-card__ref">
+              Article 9
+              <small>Risk Management System</small>
+            </div>
+            <div class="spec-card__body">
+              <div class="spec-card__title">The risk register most teams have vs. the one that satisfies Article 9</div>
+              <div class="spec-card__desc">Most Agile teams maintain some form of risk log — in Jira, Confluence, or a shared spreadsheet. What Article 9 requires is that it be <strong>continuous</strong> (updated when capability changes, not quarterly), <strong>traceable</strong> (risks linked to the sprint story that introduced them), and <strong>residual-aware</strong> (mitigation status plus residual risk rating, not just "risk identified"). The artefact already exists. The specification needs tightening — typically two fields added to a Jira issue type and a DoD line item.</div>
+              <span class="spec-card__verdict spec-card__verdict--extend">Extend existing artefact</span>
+            </div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card__ref">
+              Article 10
+              <small>Data Governance</small>
+            </div>
+            <div class="spec-card__body">
+              <div class="spec-card__title">Dataset cards are not optional documentation — they are the compliance evidence</div>
+              <div class="spec-card__desc">Article 10 requires that training, validation, and test datasets be accompanied by documentation of their provenance, preprocessing decisions, known limitations, and demographic representativeness where relevant. Teams that treat dataset documentation as a nice-to-have are not just producing poor engineering — they are missing the primary evidence artefact for one of the Act's most scrutinised obligations. A dataset card, authored at the point of dataset creation or modification and version-controlled alongside the model, is what compliance looks like here.</div>
+              <span class="spec-card__verdict spec-card__verdict--gap">Most teams have a genuine gap here</span>
+            </div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card__ref">
+              Article 14
+              <small>Human Oversight</small>
+            </div>
+            <div class="spec-card__body">
+              <div class="spec-card__title">The distinction between a described oversight mechanism and a tested one</div>
+              <div class="spec-card__desc">This is the single most common compliance failure mode in systems built under Agile. Teams write a policy describing how human reviewers can intervene in automated decisions. Article 14 requires that the technical means for such intervention be <strong>built into the system</strong> and verifiable. The override mechanism, the review queue, the SLA for review completion, the escalation pathway — these must exist as tested software features, with acceptance tests that confirm they work under realistic load. A policy document that describes a mechanism that was never implemented is not Article 14 compliance. It is Article 14 documentation of a gap.</div>
+              <span class="spec-card__verdict spec-card__verdict--fail">Policy alone does not satisfy this</span>
+            </div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-card__ref">
+              Annex IV
+              <small>Technical Documentation</small>
+            </div>
+            <div class="spec-card__body">
+              <div class="spec-card__title">Architecture Decision Records as the spine of the technical file</div>
+              <div class="spec-card__desc">Annex IV requires a technical file that describes the system's design, development process, testing methodology, and risk management approach — and is kept current across the system's lifecycle. Teams that practice Architecture Decision Records have the structure for this already. The gap is typically completeness (ADRs cover major architectural choices but not the full Annex IV scope) and versioning discipline (ADRs are often written once and not revisited when the decision is later revised). Mapping the Annex IV required sections to ADR templates and making the file a living artefact — bumped at every release — closes most of this gap without new tooling.</div>
+              <span class="spec-card__verdict spec-card__verdict--extend">ADR discipline closes most of this gap</span>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="safe-tiers">How SAFe's Three Tiers Carry the Obligation Structure</h2>
+
+        <p>Scrum at the team level handles the sprint-cadence obligations. But the EU AI Act's requirements span more than one delivery tier. Article 17's quality management system, the programme-level technical file, and the strategic risk classification decisions that determine whether a system falls under Annex III at all — these operate at programme and portfolio level. SAFe's architecture provides a natural structural match.</p>
+
+        <!-- FIGURE 1: SAFe governance structure -->
         <div class="article-figure reveal">
-          <div class="article-figure__inner" id="fig1-container">
-            <!-- SVG injected by script -->
-          </div>
-          <div class="article-figure__caption">
-            <strong>Figure 1 —</strong> Nine EU AI Act obligations mapped to their corresponding Agile delivery artefacts. Each connection represents a direct structural match between a regulatory requirement and an existing Agile work product.
-          </div>
+          <span class="article-figure__label">Figure 1 — SAFe as EU AI Act compliance backbone</span>
+          <div class="article-figure__inner" id="fig1-container"></div>
+          <div class="article-figure__caption">SAFe's three-tier structure — Portfolio/LPM, ART, and Agile Team — each carrying a distinct tier of EU AI Act obligations. The diagram shows which articles are owned at which level, and which SAFe ceremonies are the natural delivery vehicles for each obligation.</div>
         </div>
 
-        <p>The implication of this mapping is significant. Most of these artefacts already exist in mature Agile teams: risk registers, data documentation, logging infrastructure, monitoring dashboards, architecture records. The compliance gap is rarely about creating new artefacts from scratch. It is about ensuring that existing artefacts are comprehensive enough, versioned correctly, and generated at the right points in the delivery cycle rather than retrospectively.</p>
+        <p>The Portfolio level owns the decisions that no sprint team can make alone: is this system high-risk under Annex III? Does it require a Fundamental Rights Impact Assessment? What is the conformity assessment pathway — internal or Notified Body? These are strategic AI governance questions that belong in portfolio-level governance, funded through lean budget guardrails, and tracked in the portfolio Kanban alongside other compliance epics.</p>
 
-        <h2 id="safe">Where SAFe Adds Structural Leverage</h2>
+        <p>The ART level owns the cross-team coordination that individual squads cannot self-organise: the Annex IV technical file (authored and maintained by the System Architect role), the programme-level risk register, and the PI-cadence inspection of conformity status. PI Planning is the natural vehicle for Article 4's literacy obligations — competency gaps assessed, training epics planned, roles confirmed against the Act's requirements for qualified personnel.</p>
 
-        <p>Scrum alone provides the sprint-level mechanics. But the EU AI Act's obligations span multiple levels of an organisation's delivery structure — from team-level sprint work to programme-level quality management to portfolio-level strategic governance. SAFe's three-tier architecture provides a natural home for each obligation tier.</p>
+        <p>The Team level executes the sprint-cadence work: risk register updates in the DoD, dataset cards on data stories, override mechanisms in acceptance criteria, observability pipeline maintenance in the definition of done for MLOps stories. Not additional work — engineering work, specified correctly.</p>
 
-        <p>This is not incidental. SAFe was designed to coordinate governance across complex, multi-team programmes — precisely the context in which high-risk AI systems are typically built. The alignment between SAFe's governance layers and the Act's obligation tiers is structurally coherent:</p>
+        <h2 id="mapping">The Obligation-to-Artefact Map</h2>
 
-        <!-- FIGURE 2: SAFe ↔ EU AI Act governance structure -->
+        <p>The second diagram makes the full mapping explicit — nine EU AI Act obligations, each connected to the specific Agile delivery artefact that constitutes its compliance evidence. This is not a conceptual alignment. Each connection represents a precise structural match: the obligation defines what must exist; the artefact is what existence looks like in a delivery context.</p>
+
+        <!-- FIGURE 2: Full obligation mapping -->
         <div class="article-figure reveal">
-          <div class="article-figure__inner" id="fig2-container">
-            <!-- SVG injected by script -->
-          </div>
-          <div class="article-figure__caption">
-            <strong>Figure 2 —</strong> SAFe's Portfolio, ART, and Team layers each carry specific EU AI Act obligations. Key ceremonies and roles are annotated at each level to show where governance work is performed and owned.
-          </div>
+          <span class="article-figure__label">Figure 2 — EU AI Act obligations mapped to Agile delivery artefacts</span>
+          <div class="article-figure__inner" id="fig2-container"></div>
+          <div class="article-figure__caption">Nine EU AI Act obligations — Articles 4, 9, 10, 12, 13, 14, 17, Annex IV, and post-market monitoring — each connected through a technical bridge to a corresponding Agile delivery artefact. The artefact is the compliance evidence, not a description of it.</div>
         </div>
 
-        <h3>Team Level: Sprint Obligations</h3>
-        <p>At the team level, Articles 9, 10, 12, and 14 are the primary obligations. These are operationalised through the Definition of Done, acceptance criteria on data-touching stories, and the test and monitoring artefacts that sprint teams produce as standard engineering output. The compliance work is not additional work — it is the engineering work, specified correctly.</p>
+        <p>The two artefact categories that most consistently surprise teams when they first see this mapping are Article 12 (record-keeping) and Article 13 (transparency). Article 12 is not a logging policy — it is the observability stack itself: structured event logs, audit trails on inference decisions, and the retention and access architecture that makes those logs usable for post-incident review. Teams building production AI systems should have this infrastructure anyway. The Act makes it non-optional and specifies minimum content requirements. Article 13's transparency obligation maps to model cards and API documentation — artefacts that responsible ML practice has been advocating for years. The Act converts advocacy into obligation.</p>
 
-        <h3>ART Level: PI Obligations</h3>
-        <p>At the Agile Release Train level, PI Planning is the natural vehicle for Article 4 compliance (literacy assessments, competency planning) and for the cross-team alignment of risk management approaches under Article 9. The ART System Demo every PI provides a natural cadence for reviewing the technical documentation file required under Annex IV and updating the conformity assessment status. The Chief Architect and System Team roles at ART level are the natural owners of the Annex IV technical file.</p>
+        <h2 id="where-it-breaks">Where the Coalescing Actually Breaks Down</h2>
 
-        <h3>Portfolio Level: Programme Obligations</h3>
-        <p>Article 17's quality management system requirement operates at programme or portfolio level. This is governance infrastructure: engineering standards, development methodologies, post-market monitoring strategies, and incident response procedures. In SAFe, the Lean-Agile Centre of Excellence (LACE) or equivalent governance body is the natural owner. Portfolio Kanban and the portfolio budget cycle are the mechanisms through which compliance infrastructure investment is prioritised and funded.</p>
+        <p>The structural alignment is real. But three conditions cause it to fracture in practice — and they are worth naming precisely because they are not the problems most organisations spend time on.</p>
 
-        <div class="info-box info-box--gold">
-          <div class="info-box__label">✦ The Governance Layer Pattern</div>
-          <p>The most effective implementation pattern seen in practice: establish a <strong>Compliance Chapter</strong> — a cross-cutting community of practice that sits across all three SAFe tiers, maintains the live regulatory mapping, owns the Annex IV technical file, and participates in PI Planning as a capacity stakeholder. This is not a separate compliance team. It is a cross-functional accountability structure that ensures every tier owns its obligations without creating organisational silos.</p>
-        </div>
+        <p><strong>Artefact drift.</strong> The technical file and risk register are accurate at sprint zero and progressively wrong thereafter. This is the most common failure mode in systems that have been in development for more than two PI cycles. The fix is not a quarterly review — it is making artefact currency a pipeline gate. A deployment that updates the model without a corresponding commit to the technical file fails the build. This sounds harsh until you consider that a Notified Body assessing a system whose technical file is six months behind its codebase will not treat that charitably.</p>
 
-        <h2 id="artefacts">Engineering the Artefacts Correctly</h2>
+        <p><strong>The Article 14 implementation gap.</strong> Already described in the artefact section above, but worth restating as a structural point: every team that has written a human oversight policy and not shipped a working override mechanism has a compliance liability they may not have priced. The gap between "we have a process for this" and "we have a tested feature for this" is the gap between describing Article 14 and satisfying it.</p>
 
-        <p>The mapping table above describes what artefacts need to exist. What it does not describe is what makes those artefacts adequate for conformity assessment. This is where most implementation efforts fall short: teams produce the artefacts but produce them in forms that are not assessable — risk registers without severity ratings, data lineage records without transformation logs, monitoring dashboards without baseline thresholds.</p>
-
-        <p>Here are the technical specifications that make each major artefact assessment-ready:</p>
-
-        <div class="pillars-grid">
-          <div class="pillar-card">
-            <div class="pillar-card__num">Article 9 · Sprint</div>
-            <div class="pillar-card__title">Risk Register</div>
-            <div class="pillar-card__desc">Must include: risk ID, description, affected population, severity (likelihood × impact), current mitigation status, residual risk, and the sprint in which the risk was first identified. Version-controlled, not a static document.</div>
-          </div>
-          <div class="pillar-card">
-            <div class="pillar-card__num">Article 10 · Sprint</div>
-            <div class="pillar-card__title">Data Lineage Record</div>
-            <div class="pillar-card__desc">Must trace: data source, collection methodology, preprocessing transformations, quality validation results, known biases, and exclusion decisions. Updated when training data changes, not when the model is deployed.</div>
-          </div>
-          <div class="pillar-card">
-            <div class="pillar-card__num">Article 14 · Sprint</div>
-            <div class="pillar-card__title">Human Oversight Spec</div>
-            <div class="pillar-card__desc">Must specify: the exact conditions triggering human review, the review queue interface, SLA for review completion, escalation path, and the override mechanism. Tested as an acceptance criterion, not described in a policy document.</div>
-          </div>
-          <div class="pillar-card">
-            <div class="pillar-card__num">Annex IV · Release</div>
-            <div class="pillar-card__title">Technical File</div>
-            <div class="pillar-card__desc">Must include: system description, intended purpose, architecture diagrams (version-controlled), test results with pass/fail criteria, risk management summary, and post-market monitoring plan. Updated at every release, not created at certification time.</div>
-          </div>
-        </div>
-
-        <h2 id="cicd">Embedding Compliance in the CI/CD Pipeline</h2>
-
-        <p>The highest-leverage technical integration is moving compliance gates into the CI/CD pipeline. When compliance checks run automatically on every build and deployment, the artefact maintenance burden drops significantly and the evidence trail becomes continuous rather than episodic.</p>
-
-        <p>Three pipeline integration points have the highest return:</p>
-
-        <ul>
-          <li><strong>Data quality gates</strong> — automated checks that validate training and inference data against defined quality criteria before any model update is promoted. Failures block the pipeline and generate an artefact update requirement.</li>
-          <li><strong>Model performance regression checks</strong> — tests that compare new model versions against baseline accuracy, fairness, and robustness metrics. Regressions beyond defined thresholds require a risk register update before the story can be closed.</li>
-          <li><strong>Documentation freshness checks</strong> — linting rules that verify the Annex IV technical file and risk register were updated in the same commit batch as the model change. A deployment that updates the model without updating the documentation fails the pipeline.</li>
-        </ul>
+        <p><strong>Tier disconnection.</strong> Team-level governance artefacts — risk register updates, dataset cards, DoD compliance items — exist but are never aggregated upward into the programme-level technical file. The sprint team updates their risk register; nobody rolls it into the Annex IV documentation; the System Architect is maintaining a separate document that diverges from what teams are actually tracking. This is a governance architecture problem, not a compliance knowledge problem. The solution is a single source-of-truth for the technical file, with automated aggregation from team-level artefacts — not three separate documents maintained by three separate people.</p>
 
         <div class="info-box info-box--teal">
-          <div class="info-box__label">◈ Implementation Note: Compliance as Code</div>
-          <p>Teams that have implemented compliance gates in CI/CD consistently report that the artefact quality improves not because engineers are forced to update documentation, but because the pipeline makes the relationship between code changes and documentation requirements explicit and immediate. When a data transformation change automatically surfaces a required data lineage update, engineers understand the connection — they are not filing compliance paperwork, they are completing their engineering story.</p>
+          <div class="info-box__label">◈ The Diagnostic Question</div>
+          <p>If you want a fast read on where your organisation stands: ask your System Architect or Chief Engineer to show you the current Annex IV technical file and point to the sprint story that last updated it. If those two things cannot be connected in under two minutes, you have a tier disconnection problem — and the other artefact issues are probably downstream of the same root cause.</p>
         </div>
 
-        <h2 id="antipatterns">Three Anti-Patterns That Break the Coalescing</h2>
+        <h2 id="signal">What This Changes About How You Read the Regulation</h2>
 
-        <p>The structural alignment between the Act and Agile is real, but it is not automatic. Three delivery anti-patterns consistently undermine the technical coalescing in practice:</p>
+        <p>The practical implication of the structural alignment argument is this: the EU AI Act should be read by engineering leads and delivery managers — not just by legal and compliance functions. Not because engineers need to become regulatory experts, but because the Act's technical obligations are engineering specifications. Article 15's accuracy and robustness requirements are test criteria. Article 10's data governance obligations are data quality standards. Article 9's risk management system is a risk-register specification.</p>
 
-        <ul class="timeline-list">
-          <li>
-            <div class="tl-date">Anti-Pattern 01</div>
-            <div class="tl-event">The Compliance Sprint</div>
-            <div class="tl-note">Reserving a dedicated sprint at the end of a programme increment for "compliance catch-up." This is structurally identical to the bolt-on model — it just happens inside the Agile ceremony structure rather than outside it. Artefacts produced in a compliance sprint lack the development-time evidence trail that Notified Bodies require. Risk registers written after the fact are reconstructions, not records.</div>
-          </li>
-          <li>
-            <div class="tl-date">Anti-Pattern 02</div>
-            <div class="tl-event">The Compliance Owner Silo</div>
-            <div class="tl-note">Designating a single team member as the "compliance owner" who is responsible for all regulatory artefacts. This concentrates a bottleneck, creates knowledge fragility, and — critically — severs the connection between the engineers making decisions and the artefacts that must record those decisions. Governance artefacts need to be owned by the people making the corresponding technical decisions.</div>
-          </li>
-          <li>
-            <div class="tl-date">Anti-Pattern 03</div>
-            <div class="tl-event">The Policy-Not-Test Fallacy</div>
-            <div class="tl-note">Satisfying Article 14's human oversight requirement with a policy document describing the intended oversight mechanism, rather than a tested, working implementation. The Act requires that human oversight be technically achievable — meaning the override mechanism must exist in the deployed system and must be tested under realistic conditions. A policy that describes a mechanism that was never built is not compliance.</div>
-          </li>
-        </ul>
+        <p>Legal teams reading the Act produce policy documents. Engineering teams reading it produce artefact specifications. Both are necessary. But organisations that route the Act exclusively through legal functions and then hand requirements downstream to delivery teams are doing the translation in the wrong direction — and introducing latency and distortion at every step.</p>
 
-        <h2 id="velocity">The Delivery Efficiency Case</h2>
-
-        <p>The final point — and the one that most often surprises sceptical product owners and programme managers — is that structural compliance integration tends to <em>improve</em> delivery efficiency over time, not reduce it.</p>
-
-        <p>The mechanism is straightforward. When compliance artefacts are maintained continuously, they become living documentation of the system's behaviour, constraints, and decision history. Teams with current, accurate technical files and risk registers spend significantly less time reconstructing context when requirements change, when incidents occur, or when new team members join. The artefact maintenance cost is real but front-loaded; the context reconstruction cost it replaces is recurring and invisible until it is not.</p>
-
-        <div class="obligation-grid">
-          <div class="obl-item">
-            <div class="obl-item__check">↑</div>
-            <div class="obl-item__text"><strong>Onboarding speed</strong> improves when the technical file and risk register are accurate and current. New engineers understand system constraints in days, not weeks.</div>
+        <div class="checklist">
+          <div class="checklist-item checklist-item--pass">
+            <div class="checklist-item__icon">✓</div>
+            <div class="checklist-item__text"><strong>Engineering leads read the technical articles directly.</strong> Articles 9, 10, 12, 14, 15, and Annex IV are engineering specifications. The people writing acceptance criteria should have read them.</div>
           </div>
-          <div class="obl-item">
-            <div class="obl-item__check">↑</div>
-            <div class="obl-item__text"><strong>Incident response speed</strong> improves when monitoring artefacts are well-specified and the oversight pathway is tested. Teams know exactly what to do when drift or anomaly is detected.</div>
+          <div class="checklist-item checklist-item--pass">
+            <div class="checklist-item__icon">✓</div>
+            <div class="checklist-item__text"><strong>Artefact specifications precede ceremony changes.</strong> Define what each artefact must contain before changing how ceremonies work. The DoD change is the last step, not the first.</div>
           </div>
-          <div class="obl-item">
-            <div class="obl-item__check">↑</div>
-            <div class="obl-item__text"><strong>Regulatory responsiveness</strong> improves when the compliance infrastructure is already built. Adapting to new implementing acts or sector guidance is configuration, not construction.</div>
+          <div class="checklist-item checklist-item--warn">
+            <div class="checklist-item__icon">△</div>
+            <div class="checklist-item__text"><strong>Validate Article 14 as a tested feature, not a process description.</strong> Before any other compliance work, confirm that your human oversight mechanism exists in the deployed system and has acceptance test coverage.</div>
+          </div>
+          <div class="checklist-item checklist-item--warn">
+            <div class="checklist-item__icon">△</div>
+            <div class="checklist-item__text"><strong>Establish a single technical file with automated aggregation.</strong> Team-level artefacts should flow upward automatically. If the Annex IV file requires manual curation from multiple sources, it will drift.</div>
+          </div>
+          <div class="checklist-item checklist-item--fail">
+            <div class="checklist-item__icon">✗</div>
+            <div class="checklist-item__text"><strong>Do not treat dataset documentation as optional.</strong> Article 10 dataset cards are primary compliance evidence, not supplementary documentation. Teams without them have a genuine gap — not an artefact quality issue.</div>
           </div>
         </div>
 
-        <p>The EU AI Act is ultimately a specification for how to build AI systems responsibly. Agile and SAFe are specifications for how to deliver complex software reliably. Both are, at root, engineering discipline frameworks. The coalescing happens when teams stop treating compliance as a regulatory addition to engineering work and start treating it as a dimension of engineering quality — because structurally, technically, and practically, that is exactly what it is.</p>
+        <p>The EU AI Act is stringent. Its conformity assessment requirements are substantive and its enforcement trajectory is clear. But for organisations already practising disciplined Agile delivery, the distance to compliance is not a chasm — it is a set of specific, definable artefact quality improvements and two or three structural changes to how artefacts flow between delivery tiers. The coalescing is already happening. The task is to see it clearly enough to complete it.</p>
 
         <div class="author-bio">
           <div class="author-bio__avatar">AB</div>
@@ -477,7 +436,7 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
             <p class="author-bio__desc">Based in Brussels, Anjish advises European financial institutions and technology organisations on AI governance strategy, EU AI Act compliance integration, and enterprise Agile delivery. He works at the intersection of regulatory requirements and delivery practice, helping teams build compliance capability that is operationally sustainable.</p>
             <div class="author-bio__links">
               <a href="https://linkedin.com/in/anjish" target="_blank" rel="noopener" class="author-bio__link">LinkedIn →</a>
-              <a href="blog-ai-governance-agile.html" class="author-bio__link">Read: Embedding AI Governance →</a>
+              <a href="blog-ai-governance-agile.html" class="author-bio__link">Earlier: Embedding AI Governance →</a>
               <a href="blog-eu-ai-act.html" class="author-bio__link">Read: EU AI Act Deep-Dive →</a>
               <a href="blogs.html" class="author-bio__link">More Blogs →</a>
             </div>
@@ -486,16 +445,15 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 
       </article>
 
-      <!-- TOC -->
       <aside class="article-toc">
         <div class="article-toc__label">Contents</div>
         <ul class="article-toc__list">
-          <li><a href="#architecture">Structural Alignment</a></li>
-          <li><a href="#safe">SAFe's Three Tiers</a></li>
-          <li><a href="#artefacts">Engineering the Artefacts</a></li>
-          <li><a href="#cicd">CI/CD Integration</a></li>
-          <li><a href="#antipatterns">Three Anti-Patterns</a></li>
-          <li><a href="#velocity">The Efficiency Case</a></li>
+          <li><a href="#lifecycle">Two Descriptions of One Lifecycle</a></li>
+          <li><a href="#artefact-gap">The Artefact Gap</a></li>
+          <li><a href="#safe-tiers">SAFe's Three Tiers</a></li>
+          <li><a href="#mapping">Obligation-to-Artefact Map</a></li>
+          <li><a href="#where-it-breaks">Where It Breaks Down</a></li>
+          <li><a href="#signal">How to Read the Regulation</a></li>
         </ul>
       </aside>
 
@@ -515,33 +473,23 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 </footer>
 
 <script>
-// Nav scroll
 window.addEventListener('scroll',()=>{
   document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>10);
 });
-// Mobile menu
 document.getElementById('hamburger').addEventListener('click',()=>{
   document.getElementById('mobile-menu').classList.toggle('open');
 });
-// Reveal
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
 },{threshold:0.05});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-// TOC active
 const headings = document.querySelectorAll('.article-body h2[id]');
 const tocLinks = document.querySelectorAll('.article-toc__list a');
 window.addEventListener('scroll',()=>{
   let current='';
-  headings.forEach(h=>{
-    if(window.scrollY>=h.offsetTop-120) current=h.id;
-  });
-  tocLinks.forEach(a=>{
-    a.classList.toggle('active',a.getAttribute('href')==='#'+current);
-  });
+  headings.forEach(h=>{ if(window.scrollY>=h.offsetTop-120) current=h.id; });
+  tocLinks.forEach(a=>{ a.classList.toggle('active',a.getAttribute('href')==='#'+current); });
 });
-
-// Inline SVGs into figure containers
 async function loadSVG(url, containerId) {
   try {
     const resp = await fetch(url);
@@ -550,8 +498,8 @@ async function loadSVG(url, containerId) {
     if (container) container.innerHTML = text;
   } catch(e) { console.warn('SVG load failed:', url, e); }
 }
-loadSVG('eu_ai_act_agile_complete_mapping.svg', 'fig1-container');
-loadSVG('safe_eu_ai_act_governance_structure.svg', 'fig2-container');
+loadSVG('safe_eu_ai_act_governance_structure.svg', 'fig1-container');
+loadSVG('eu_ai_act_agile_complete_mapping.svg', 'fig2-container');
 </script>
 </body>
 </html>
