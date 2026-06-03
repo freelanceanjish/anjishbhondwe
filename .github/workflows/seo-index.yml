@@ -20,12 +20,17 @@ jobs:
       - name: Regenerate Atom feed
         run: python3 scripts/generate_feed.py
 
-      - name: Submit sitemap URLs (IndexNow + pings)
+      - name: Notify search engines (IndexNow + pings)
         run: python3 scripts/submit_to_search_engines.py
 
-      - name: Submit sitemap to Google Search Console (API)
+      - name: Google Search Console sitemap (API)
         env:
           GOOGLE_SEARCH_CONSOLE_JSON: ${{ secrets.GOOGLE_SEARCH_CONSOLE_JSON }}
         run: |
           pip install -q google-api-python-client google-auth
           python3 scripts/google_search_console_submit.py
+
+      - name: Google Indexing API (priority URLs)
+        env:
+          GOOGLE_SEARCH_CONSOLE_JSON: ${{ secrets.GOOGLE_SEARCH_CONSOLE_JSON }}
+        run: python3 scripts/google_indexing_api.py
