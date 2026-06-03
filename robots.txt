@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anjish.io/sitemap.xml
+Sitemap: https://anjishbhondwe.com/sitemap.xml

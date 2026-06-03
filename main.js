@@ -159,3 +159,19 @@ const statsObserver = new IntersectionObserver((entries) => {
 
 const statsBlock = document.querySelector('.hero-stats');
 if (statsBlock) statsObserver.observe(statsBlock);
+
+/* ── CONTACT FORM (mailto) ── */
+const contactForm = document.getElementById('portfolio-contact-form');
+contactForm?.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('cf-name')?.value?.trim() || '';
+  const from = document.getElementById('cf-email')?.value?.trim() || '';
+  const company = document.getElementById('cf-company')?.value?.trim() || '';
+  const inquiry = document.getElementById('cf-type')?.value || '';
+  const message = document.getElementById('cf-message')?.value?.trim() || '';
+  const subject = encodeURIComponent(`Portfolio inquiry: ${inquiry}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nEmail: ${from}\nOrganisation: ${company}\nInquiry: ${inquiry}\n\n${message}`
+  );
+  window.location.href = `mailto:freelanceanjish@gmail.com?subject=${subject}&body=${body}`;
+});
