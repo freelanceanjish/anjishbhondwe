@@ -83,14 +83,9 @@ document.querySelectorAll('.article-card[data-url]').forEach(card => {
   });
 });
 
-/* ── CLIENT LOGOS: tooltip / label fade ── */
-document.querySelectorAll('.client-logo').forEach(logo => {
-  logo.addEventListener('mouseenter', () => {
-    logo.querySelector('.client-label')?.style.setProperty('color', 'var(--vl)');
-  });
-  logo.addEventListener('mouseleave', () => {
-    logo.querySelector('.client-label')?.style.setProperty('color', '');
-  });
+/* ── CLIENT CARDS: optional focus state ── */
+document.querySelectorAll('.client-card').forEach(card => {
+  card.setAttribute('tabindex', '0');
 });
 
 /* ── SMOOTH SCROLL OFFSET (account for fixed nav) ── */
