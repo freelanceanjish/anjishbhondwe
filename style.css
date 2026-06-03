@@ -287,14 +287,14 @@ nav.scrolled { border-bottom-color: var(--border); }
   font-weight: 300;
   line-height: 1;
   letter-spacing: -.02em;
-  color: var(--text);
+  color: var(--blue-40);
   margin-bottom: .5rem;
   opacity: 0;
   animation: ibmFadeUp .6s ease .25s forwards;
 }
 .hero-name strong {
-  font-weight: 300;
-  color: inherit;
+  font-weight: 600;
+  color: var(--blue-40);
 }
 
 .hero-title {
