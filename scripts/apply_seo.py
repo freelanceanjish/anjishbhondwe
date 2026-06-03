@@ -24,12 +24,70 @@ SOCIAL_BLOCK = """
   <meta property="og:locale" content="en_GB">
   <meta property="og:image" content="{og_image}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@anjish">
-  <meta name="twitter:creator" content="@anjish">
   <meta name="twitter:image" content="{og_image}">
 """
 
 MARKER = "<!-- seo:social -->"
+
+MONTH_MAP = {
+    "january": "01", "february": "02", "march": "03", "april": "04",
+    "may": "05", "june": "06", "july": "07", "august": "08",
+    "september": "09", "october": "10", "november": "11", "december": "12",
+}
+
+
+def discover_blog_dates() -> dict[str, str]:
+    """Map blog-*.html files to ISO dates from hero-date or defaults."""
+    dates = dict(BLOG_DATES)
+    for blog in sorted(ROOT.glob("blog-*.html")):
+        if blog.name in dates:
+            continue
+        content = blog.read_text(encoding="utf-8", errors="ignore")
+        m = re.search(r'class="hero-date">([^<]+)<', content)
+        if m:
+            label = m.group(1).strip().lower()
+            parts = label.split()
+            if len(parts) == 2 and parts[0] in MONTH_MAP:
+                dates[blog.name] = f"{parts[1]}-{MONTH_MAP[parts[0]]}-01"
+                continue
+        dates[blog.name] = "2026-01-01"
+    return dates
+
+
+def regenerate_sitemap(blog_dates: dict[str, str]) -> None:
+    """Write sitemap.xml from known pages and blog-*.html files."""
+    from datetime import date
+
+    today = date.today().isoformat()
+    entries = [
+        (f"{SITE}/", today, "weekly", "1.0"),
+        (f"{SITE}/blogs.html", today, "weekly", "0.9"),
+    ]
+    for name in sorted(blog_dates, reverse=True):
+        entries.append((f"{SITE}/{name}", blog_dates[name], "monthly", "0.85"))
+    entries.extend([
+        (f"{SITE}/work.html", today, "monthly", "0.8"),
+        (f"{SITE}/insights.html", today, "weekly", "0.75"),
+        (f"{SITE}/contact.html", today, "yearly", "0.5"),
+    ])
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        "",
+    ]
+    for loc, lastmod, freq, priority in entries:
+        lines += [
+            "  <url>",
+            f"    <loc>{loc}</loc>",
+            f"    <lastmod>{lastmod}</lastmod>",
+            f"    <changefreq>{freq}</changefreq>",
+            f"    <priority>{priority}</priority>",
+            "  </url>",
+            "",
+        ]
+    lines.append("</urlset>\n")
+    (ROOT / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
+    print(f"Regenerated sitemap.xml ({len(entries)} URLs)")
 
 
 def has_marker(head: str) -> bool:
@@ -243,7 +301,6 @@ def enhance_index(html: str) -> str:
   <meta name="geo.placename" content="Brussels">
   <meta property="og:site_name" content="Anjish Bhondwe">
   <meta property="og:locale" content="en_GB">
-  <meta name="twitter:site" content="@anjish">
 """
     if 'name="geo.region"' not in html:
         html = html.replace(
@@ -311,8 +368,13 @@ def main() -> None:
     index = (ROOT / "index.html").read_text(encoding="utf-8")
     (ROOT / "index.html").write_text(enhance_index(index), encoding="utf-8")
 
-    for name in BLOG_DATES:
+    blog_dates = discover_blog_dates()
+    regenerate_sitemap(blog_dates)
+
+    for name in blog_dates:
         path = ROOT / name
+        if not path.exists():
+            continue
         html = path.read_text(encoding="utf-8")
         path.write_text(inject_after_canonical(html, blog_seo_block(path, html)), encoding="utf-8")
 

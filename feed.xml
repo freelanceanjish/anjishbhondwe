@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Anjish Bhondwe — Blog</title>
+  <link href="https://anjishbhondwe.com/blogs.html"/>
+  <id>https://anjishbhondwe.com/</id>
+  <updated>2025-08-01T00:00:00Z</updated>
+  <author><name>Anjish Bhondwe</name></author>
+  <entry>
+    <title>EU AI Act: Governance Pillars, Risk Framework &amp; What Organisations Must Do Now</title>
+    <link href="https://anjishbhondwe.com/blog-eu-ai-act.html"/>
+    <id>https://anjishbhondwe.com/blog-eu-ai-act.html</id>
+    <updated>2025-05-01T00:00:00Z</updated>
+    <summary>A comprehensive breakdown of the EU AI Act's six governance pillars, four-tier risk classification, Annex III high-risk categories, and the compliance obligations every organisation in Europe must meet by 2026.</summary>
+  </entry>
+  <entry>
+    <title>EU AI Act + Agile Delivery: How They Technically Coalesce</title>
+    <link href="https://anjishbhondwe.com/blog-eu-ai-act-agile-coalesce.html"/>
+    <id>https://anjishbhondwe.com/blog-eu-ai-act-agile-coalesce.html</id>
+    <updated>2025-08-01T00:00:00Z</updated>
+    <summary>The EU AI Act and Agile are not two systems in tension. At the level of technical artefacts, they are structurally the same lifecycle — and understanding that changes everything about how you build compliant AI.</summary>
+  </entry>
+  <entry>
+    <title>Embedding AI Governance Into Agile Delivery from Day One</title>
+    <link href="https://anjishbhondwe.com/blog-ai-governance-agile.html"/>
+    <id>https://anjishbhondwe.com/blog-ai-governance-agile.html</id>
+    <updated>2025-07-01T00:00:00Z</updated>
+    <summary>How to bake EU AI Act compliance into sprint ceremonies, backlog hygiene, and team rituals so governance is never a bolt-on audit event.</summary>
+  </entry>
+  <entry>
+    <title>Why Most Agile Transformations Fail Before They Start</title>
+    <link href="https://anjishbhondwe.com/blog-agile-transformations.html"/>
+    <id>https://anjishbhondwe.com/blog-agile-transformations.html</id>
+    <updated>2025-06-01T00:00:00Z</updated>
+    <summary>The structural patterns repeated across European financial institutions — and the three things a Centre of Excellence must fix in the first 90 days.</summary>
+  </entry>
+</feed>

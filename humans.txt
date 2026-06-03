@@ -1,0 +1,11 @@
+/* TEAM */
+Name: Anjish Bhondwe
+Role: Enterprise Agile CoE & AI Governance Consultant
+Site: https://anjishbhondwe.com
+Location: Brussels, Belgium
+Contact: freelanceanjish@gmail.com
+
+/* SITE */
+Last update: 2026-06-03
+Standards: HTML5, CSS3, Schema.org JSON-LD
+Hosting: GitHub Pages

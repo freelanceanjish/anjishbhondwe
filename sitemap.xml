@@ -64,4 +64,11 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://anjishbhondwe.com/feed.xml</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
