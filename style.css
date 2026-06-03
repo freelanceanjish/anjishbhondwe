@@ -671,6 +671,7 @@ section { padding: var(--s8) 0; }
   transform: scale(1.06);
   filter: brightness(1.15) contrast(1.08) drop-shadow(0 4px 20px rgba(120,169,255,.35));
 }
+.client-card__logo img[src="Health_RFID_Logo.png"],
 .client-card__logo img[alt="HealthRFID"] {
   max-width: 200px;
   max-height: 52px;
