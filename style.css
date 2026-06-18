@@ -366,14 +366,15 @@ nav.scrolled { border-bottom-color: var(--border); }
   position: relative;
   opacity: 0;
   animation: ibmFadeLeft .7s ease .3s forwards;
-  background: var(--surface);
+  background: #f5c518;
   border: 1px solid var(--border-sm);
+  overflow: hidden;
 }
 .hero-img {
   width: 100%;
-  aspect-ratio: 1/1.1;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 18%;
   display: block;
   filter: none;
 }
@@ -1120,11 +1121,15 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
     animation: none !important;
     flex-shrink: 0;
   }
+  .hero-img-wrap {
+    max-width: min(100%, 420px);
+  }
   .hero-img {
     width: 100%;
     height: auto;
-    aspect-ratio: 4 / 5;
-    max-height: 360px;
+    aspect-ratio: 4 / 3;
+    max-height: none;
+    object-position: center 15%;
   }
   .hero-badge {
     left: 0.75rem;
