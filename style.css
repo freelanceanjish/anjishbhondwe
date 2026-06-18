@@ -364,10 +364,15 @@ nav.scrolled { border-bottom-color: var(--border); }
 /* hero image */
 .hero-img-wrap {
   position: relative;
-  opacity: 0;
-  animation: ibmFadeLeft .7s ease .3s forwards;
+  opacity: 1;
   border: 1px solid var(--border-sm);
   overflow: hidden;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-img-wrap {
+    opacity: 0;
+    animation: ibmFadeLeft .7s ease .3s forwards;
+  }
 }
 .hero-img {
   width: 100%;
