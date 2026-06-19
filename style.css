@@ -284,7 +284,7 @@ nav.scrolled { border-bottom-color: var(--border); }
 .hero-name {
   font-family: var(--fserif);
   font-size: clamp(3.5rem, 8vw, 8rem);
-  font-weight: 300;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: -.02em;
   color: var(--blue-40);
@@ -293,8 +293,8 @@ nav.scrolled { border-bottom-color: var(--border); }
   animation: ibmFadeUp .6s ease .25s forwards;
 }
 .hero-name strong {
-  font-weight: 600;
-  color: var(--blue-40);
+  font-weight: inherit;
+  color: inherit;
 }
 
 .hero-title {
