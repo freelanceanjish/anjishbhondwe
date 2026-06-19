@@ -33,7 +33,7 @@
   --text-3:    #8d8d8d;   /* Gray 50  */
   --text-inv:  #161616;   /* for blue bg */
 
-  /* hero yellow fallback only if image fails to load */
+  /* hero yellow — sampled from portrait background */
   --hero-yellow: #fec945;
 
   /* fonts */
@@ -268,11 +268,10 @@ nav.scrolled { border-bottom-color: var(--border); }
   margin-bottom: var(--s3);
 }
 
-/* Single image behind entire hero — one yellow, no split panels */
+/* Left: yellow + text. Right: portrait only, flush right. */
 .hero-studio {
-  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 44%);
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 48%);
   gap: 0;
   align-items: stretch;
   overflow: hidden;
@@ -280,33 +279,28 @@ nav.scrolled { border-bottom-color: var(--border); }
   background-color: var(--hero-yellow);
 }
 
-.hero-studio-bg {
+.hero-studio-copy {
+  padding: var(--s4) var(--s5) var(--s4) var(--s4);
+  min-width: 0;
+  background-color: var(--hero-yellow);
+  text-align: left;
+}
+
+.hero-studio-photo {
+  position: relative;
+  min-height: 100%;
+  background-color: var(--hero-yellow);
+  overflow: hidden;
+}
+
+.hero-portrait {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 92% center;
-  z-index: 0;
-  pointer-events: none;
-  user-select: none;
-}
-
-.hero-studio-copy,
-.hero-studio-photo {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-studio-copy {
-  padding: var(--s4) var(--s5) var(--s4) var(--s4);
-  min-width: 0;
-  background: transparent;
-}
-
-.hero-studio-photo {
-  min-height: 100%;
-  pointer-events: none;
+  object-position: right center;
+  display: block;
 }
 
 .hero-studio-photo .hero-badge {
@@ -374,6 +368,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   gap: var(--s2);
   flex-wrap: wrap;
   margin-bottom: var(--s4);
+  justify-content: flex-start;
 }
 
 .hero-studio .hero-stats {
@@ -1105,12 +1100,12 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
     grid-template-columns: 1fr;
     min-height: auto;
   }
-  .hero-studio-bg {
-    object-position: 88% center;
-  }
   .hero-studio-photo {
     order: -1;
-    min-height: 320px;
+    min-height: 340px;
+  }
+  .hero-portrait {
+    object-position: right center;
   }
   .expertise-cards { grid-template-columns: 1fr; }
   .comp-grid { grid-template-columns: 1fr 1fr; }
@@ -1147,13 +1142,13 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
     min-height: auto;
   }
 
-  .hero-studio-bg {
-    object-position: 82% 18%;
-  }
-
   .hero-studio-photo {
     order: -1;
-    min-height: 280px;
+    min-height: 300px;
+  }
+
+  .hero-portrait {
+    object-position: right 20%;
   }
 
   .hero-studio-photo .hero-badge {
