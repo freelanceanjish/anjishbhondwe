@@ -33,7 +33,7 @@
   --text-3:    #8d8d8d;   /* Gray 50  */
   --text-inv:  #161616;   /* for blue bg */
 
-  /* hero yellow fallback — matches portrait edge pixel #fec945 */
+  /* hero yellow fallback only if image fails to load */
   --hero-yellow: #fec945;
 
   /* fonts */
@@ -268,29 +268,49 @@ nav.scrolled { border-bottom-color: var(--border); }
   margin-bottom: var(--s3);
 }
 
-/* Single unified yellow studio band: copy + portrait */
+/* Single image behind entire hero — one yellow, no split panels */
 .hero-studio {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(400px, 520px);
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 46%);
   gap: 0;
-  background-color: var(--hero-yellow);
-  background-image: url(hero-yellow-bg.jpg);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
   align-items: stretch;
+  overflow: hidden;
+  min-height: 520px;
+  background-color: var(--hero-yellow);
+}
+
+.hero-studio-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% center;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-studio-copy,
+.hero-studio-photo {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-studio-copy {
   padding: var(--s4) var(--s5) var(--s4) var(--s4);
   min-width: 0;
+  background: transparent;
 }
 
 .hero-studio-photo {
-  position: relative;
-  background: transparent;
-  overflow: hidden;
   min-height: 100%;
+  pointer-events: none;
+}
+
+.hero-studio-photo .hero-badge {
+  pointer-events: auto;
 }
 
 .hero-studio .hero-name {
@@ -405,16 +425,6 @@ nav.scrolled { border-bottom-color: var(--border); }
 }
 .hero-studio .btn-linkedin {
   border-color: rgba(15, 98, 254, .45);
-}
-
-.hero-studio-photo .hero-img {
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  object-position: center 35%;
-  display: block;
 }
 
 .hero-studio-photo .hero-badge {
@@ -1093,16 +1103,14 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
 @media (max-width: 1100px) {
   .hero-studio {
     grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero-studio-bg {
+    object-position: 64% center;
   }
   .hero-studio-photo {
     order: -1;
-    max-height: none;
-  }
-  .hero-studio-photo .hero-img {
-    min-height: auto;
-    max-height: none;
-    aspect-ratio: 3 / 2;
-    object-position: center 30%;
+    min-height: 320px;
   }
   .expertise-cards { grid-template-columns: 1fr; }
   .comp-grid { grid-template-columns: 1fr 1fr; }
@@ -1136,18 +1144,16 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
 
   .hero-studio {
     grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-studio-bg {
+    object-position: 62% 20%;
   }
 
   .hero-studio-photo {
     order: -1;
-    max-height: none;
-  }
-
-  .hero-studio-photo .hero-img {
-    min-height: auto;
-    max-height: none;
-    aspect-ratio: 3 / 2;
-    object-position: center 30%;
+    min-height: 280px;
   }
 
   .hero-studio-photo .hero-badge {
