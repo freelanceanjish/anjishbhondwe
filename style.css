@@ -271,7 +271,7 @@ nav.scrolled { border-bottom-color: var(--border); }
 /* Left: extended portrait yellow. Right: cropped portrait, natural proportions. */
 .hero-studio {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   min-height: 520px;
   background-color: var(--hero-yellow);
   overflow: hidden;
@@ -289,19 +289,20 @@ nav.scrolled { border-bottom-color: var(--border); }
   flex: 0 0 auto;
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
+  align-self: center;
   background-color: var(--hero-yellow);
 }
 
 .hero-portrait {
   display: block;
-  height: 100%;
-  min-height: 520px;
-  max-height: 580px;
+  height: auto;
+  max-height: 520px;
   width: auto;
   object-fit: contain;
-  object-position: right bottom;
+  object-position: right center;
+  vertical-align: middle;
 }
 
 .hero-studio-photo .hero-badge {
