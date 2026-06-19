@@ -33,8 +33,10 @@
   --text-3:    #8d8d8d;   /* Gray 50  */
   --text-inv:  #161616;   /* for blue bg */
 
-  /* hero studio portrait yellow (sampled from blazer portrait) */
-  --hero-yellow: #fcc845;
+  /* hero studio yellow — sampled from anjish-studio-portrait.jpg background */
+  --hero-yellow: #fec844;
+  --hero-yellow-top: #fdc744;
+  --hero-yellow-bottom: #fcc542;
 
   /* fonts */
   --fserif: 'IBM Plex Serif', Georgia, serif;
@@ -273,7 +275,14 @@ nav.scrolled { border-bottom-color: var(--border); }
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(400px, 520px);
   gap: 0;
-  background: var(--hero-yellow);
+  background-color: var(--hero-yellow);
+  background-image: linear-gradient(
+    180deg,
+    var(--hero-yellow-top) 0%,
+    var(--hero-yellow) 40%,
+    var(--hero-yellow) 65%,
+    var(--hero-yellow-bottom) 100%
+  );
   align-items: stretch;
 }
 
@@ -284,7 +293,7 @@ nav.scrolled { border-bottom-color: var(--border); }
 
 .hero-studio-photo {
   position: relative;
-  background: var(--hero-yellow);
+  background: transparent;
   overflow: hidden;
   min-height: 100%;
 }
