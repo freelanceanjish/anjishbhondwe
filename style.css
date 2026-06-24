@@ -526,7 +526,7 @@ section { padding: var(--s8) 0; }
   position: relative;
   border-bottom: 1px solid var(--border-sm);
 }
-.comp-col li::before { content: '–'; position: absolute; left: 0; color: var(--blue-40); }
+.comp-col li::before { content: '•'; position: absolute; left: 0; color: var(--blue-40); }
 
 /* ── VENN SECTION ── */
 #venn {
@@ -574,7 +574,7 @@ section { padding: var(--s8) 0; }
 .job-loc { font-family: var(--fmono); font-size: .6875rem; color: var(--text-3); letter-spacing: .32px; margin-bottom: var(--s2); }
 .job-bullets { display: flex; flex-direction: column; gap: .5rem; }
 .job-bullets li { font-size: .875rem; color: var(--text-2); padding-left: 1rem; position: relative; line-height: 1.6; letter-spacing: .16px; }
-.job-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--blue-40); font-size: .7rem; top: .3rem; }
+.job-bullets li::before { content: '•'; position: absolute; left: 0; color: var(--blue-40); font-size: .7rem; top: .3rem; }
 .job-bullets li strong { color: var(--text); font-weight: 600; }
 .job-award {
   display: inline-flex;
@@ -772,7 +772,7 @@ section { padding: var(--s8) 0; }
 .contact-card p { font-size: .875rem; color: var(--text-2); line-height: 1.7; margin-bottom: var(--s3); letter-spacing: .16px; }
 .mandate-list { display: flex; flex-direction: column; gap: .4rem; margin-bottom: var(--s4); }
 .mandate-list li { font-size: .875rem; color: var(--text-2); padding-left: var(--s2); position: relative; letter-spacing: .16px; }
-.mandate-list li::before { content: '—'; position: absolute; left: 0; color: var(--teal); font-size: .7rem; top: .3rem; }
+.mandate-list li::before { content: '•'; position: absolute; left: 0; color: var(--teal); font-size: .7rem; top: .3rem; }
 
 .contact-form-panel {
   background: var(--bg2);
