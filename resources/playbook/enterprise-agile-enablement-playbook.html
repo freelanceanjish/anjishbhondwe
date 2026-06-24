@@ -140,6 +140,26 @@ tr:nth-child(even) td { background: #f4f4f4; }
 }
 .page-break { page-break-before: always; }
 .avoid-break { page-break-inside: avoid; }
+.print-brand-footer { display: none; }
+@media print {
+  body { padding-bottom: 10mm; }
+  .print-brand-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 9mm;
+    padding: 2mm 14mm 0;
+    font-size: 7.5pt;
+    color: #8d8d8d;
+    border-top: 0.5px solid #c6c6c6;
+    background: #fff;
+    z-index: 9999;
+  }
+}
 </style>
 </head>
 <body>
@@ -583,10 +603,11 @@ tr:nth-child(even) td { background: #f4f4f4; }
 
 <div class="quote">I do not start with frameworks. I start with the federated operating model, stand up enterprise delivery enablement through a CoE, pilot in one real slice, then roll out in waves with governance embedded in flow.</div>
 
-<p class="footer-note">Enterprise Agile Enablement — Study Bible &amp; Leadership Playbook · Version 1.0 · June 2026<br>
-Companion implementation guide: anjishbhondwe.com/blog-enterprise-agile-enablement.html</p>
-
 </section>
+
+<p class="footer-note">Enterprise Agile Enablement — Study Bible &amp; Leadership Playbook · Version 1.0 · June 2026</p>
+
+<div class="print-brand-footer"><span>Anjish Bhondwe</span><span>anjishbhondwe.com</span></div>
 
 </body>
 </html>

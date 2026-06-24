@@ -1,4 +1,4 @@
-@page { size: A4; margin: 14mm 14mm 18mm 14mm; }
+@page { size: A4; margin: 14mm 14mm 20mm 14mm; }
 @page :first { margin-top: 0; }
 *, *::before, *::after { box-sizing: border-box; }
 body {
@@ -100,3 +100,29 @@ tr:nth-child(even) td { background: #f4f4f4; }
 .toc ol { list-style: none; padding: 0; }
 .toc li { font-size: 9.5pt; padding: 1.5mm 0; border-bottom: 1px dotted #c6c6c6; display: flex; justify-content: space-between; }
 .toc .toc-part { margin-top: 4mm; font-size: 7.5pt; letter-spacing: 1px; text-transform: uppercase; color: #0f62fe; font-weight: 700; }
+
+/* Screen: hide print-only running footer */
+.print-brand-footer { display: none; }
+
+@media print {
+  body { padding-bottom: 10mm; }
+  .print-brand-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 9mm;
+    padding: 2mm 14mm 0;
+    font-size: 7.5pt;
+    color: #8d8d8d;
+    border-top: 0.5px solid #c6c6c6;
+    background: #fff;
+    z-index: 9999;
+  }
+  section.cover { padding-bottom: 16mm; }
+  section.cover + .print-brand-footer,
+  .print-brand-footer { background: transparent; border-top-color: #525252; color: #8d8d8d; }
+}
