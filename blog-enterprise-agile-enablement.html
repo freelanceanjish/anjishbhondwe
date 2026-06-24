@@ -363,14 +363,90 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 
         <p>This is where end-to-end scaling ownership begins. Decide how Agile works at enterprise level: decision rights, governance cadence, artefact standards, and role design (RTE, ART, PO, internal coaches, chapter leads).</p>
 
+        <h3 id="sketch-models">Sketch operating model options before you commit</h3>
+
+        <p>The most expensive mistake at this stage is picking one framework and calling it the operating model. In federated enterprises, the operating model is a set of choices about <strong>who decides, who enables, who delivers, and how work flows</strong> across entities. The right way to do this is to sketch two or three viable options, score them against named needs, and choose with sponsors before rollout spend begins.</p>
+
+        <p>Each sketch should answer the same questions on one page:</p>
+
         <ul>
-          <li><strong>Choose scaling backbone pragmatically</strong> (see framework mix section below)</li>
+          <li><strong>Scope:</strong> which BUs, countries, and shared services are in wave 1 vs. later waves</li>
+          <li><strong>Decision rights:</strong> what the CoE mandates centrally vs. what local entities adapt</li>
+          <li><strong>Scaling unit:</strong> ART, cluster, product group, or chapter-based model</li>
+          <li><strong>Planning rhythm:</strong> PI, quarterly planning, or continuous flow with checkpoint gates</li>
+          <li><strong>Enablement model:</strong> central CoE, federated coach network, or hybrid coach-the-coach</li>
+          <li><strong>Governance hooks:</strong> SteerCo, architecture forum, risk/compliance cadence</li>
+        </ul>
+
+        <p>Three operating model sketches I use frequently in regulated, federated environments:</p>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-card__num">Sketch A</div>
+            <div class="pillar-card__title">Central CoE + federated ARTs</div>
+            <div class="pillar-card__desc"><strong>Best when:</strong> you need one enterprise scaling standard across countries with local delivery autonomy. <strong>Fulfils:</strong> consistent PI governance, cross-border dependency management, group-wide metrics. <strong>Trade-off:</strong> slower local adaptation; requires strong CoE mandate.</div>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card__num">Sketch B</div>
+            <div class="pillar-card__title">BU-led clusters + light CoE</div>
+            <div class="pillar-card__desc"><strong>Best when:</strong> business units have strong P&amp;L ownership and resist central design. <strong>Fulfils:</strong> faster BU buy-in, local political fit, programme-level agility. <strong>Trade-off:</strong> inconsistent practices; harder group reporting and audit evidence.</div>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card__num">Sketch C</div>
+            <div class="pillar-card__title">Shared-services spine + product BUs</div>
+            <div class="pillar-card__desc"><strong>Best when:</strong> architecture, data, or compliance platforms are the main bottleneck. <strong>Fulfils:</strong> flow across platform and product teams, clearer dependency ownership, regulatory capacity planning. <strong>Trade-off:</strong> complex forum design; needs Flight Levels-style visibility above team level.</div>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-card__num">Sketch D</div>
+            <div class="pillar-card__title">Regulatory programme overlay</div>
+            <div class="pillar-card__desc"><strong>Best when:</strong> a hard regulatory deadline dominates capacity (ECB, GDPR, DORA, EU AI Act). <strong>Fulfils:</strong> predictable compliance delivery, audit-ready artefacts, explicit capacity reservation. <strong>Trade-off:</strong> product innovation can feel secondary unless capacity is protected in PI.</div>
+          </div>
+        </div>
+
+        <h3 id="fulfil-needs">Match the sketch to enterprise needs</h3>
+
+        <p>Do not ask "Are we a SAFe shop?" Ask which needs must be fulfilled in the next 12 to 18 months, then pick the sketch that serves them with the least organisational friction.</p>
+
+        <div class="obligation-grid">
+          <div class="obl-item">
+            <div class="obl-item__check">Need</div>
+            <div class="obl-item__text"><strong>Faster cross-BU delivery on shared outcomes</strong> → favour Sketch A or C with common PI cadence, shared dependency board, and one RTE forum across entities.</div>
+          </div>
+          <div class="obl-item">
+            <div class="obl-item__check">Need</div>
+            <div class="obl-item__text"><strong>Strong local autonomy in diverse countries</strong> → favour Sketch B with non-negotiable CoE standards (artefacts, metrics, compliance hooks) and flexible team structures locally.</div>
+          </div>
+          <div class="obl-item">
+            <div class="obl-item__check">Need</div>
+            <div class="obl-item__text"><strong>Platform or architecture bottleneck</strong> → favour Sketch C; use Flight Levels to expose where work stalls above team level before changing squad structures again.</div>
+          </div>
+          <div class="obl-item">
+            <div class="obl-item__check">Need</div>
+            <div class="obl-item__text"><strong>Regulatory deadline certainty</strong> → favour Sketch D layered onto A or C; reserve capacity explicitly and govern regulatory backlog jointly with Compliance.</div>
+          </div>
+          <div class="obl-item">
+            <div class="obl-item__check">Need</div>
+            <div class="obl-item__text"><strong>Enterprise enablement at leadership level</strong> → any sketch works only if the CoE owns enablement paths for RTEs, POs, and people managers; training alone does not fulfil this need.</div>
+          </div>
+          <div class="obl-item">
+            <div class="obl-item__check">Need</div>
+            <div class="obl-item__text"><strong>Board-ready transparency</strong> → pick the sketch with the clearest SteerCo narrative: outcomes, dependencies, regulatory capacity, and impediments escalated with owners.</div>
+          </div>
+        </div>
+
+        <div class="info-box info-box--gold">
+          <div class="info-box__label">✦ Selection workshop (half day)</div>
+          <p>Present three sketched operating models to sponsors and BU leads. Score each against six needs: speed, autonomy, compliance, enablement, transparency, and cost of change. Choose one target model and one fallback. Document what is mandated vs. optional. That decision record becomes the scaling blueprint input for Step 4 pilot design.</p>
+        </div>
+
+        <ul>
+          <li><strong>Choose scaling backbone pragmatically</strong> once the sketch is selected (see framework mix section below)</li>
           <li><strong>Define federated governance:</strong> what the CoE owns centrally vs. what BUs/countries adapt locally</li>
           <li><strong>Align SteerCo / PI / portfolio rhythms</strong> to regulatory and audit calendars</li>
           <li><strong>Standardise artefacts:</strong> backlogs, risks, dependencies, compliance evidence</li>
         </ul>
 
-        <p><strong>Outputs:</strong> target operating model, scaling blueprint, federated governance charter.</p>
+        <p><strong>Outputs:</strong> operating model option sketches, needs-fit decision record, target operating model, scaling blueprint, federated governance charter.</p>
 
         <h2 id="enablement">Step 3: Stand up enterprise delivery enablement</h2>
 
@@ -538,6 +614,8 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
         <ul class="article-toc__list">
           <li><a href="#diagnose">Step 1: Diagnose</a></li>
           <li><a href="#operating-model">Step 2: Operating model</a></li>
+          <li><a href="#sketch-models">Sketch model options</a></li>
+          <li><a href="#fulfil-needs">Match needs to model</a></li>
           <li><a href="#enablement">Step 3: Enablement</a></li>
           <li><a href="#pilot">Step 4: Pilot</a></li>
           <li><a href="#rollout">Step 5: Rollout waves</a></li>
