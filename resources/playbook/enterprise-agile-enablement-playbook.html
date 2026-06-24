@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <title>Enterprise Agile Enablement — Study Bible &amp; Leadership Playbook</title>
 <style>
-@page { size: A4; margin: 18mm 16mm 22mm 16mm; }
-@page :first { margin-top: 0; }
+@page { size: A4; margin: 18mm 14mm 24mm 14mm; }
 * { box-sizing: border-box; }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -17,8 +16,8 @@ body {
   print-color-adjust: exact;
 }
 .cover {
-  min-height: 297mm;
-  padding: 28mm 18mm 18mm;
+  min-height: 250mm;
+  padding: 20mm 16mm 20mm;
   background: #161616;
   color: #f4f4f4;
   page-break-after: always;
@@ -140,26 +139,7 @@ tr:nth-child(even) td { background: #f4f4f4; }
 }
 .page-break { page-break-before: always; }
 .avoid-break { page-break-inside: avoid; }
-.print-brand-footer { display: none; }
-@media print {
-  body { padding-bottom: 10mm; }
-  .print-brand-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 9mm;
-    padding: 2mm 14mm 0;
-    font-size: 7.5pt;
-    color: #8d8d8d;
-    border-top: 0.5px solid #c6c6c6;
-    background: #fff;
-    z-index: 9999;
-  }
-}
+.print-brand-footer { display: none !important; }
 </style>
 </head>
 <body>

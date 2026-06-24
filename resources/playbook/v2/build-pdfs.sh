@@ -1,5 +1,5 @@
 #!/bin/bash
-# Generate all v2 playbook PDFs via headless Chrome (branded footer, no file:// URL)
+# Generate all v2 playbook PDFs via headless Chrome + branded footer stamp
 set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"
 OUT="$DIR"
@@ -14,14 +14,29 @@ chrome_pdf() {
     --user-data-dir="$profile" \
     --print-to-pdf="$pdf" "file://$html" 2>/dev/null
   rm -rf "$profile"
-  echo "Created: $(basename "$pdf")"
+  echo "Rendered: $(basename "$pdf")"
 }
 
-chrome_pdf "$DIR/01-executive-brief.html" "$OUT/01-Executive-Brief.pdf"
-chrome_pdf "$DIR/02-practitioner-playbook.html" "$OUT/02-Practitioner-Playbook.pdf"
-chrome_pdf "$DIR/03-workshop-kit.html" "$OUT/03-Workshop-Kit.pdf"
-chrome_pdf "$DIR/04-steerco-pack.html" "$OUT/04-SteerCo-Pack.pdf"
-chrome_pdf "$DIR/../enterprise-agile-enablement-playbook.html" "$DIR/../Enterprise-Agile-Enablement-Study-Bible-and-Playbook.pdf"
+stamp_pdf() {
+  local pdf="$1"
+  local tmp="${pdf}.tmp.pdf"
+  python3 "$DIR/stamp_pdf_footer.py" "$pdf" "$tmp"
+  mv "$tmp" "$pdf"
+  echo "Stamped: $(basename "$pdf")"
+}
+
+build_one() {
+  local html="$1"
+  local pdf="$2"
+  chrome_pdf "$html" "$pdf"
+  stamp_pdf "$pdf"
+}
+
+build_one "$DIR/01-executive-brief.html" "$OUT/01-Executive-Brief.pdf"
+build_one "$DIR/02-practitioner-playbook.html" "$OUT/02-Practitioner-Playbook.pdf"
+build_one "$DIR/03-workshop-kit.html" "$OUT/03-Workshop-Kit.pdf"
+build_one "$DIR/04-steerco-pack.html" "$OUT/04-SteerCo-Pack.pdf"
+build_one "$DIR/../enterprise-agile-enablement-playbook.html" "$DIR/../Enterprise-Agile-Enablement-Study-Bible-and-Playbook.pdf"
 
 OUT_DIR="$OUT" python3 <<'PY'
 import os, subprocess, sys

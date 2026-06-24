@@ -32,7 +32,9 @@ cd resources/playbook/v2
 ./build-pdfs.sh
 ```
 
-Requires Google Chrome (headless). Installs `pypdf` automatically if needed for combined merge.
+Requires Google Chrome (headless). Installs `pypdf` and `reportlab` automatically if needed.
+
+Footers (`Anjish Bhondwe · anjishbhondwe.com`) are stamped onto every page after render via `stamp_pdf_footer.py` — Chrome CSS footers are not used.
 
 ## Source files
 

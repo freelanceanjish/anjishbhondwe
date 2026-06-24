@@ -1,5 +1,4 @@
-@page { size: A4; margin: 14mm 14mm 20mm 14mm; }
-@page :first { margin-top: 0; }
+@page { size: A4; margin: 18mm 14mm 24mm 14mm; }
 *, *::before, *::after { box-sizing: border-box; }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -17,16 +16,24 @@ body {
   border-bottom: 2px solid #0f62fe;
   padding-bottom: 3mm;
   margin-bottom: 5mm;
+  page-break-after: avoid;
+}
+.doc-header--part {
+  page-break-before: always;
+  break-before: page;
+  padding-top: 2mm;
+  margin-top: 0;
 }
 .doc-header__series { font-size: 7.5pt; letter-spacing: 1.5px; text-transform: uppercase; color: #0f62fe; }
 .doc-header__title { font-family: Georgia, serif; font-size: 14pt; font-weight: 400; margin-top: 1mm; }
 .doc-header__meta { font-size: 7.5pt; color: #8d8d8d; text-align: right; line-height: 1.5; }
 .cover {
-  min-height: 260mm;
-  padding: 22mm 16mm 14mm;
+  min-height: 250mm;
+  padding: 20mm 16mm 20mm;
   background: #161616;
   color: #f4f4f4;
   page-break-after: always;
+  break-after: page;
   display: flex;
   flex-direction: column;
 }
@@ -44,11 +51,23 @@ h1.part {
   font-size: 18pt;
   font-weight: 400;
   margin: 0 0 5mm;
-  padding-bottom: 2mm;
+  padding: 0 0 2mm;
   border-bottom: 2px solid #0f62fe;
   page-break-before: always;
+  break-before: page;
+  padding-top: 4mm;
 }
-h1.part:first-child { page-break-before: auto; }
+/* First content section after cover/toc: part header opens the page */
+.cover + .toc + .doc-header--part,
+.cover + .doc-header--part { page-break-before: auto; break-before: auto; }
+.doc-header--part + h1.part {
+  page-break-before: avoid;
+  break-before: avoid;
+  margin-top: 2mm;
+  padding-top: 0;
+  border-bottom: none;
+  font-size: 16pt;
+}
 h2 { font-size: 12pt; font-weight: 700; margin: 6mm 0 2.5mm; border-left: 3px solid #0f62fe; padding-left: 3mm; page-break-after: avoid; }
 h3 { font-size: 10.5pt; font-weight: 700; margin: 4mm 0 2mm; color: #262626; page-break-after: avoid; }
 h4 { font-size: 9.5pt; font-weight: 700; margin: 3mm 0 1.5mm; color: #393939; }
@@ -94,35 +113,10 @@ tr:nth-child(even) td { background: #f4f4f4; }
 .slide-mock__title { font-family: Georgia, serif; font-size: 14pt; margin-bottom: 3mm; }
 .slide-mock ul { font-size: 9pt; margin: 0; }
 .page-footer { margin-top: 6mm; padding-top: 2mm; border-top: 1px solid #c6c6c6; font-size: 7pt; color: #8d8d8d; display: flex; justify-content: space-between; }
-.pb { page-break-before: always; }
+.pb { page-break-before: always; break-before: page; }
 .avoid { page-break-inside: avoid; }
-.toc { page-break-after: always; }
+.toc { page-break-after: always; break-after: page; }
 .toc ol { list-style: none; padding: 0; }
 .toc li { font-size: 9.5pt; padding: 1.5mm 0; border-bottom: 1px dotted #c6c6c6; display: flex; justify-content: space-between; }
 .toc .toc-part { margin-top: 4mm; font-size: 7.5pt; letter-spacing: 1px; text-transform: uppercase; color: #0f62fe; font-weight: 700; }
-
-/* Screen: hide print-only running footer */
-.print-brand-footer { display: none; }
-
-@media print {
-  body { padding-bottom: 10mm; }
-  .print-brand-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 9mm;
-    padding: 2mm 14mm 0;
-    font-size: 7.5pt;
-    color: #8d8d8d;
-    border-top: 0.5px solid #c6c6c6;
-    background: #fff;
-    z-index: 9999;
-  }
-  section.cover { padding-bottom: 16mm; }
-  section.cover + .print-brand-footer,
-  .print-brand-footer { background: transparent; border-top-color: #525252; color: #8d8d8d; }
-}
+.print-brand-footer { display: none !important; }
