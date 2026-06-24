@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<title>Workshop Kit — Operating Model Selection</title>
+<link rel="stylesheet" href="styles/print.css">
+<style>
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0; }
+  .role-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm; margin: 3mm 0; }
+  .role-card { border: 1px solid #c6c6c6; padding: 2.5mm; background: #fff; page-break-inside: avoid; }
+  .role-card__title { font-size: 8.5pt; font-weight: 700; margin-bottom: 1mm; color: #0f62fe; }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 2mm; margin: 2mm 0 3mm; }
+  .pill { border: 1px solid #8d8d8d; border-radius: 999px; padding: 1.2mm 2.6mm; font-size: 7.5pt; background: #fff; }
+  .note-table th, .note-table td { font-size: 8.2pt; }
+  .note-table td ul { margin: 0; padding-left: 4mm; }
+  .dark-band { background: #262626; color: #f4f4f4; padding: 4mm; margin: 3mm 0; page-break-inside: avoid; }
+  .dark-band h3 { color: #f4f4f4; margin-top: 0; }
+  .dark-band p, .dark-band li { color: #f4f4f4; }
+  .canvas-caption { font-size: 8pt; color: #525252; margin-top: 1.5mm; }
+  .matrix-legend { font-size: 8pt; color: #525252; margin-bottom: 2mm; }
+  .fill-inline { display: inline-block; min-width: 26mm; min-height: 5mm; border-bottom: 1px solid #8d8d8d; vertical-align: bottom; }
+  .fill-box { display: block; min-height: 10mm; border: 1px dashed #c6c6c6; background: #fff; }
+  .score-cell { height: 10mm; }
+  .ladder-list { list-style: none; padding: 0; margin: 2mm 0; }
+  .ladder-list li { margin: 0 0 1.8mm; padding: 2mm 3mm; border-left: 3px solid #0f62fe; background: #f4f4f4; }
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="cover__eyebrow">Enterprise Agile Enablement · v2.0</div>
+  <h1 class="cover__title">Workshop Kit — Operating Model Selection</h1>
+  <p class="cover__subtitle">Print-ready facilitator pack for a half-day leadership workshop that selects the enterprise operating model before pilot spend begins.</p>
+  <div class="cover__meta">
+    For executive sponsors, BU leaders, portfolio office, enterprise architecture, compliance, and the Agile CoE<br>
+    Companion to Executive Brief · Implementation Plan · SteerCo Pack<br>
+    June 2026
+  </div>
+  <div class="cover__footer">Confidential working document · Use in-room with physical printouts, wall space, and a named decision maker</div>
+</section>
+
+<section class="toc">
+  <h1>Contents</h1>
+  <div class="toc-part">Before the workshop</div>
+  <ol>
+    <li><span>1. Purpose, outcomes, and facilitation stance</span><span>2</span></li>
+    <li><span>2. Pre-workshop checklist</span><span>2</span></li>
+    <li><span>3. Room setup and materials</span><span>3</span></li>
+    <li><span>4. Participant roles and decision rules</span><span>3</span></li>
+  </ol>
+  <div class="toc-part">In the workshop</div>
+  <ol start="5">
+    <li><span>5. Four-hour agenda with facilitator notes</span><span>4-6</span></li>
+    <li><span>6. Operating model selection canvas</span><span>7</span></li>
+    <li><span>7. Needs scoring matrix</span><span>8</span></li>
+    <li><span>8. Operating model decision record</span><span>9</span></li>
+    <li><span>9. Pilot slice selection worksheet</span><span>10</span></li>
+    <li><span>10. Post-workshop actions checklist</span><span>11</span></li>
+  </ol>
+</section>
+
+<div class="doc-header">
+  <div>
+    <div class="doc-header__series">Workshop Kit</div>
+    <div class="doc-header__title">Half-day operating model selection workshop</div>
+  </div>
+  <div class="doc-header__meta">4 hours · print-ready facilitator pack · British English</div>
+</div>
+
+<h2>1. Purpose, outcomes, and facilitation stance</h2>
+<p class="lead">This workshop exists to make <strong>one leadership decision</strong>: which enterprise operating model sketch becomes the target design for wave 1, and what fallback will be used if the first choice proves politically or operationally unworkable.</p>
+
+<div class="box box--blue">
+  <div class="box__label">By the end of four hours, you need</div>
+  <ul style="margin:0">
+    <li>A named target operating model and a named fallback</li>
+    <li>Agreement on the top needs driving that choice</li>
+    <li>Clarity on what is mandated centrally versus optional locally</li>
+    <li>A draft pilot slice and sponsor-owned next actions</li>
+    <li>A written decision record that survives follow-up politics</li>
+  </ul>
+</div>
+
+<div class="two-col">
+  <div class="card">
+    <div class="card__tag">Facilitator stance</div>
+    <div class="card__title">Neutral on personalities, strict on trade-offs</div>
+    <div class="card__body">You are not selling a framework. You are making trade-offs visible, protecting the timebox, and forcing vague preferences into explicit design choices.</div>
+  </div>
+  <div class="card">
+    <div class="card__tag">Decision principle</div>
+    <div class="card__title">Pick the model for the next 12–18 months</div>
+    <div class="card__body">Do not optimise for the perfect future-state enterprise. Select the operating model that best fits the named needs, sponsor appetite, and realistic rollout capacity now.</div>
+  </div>
+</div>
+
+<h2>2. Pre-workshop checklist</h2>
+
+<h3>Two weeks before</h3>
+<ul class="checklist">
+  <li>Confirm the decision maker. If the sponsor will not attend, reschedule rather than run a theatre workshop.</li>
+  <li>Complete diagnosis summary: federation map, current pain points, dependency hotspots, compliance load, and success criteria.</li>
+  <li>Draft the four operating model sketches A-D on one page each using the same format.</li>
+  <li>Interview likely dissenting stakeholders in advance so the workshop is for decision making, not first-time objection handling.</li>
+  <li>Collect the six needs to be scored and pre-socialise definitions so attendees do not argue over semantics in the room.</li>
+</ul>
+
+<h3>One week before</h3>
+<ul class="checklist">
+  <li>Send a pre-read: diagnosis summary, sketch definitions, scoring scale, and workshop objective.</li>
+  <li>Ask each attendee to rank their top three enterprise needs before the session.</li>
+  <li>Prepare printouts: agenda, selection canvas, scoring matrix, decision record, pilot slice worksheet, and name cards.</li>
+  <li>Confirm room logistics, hybrid links if needed, wall space, markers, sticky dots, and timer.</li>
+  <li>Brief the sponsor privately on the expected decision, likely fault lines, and the importance of closing with an explicit call.</li>
+</ul>
+
+<h3>Day before</h3>
+<ul class="checklist">
+  <li>Recheck attendee list and verify no essential function is missing: BU lead, architecture, portfolio, compliance/risk, CoE, sponsor.</li>
+  <li>Load the room with all four sketches visible from the start; do not reveal them one by one as if they are sales options.</li>
+  <li>Write the six needs and 1-5 scoring scale on a flip chart.</li>
+  <li>Prepare a parking lot for issues that matter but do not change the operating model choice.</li>
+  <li>Print one extra copy of the decision record for the sponsor to annotate by hand.</li>
+</ul>
+
+<div class="box box--red">
+  <div class="box__label">Do not proceed if</div>
+  <p style="margin:0">The sponsor is absent, the workshop objective has drifted into framework selection, or participants have not seen the current-state diagnosis. Those conditions reliably create opinion battles disguised as strategy.</p>
+</div>
+
+<h2>3. Room setup and materials</h2>
+
+<div class="two-col">
+  <div>
+    <h3>Room setup</h3>
+    <ul>
+      <li>U-shape or boardroom layout with clear sightlines to a single decision wall</li>
+      <li>One wall for the four sketches; one wall for scoring matrix and parking lot</li>
+      <li>Visible timer; facilitator position near wall, not behind a laptop</li>
+      <li>Separate seating for observers only if they are silent and named as such</li>
+      <li>Hybrid participants projected large enough to intervene without delay</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Materials list</h3>
+    <ul>
+      <li>A3 printouts of sketches A-D</li>
+      <li>A3 scoring matrices for table groups</li>
+      <li>Sticky dots in four colours</li>
+      <li>Sharpie pens, wall tape, sticky notes, blu-tack</li>
+      <li>Printed decision record and pilot worksheet</li>
+      <li>Timer, speaker notes, extension leads, water, and break signage</li>
+    </ul>
+  </div>
+</div>
+
+<div class="dark-band">
+  <h3>Facilitator tip</h3>
+  <p style="margin-bottom:2mm">Keep participants standing at the wall during scoring if the room allows it. Standing shortens speeches, speeds convergence, and makes political disagreement more visible than a seated boardroom discussion.</p>
+  <p style="margin:0">If the session is hybrid, assign a co-facilitator to watch the remote chat and voice objections in real time. Otherwise remote participants become a silent veto after the meeting.</p>
+</div>
+
+<h2>4. Participant roles and decision rules</h2>
+
+<div class="role-grid">
+  <div class="role-card">
+    <div class="role-card__title">Sponsor</div>
+    <p>Owns the final call, breaks deadlock, and confirms what will be mandated centrally.</p>
+  </div>
+  <div class="role-card">
+    <div class="role-card__title">BU / country leads</div>
+    <p>Represent delivery reality, local constraints, and political viability of rollout waves.</p>
+  </div>
+  <div class="role-card">
+    <div class="role-card__title">Architecture / platform</div>
+    <p>Stress-test dependency, shared service, and enabling-team implications.</p>
+  </div>
+  <div class="role-card">
+    <div class="role-card__title">Compliance / portfolio / CoE</div>
+    <p>Validate governance in flow, capacity honesty, and enterprise reporting needs.</p>
+  </div>
+</div>
+
+<p><strong>Decision rules:</strong> score against named needs only; compare sketches on enterprise fit, not personal comfort; document the fallback before closing; and push non-structural issues into the parking lot. A workshop without documented decision rules usually collapses into the loudest senior opinion.</p>
+
+<div class="pill-row">
+  <span class="pill">Need fit over familiarity</span>
+  <span class="pill">Target + fallback both required</span>
+  <span class="pill">Mandated vs optional must be explicit</span>
+  <span class="pill">Pilot slice chosen against evidence</span>
+  <span class="pill">Parking lot protects time</span>
+  <span class="pill">Sponsor closes the room</span>
+</div>
+
+<h1 class="part">5. Four-hour agenda with facilitator notes</h1>
+
+<p class="lead">Use the table below in the room. The activity is the smallest part of the job; your real task is to shape the conversation, watch for drift, and keep trade-offs tied to enterprise needs rather than framework preference.</p>
+
+<table class="note-table">
+  <tr>
+    <th>Time</th>
+    <th>Activity</th>
+    <th>What to say</th>
+    <th>What to watch for</th>
+    <th>Common derailers</th>
+  </tr>
+  <tr>
+    <td>00:00-00:20</td>
+    <td>Open, frame the decision, confirm success criteria</td>
+    <td>"Today is not a SAFe versus Scrum debate. We are selecting the operating model that best fits the next 12-18 months of enterprise delivery."</td>
+    <td>Whether the sponsor visibly supports the objective; whether anyone tries to reopen the diagnosis.</td>
+    <td>Late arrivals, sponsor ambiguity, stakeholders pushing for additional analysis before any decision.</td>
+  </tr>
+  <tr>
+    <td>00:20-00:50</td>
+    <td>Recap diagnosis and agree the six needs to score</td>
+    <td>"If a need is not material in the next 12 months, do not score it as if it were. We are choosing for real constraints, not for a textbook enterprise."</td>
+    <td>People sneaking in pet priorities; fuzzy language such as "agility" without operational meaning.</td>
+    <td>Turning needs into solution statements, especially "we need SAFe" or "we need autonomy" without definition.</td>
+  </tr>
+  <tr>
+    <td>00:50-01:40</td>
+    <td>Walk through sketches A-D and trade-offs</td>
+    <td>"Listen for where each sketch helps us most, where it hurts, and what sponsor behaviour it assumes. No sketch is free."</td>
+    <td>Which sketches attract emotional support; where architecture and compliance show concern; whether D is treated correctly as an overlay.</td>
+    <td>Participants evaluating the people they associate with a model instead of the model itself.</td>
+  </tr>
+  <tr>
+    <td>01:40-01:55</td>
+    <td>Break</td>
+    <td>"Please use the break to mark your provisional front-runner and the one you think is politically unrealistic."</td>
+    <td>Side conversations that are likely to reopen as positional battles.</td>
+    <td>Participants negotiating outcomes in the corridor without the sponsor present.</td>
+  </tr>
+</table>
+
+<div class="pb"></div>
+<h3>Agenda detail (continued)</h3>
+
+<table class="note-table">
+  <tr>
+    <th>Time</th>
+    <th>Activity</th>
+    <th>What to say</th>
+    <th>What to watch for</th>
+    <th>Common derailers</th>
+  </tr>
+  <tr>
+    <td>01:55-03:00</td>
+    <td>Score the front-running sketches against the six needs</td>
+    <td>"A three means acceptable but unremarkable. Reserve fours and fives for clear fit. Explain any one or five with evidence, not instinct."</td>
+    <td>Score inflation, anchoring to one senior voice, inconsistent scoring logic between needs.</td>
+    <td>Using scores as votes for favourite models instead of fit against the need definition.</td>
+  </tr>
+  <tr>
+    <td>03:00-03:35</td>
+    <td>Select target model, fallback, and mandated elements</td>
+    <td>"We are now moving from preference to decision. If this model is chosen, what becomes mandatory everywhere in wave 1, and what remains locally configurable?"</td>
+    <td>Whether the sponsor can articulate the choice; whether local autonomy is protected with boundaries rather than vague promises.</td>
+    <td>Deferring the hard part by saying "we can work that out later" on mandates, governance, or pilot scope.</td>
+  </tr>
+  <tr>
+    <td>03:35-04:00</td>
+    <td>Define pilot slice and confirm next actions</td>
+    <td>"The decision is only credible if we can name the first slice, the owners, the dates, and the metrics before we leave."</td>
+    <td>People choosing the easiest pilot rather than the slice that proves federated coordination.</td>
+    <td>Pilot scope becoming so small it proves nothing, or so large it cannot start within the quarter.</td>
+  </tr>
+</table>
+
+<h3>Facilitator notes by time block</h3>
+
+<div class="script">
+  <p><span class="who">Opening note:</span> State the decision in the first three minutes. Senior participants tolerate workshops when they know exactly what will be decided. If you sound exploratory, they will keep their options open and wait you out.</p>
+  <p><span class="who">Watch for:</span> language like "let's socialise options" or "this is just a first pass". That language signals no one is expected to commit.</p>
+</div>
+
+<div class="script">
+  <p><span class="who">Diagnosis recap note:</span> Use evidence, not adjectives. Say "regulatory work is consuming 30% of capacity outside the backlog" rather than "compliance feels heavy". Specific evidence reduces ideology.</p>
+  <p><span class="who">Watch for:</span> participants disputing minor diagnosis details to avoid engaging with the operating model decision.</p>
+</div>
+
+<div class="script">
+  <p><span class="who">Sketch walkthrough note:</span> Present each sketch with the same sequence: where it fits, what it optimises, what it costs, and what sponsor behaviour it requires. That consistency makes political bias more obvious.</p>
+  <p><span class="who">Common derailer:</span> "Could we take the good bits of all four?" Answer: "Only after we choose the backbone. Hybrids without a backbone become exceptions everywhere."</p>
+</div>
+
+<div class="script">
+  <p><span class="who">Scoring note:</span> Ask one function at a time to speak: BU first, then architecture, then compliance, then CoE. It prevents the room from converging prematurely around the most senior person present.</p>
+  <p><span class="who">Common derailer:</span> debates about whether a score should be 3 or 4 before the need is understood. Re-anchor to the written need definition.</p>
+</div>
+
+<div class="script">
+  <p><span class="who">Decision note:</span> When scores are close, move from totals to trade-offs: "Which weakness can we tolerate in wave 1, and which weakness would break credibility?" This often unlocks a tie faster than arithmetic.</p>
+  <p><span class="who">Watch for:</span> attempts to postpone mandated versus optional decisions. That postponement usually recreates the same argument in pilot launch.</p>
+</div>
+
+<div class="script">
+  <p><span class="who">Close note:</span> Read the draft decision record aloud. Hearing the decision in complete sentences exposes ambiguity. Ask the sponsor to correct the wording live, then capture it.</p>
+  <p><span class="who">Common derailer:</span> ending with "we'll circulate notes". Notes are not a decision record and rarely settle contested governance questions.</p>
+</div>
+
+<div class="box box--gold">
+  <div class="box__label">Fallback script for conflict</div>
+  <p style="margin:0">"We do not need unanimous enthusiasm. We need a sponsor-backed model that fits the most important enterprise needs and can be piloted inside the next quarter. If you disagree, please state which named need is being underserviced and what evidence supports that view."</p>
+</div>
+
+<h1 class="part">6. Operating model selection canvas</h1>
+
+<p class="lead">Print this page in colour. Use it as the wall anchor for the option discussion before scores are assigned.</p>
+
+<div class="diagram">
+  <svg viewBox="0 0 1100 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Operating model selection canvas">
+    <rect x="0" y="0" width="1100" height="760" fill="#161616"/>
+    <text x="36" y="48" fill="#78a9ff" font-family="Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2">ENTERPRISE AGILE ENABLEMENT · OPERATING MODEL SELECTION CANVAS</text>
+    <text x="36" y="88" fill="#f4f4f4" font-family="Georgia, serif" font-size="34">Choose the backbone before you choose the badge</text>
+    <text x="36" y="118" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="16">Four sketches, six needs, one framework assignment row. Score what the enterprise needs next, not what individuals prefer now.</text>
+
+    <rect x="36" y="160" rx="18" ry="18" width="238" height="196" fill="#262626" stroke="#4589ff" stroke-width="3"/>
+    <text x="56" y="194" fill="#78a9ff" font-family="Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2">SKETCH A</text>
+    <text x="56" y="226" fill="#f4f4f4" font-family="Georgia, serif" font-size="26">Central CoE +</text>
+    <text x="56" y="256" fill="#f4f4f4" font-family="Georgia, serif" font-size="26">federated ARTs</text>
+    <text x="56" y="292" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">Best when the group needs one scaling</text>
+    <text x="56" y="313" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">backbone, shared metrics, and cross-border</text>
+    <text x="56" y="334" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">delivery discipline.</text>
+
+    <rect x="300" y="160" rx="18" ry="18" width="238" height="196" fill="#262626" stroke="#42be65" stroke-width="3"/>
+    <text x="320" y="194" fill="#42be65" font-family="Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2">SKETCH B</text>
+    <text x="320" y="226" fill="#f4f4f4" font-family="Georgia, serif" font-size="26">BU-led clusters +</text>
+    <text x="320" y="256" fill="#f4f4f4" font-family="Georgia, serif" font-size="26">light CoE</text>
+    <text x="320" y="292" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">Best when autonomy and local political fit</text>
+    <text x="320" y="313" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">matter more than strict enterprise standard.</text>
+    <text x="320" y="334" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">Risk: inconsistent reporting.</text>
+
+    <rect x="564" y="160" rx="18" ry="18" width="238" height="196" fill="#262626" stroke="#f1c21b" stroke-width="3"/>
+    <text x="584" y="194" fill="#f1c21b" font-family="Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2">SKETCH C</text>
+    <text x="584" y="226" fill="#f4f4f4" font-family="Georgia, serif" font-size="26">Shared enablement</text>
+    <text x="584" y="256" fill="#f4f4f4" font-family="Georgia, serif" font-size="26">spine + product teams</text>
+    <text x="584" y="292" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">Best when platform, data, or architecture</text>
+    <text x="584" y="313" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">is the bottleneck and flow visibility matters.</text>
+    <text x="584" y="334" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">Risk: forum complexity.</text>
+
+    <rect x="828" y="160" rx="18" ry="18" width="236" height="196" fill="#262626" stroke="#fa4d56" stroke-width="3"/>
+    <text x="848" y="194" fill="#fa4d56" font-family="Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2">SKETCH D</text>
+    <text x="848" y="226" fill="#f4f4f4" font-family="Georgia, serif" font-size="26">Regulatory</text>
+    <text x="848" y="256" fill="#f4f4f4" font-family="Georgia, serif" font-size="26">programme overlay</text>
+    <text x="848" y="292" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">Use when hard deadlines dominate capacity.</text>
+    <text x="848" y="313" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">Layer onto A or C, not as a standalone model.</text>
+    <text x="848" y="334" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">Risk: innovation starvation.</text>
+
+    <text x="36" y="410" fill="#78a9ff" font-family="Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2">SIX NEEDS TO SCORE</text>
+
+    <rect x="36" y="434" rx="24" ry="24" width="158" height="44" fill="#0f62fe"/>
+    <text x="62" y="462" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="15">Cross-entity delivery</text>
+    <rect x="210" y="434" rx="24" ry="24" width="140" height="44" fill="#0f62fe"/>
+    <text x="244" y="462" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="15">Local autonomy</text>
+    <rect x="366" y="434" rx="24" ry="24" width="162" height="44" fill="#0f62fe"/>
+    <text x="390" y="462" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="15">Platform bottleneck</text>
+    <rect x="544" y="434" rx="24" ry="24" width="168" height="44" fill="#0f62fe"/>
+    <text x="567" y="462" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="15">Regulatory certainty</text>
+    <rect x="728" y="434" rx="24" ry="24" width="176" height="44" fill="#0f62fe"/>
+    <text x="751" y="462" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="15">Leadership enablement</text>
+    <rect x="920" y="434" rx="24" ry="24" width="144" height="44" fill="#0f62fe"/>
+    <text x="951" y="462" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-size="15">Board transparency</text>
+
+    <rect x="36" y="522" rx="16" ry="16" width="1028" height="170" fill="#1f1f1f" stroke="#393939" stroke-width="2"/>
+    <text x="56" y="554" fill="#78a9ff" font-family="Helvetica, Arial, sans-serif" font-size="14" letter-spacing="2">FRAMEWORK ASSIGNMENT ROW</text>
+
+    <rect x="58" y="578" rx="12" ry="12" width="280" height="82" fill="#262626" stroke="#8d8d8d"/>
+    <text x="80" y="608" fill="#f4f4f4" font-family="Georgia, serif" font-size="24">Team layer</text>
+    <text x="80" y="634" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">Scrum / Kanban for squads, backlog quality, delivery rhythm</text>
+
+    <rect x="410" y="578" rx="12" ry="12" width="280" height="82" fill="#262626" stroke="#8d8d8d"/>
+    <text x="432" y="608" fill="#f4f4f4" font-family="Georgia, serif" font-size="24">Programme layer</text>
+    <text x="432" y="634" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">SAFe or equivalent for ARTs, PI planning, dependency cadence</text>
+
+    <rect x="762" y="578" rx="12" ry="12" width="280" height="82" fill="#262626" stroke="#8d8d8d"/>
+    <text x="784" y="608" fill="#f4f4f4" font-family="Georgia, serif" font-size="24">Leadership layer</text>
+    <text x="784" y="634" fill="#c6c6c6" font-family="Helvetica, Arial, sans-serif" font-size="15">Flight Levels / portfolio flow for enterprise steering and blockers</text>
+  </svg>
+</div>
+<p class="canvas-caption">Use the canvas to anchor option discussion. After the target model is chosen, annotate the framework row only with the minimum mechanisms required for the chosen backbone.</p>
+
+<h1 class="part">7. Needs scoring matrix</h1>
+
+<p class="matrix-legend"><strong>Scoring scale:</strong> 1 = poor fit, 3 = workable with trade-offs, 5 = strong fit. Score only against the agreed need definitions.</p>
+
+<table class="score-grid">
+  <tr>
+    <th>Need</th>
+    <th>Sketch A</th>
+    <th>Sketch B</th>
+    <th>Sketch C</th>
+    <th>Sketch D overlay</th>
+    <th>Evidence / note</th>
+  </tr>
+  <tr>
+    <td>Cross-entity delivery on shared outcomes</td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Local autonomy across BUs or countries</td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Platform or architecture bottleneck relief</td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Regulatory deadline certainty</td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Leadership-level enablement</td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Board-ready transparency</td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><strong>Total</strong></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td class="score-cell"></td>
+    <td></td>
+  </tr>
+</table>
+
+<div class="box box--green">
+  <div class="box__label">Decision heuristic</div>
+  <p style="margin:0">If two sketches score within one point of each other, compare cost of change, sponsor appetite, and reporting clarity. Close scores do not mean "no decision"; they usually mean the organisation needs a target and a fallback captured in writing.</p>
+</div>
+
+<h1 class="part">8. Operating model decision record</h1>
+
+<table>
+  <tr><th style="width:28%">Field</th><th>Fillable content</th></tr>
+  <tr><td>Date</td><td><span class="fill"></span></td></tr>
+  <tr><td>Executive sponsor</td><td><span class="fill"></span></td></tr>
+  <tr><td>Participants</td><td><span class="fill-lg"></span></td></tr>
+  <tr><td>Target operating model selected</td><td><span class="fill-lg"></span></td></tr>
+  <tr><td>Fallback operating model</td><td><span class="fill-lg"></span></td></tr>
+  <tr><td>Top three needs driving the choice</td><td><span class="fill-lg"></span></td></tr>
+  <tr><td>Why the rejected option was not chosen</td><td><span class="fill-lg"></span></td></tr>
+  <tr><td>Mandated centrally in wave 1</td><td><span class="fill-lg"></span></td></tr>
+  <tr><td>Optional locally in wave 1</td><td><span class="fill-lg"></span></td></tr>
+  <tr><td>Framework assignment by layer</td><td><span class="fill-lg"></span></td></tr>
+  <tr><td>Governance hooks required</td><td><span class="fill-lg"></span></td></tr>
+  <tr><td>Key assumptions / dependencies</td><td><span class="fill-lg"></span></td></tr>
+  <tr><td>Review date</td><td><span class="fill"></span></td></tr>
+</table>
+
+<div class="two-col">
+  <div class="card">
+    <div class="card__tag">Sponsor wording</div>
+    <div class="card__title">Decision sentence to read aloud</div>
+    <div class="card__body">"We are adopting <span class="fill-inline"></span> as the wave 1 operating model, with <span class="fill-inline"></span> as fallback if the stated assumptions fail. The following elements are mandatory group-wide: <span class="fill-inline"></span>."</div>
+  </div>
+  <div class="card">
+    <div class="card__tag">Evidence lock</div>
+    <div class="card__title">What must accompany the record</div>
+    <div class="card__body">Attach the scored matrix, the final sketch mark-up, and the pilot slice worksheet. Without those artefacts, the decision record can be reframed after the meeting.</div>
+  </div>
+</div>
+
+<h1 class="part">9. Pilot slice selection worksheet</h1>
+
+<p class="lead">Choose a slice that proves the operating model under real federation conditions. The pilot should be small enough to start this quarter and rich enough to expose dependency, governance, and enablement issues.</p>
+
+<table>
+  <tr>
+    <th>Candidate slice</th>
+    <th>Why now</th>
+    <th>Dependency richness</th>
+    <th>Sponsor strength</th>
+    <th>Compliance exposure</th>
+    <th>Time to first PI</th>
+    <th>Total / note</th>
+  </tr>
+  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<div class="two-col">
+  <div>
+    <h3>Chosen pilot slice</h3>
+    <span class="fill-lg"></span>
+    <h3>In-scope entities / teams</h3>
+    <span class="fill-lg"></span>
+    <h3>First success signals after one PI</h3>
+    <span class="fill-lg"></span>
+  </div>
+  <div>
+    <h3>Known risks</h3>
+    <span class="fill-lg"></span>
+    <h3>Enablement required before launch</h3>
+    <span class="fill-lg"></span>
+    <h3>Owner and start date</h3>
+    <span class="fill-lg"></span>
+  </div>
+</div>
+
+<div class="box box--red">
+  <div class="box__label">Poor pilot choices</div>
+  <ul style="margin:0">
+    <li>The easiest single team with no cross-entity dependencies</li>
+    <li>A politically symbolic slice with no sponsor time to support it</li>
+    <li>A massive domain that cannot reach first PI readiness inside the quarter</li>
+    <li>A slice that hides compliance work outside the backlog</li>
+  </ul>
+</div>
+
+<h1 class="part">10. Post-workshop actions checklist</h1>
+
+<ul class="checklist">
+  <li>Circulate the signed decision record within 24 hours.</li>
+  <li>Confirm the target and fallback sketches in the sponsor's own words.</li>
+  <li>Assign one owner for mandated standards and one owner for pilot mobilisation.</li>
+  <li>Book the pilot readiness review within two weeks.</li>
+  <li>Translate the chosen model into RTE, PO, leader, and architecture enablement paths.</li>
+  <li>Baseline current adoption, dependency, and regulatory metrics before the pilot starts.</li>
+  <li>Publish the first SteerCo reporting cadence and the metric dictionary.</li>
+  <li>Capture unresolved parking-lot issues with owner, forum, and due date.</li>
+  <li>Review whether any local autonomy promises conflict with the mandated backbone.</li>
+  <li>Schedule a 90-day operating model health check.</li>
+</ul>
+
+<table>
+  <tr><th>Action</th><th>Owner</th><th>Due date</th><th>Status note</th></tr>
+  <tr><td>Decision record finalised and stored</td><td></td><td></td><td></td></tr>
+  <tr><td>Pilot slice sponsor confirmed</td><td></td><td></td><td></td></tr>
+  <tr><td>Enablement plan drafted</td><td></td><td></td><td></td></tr>
+  <tr><td>SteerCo pack tailored for the chosen model</td><td></td><td></td><td></td></tr>
+  <tr><td>Governance forums aligned to pilot cadence</td><td></td><td></td><td></td></tr>
+  <tr><td>Metrics baseline captured</td><td></td><td></td><td></td></tr>
+</table>
+
+<div class="quote">A successful workshop ends with a written choice, a named pilot, and sponsor-owned next steps. If all you have is enthusiasm, you have not finished the operating-model work.</div>
+
+<div class="page-footer">
+  <span>Enterprise Agile Enablement · Workshop Kit v2.0</span>
+  <span>Executive Brief · Implementation Plan · SteerCo Pack</span>
+</div>
+
+</body>
+</html>

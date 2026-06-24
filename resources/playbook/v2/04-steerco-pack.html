@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<title>SteerCo Pack — Leadership Reporting</title>
+<link rel="stylesheet" href="styles/print.css">
+<style>
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0; }
+  .question-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0; }
+  .question-card { border: 1px solid #c6c6c6; padding: 3mm; page-break-inside: avoid; background: #fff; }
+  .question-card__num { font-size: 7.5pt; letter-spacing: 1px; text-transform: uppercase; color: #0f62fe; margin-bottom: 1mm; }
+  .question-card__title { font-weight: 700; font-size: 10pt; margin-bottom: 1.5mm; }
+  .question-card__body { font-size: 8.7pt; color: #393939; }
+  .ladder { margin: 4mm 0; }
+  .ladder-step { border: 1px solid #c6c6c6; background: #f4f4f4; padding: 2.5mm 3mm; margin-bottom: 2mm; position: relative; page-break-inside: avoid; }
+  .ladder-step::after { content: "v"; position: absolute; right: 3mm; top: 50%; transform: translateY(-50%); color: #0f62fe; font-size: 12pt; }
+  .ladder-step:last-child::after { content: ""; }
+  .ladder-step strong { color: #0f62fe; }
+  .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0; }
+  .dashboard-card { border: 1px solid #c6c6c6; padding: 3mm; page-break-inside: avoid; }
+  .dashboard-card h3 { margin-top: 0; }
+  .fill-inline { display: inline-block; min-width: 28mm; min-height: 5mm; border-bottom: 1px solid #8d8d8d; vertical-align: bottom; }
+  .handout-block { border: 1px solid #c6c6c6; padding: 3mm; margin: 3mm 0; background: #fff; page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="cover__eyebrow">Enterprise Agile Enablement · v2.0</div>
+  <h1 class="cover__title">SteerCo Pack — Leadership Reporting</h1>
+  <p class="cover__subtitle">Board-facing reporting pack for quarterly steering decisions in a federated enterprise Agile rollout.</p>
+  <div class="cover__meta">
+    For executive sponsors, transformation boards, portfolio governance, and enterprise delivery leaders<br>
+    Companion to Executive Brief · Implementation Plan · Workshop Kit<br>
+    June 2026
+  </div>
+  <div class="cover__footer">Confidential working document · Keep the narrative focused on enterprise outcomes, constraints, and explicit sponsor asks</div>
+</section>
+
+<section class="toc">
+  <h1>Contents</h1>
+  <div class="toc-part">SteerCo fundamentals</div>
+  <ol>
+    <li><span>1. How to use this pack</span><span>2</span></li>
+    <li><span>2. The four questions every SteerCo must answer</span><span>2-3</span></li>
+  </ol>
+  <div class="toc-part">Board-ready artefacts</div>
+  <ol start="3">
+    <li><span>3. Five slide mock-ups for a federated rollout</span><span>4-5</span></li>
+    <li><span>4. Metric dictionary</span><span>6-7</span></li>
+    <li><span>5. Quarterly narrative templates</span><span>8</span></li>
+    <li><span>6. Escalation ladder and RAG dashboard guidance</span><span>9</span></li>
+    <li><span>7. One-page SteerCo handout template</span><span>10</span></li>
+  </ol>
+</section>
+
+<div class="doc-header">
+  <div>
+    <div class="doc-header__series">SteerCo Pack</div>
+    <div class="doc-header__title">Leadership reporting for enterprise rollout</div>
+  </div>
+  <div class="doc-header__meta">Quarterly cadence · 5-slide discipline · leadership decisions only</div>
+</div>
+
+<h2>1. How to use this pack</h2>
+<p class="lead">A useful SteerCo is a decision forum, not a recital of delivery activity. Use this pack to make systemic blockers, rollout adoption, regulatory capacity, and leadership asks visible in a way that drives action rather than passive reassurance.</p>
+
+<div class="two-col">
+  <div class="card">
+    <div class="card__tag">Cadence</div>
+    <div class="card__title">Quarterly at minimum, monthly during pilot</div>
+    <div class="card__body">Run a lighter monthly version during pilot launch, then a fuller quarterly pack once the rollout moves into wave expansion. Keep pre-reads tight and decisions explicit.</div>
+  </div>
+  <div class="card">
+    <div class="card__tag">Format</div>
+    <div class="card__title">Five slides, one handout, one decision log</div>
+    <div class="card__body">The slide deck keeps the room focused. The handout captures fillable fields and sponsor actions. The decision log records commitments and dates outside the narrative deck.</div>
+  </div>
+</div>
+
+<table>
+  <tr><th>Rule</th><th>Why it matters</th></tr>
+  <tr><td>Lead with the decision required</td><td>Senior leaders listen differently when they know exactly what is being asked of them.</td></tr>
+  <tr><td>Show trend, not isolated anecdotes</td><td>Enterprise adoption becomes visible only through movement over time across BUs, ARTs, and shared services.</td></tr>
+  <tr><td>Report at enterprise level first</td><td>Sprint details and local team wins belong below SteerCo unless they expose a systemic issue.</td></tr>
+  <tr><td>Separate activity from adoption</td><td>Training completed, ceremonies held, and tools configured are not proof that the operating model is working.</td></tr>
+  <tr><td>End every pack with named owner and due date</td><td>Without action ownership, SteerCo becomes commentary rather than steering.</td></tr>
+</table>
+
+<div class="box box--gold">
+  <div class="box__label">Chair's opening sentence</div>
+  <p style="margin:0">"This pack is here to help us decide, unblock, and govern capacity across the federation. If a data point does not change a leadership action, it does not belong in this forum."</p>
+</div>
+
+<h2>2. The four questions every SteerCo must answer</h2>
+
+<div class="question-grid">
+  <div class="question-card">
+    <div class="question-card__num">Question 1</div>
+    <div class="question-card__title">Are we delivering the right outcomes against the chosen operating model?</div>
+    <div class="question-card__body">
+      <p>Leaders need to know whether the rollout is producing the intended business and delivery outcomes, not merely whether ceremonies are occurring. Tie reporting to the operating model choice: for example, whether cross-entity planning improved, whether PI objectives were met, and whether shared services are flowing more predictably.</p>
+      <p><strong>Show:</strong> outcome trend, pilot objectives met, value milestones, adoption to target model.<br><strong>Avoid:</strong> local team morale updates or lists of completed training sessions.</p>
+    </div>
+  </div>
+  <div class="question-card">
+    <div class="question-card__num">Question 2</div>
+    <div class="question-card__title">Where are dependencies, governance, or architecture slowing flow?</div>
+    <div class="question-card__body">
+      <p>SteerCo exists to resolve blockers beyond team control. Make visible where work is ageing between BUs, countries, platforms, architecture forums, or risk gates. Focus on blockers that require sponsor authority or enterprise reprioritisation.</p>
+      <p><strong>Show:</strong> top impediments, age in days, owner, next escalation point.<br><strong>Avoid:</strong> generic risk heatmaps with no action owner.</p>
+    </div>
+  </div>
+  <div class="question-card">
+    <div class="question-card__num">Question 3</div>
+    <div class="question-card__title">Is regulatory and change capacity being managed honestly?</div>
+    <div class="question-card__body">
+      <p>In regulated federations, delivery credibility collapses when compliance work is hidden in shadow tracks. SteerCo must see whether reserved regulatory capacity is realistic, whether audit evidence is inside the flow, and whether urgent mandates are displacing product work without acknowledgement.</p>
+      <p><strong>Show:</strong> reserved versus consumed capacity, backlog visibility, deadline risk, evidence readiness.<br><strong>Avoid:</strong> vague confidence statements without capacity data.</p>
+    </div>
+  </div>
+  <div class="question-card">
+    <div class="question-card__num">Question 4</div>
+    <div class="question-card__title">Is adoption real across the federation, and what decision is needed next?</div>
+    <div class="question-card__body">
+      <p>Real adoption means more ARTs, clusters, or domains are operating to the agreed model with measurable improvements. The forum must understand which wave is ready next, where local exceptions are multiplying, and whether sponsor intervention is required to keep the backbone intact.</p>
+      <p><strong>Show:</strong> in-scope adoption percentage, exception count, next-wave readiness, sponsor actions.<br><strong>Avoid:</strong> labelling everything green because local teams are trying hard.</p>
+    </div>
+  </div>
+</div>
+
+<div class="quote">A good SteerCo pack answers four questions in order: outcomes, blockers, capacity honesty, and adoption reality. Everything else is supporting evidence.</div>
+
+<h1 class="part">3. Five slide mock-ups for a federated rollout</h1>
+
+<p class="lead">Use these as design references, not as a fixed script. The bullet content below assumes a multi-country pilot moving into wave expansion with a central CoE and federated ART model.</p>
+
+<div class="slide-mock">
+  <div class="slide-mock__num">Slide 1 · Executive summary</div>
+  <div class="slide-mock__title">Rollout status, top risk, decision required</div>
+  <ul>
+    <li>Wave 1 pilot now operating in Retail Lending and Payments across UK, Germany, and Poland; first PI completed with 71% objective attainment against a 65% baseline.</li>
+    <li>Shared services planning cadence is stabilising, but architecture decision lead time remains the top systemic blocker at 18 working days average.</li>
+    <li>Decision required today: approve two additional platform architect allocations and confirm Q3 expansion into Wealth Servicing and Group Data.</li>
+  </ul>
+</div>
+
+<div class="slide-mock">
+  <div class="slide-mock__num">Slide 2 · Rollout footprint</div>
+  <div class="slide-mock__title">Where the operating model is live and what comes next</div>
+  <ul>
+    <li>Wave 1: 4 ARTs, 27 teams, 3 countries, 2 shared service hubs, and one regulatory overlay for liquidity reporting obligations.</li>
+    <li>Wave 2 readiness review shows sponsor coverage in Wealth Servicing and Insurance Ops, but country-level PO capability in Spain is still amber.</li>
+    <li>Local exceptions reduced from 14 to 6 after standardising PI cadence, dependency board usage, and escalation routines.</li>
+  </ul>
+</div>
+
+<div class="slide-mock">
+  <div class="slide-mock__num">Slide 3 · Flow and dependencies</div>
+  <div class="slide-mock__title">Systemic blockers above team level</div>
+  <ul>
+    <li>Top blocker 1: architecture review queue creates 18-day average wait for cross-border API changes; owner is Group Architecture Director; decision needed on delegated thresholds.</li>
+    <li>Top blocker 2: shared testing environment freezes create 9 blocked days per PI for two ARTs; remediation plan funded but not yet scheduled.</li>
+    <li>Top blocker 3: portfolio approval forum still sits mid-PI, causing scope churn after planning; propose move to pre-PI intake gate from next quarter.</li>
+  </ul>
+</div>
+
+<div class="slide-mock">
+  <div class="slide-mock__num">Slide 4 · Regulatory and adoption health</div>
+  <div class="slide-mock__title">Capacity honesty and model adoption trend</div>
+  <ul>
+    <li>Regulatory capacity reserved at 28%; actual consumption averaged 31% due to one unplanned ECB response, now visible inside the pilot backlog rather than via side channels.</li>
+    <li>Adoption to target model is green in 3 of 4 pilot ARTs; amber in one ART due to incomplete RTE handover and inconsistent dependency hygiene.</li>
+    <li>Audit evidence pack is now generated from in-flow artefacts for 82% of required controls, up from 46% at diagnosis.</li>
+  </ul>
+</div>
+
+<div class="slide-mock">
+  <div class="slide-mock__num">Slide 5 · Decisions and asks</div>
+  <div class="slide-mock__title">What leadership must do before the next PI</div>
+  <ul>
+    <li>Approve Wave 2 entry for Wealth Servicing and Group Data with Spain deferred until PO capability is green.</li>
+    <li>Mandate a delegated architecture path for low-risk API changes under an agreed threshold to reduce approval lead time by at least 30%.</li>
+    <li>Confirm sponsor attendance for the next PI planning event and require each BU head to name one local exception they will retire next quarter.</li>
+  </ul>
+</div>
+
+<div class="box box--blue">
+  <div class="box__label">Mock-up rule</div>
+  <p style="margin:0">If a slide contains more than three bullets, it is probably carrying detail that belongs in the appendix or the working team review. SteerCo should see signal, trend, and action.</p>
+</div>
+
+<h1 class="part">4. Metric dictionary</h1>
+
+<p class="lead">Use a consistent metric dictionary across quarters so the meaning of green, amber, and red does not drift with politics. Every metric should support one of the four SteerCo questions.</p>
+
+<h3>Flow and rollout metrics</h3>
+<table>
+  <tr>
+    <th>Metric</th>
+    <th>Definition</th>
+    <th>Level</th>
+    <th>Formula / source</th>
+    <th>Good signal</th>
+    <th>Bad signal</th>
+  </tr>
+  <tr><td>% in-scope ARTs operating to target model</td><td>Share of scoped ARTs using the agreed cadence, roles, forums, and artefacts</td><td>Enterprise</td><td>CoE assessment against target model checklist</td><td>Rising quarter on quarter</td><td>Flat despite rollout activity</td></tr>
+  <tr><td>PI objective attainment</td><td>Proportion of committed PI objectives achieved</td><td>Programme</td><td>Completed objectives / committed objectives</td><td>Stable trend with honest stretch</td><td>Volatile or inflated commitments</td></tr>
+  <tr><td>Dependency resolution lead time</td><td>Average working days to resolve cross-team or cross-BU blockers</td><td>Programme</td><td>Dependency board timestamps</td><td>Downward trend</td><td>Ageing blockers carried across PIs</td></tr>
+  <tr><td>Blocked days from shared services</td><td>Time delivery teams wait for platform, testing, or architecture support</td><td>Programme</td><td>Blocker log / Flow item ageing</td><td>Declining across waves</td><td>Concentrated in one shared function</td></tr>
+  <tr><td>Regulatory capacity reserved</td><td>Capacity intentionally allocated to regulatory change</td><td>Programme</td><td>Reserved points / total planned capacity</td><td>Visible and forecastable</td><td>Unstated or politically suppressed</td></tr>
+  <tr><td>Regulatory capacity consumed</td><td>Actual capacity spent on regulatory work</td><td>Programme</td><td>Completed regulatory effort / total actual effort</td><td>Close to reserved trend</td><td>Consistently exceeding plan</td></tr>
+  <tr><td>% compliance items in backlog</td><td>Share of compliance work visible inside normal delivery flow</td><td>Enterprise</td><td>Compliance backlog count / total compliance items</td><td>Approaching 100%</td><td>Shadow workstreams persist</td></tr>
+  <tr><td>Architecture decision turnaround</td><td>Elapsed time between request and decision for architecture reviews</td><td>Enterprise</td><td>Architecture workflow timestamps</td><td>Within agreed SLA</td><td>Queue growth and missed PI windows</td></tr>
+  <tr><td>Release readiness hit rate</td><td>Share of planned releases leaving PI with agreed quality and control evidence</td><td>Programme</td><td>Ready releases / planned releases</td><td>Improving with adoption</td><td>Late controls or failed go-live checks</td></tr>
+  <tr><td>Escaped defects in regulated change</td><td>Defects reaching production on regulated items</td><td>Team / programme</td><td>Production defect log filtered to regulatory scope</td><td>Low and stable</td><td>Repeated control failures</td></tr>
+</table>
+
+<div class="pb"></div>
+<h3>Governance and adoption metrics</h3>
+<table>
+  <tr>
+    <th>Metric</th>
+    <th>Definition</th>
+    <th>Level</th>
+    <th>Formula / source</th>
+    <th>Good signal</th>
+    <th>Bad signal</th>
+  </tr>
+  <tr><td>Lead time from idea to active development</td><td>Time from approved demand to delivery team start</td><td>Enterprise</td><td>Portfolio intake timestamp to in-progress date</td><td>Shorter and more predictable</td><td>Long waiting before work starts</td></tr>
+  <tr><td>Sponsor action closure rate</td><td>Share of SteerCo actions closed by agreed date</td><td>Enterprise</td><td>Closed actions on time / total actions raised</td><td>High and transparent</td><td>Repeated carry-over of the same asks</td></tr>
+  <tr><td>Local exception count</td><td>Number of approved deviations from the target model</td><td>Enterprise</td><td>Exception register maintained by CoE</td><td>Declining after wave stabilisation</td><td>Growing without retirement plan</td></tr>
+  <tr><td>Wave readiness score</td><td>Composite readiness for next rollout wave</td><td>Enterprise</td><td>Sponsor, capability, dependency, and governance checklist</td><td>Evidence-backed green</td><td>Subjective optimism without proof</td></tr>
+  <tr><td>RTE role readiness</td><td>Whether named RTEs can run PI, dependency, and escalation routines independently</td><td>Programme</td><td>Observed readiness assessment by CoE</td><td>Increasing internal self-sufficiency</td><td>Persistent external dependency</td></tr>
+  <tr><td>Portfolio churn after PI planning</td><td>Material scope changes imposed after PI commitment</td><td>Enterprise</td><td>Count of major post-PI interventions</td><td>Rare and justified</td><td>Frequent replan requests</td></tr>
+  <tr><td>Cross-country coordination reliability</td><td>Planned versus achieved hand-offs across countries or hubs</td><td>Programme</td><td>Committed hand-offs met / planned hand-offs</td><td>Rising reliability</td><td>Missed hand-offs creating rework</td></tr>
+</table>
+
+<div class="box box--red">
+  <div class="box__label">Metrics that should not lead SteerCo</div>
+  <p style="margin:0">Training attendance, raw velocity, number of ceremonies held, tool adoption percentages, or maturity scores without operational definition. These may help local teams, but they do not steer an enterprise rollout.</p>
+</div>
+
+<h1 class="part">5. Quarterly narrative templates</h1>
+
+<p class="lead">These paragraph templates are intended to be read or lightly edited by leadership. Keep them evidence-based, short, and aligned to the operating model decision already made.</p>
+
+<h3>Q1 diagnosis narrative</h3>
+<div class="script">
+  <p>During Q1 we completed the diagnosis across the in-scope federation, confirming that the primary constraints are cross-entity dependency management, inconsistent architecture decision timing, and limited visibility of regulatory work in normal delivery flow. Based on that evidence, leadership selected the target operating model of <span class="fill-inline"></span>, with <span class="fill-inline"></span> retained as fallback. Our immediate objective for Q2 is to mobilise a pilot slice that proves the model under real dependency and compliance conditions rather than through isolated team-level coaching.</p>
+</div>
+
+<h3>Q2 pilot narrative</h3>
+<div class="script">
+  <p>In Q2 the pilot established the first production use of the chosen operating model across <span class="fill-inline"></span>. The most important outcome is that shared planning, escalation, and compliance visibility are now being exercised in one federated slice rather than discussed abstractly. The pilot is surfacing genuine system constraints, particularly <span class="fill-inline"></span>, which are appropriate for SteerCo action. Our ask for Q3 is to remove the top blocker and approve the next wave only where sponsor coverage and role readiness are demonstrably in place.</p>
+</div>
+
+<h3>Q3 wave expansion narrative</h3>
+<div class="script">
+  <p>Q3 focused on expanding from pilot into the next viable wave while protecting the integrity of the operating model. Adoption is improving across the original slice, and a reduced exception count indicates that the backbone is becoming more stable. Expansion is recommended for <span class="fill-inline"></span> because readiness evidence is strong, while <span class="fill-inline"></span> should remain deferred until local leadership capacity and governance alignment improve. The board should view this quarter as controlled scaling, not enterprise-wide rollout by declaration.</p>
+</div>
+
+<h3>Q4 institutionalise narrative</h3>
+<div class="script">
+  <p>By Q4 the priority shifts from proving the model to institutionalising it. Internal CoE capability, local RTE effectiveness, and repeatable reporting are now more important than additional external intervention. Our focus is to retire temporary exceptions, embed governance fully inside the delivery flow, and confirm that sponsor actions continue to close on time. The next decision for leadership is whether the enterprise is ready to treat the operating model as standard practice, with annual review, rather than as a transformation experiment.</p>
+</div>
+
+<h1 class="part">6. Escalation ladder and RAG dashboard guidance</h1>
+
+<h2>Escalation ladder: team → RTE → CoE → SteerCo → sponsor</h2>
+<p>Use the ladder below to keep issues at the lowest effective level for as long as possible. Escalation should be fast, evidence-based, and tied to a decision or unblock, not to frustration alone.</p>
+
+<div class="ladder">
+  <div class="ladder-step"><strong>Team:</strong> Resolve delivery issues within the squad or immediate collaboration group within the sprint or flow cadence.</div>
+  <div class="ladder-step"><strong>RTE:</strong> Take cross-team dependency, PI, or planning conflicts that exceed team authority or timing.</div>
+  <div class="ladder-step"><strong>CoE:</strong> Intervene when the issue exposes a pattern, role gap, exception request, or governance design flaw.</div>
+  <div class="ladder-step"><strong>SteerCo:</strong> Escalate blockers requiring enterprise reprioritisation, cross-BU alignment, funding, or mandated policy.</div>
+  <div class="ladder-step"><strong>Sponsor:</strong> Use for deadlock, political conflict, or time-critical decisions that only executive authority can settle.</div>
+</div>
+
+<div class="two-col">
+  <div class="card">
+    <div class="card__tag">Escalate when</div>
+    <div class="card__title">The next level can actually act</div>
+    <div class="card__body">Escalation should include issue statement, business impact, age, attempted resolution, requested decision, and deadline. Without those five pieces, issues often bounce between forums.</div>
+  </div>
+  <div class="card">
+    <div class="card__tag">Do not escalate when</div>
+    <div class="card__title">The issue is still vague or ownerless</div>
+    <div class="card__body">SteerCo should not become a dumping ground for unresolved local hygiene issues. If the owner or requested action is unclear, send it back one level with a timebox.</div>
+  </div>
+</div>
+
+<h2>Red / amber / green adoption dashboard</h2>
+
+<div class="dashboard-grid">
+  <div class="dashboard-card">
+    <h3>What to show</h3>
+    <ul>
+      <li>Adoption by in-scope ART, cluster, or BU against the target model</li>
+      <li>Trend over time, not a single-quarter snapshot</li>
+      <li>Top blockers linked to each amber or red status</li>
+      <li>Exception count and retirement plan</li>
+      <li>Regulatory capacity honesty and PI predictability trend</li>
+      <li>Named owner and next action for every non-green area</li>
+    </ul>
+  </div>
+  <div class="dashboard-card">
+    <h3>What not to show</h3>
+    <ul>
+      <li>Abstract maturity scores with no link to operating-model behaviours</li>
+      <li>All-green dashboards created to avoid difficult sponsor conversations</li>
+      <li>Large tables of team-level velocity or ceremony compliance</li>
+      <li>Raw training counts presented as evidence of adoption</li>
+      <li>Risk heatmaps that do not state requested action and owner</li>
+      <li>Separate compliance status outside the main delivery picture</li>
+    </ul>
+  </div>
+</div>
+
+<div class="box box--green">
+  <div class="box__label">RAG rule of thumb</div>
+  <p style="margin:0"><strong>Green</strong> means operating to target with manageable local friction. <strong>Amber</strong> means the model is still viable but one or more blockers need leadership attention this quarter. <strong>Red</strong> means the target model is not operating credibly in that slice and either sponsor intervention or a fallback decision is required.</p>
+</div>
+
+<h1 class="part">7. One-page SteerCo handout template</h1>
+
+<p class="lead">Print this page separately for the chair, sponsor, and presenter. Fill it in by hand or type into the blank lines before each forum.</p>
+
+<div class="handout-block">
+  <h3 style="margin-top:0">SteerCo overview</h3>
+  <p><strong>Date:</strong> <span class="fill-inline"></span> <strong>Chair:</strong> <span class="fill-inline"></span> <strong>Presenter:</strong> <span class="fill-inline"></span></p>
+  <p><strong>Current quarter:</strong> <span class="fill-inline"></span> <strong>Target operating model:</strong> <span class="fill-inline"></span></p>
+  <p><strong>Decision required today:</strong> <span class="fill-lg"></span></p>
+</div>
+
+<div class="handout-block">
+  <h3 style="margin-top:0">Four-question summary</h3>
+  <table>
+    <tr><th style="width:28%">Question</th><th>Summary</th></tr>
+    <tr><td>Are we delivering the right outcomes?</td><td><span class="fill-lg"></span></td></tr>
+    <tr><td>Where are blockers slowing flow?</td><td><span class="fill-lg"></span></td></tr>
+    <tr><td>Is regulatory capacity honest?</td><td><span class="fill-lg"></span></td></tr>
+    <tr><td>Is adoption real, and what is next?</td><td><span class="fill-lg"></span></td></tr>
+  </table>
+</div>
+
+<div class="handout-block">
+  <h3 style="margin-top:0">Top metrics and RAG</h3>
+  <table>
+    <tr><th>Metric</th><th>Status</th><th>Trend</th><th>Comment</th></tr>
+    <tr><td>% in-scope ARTs operating to target model</td><td></td><td></td><td></td></tr>
+    <tr><td>PI objective attainment</td><td></td><td></td><td></td></tr>
+    <tr><td>Dependency resolution lead time</td><td></td><td></td><td></td></tr>
+    <tr><td>Regulatory capacity reserved vs consumed</td><td></td><td></td><td></td></tr>
+    <tr><td>Sponsor action closure rate</td><td></td><td></td><td></td></tr>
+  </table>
+</div>
+
+<div class="handout-block">
+  <h3 style="margin-top:0">Actions and owners</h3>
+  <table>
+    <tr><th>Action</th><th>Owner</th><th>Due date</th></tr>
+    <tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr>
+  </table>
+  <p><strong>Next escalation if unresolved:</strong> <span class="fill-inline"></span></p>
+</div>
+
+<div class="quote">A strong SteerCo handout is readable in one minute, supportable in ten minutes, and actionable for the next quarter.</div>
+
+<div class="page-footer">
+  <span>Enterprise Agile Enablement · SteerCo Pack v2.0</span>
+  <span>Executive Brief · Implementation Plan · Workshop Kit</span>
+</div>
+
+</body>
+</html>
