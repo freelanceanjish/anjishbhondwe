@@ -2,26 +2,13 @@
 
 Standalone resource for agile coaches stepping into enterprise delivery enablement roles. **Not part of the public portfolio site.**
 
-## Download
+## v2 (recommended)
 
-**[Enterprise-Agile-Enablement-Study-Bible-and-Playbook.pdf](./Enterprise-Agile-Enablement-Study-Bible-and-Playbook.pdf)**
+**[→ Go to v2 pack](./v2/README.md)** — Executive Brief, Practitioner Playbook (37 pp), Workshop Kit, SteerCo Pack, and combined PDF (68 pp).
 
-## Contents
+Direct download: [00-Full-Pack-Combined.pdf](./v2/00-Full-Pack-Combined.pdf)
 
-| Part | Focus |
-|------|--------|
-| **Part I — Study Bible** | Mindset shift, capability map, 30/60/90 learning plan, operating model sketches, framework mix, red flags |
-| **Part II — Leadership Playbook** | 8-step rollout, diagnosis, half-day workshop, SteerCo scripts, first 90 days, templates |
+## v1 (legacy)
 
-## Regenerate PDF
+**[Enterprise-Agile-Enablement-Study-Bible-and-Playbook.pdf](./Enterprise-Agile-Enablement-Study-Bible-and-Playbook.pdf)** — 8-page quick reference.
 
-```bash
-google-chrome --headless=new --disable-gpu --no-sandbox \
-  --user-data-dir=/tmp/chrome-pdf-profile \
-  --run-all-compositor-stages-before-draw \
-  --virtual-time-budget=15000 \
-  --print-to-pdf=Enterprise-Agile-Enablement-Study-Bible-and-Playbook.pdf \
-  file://$(pwd)/enterprise-agile-enablement-playbook.html
-```
-
-Source HTML: `enterprise-agile-enablement-playbook.html`
