@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Enterprise Agile Enablement — Study Bible &amp; Leadership Playbook</title>
+<style>
+@page { size: A4; margin: 18mm 16mm 22mm 16mm; }
+@page :first { margin-top: 0; }
+* { box-sizing: border-box; }
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: #161616;
+  margin: 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.cover {
+  min-height: 297mm;
+  padding: 28mm 18mm 18mm;
+  background: #161616;
+  color: #f4f4f4;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cover__eyebrow { font-size: 9pt; letter-spacing: 2px; text-transform: uppercase; color: #78a9ff; margin-bottom: 12mm; }
+.cover__title { font-family: Georgia, "Times New Roman", serif; font-size: 28pt; font-weight: 400; line-height: 1.15; max-width: 140mm; margin-bottom: 8mm; }
+.cover__subtitle { font-size: 13pt; color: #c6c6c6; max-width: 130mm; line-height: 1.5; margin-bottom: 16mm; }
+.cover__meta { font-size: 9pt; color: #8d8d8d; line-height: 1.8; }
+.cover__parts { margin-top: auto; border-top: 1px solid #393939; padding-top: 8mm; display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+.cover__part { font-size: 9.5pt; color: #c6c6c6; }
+.cover__part strong { display: block; color: #78a9ff; font-size: 8pt; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2mm; }
+.page { padding: 0; }
+h1, h2, h3, h4 { page-break-after: avoid; break-after: avoid; }
+h1.section {
+  font-family: Georgia, serif;
+  font-size: 20pt;
+  font-weight: 400;
+  margin: 0 0 6mm;
+  padding-top: 2mm;
+  border-bottom: 2px solid #0f62fe;
+  padding-bottom: 3mm;
+  page-break-before: always;
+}
+h1.section:first-of-type { page-break-before: auto; }
+h2 {
+  font-size: 13pt;
+  font-weight: 700;
+  margin: 7mm 0 3mm;
+  border-left: 3px solid #0f62fe;
+  padding-left: 4mm;
+}
+h3 { font-size: 11pt; font-weight: 700; margin: 5mm 0 2mm; color: #262626; }
+h4 { font-size: 10pt; font-weight: 700; margin: 4mm 0 2mm; color: #393939; }
+p { margin: 0 0 3mm; }
+ul, ol { margin: 0 0 4mm 5mm; padding-left: 4mm; }
+li { margin-bottom: 1.5mm; }
+strong { font-weight: 700; }
+.lead { font-size: 11pt; color: #393939; margin-bottom: 5mm; }
+.label {
+  font-size: 8pt;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #0f62fe;
+  margin-bottom: 2mm;
+}
+.toc { page-break-after: always; padding-top: 4mm; }
+.toc h1 { font-family: Georgia, serif; font-size: 18pt; border: none; margin-bottom: 6mm; }
+.toc ol { list-style: none; padding: 0; margin: 0; }
+.toc li { margin-bottom: 2mm; font-size: 10pt; display: flex; justify-content: space-between; border-bottom: 1px dotted #c6c6c6; padding-bottom: 1.5mm; }
+.toc .part { margin-top: 5mm; margin-bottom: 2mm; font-size: 8pt; letter-spacing: 1px; text-transform: uppercase; color: #0f62fe; font-weight: 700; }
+.box {
+  border: 1px solid #c6c6c6;
+  background: #f4f4f4;
+  padding: 4mm;
+  margin: 4mm 0;
+  page-break-inside: avoid;
+}
+.box--blue { border-left: 3px solid #0f62fe; }
+.box--green { border-left: 3px solid #42be65; }
+.box--gold { border-left: 3px solid #f1c21b; background: #fff8e1; }
+.box__title { font-size: 8pt; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; margin-bottom: 2mm; color: #0f62fe; }
+.box--green .box__title { color: #198038; }
+.box--gold .box__title { color: #8a6d00; }
+.quote {
+  border-left: 3px solid #0f62fe;
+  padding: 3mm 5mm;
+  margin: 5mm 0;
+  font-family: Georgia, serif;
+  font-size: 11pt;
+  font-style: italic;
+  color: #262626;
+  page-break-inside: avoid;
+}
+table { width: 100%; border-collapse: collapse; margin: 4mm 0 5mm; font-size: 9pt; page-break-inside: avoid; }
+th, td { border: 1px solid #c6c6c6; padding: 2.5mm 3mm; text-align: left; vertical-align: top; }
+th { background: #262626; color: #f4f4f4; font-weight: 600; }
+tr:nth-child(even) td { background: #f4f4f4; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin: 4mm 0; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; margin: 4mm 0; }
+.card { border: 1px solid #c6c6c6; padding: 3mm; page-break-inside: avoid; }
+.card__num { font-size: 8pt; color: #0f62fe; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1mm; }
+.card__title { font-weight: 700; font-size: 10pt; margin-bottom: 1.5mm; }
+.card__body { font-size: 9pt; color: #393939; line-height: 1.45; }
+.script {
+  background: #fff;
+  border: 1px solid #c6c6c6;
+  padding: 4mm;
+  margin: 3mm 0;
+  font-size: 9.5pt;
+  line-height: 1.6;
+  page-break-inside: avoid;
+}
+.script .speaker { font-weight: 700; color: #0f62fe; }
+.checklist { list-style: none; padding: 0; margin: 3mm 0; }
+.checklist li { padding-left: 6mm; position: relative; margin-bottom: 2mm; }
+.checklist li::before { content: "☐"; position: absolute; left: 0; color: #0f62fe; }
+.step-num {
+  display: inline-block;
+  width: 7mm;
+  height: 7mm;
+  line-height: 7mm;
+  text-align: center;
+  background: #0f62fe;
+  color: #fff;
+  font-size: 8pt;
+  font-weight: 700;
+  margin-right: 2mm;
+}
+.footer-note {
+  margin-top: 8mm;
+  padding-top: 3mm;
+  border-top: 1px solid #c6c6c6;
+  font-size: 8pt;
+  color: #8d8d8d;
+  text-align: center;
+}
+.page-break { page-break-before: always; }
+.avoid-break { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div>
+    <div class="cover__eyebrow">Study Bible &amp; Leadership Playbook</div>
+    <h1 class="cover__title">Enterprise Agile Enablement</h1>
+    <p class="cover__subtitle">How to step into an enterprise scaling role and implement it credibly in front of leadership.</p>
+    <div class="cover__meta">
+      For agile coaches moving from team-level coaching to enterprise delivery enablement<br>
+      Version 1.0 · June 2026<br>
+      Based on federated operating model practice in regulated European enterprises
+    </div>
+  </div>
+  <div class="cover__parts">
+    <div class="cover__part">
+      <strong>Part I — Study Bible</strong>
+      Mindset shift, capability map, 30/60/90 learning path, and self-assessment before you take the role.
+    </div>
+    <div class="cover__part">
+      <strong>Part II — Leadership Playbook</strong>
+      Eight-step implementation, operating model workshops, SteerCo scripts, and first-90-days execution.
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<section class="toc page">
+  <h1>Contents</h1>
+  <div class="part">Part I — Study Bible: Learn the Role</div>
+  <ol>
+    <li><span>1. From team coach to enterprise enablement lead</span></li>
+    <li><span>2. What the role actually owns</span></li>
+    <li><span>3. Capability map and honest gap analysis</span></li>
+    <li><span>4. 30 / 60 / 90-day learning plan</span></li>
+    <li><span>5. Operating model literacy (four sketches)</span></li>
+    <li><span>6. Framework mix without religion</span></li>
+    <li><span>7. Red flags that expose team-coach thinking</span></li>
+  </ol>
+  <div class="part">Part II — Leadership Playbook: Implement in Front of Sponsors</div>
+  <ol start="8">
+    <li><span>8. The eight-step enterprise rollout</span></li>
+    <li><span>9. Step 1–2: Diagnose and sketch the operating model</span></li>
+    <li><span>10. Half-day operating model selection workshop</span></li>
+    <li><span>11. Leadership conversation scripts</span></li>
+    <li><span>12. SteerCo narrative and board-ready reporting</span></li>
+    <li><span>13. Steps 3–8: Enablement through institutionalisation</span></li>
+    <li><span>14. First 90 days in role — week-by-week</span></li>
+    <li><span>15. Templates and checklists</span></li>
+  </ol>
+</section>
+
+<!-- PART I -->
+<section class="page">
+<h1 class="section">Part I — Study Bible</h1>
+<p class="lead">Read this section before you interview, before you accept the role, and again in your first month. It answers: <strong>what changes when you stop coaching teams and start enabling an enterprise?</strong></p>
+
+<h2>1. From team coach to enterprise enablement lead</h2>
+<p>Most agile coaches are hired to fix delivery at squad level: better ceremonies, clearer backlogs, healthier retros. Enterprise delivery enablement is a different job. You are not the best Scrum Master in the building. You are the person who designs and runs the system that makes hundreds of people deliver in a federated organisation under regulatory scrutiny.</p>
+
+<div class="quote">"Frameworks are tools. Enterprise Agile is the operating model, the enablement system, and the rollout plan that makes those tools work under board scrutiny."</div>
+
+<table>
+  <tr><th>Team agile coach</th><th>Enterprise enablement lead</th></tr>
+  <tr><td>Coaches 1–3 squads</td><td>Enables RTEs, POs, people managers, and internal coaches across BUs and countries</td></tr>
+  <tr><td>Success = healthy team metrics</td><td>Success = adoption of operating model, flow across entities, leadership decisions</td></tr>
+  <tr><td>Framework expertise is the product</td><td>Operating model design is the product; frameworks are assigned to constraints</td></tr>
+  <tr><td>Influence through facilitation</td><td>Authority through mandate, sponsorship, and executive narrative</td></tr>
+  <tr><td>Scope = sprint and team backlog</td><td>Scope = federation map, PI cadence, governance hooks, rollout waves</td></tr>
+</table>
+
+<div class="box box--blue">
+  <div class="box__title">Core mindset shift</div>
+  <p style="margin:0">Stop asking "How do I coach this team better?" Start asking "How does work flow across this federation, who enables at scale, and what decision do sponsors need to make next?"</p>
+</div>
+
+<h2>2. What the role actually owns</h2>
+<p>In a federated enterprise (multiple BUs, countries, shared services), the enablement lead typically owns three layers simultaneously:</p>
+
+<div class="grid-3">
+  <div class="card">
+    <div class="card__num">Layer 1</div>
+    <div class="card__title">Operating model</div>
+    <div class="card__body">Decision rights, scaling units (ART/cluster), PI rhythm, mandated vs. optional standards, governance hooks with architecture and compliance.</div>
+  </div>
+  <div class="card">
+    <div class="card__num">Layer 2</div>
+    <div class="card__title">Enablement system</div>
+    <div class="card__body">CoE mandate, coach-the-coach network, RTE/PO/leader paths, curriculum tied to real forums — not training completion counts.</div>
+  </div>
+  <div class="card">
+    <div class="card__num">Layer 3</div>
+    <div class="card__title">Rollout plan</div>
+    <div class="card__body">Pilot in one real federated slice, wave sequencing, metrics at enterprise level, transition to internal ownership.</div>
+  </div>
+</div>
+
+<h3>What you do not own (but must partner on)</h3>
+<ul>
+  <li><strong>Portfolio prioritisation</strong> — you shape how it flows through PI, not what the board funds</li>
+  <li><strong>People decisions</strong> — HR and line managers own hiring and performance; you align role expectations</li>
+  <li><strong>Architecture decisions</strong> — you align forums to cadence; enterprise architects own technical direction</li>
+  <li><strong>Compliance sign-off</strong> — you embed obligations in backlog flow; Legal/Compliance own interpretation</li>
+</ul>
+
+<h2>3. Capability map and honest gap analysis</h2>
+<p>Rate yourself 1 (weak) to 5 (strong) on each capability. Anything below 3 in the top row is a priority learning gap before you lead in front of executives.</p>
+
+<table>
+  <tr><th>Capability</th><th>What good looks like</th><th>Score (1–5)</th></tr>
+  <tr><td>Federated system thinking</td><td>Map BUs, countries, shared services, and decision rights on one page</td><td></td></tr>
+  <tr><td>Operating model design</td><td>Sketch 2–3 viable models; score against named needs; document trade-offs</td><td></td></tr>
+  <tr><td>Executive narrative</td><td>Explain scaling in outcomes, dependencies, and regulatory capacity — not ceremonies</td><td></td></tr>
+  <tr><td>SAFe / scaled programme design</td><td>ART structure, PI planning, RTE enablement, dependency management</td><td></td></tr>
+  <tr><td>Flight Levels / flow visibility</td><td>Expose bottlenecks above team level for leadership steering</td><td></td></tr>
+  <tr><td>CoE design and mandate</td><td>Written authority, rhythms, internal coach network, not "Agile champions"</td><td></td></tr>
+  <tr><td>Regulated delivery</td><td>Compliance in backlog flow; reserved PI capacity; audit-ready artefacts</td><td></td></tr>
+  <tr><td>Change at scale</td><td>Wave planning, pilot design, anti-pattern detection, adoption metrics</td><td></td></tr>
+  <tr><td>Team coaching (baseline)</td><td>Credible Scrum/Kanban practice — necessary but not sufficient</td><td></td></tr>
+</table>
+
+<h2>4. 30 / 60 / 90-day learning plan</h2>
+<p>Use this before you start the role, or in parallel with early onboarding. Each phase has study, practice, and evidence of learning.</p>
+
+<h3>Days 1–30: Foundation</h3>
+<ul>
+  <li><strong>Study:</strong> Map one real federated enterprise (your target org or a case study). Identify who decides capacity, funding, architecture, compliance.</li>
+  <li><strong>Study:</strong> Read scaled Agile as operating model design, not certification prep. Focus on ART, PI, RTE, portfolio alignment.</li>
+  <li><strong>Practice:</strong> Draft four one-page operating model sketches for a fictional multi-country group. Score them against six needs (see Section 5).</li>
+  <li><strong>Practice:</strong> Write a 5-minute executive pitch: "Why we should not start with a framework choice."</li>
+  <li><strong>Evidence:</strong> One-page federation map + one sketch with trade-offs documented.</li>
+</ul>
+
+<h3>Days 31–60: Leadership language</h3>
+<ul>
+  <li><strong>Study:</strong> Flight Levels — how work visible at strategy, initiative, and team layers changes SteerCo conversations.</li>
+  <li><strong>Practice:</strong> Facilitate a mock 90-minute operating model selection with 2–3 peers playing BU leads.</li>
+  <li><strong>Practice:</strong> Build a SteerCo slide pack: outcomes, dependencies, regulatory capacity, top impediments with owners.</li>
+  <li><strong>Study:</strong> Regulated delivery patterns — parallel compliance tracks vs. governance in flow.</li>
+  <li><strong>Evidence:</strong> Mock workshop output: decision record with target model + fallback.</li>
+</ul>
+
+<h3>Days 61–90: Implementation readiness</h3>
+<ul>
+  <li><strong>Practice:</strong> Design a pilot slice (BU + shared service, or two countries on one value stream).</li>
+  <li><strong>Practice:</strong> Draft CoE operating model: mandate, rhythms, coach network, enablement curriculum outline.</li>
+  <li><strong>Practice:</strong> Define enterprise metrics (adoption, flow, impediment resolution) and explicitly list what you will <em>not</em> measure (training hours).</li>
+  <li><strong>Study:</strong> Anti-patterns — fake Agile, waterfall in sprint clothing, compliance bypass tracks.</li>
+  <li><strong>Evidence:</strong> Pilot charter + 90-day role plan you could present to a hiring manager or sponsor.</li>
+</ul>
+
+<h2>5. Operating model literacy (four sketches)</h2>
+<p>Every enterprise is different, but four sketches cover most federated, regulated contexts. Learn to draw and explain each on one page before any leadership workshop.</p>
+
+<div class="grid-2">
+  <div class="card">
+    <div class="card__num">Sketch A</div>
+    <div class="card__title">Central Agile CoE + federated ARTs</div>
+    <div class="card__body"><strong>Best when:</strong> group-wide scaling standard across countries.<br><strong>Fulfils:</strong> PI governance, cross-border dependencies, consistent metrics.<br><strong>Trade-off:</strong> slower local adaptation; needs strong CoE mandate.</div>
+  </div>
+  <div class="card">
+    <div class="card__num">Sketch B</div>
+    <div class="card__title">BU-led clusters + light CoE</div>
+    <div class="card__body"><strong>Best when:</strong> strong P&amp;L autonomy and resistance to central design.<br><strong>Fulfils:</strong> faster BU buy-in, local political fit.<br><strong>Trade-off:</strong> inconsistent practices; weak group reporting.</div>
+  </div>
+  <div class="card">
+    <div class="card__num">Sketch C</div>
+    <div class="card__title">Shared enablement spine + product teams</div>
+    <div class="card__body"><strong>Best when:</strong> platform, architecture, or data is the bottleneck.<br><strong>Fulfils:</strong> lifecycle flow, cross-functional practices (delivery, quality, design).<br><strong>Trade-off:</strong> complex forums; needs flow visibility above team level.</div>
+  </div>
+  <div class="card">
+    <div class="card__num">Sketch D</div>
+    <div class="card__title">Regulatory programme overlay</div>
+    <div class="card__body"><strong>Best when:</strong> hard compliance deadline dominates capacity.<br><strong>Fulfils:</strong> predictable regulatory delivery, audit-ready artefacts.<br><strong>Trade-off:</strong> product innovation feels secondary unless capacity is protected in PI.<br><strong>Note:</strong> layer onto A or C, not standalone.</div>
+  </div>
+</div>
+
+<h3>Six needs to score every sketch against</h3>
+<ol>
+  <li>Cross-entity delivery on shared outcomes</li>
+  <li>Local autonomy in diverse countries or BUs</li>
+  <li>Platform or architecture bottleneck</li>
+  <li>Regulatory deadline certainty</li>
+  <li>Enterprise enablement at leadership level (not training alone)</li>
+  <li>Board-ready transparency</li>
+</ol>
+
+<h2>6. Framework mix without religion</h2>
+<p>Assign each framework to a problem. Never lead with "We are a SAFe shop."</p>
+
+<table>
+  <tr><th>Framework</th><th>Layer</th><th>Use for</th><th>Enterprise goal</th></tr>
+  <tr><td>Scrum</td><td>Team</td><td>Squad rhythm, backlog, quality, PO/SM practice</td><td>Stand up team delivery capability</td></tr>
+  <tr><td>SAFe</td><td>Programme</td><td>ART, PI planning, RTE roles, multi-team dependencies</td><td>Coordinate 5–15 teams on one outcome</td></tr>
+  <tr><td>Flight Levels</td><td>Leadership</td><td>Flow visibility above team boundaries</td><td>Fix portfolio bottlenecks and misalignment</td></tr>
+</table>
+
+<div class="box box--green">
+  <div class="box__title">Rule of thumb</div>
+  <p style="margin:0">If a framework choice cannot be linked to a named goal (faster flow, clearer dependencies, better enablement, safer rollout), it is probably theatre. Pick the minimum mix for the next constraint; expand in the next wave.</p>
+</div>
+
+<h2>7. Red flags that expose team-coach thinking</h2>
+<p>Avoid these in interviews and SteerCo. They signal you will not survive at enterprise level.</p>
+
+<table>
+  <tr><th>Say this (weak)</th><th>Say this instead (strong)</th></tr>
+  <tr><td>"I'll coach the teams to be more agile."</td><td>"I'll design the operating model and enablement system so teams can deliver within a federated scaling backbone."</td></tr>
+  <tr><td>"We should adopt SAFe."</td><td>"We need a scaling backbone for multi-team dependencies; SAFe is one option once we choose the operating model sketch."</td></tr>
+  <tr><td>"Training is the first step."</td><td>"Diagnosis and operating model selection come first; training follows the enablement paths we define."</td></tr>
+  <tr><td>"Retro action items will fix it."</td><td>"This impediment sits at portfolio level; here's the owner, forum, and cadence to resolve it."</td></tr>
+  <tr><td>"Agile maturity score is 3.2."</td><td>"Adoption is at 4 of 7 in-scope ARTs; PI predictability is 68%; top systemic blocker is architecture forum misaligned to PI."</td></tr>
+</table>
+
+</section>
+
+<!-- PART II -->
+<section class="page">
+<h1 class="section">Part II — Leadership Playbook</h1>
+<p class="lead">Use this section when you have sponsor airtime: workshops, SteerCo, transformation board, or your first 90 days in role. It is execution, not theory.</p>
+
+<h2>8. The eight-step enterprise rollout</h2>
+<p>This is the backbone sequence. Do not skip steps. Do not reorder without a deliberate reason.</p>
+
+<table>
+  <tr><th>Step</th><th>What</th><th>Timeline</th><th>Primary owner</th></tr>
+  <tr><td>1</td><td>Diagnose enterprise context</td><td>Weeks 1–4</td><td>Transformation lead + CoE sponsor</td></tr>
+  <tr><td>2</td><td>Define target operating model</td><td>Weeks 4–8</td><td>CoE + EA + portfolio office</td></tr>
+  <tr><td>3</td><td>Stand up enterprise delivery enablement</td><td>Weeks 6–12</td><td>Agile CoE</td></tr>
+  <tr><td>4</td><td>Pilot in one federated slice</td><td>Months 3–6</td><td>Programme lead + CoE</td></tr>
+  <tr><td>5</td><td>Roll out in waves</td><td>Months 6–18</td><td>Transformation lead + CoE + BU sponsors</td></tr>
+  <tr><td>6</td><td>Embed governance in flow</td><td>Ongoing from pilot</td><td>CoE + Compliance + EA</td></tr>
+  <tr><td>7</td><td>Measure enterprise adoption</td><td>Ongoing from pilot</td><td>CoE + portfolio office</td></tr>
+  <tr><td>8</td><td>Institutionalise and exit external lead</td><td>Month 12+</td><td>Internal CoE</td></tr>
+</table>
+
+<h2>9. Step 1–2: Diagnose and sketch the operating model</h2>
+
+<h3>Step 1 — Diagnose (weeks 1–4)</h3>
+<p><strong>Objective:</strong> Map the federation and agree what success means before framework conversations.</p>
+<ul class="checklist">
+  <li>Map who decides capacity, funding, architecture, compliance in each entity</li>
+  <li>Identify value streams vs. project silos and hidden dependency chains</li>
+  <li>Observe ceremonies and backlogs — do not rely on surveys alone</li>
+  <li>Surface real blockers: politics, audit gates, architecture forums, parallel compliance tracks</li>
+  <li>Agree success criteria with sponsor: flow, predictability, regulatory response, cost of delay</li>
+</ul>
+<p><strong>Output:</strong> Current-state map, pain points by BU/country, sponsor agreement on success definition.</p>
+
+<h3>Step 2 — Operating model (weeks 4–8)</h3>
+<p><strong>Objective:</strong> Choose how Agile works at enterprise level — before rollout spend.</p>
+<p>Each sketch must answer on one page: scope (wave 1 vs. later), decision rights, scaling unit, planning rhythm, enablement model, governance hooks.</p>
+<p><strong>Output:</strong> Operating model decision record, scaling blueprint, federated governance charter, CoE enablement design.</p>
+
+<h2>10. Half-day operating model selection workshop</h2>
+<p><strong>Audience:</strong> Executive sponsor, BU/country leads, portfolio office, enterprise architecture, CoE lead (you).</p>
+<p><strong>Duration:</strong> 4 hours. <strong>Facilitator:</strong> You. <strong>Decision maker:</strong> Sponsor.</p>
+
+<table>
+  <tr><th>Time</th><th>Activity</th><th>Output</th></tr>
+  <tr><td>0:00–0:30</td><td>Open: diagnosis summary + six priority needs for next 12–18 months</td><td>Aligned needs list</td></tr>
+  <tr><td>0:30–1:30</td><td>Present Sketches A–D (15 min each); Q&amp;A on trade-offs</td><td>Shared understanding of options</td></tr>
+  <tr><td>1:30–1:45</td><td>Break</td><td></td></tr>
+  <tr><td>1:45–3:15</td><td>Score 2–3 sketches vs. six needs (1–5 matrix); discuss cost of change</td><td>Scored matrix</td></tr>
+  <tr><td>3:15–3:45</td><td>Select target model + fallback; document mandated vs. optional</td><td>Decision record draft</td></tr>
+  <tr><td>3:45–4:00</td><td>Close: next steps, pilot slice criteria, owners</td><td>Actions with dates</td></tr>
+</table>
+
+<h3>Needs scoring matrix (template)</h3>
+<table>
+  <tr><th>Need</th><th>Sketch A</th><th>Sketch B</th><th>Sketch C</th><th>Sketch D (layer)</th></tr>
+  <tr><td>Cross-entity delivery</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Local autonomy</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Platform bottleneck</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Regulatory certainty</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Leadership enablement</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Board transparency</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><strong>Total</strong></td><td></td><td></td><td></td><td>N/A</td></tr>
+</table>
+
+<h2>11. Leadership conversation scripts</h2>
+<p>Adapt these verbatim structure; replace bracketed placeholders with your context.</p>
+
+<h3>Script A — First meeting with executive sponsor</h3>
+<div class="script">
+  <p><span class="speaker">You:</span> "Before we discuss frameworks or training, I want to align on three things: how work flows across [group/BUs/countries], what decisions you need visibility on, and what would make this transformation credible to the board in 12 months."</p>
+  <p><span class="speaker">You:</span> "My proposal is a four-week diagnosis, then a half-day operating model workshop where we choose a target model and fallback before any rollout spend. That decision record becomes the contract for the pilot."</p>
+  <p><span class="speaker">Sponsor:</span> [Expect questions on timeline, cost, SAFe.]</p>
+  <p><span class="speaker">You:</span> "SAFe may be part of the backbone, but only after we know which operating model sketch fits your federation. Starting with a framework choice is the most expensive mistake I see in regulated enterprises."</p>
+</div>
+
+<h3>Script B — BU lead who resists central design</h3>
+<div class="script">
+  <p><span class="speaker">BU lead:</span> "We already have our own way of working. We don't need a group CoE telling us how to run squads."</p>
+  <p><span class="speaker">You:</span> "I'm not here to redesign your squads. I'm here to make cross-BU dependencies, PI governance, and compliance evidence work when your teams depend on [shared service / platform / country X]. The operating model workshop defines what's mandated for that coordination vs. what stays local. Your autonomy is a scored need, not an afterthought."</p>
+</div>
+
+<h3>Script C — Compliance or risk stakeholder</h3>
+<div class="script">
+  <p><span class="speaker">You:</span> "Regulatory work should not sit in a parallel track that bypasses delivery flow. We reserve explicit PI capacity — typically 20–35% in banking — sized and visible in the backlog, with joint ownership between Compliance and delivery. Sketch D is the overlay we use when a hard deadline must dominate capacity."</p>
+</div>
+
+<h3>Script D — "Why not just train everyone in SAFe?"</h3>
+<div class="script">
+  <p><span class="speaker">You:</span> "Training without an operating model produces certified people and inconsistent practice. We train against enablement paths — RTE, PO, people manager — after we know the scaling backbone, forums, and metrics. Certificates prove attendance, not enterprise capability."</p>
+</div>
+
+<h2>12. SteerCo narrative and board-ready reporting</h2>
+<p>Leadership does not want sprint burndowns. They want four questions answered every cadence.</p>
+
+<div class="grid-2">
+  <div class="card">
+    <div class="card__title">1. Are we delivering the right outcomes?</div>
+    <div class="card__body">Outcome velocity, PI objectives met, regulatory milestones on track.</div>
+  </div>
+  <div class="card">
+    <div class="card__title">2. Where are dependencies stuck?</div>
+    <div class="card__body">Cross-BU/platform blockers, owners, days open, escalation path.</div>
+  </div>
+  <div class="card">
+    <div class="card__title">3. Is regulatory capacity honest?</div>
+    <div class="card__body">Reserved vs. consumed capacity; compliance items in backlog vs. parallel track.</div>
+  </div>
+  <div class="card">
+    <div class="card__title">4. Is adoption real?</div>
+    <div class="card__body">% in-scope ARTs/clusters operating to target model; not training hours.</div>
+  </div>
+</div>
+
+<h3>SteerCo slide structure (5 slides max)</h3>
+<ol>
+  <li><strong>Executive summary</strong> — 3 bullets: progress, top risk, decision needed</li>
+  <li><strong>Rollout status</strong> — wave map, adoption %, pilot learnings</li>
+  <li><strong>Flow and dependencies</strong> — Flight Levels or equivalent; top 3 systemic impediments</li>
+  <li><strong>Regulatory and compliance</strong> — capacity allocation, upcoming gates, audit readiness</li>
+  <li><strong>Decisions and asks</strong> — explicit sponsor actions with owners and dates</li>
+</ol>
+
+<div class="box box--gold">
+  <div class="box__title">Measure at three levels</div>
+  <p><strong>Team/flow:</strong> cycle time, throughput, dependency resolution.<br>
+  <strong>Programme/cluster:</strong> PI predictability, cross-team coordination, release readiness.<br>
+  <strong>Enterprise:</strong> adoption by BU/country, CoE coverage, regulatory response speed, cost of delay.<br>
+  <strong>Avoid:</strong> training completion as a primary KPI.</p>
+</div>
+
+<h2>13. Steps 3–8: Enablement through institutionalisation</h2>
+
+<h3>Step 3 — Stand up enablement (weeks 6–12)</h3>
+<ul>
+  <li>Establish CoE with written authority, not sponsorship alone</li>
+  <li>Build internal coach capacity; reduce rotating external trainers</li>
+  <li>Enable RTEs, POs, and people managers at cluster and country level</li>
+  <li>Align HR, funding, and architecture forums to the delivery model</li>
+</ul>
+
+<h3>Step 4 — Pilot (months 3–6)</h3>
+<p>One bounded slice that tests federated handoffs: BU + shared service, onshore-offshore, or two countries on one value stream. Run first PI with real dependencies. Embed compliance in flow.</p>
+<p><strong>Output:</strong> Reference model, baseline metrics, rollout playbook v1, executive narrative for expansion.</p>
+
+<h3>Step 5 — Rollout waves (months 6–18)</h3>
+<table>
+  <tr><th>Wave</th><th>Focus</th></tr>
+  <tr><td>W1</td><td>Pilot cluster — prove model, fix governance gaps, baseline metrics</td></tr>
+  <tr><td>W2</td><td>Adjacent domains + shared services — dependency and architecture alignment</td></tr>
+  <tr><td>W3</td><td>Additional countries/BUs — federated rollout on one backbone</td></tr>
+  <tr><td>W4</td><td>Enterprise standardisation — metrics, CoE rhythms, enablement paths</td></tr>
+</table>
+
+<h3>Step 6 — Governance in flow</h3>
+<p>Map regulatory obligations to Agile artefacts. Align architecture, risk, and compliance forums to PI cadence. Reserve regulatory capacity honestly and visibly.</p>
+
+<h3>Step 7 — Measure adoption</h3>
+<p>Track outcome velocity, impediment resolution days, rollout adoption %. Kill vanity metrics.</p>
+
+<h3>Step 8 — Institutionalise</h3>
+<p>Transition to internal CoE ownership. Certify internal coaches and RTEs. Refresh operating model annually. Kill anti-patterns: fake Agile, waterfall in sprint clothing, compliance bypass tracks.</p>
+
+<h2>14. First 90 days in role — week-by-week</h2>
+
+<table>
+  <tr><th>Week</th><th>Focus</th><th>Deliverable</th></tr>
+  <tr><td>1–2</td><td>Stakeholder map, sponsor alignment, access to forums</td><td>Federation map v0.1, success criteria signed</td></tr>
+  <tr><td>3–4</td><td>Diagnosis: observe delivery, interview BU leads, surface blockers</td><td>Current-state report, pain points by entity</td></tr>
+  <tr><td>5–6</td><td>Draft 2–3 operating model sketches; socialise with EA and portfolio</td><td>Sketch pack for workshop</td></tr>
+  <tr><td>7</td><td>Half-day operating model selection workshop</td><td>Decision record: target + fallback</td></tr>
+  <tr><td>8–9</td><td>CoE design, enablement paths, pilot slice selection</td><td>CoE charter, pilot charter</td></tr>
+  <tr><td>10–12</td><td>Pilot launch prep: RTE/PO enablement, PI calendar, governance hooks</td><td>Rollout playbook v0.1, SteerCo pack</td></tr>
+</table>
+
+<div class="box box--blue">
+  <div class="box__title">First 90 days — what not to do</div>
+  <ul style="margin:0;padding-left:4mm">
+    <li>Do not launch enterprise-wide training in week 2</li>
+    <li>Do not rename project managers to RTEs without enablement paths</li>
+    <li>Do not claim success from one green squad</li>
+    <li>Do not hide compliance work in a shadow backlog</li>
+    <li>Do not skip the written operating model decision — verbal agreement will not survive reorgs</li>
+  </ul>
+</div>
+
+<h2>15. Templates and checklists</h2>
+
+<h3>Operating model decision record (one page)</h3>
+<table>
+  <tr><th>Field</th><th>Content</th></tr>
+  <tr><td>Date / sponsor</td><td></td></tr>
+  <tr><td>Target operating model sketch</td><td>A / B / C (+ D overlay Y/N)</td></tr>
+  <tr><td>Fallback sketch</td><td></td></tr>
+  <tr><td>Top three needs driving choice</td><td></td></tr>
+  <tr><td>Mandated centrally</td><td>PI cadence, artefacts, metrics, forums...</td></tr>
+  <tr><td>Optional locally</td><td>Team structure, tooling, ceremony nuances...</td></tr>
+  <tr><td>Scaling backbone</td><td>SAFe / alternative + rationale linked to goal</td></tr>
+  <tr><td>Pilot slice definition</td><td>Entities, value stream, success criteria</td></tr>
+  <tr><td>Next review date</td><td>Annual refresh minimum</td></tr>
+</table>
+
+<h3>Pilot readiness checklist</h3>
+<ul class="checklist">
+  <li>Sponsor and BU leads named with time commitment for PI events</li>
+  <li>Operating model decision record signed</li>
+  <li>RTE(s) identified and enablement plan started</li>
+  <li>Architecture and compliance forums aligned to PI cadence</li>
+  <li>Dependency board and risk/backlog standards agreed</li>
+  <li>Baseline metrics captured before first PI</li>
+  <li>SteerCo narrative template agreed</li>
+  <li>Regulatory capacity % agreed and visible in backlog</li>
+</ul>
+
+<h3>Anti-pattern watchlist</h3>
+<table>
+  <tr><th>Anti-pattern</th><th>Signal</th><th>Response</th></tr>
+  <tr><td>Fake Agile</td><td>Ceremonies without empowerment or backlog ownership</td><td>Reset decision rights; stop scaling until pilot integrity restored</td></tr>
+  <tr><td>Waterfall in sprints</td><td>Fixed scope per sprint; no replanning at PI</td><td>Fix portfolio and PI planning; coach is not the issue</td></tr>
+  <tr><td>Compliance bypass</td><td>Shadow track outside ART backlogs</td><td>Sketch D overlay; joint backlog with Compliance</td></tr>
+  <tr><td>Training theatre</td><td>High certificates, low adoption</td><td>Shift metrics to adoption and flow; tie training to roles</td></tr>
+  <tr><td>Local reinvention</td><td>Each BU invents its own scaling model</td><td>Enforce backbone from decision record; allow listed local options only</td></tr>
+</table>
+
+<div class="quote">I do not start with frameworks. I start with the federated operating model, stand up enterprise delivery enablement through a CoE, pilot in one real slice, then roll out in waves with governance embedded in flow.</div>
+
+<p class="footer-note">Enterprise Agile Enablement — Study Bible &amp; Leadership Playbook · Version 1.0 · June 2026<br>
+Companion implementation guide: anjishbhondwe.com/blog-enterprise-agile-enablement.html</p>
+
+</section>
+
+</body>
+</html>
