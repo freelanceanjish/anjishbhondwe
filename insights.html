@@ -172,6 +172,8 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 .footer-links a:hover{color:var(--text)}
 
 @media(max-width:768px){
+  .reveal,.article-body{opacity:1!important;transform:none!important;visibility:visible!important;animation:none!important}
+
   nav{padding:0 var(--s2)}
   .nav-center,.nav-actions{display:none!important}
   .nav-hamburger{display:flex!important;margin-left:auto}
@@ -418,7 +420,7 @@ document.getElementById('hamburger').addEventListener('click', function(){
 // Reveal on scroll
 var observer = new IntersectionObserver(function(entries){
   entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.1});
+}, {threshold: 0});
 document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
 
 // Filter

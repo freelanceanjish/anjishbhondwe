@@ -1379,6 +1379,15 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
 @media (max-width: 768px) {
   html, body { overflow-x: hidden; max-width: 100%; }
 
+  .reveal,
+  .reveal.visible,
+  .article-body {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    animation: none !important;
+  }
+
   nav { padding: 0 1rem; }
   .nav-center, .nav-actions { display: none !important; }
   .nav-hamburger { display: flex !important; }

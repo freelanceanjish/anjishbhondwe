@@ -55,9 +55,12 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0, rootMargin: '0px 0px 40px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Article content must always be visible (long pages fail ratio-based thresholds on mobile)
+document.querySelectorAll('.article-body').forEach(el => el.classList.add('visible'));
 
 /* ── ACTIVE NAV LINK (highlight section in view) ── */
 const sections = document.querySelectorAll('section[id]');

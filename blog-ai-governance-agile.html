@@ -252,6 +252,8 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 .footer-links a:hover{color:var(--text)}
 
 @media(max-width:768px){
+  .reveal,.article-body{opacity:1!important;transform:none!important;visibility:visible!important;animation:none!important}
+
   nav{padding:0 var(--s2)}
   .nav-center,.nav-actions{display:none!important}
   .nav-hamburger{display:flex!important;margin-left:auto}
@@ -332,7 +334,7 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
     <div class="article-layout">
 
       <!-- BODY -->
-      <article class="article-body reveal">
+      <article class="article-body">
 
         <p>The EU AI Act enforcement timeline is not a distant planning horizon. With the first substantive obligations — prohibited practices bans, GPAI model transparency requirements, and high-risk system conformity assessments — already live or entering force through 2025 and 2026, organisations building AI systems under Agile delivery models face a structural challenge: how do you make compliance a continuous property of the product, rather than a gate-check event that arrives like an audit six months after the code was written?</p>
 
@@ -538,8 +540,9 @@ document.getElementById('hamburger').addEventListener('click',()=>{
 // Reveal
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-},{threshold:0.05});
+},{threshold:0});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('.article-body').forEach(el=>el.classList.add('visible'));
 // TOC active
 const headings = document.querySelectorAll('.article-body h2[id]');
 const tocLinks = document.querySelectorAll('.article-toc__list a');

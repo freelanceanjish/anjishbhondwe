@@ -242,6 +242,8 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 .footer-links a:hover{color:var(--text)}
 
 @media(max-width:768px){
+  .reveal,.article-body{opacity:1!important;transform:none!important;visibility:visible!important;animation:none!important}
+
   nav{padding:0 var(--s2)}
   .nav-center,.nav-actions{display:none!important}
   .nav-hamburger{display:flex!important;margin-left:auto}
@@ -322,7 +324,7 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
     <div class="article-layout">
 
       <!-- BODY -->
-      <article class="article-body reveal">
+      <article class="article-body">
 
         <p>After leading or advising on more than a dozen Agile transformations across European financial institutions — banks, insurers, asset managers, and payment processors — I have noticed that the ones that struggle do not fail because of poor sprint rituals or misconfigured Jira boards. They fail because of decisions made, or avoided, in the ninety days before the first PI Planning session is ever called.</p>
 
@@ -505,8 +507,9 @@ document.getElementById('hamburger').addEventListener('click',()=>{
 // Reveal
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-},{threshold:0.05});
+},{threshold:0});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('.article-body').forEach(el=>el.classList.add('visible'));
 // TOC active
 const headings = document.querySelectorAll('.article-body h2[id]');
 const tocLinks = document.querySelectorAll('.article-toc__list a');
