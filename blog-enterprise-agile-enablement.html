@@ -223,6 +223,19 @@ nav.scrolled{border-bottom-color:var(--border)}
 .om-canvas-wrap svg{display:block;width:100%;min-width:320px;height:auto}
 .om-canvas-caption{font-family:var(--fmono);font-size:.68rem;color:var(--text-3);letter-spacing:.16px;margin-top:.75rem;line-height:1.6}
 
+/* Free playbook download */
+.download-pack{border:1px solid var(--border-sm);background:var(--bg2);padding:var(--s3);margin:2rem 0}
+.download-pack--highlight{border-left:3px solid var(--green);background:linear-gradient(135deg,var(--bg2) 0%,#1a2e1a 100%)}
+.download-pack__label{font-family:var(--fmono);font-size:.68rem;font-weight:500;letter-spacing:.32px;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
+.download-pack__title{font-family:var(--fserif);font-size:1.15rem;color:var(--text);margin-bottom:.5rem;line-height:1.3}
+.download-pack__desc{font-size:.875rem;color:var(--text-2);line-height:1.7;margin-bottom:var(--s2)}
+.download-pack__links{display:flex;flex-wrap:wrap;gap:.5rem}
+.download-pack__btn{display:inline-flex;align-items:center;gap:.35rem;padding:.55rem 1rem;background:var(--blue);color:#fff;font-family:var(--fmono);font-size:.72rem;letter-spacing:.32px;text-transform:uppercase;transition:background var(--t)}
+.download-pack__btn:hover{background:var(--blue-h)}
+.download-pack__btn--ghost{background:transparent;border:1px solid var(--border);color:var(--text-2)}
+.download-pack__btn--ghost:hover{background:var(--surface);color:var(--text)}
+.download-pack__meta{font-family:var(--fmono);font-size:.65rem;color:var(--text-3);margin-top:.75rem;letter-spacing:.16px}
+
 /* Author bio */
 .author-bio{display:flex;gap:var(--s3);margin-top:var(--s8);padding:var(--s4);background:var(--bg2);border-left:3px solid var(--blue)}
 .author-bio__avatar{width:56px;height:56px;flex-shrink:0;overflow:hidden;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--fmono);font-size:1rem;color:#fff}
@@ -330,6 +343,17 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 
         <div class="pull-quote">
           <p>"Frameworks are tools. Enterprise Agile is the operating model, the enablement system, and the rollout plan that makes those tools work under board scrutiny."</p>
+        </div>
+
+        <div class="download-pack download-pack--highlight" id="download-playbook">
+          <div class="download-pack__label">✦ Free download · Playbook v2</div>
+          <div class="download-pack__title">Enterprise Agile Enablement — Study Bible &amp; Leadership Playbook</div>
+          <p class="download-pack__desc">68-page PDF pack for agile coaches stepping into enterprise delivery enablement: executive brief, practitioner guide, workshop kit with operating model canvas, and SteerCo reporting pack. Free to download and share.</p>
+          <div class="download-pack__links">
+            <a href="resources/playbook/v2/00-Full-Pack-Combined.pdf" class="download-pack__btn" download>Download full pack (PDF)</a>
+            <a href="resources/playbook/v2/02-Practitioner-Playbook.pdf" class="download-pack__btn download-pack__btn--ghost" download>Practitioner playbook only</a>
+          </div>
+          <p class="download-pack__meta">Anjish Bhondwe · anjishbhondwe.com · No signup required</p>
         </div>
 
         <div class="stat-row">
@@ -686,6 +710,17 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 
         <p>That is how Agile becomes an enterprise capability instead of a training programme that fades after the consultants leave.</p>
 
+        <div class="download-pack" id="download-playbook-end">
+          <div class="download-pack__label">Take it with you</div>
+          <div class="download-pack__title">Download the full playbook pack</div>
+          <p class="download-pack__desc">Executive brief · 37-page practitioner guide · workshop facilitator kit · SteerCo pack. Built for coaches preparing for enterprise scaling roles and leaders running operating model workshops.</p>
+          <div class="download-pack__links">
+            <a href="resources/playbook/v2/00-Full-Pack-Combined.pdf" class="download-pack__btn" download>Full pack (68 pages)</a>
+            <a href="resources/playbook/v2/03-Workshop-Kit.pdf" class="download-pack__btn download-pack__btn--ghost" download>Workshop kit</a>
+            <a href="resources/playbook/v2/04-SteerCo-Pack.pdf" class="download-pack__btn download-pack__btn--ghost" download>SteerCo pack</a>
+          </div>
+        </div>
+
                 <div class="author-bio">
           <div class="author-bio__avatar">AB</div>
           <div>
@@ -717,6 +752,7 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
           <li><a href="#metrics">Step 7: Metrics</a></li>
           <li><a href="#sustain">Step 8: Institutionalise</a></li>
           <li><a href="#framework-mix">Scrum, SAFe, Flight Levels</a></li>
+          <li><a href="#download-playbook">Free playbook download</a></li>
           <li><a href="#conclusion">Conclusion</a></li>
         </ul>
       </aside>
