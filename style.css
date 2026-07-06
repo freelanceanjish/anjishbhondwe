@@ -169,9 +169,9 @@ nav.scrolled { border-bottom-color: var(--border); }
   display: flex;
   align-items: center;
   height: 48px;
-  padding: 0 1rem;
+  padding: 0 .75rem;
   font-family: var(--fsans);
-  font-size: .875rem;
+  font-size: .8125rem;
   font-weight: 400;
   color: var(--text-2);
   letter-spacing: .16px;

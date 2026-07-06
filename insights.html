@@ -104,6 +104,10 @@ nav.scrolled{border-bottom-color:var(--border)}
 .blog-hero__title{font-family:var(--fserif);font-size:clamp(2.5rem,5vw,4rem);font-weight:400;color:var(--text);line-height:1.1;margin-bottom:var(--s3)}
 .blog-hero__title em{font-style:italic;color:var(--blue-40)}
 .blog-hero__subtitle{font-size:1.05rem;color:var(--text-2);max-width:560px;line-height:1.7;letter-spacing:.16px}
+.writing-tabs{display:flex;gap:1px;margin-top:var(--s4);flex-wrap:wrap}
+.writing-tabs__link{display:inline-flex;align-items:center;height:40px;padding:0 1.25rem;font-family:var(--fmono);font-size:.72rem;letter-spacing:.32px;text-transform:uppercase;color:var(--text-3);border:1px solid var(--border-sm);background:var(--bg2);transition:all var(--t)}
+.writing-tabs__link:hover{color:var(--text);background:var(--surface)}
+.writing-tabs__link.is-active{color:var(--text);background:var(--blue);border-color:var(--blue)}
 
 /* FILTER */
 .filter-bar{padding:var(--s2) 0;border-bottom:1px solid var(--border-sm);background:var(--bg2);position:sticky;top:48px;z-index:90}
@@ -178,10 +182,10 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
   <a href="index.html" class="nav-logo">Anjish <span>Bhondwe</span></a>
   <ul class="nav-links">
     <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#experience">Work</a></li>
     <li><a href="index.html#expertise">Expertise</a></li>
-    <li><a href="index.html#experience">Experience</a></li>
-    <li><a href="insights.html" class="active">Insights</a></li>
-    <li><a href="blogs.html">Blogs</a></li>
+    <li><a href="blogs.html" class="active">Writing</a></li>
+    <li><a href="index.html#research">Research</a></li>
   </ul>
   <a href="https://calendly.com/freelanceanjish/30min?month=2026-06" class="nav-cta" target="_blank" rel="noopener noreferrer">Book a call</a>
   <button class="nav-hamburger" aria-label="Toggle menu" id="hamburger">
@@ -191,10 +195,11 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 <div id="mobile-menu">
   <ul>
     <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#experience">Work</a></li>
     <li><a href="index.html#expertise">Expertise</a></li>
-    <li><a href="index.html#experience">Experience</a></li>
-    <li><a href="insights.html">Insights</a></li>
-    <li><a href="blogs.html">Blogs</a></li>
+    <li><a href="blogs.html">Writing</a></li>
+    <li><a href="index.html#research">Research</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
     <li><a href="https://calendly.com/freelanceanjish/30min?month=2026-06" target="_blank" rel="noopener noreferrer">Book a call</a></li>
   </ul>
 </div>
@@ -207,6 +212,10 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
       <p class="blog-hero__eyebrow reveal">Thought Leadership</p>
       <h1 class="blog-hero__title reveal reveal-d1">Insights &amp;<br><em>Perspectives</em></h1>
       <p class="blog-hero__subtitle reveal reveal-d2">Writing on AI governance, enterprise agility, digital transformation, and the systems that shape how organisations evolve.</p>
+      <div class="writing-tabs reveal reveal-d2">
+        <a href="blogs.html" class="writing-tabs__link">Blogs</a>
+        <a href="insights.html" class="writing-tabs__link is-active" aria-current="page">Insights</a>
+      </div>
       <div class="reveal reveal-d2" style="margin-top:var(--s4)">
         <a href="https://www.linkedin.com/in/anjish?utm_source=anjishbhondwe&utm_medium=portfolio" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex">Follow on LinkedIn →</a>
       </div>
