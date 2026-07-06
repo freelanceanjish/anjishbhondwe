@@ -163,7 +163,6 @@ nav.scrolled { border-bottom-color: var(--border); }
   letter-spacing: .32px;
   color: var(--text);
 }
-.nav-logo span { color: var(--blue-40); }
 
 .nav-links { display: flex; gap: 0; }
 .nav-links a {
@@ -1050,6 +1049,78 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
   opacity: 0;
   animation: ibmFadeUp .6s ease .35s forwards;
 }
+
+.hero-research {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--s2) var(--s3);
+  max-width: 620px;
+  margin-bottom: var(--s3);
+  padding: var(--s3);
+  border: 1px solid rgba(61,219,217,.25);
+  border-left: 3px solid var(--teal);
+  background: linear-gradient(135deg, rgba(61,219,217,.08), var(--bg2));
+  color: inherit;
+  transition: background var(--t), border-color var(--t);
+  opacity: 0;
+  animation: ibmFadeUp .6s ease .58s forwards;
+}
+.hero-research:hover {
+  background: linear-gradient(135deg, rgba(61,219,217,.12), var(--surface));
+  border-color: rgba(61,219,217,.4);
+}
+.hero-research__badge {
+  font-family: var(--fmono);
+  font-size: .62rem;
+  letter-spacing: .32px;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(61,219,217,.08);
+  padding: .2rem .6rem;
+  border: 1px solid rgba(61,219,217,.25);
+  white-space: nowrap;
+}
+.hero-research__body { flex: 1 1 220px; min-width: 0; }
+.hero-research__title {
+  display: block;
+  font-family: var(--fserif);
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: .35rem;
+}
+.hero-research__desc {
+  display: block;
+  font-size: .875rem;
+  line-height: 1.65;
+  color: var(--text-2);
+  letter-spacing: .16px;
+}
+.hero-research__cta {
+  font-family: var(--fmono);
+  font-size: .72rem;
+  letter-spacing: .32px;
+  text-transform: uppercase;
+  color: var(--teal);
+  white-space: nowrap;
+  align-self: center;
+}
+
+.btn-research {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  height: 48px;
+  padding: 0 var(--s4);
+  background: var(--teal);
+  color: #161616;
+  font-family: var(--fsans);
+  font-size: .875rem;
+  letter-spacing: .16px;
+  transition: background var(--t);
+}
+.btn-research:hover { background: #2bc4c2; }
+
 .hero-availability {
   font-family: var(--fmono);
   font-size: .72rem;
@@ -1144,6 +1215,7 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
   #hero .hero-title,
   #hero .hero-desc,
   #hero .hero-offer,
+  #hero .hero-research,
   #hero .hero-availability,
   #hero .hero-buttons,
   #hero .hero-stats {
@@ -1165,6 +1237,7 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
     width: 100%;
   }
   .hero-buttons .btn-primary,
+  .hero-buttons .btn-research,
   .hero-buttons .btn-ghost {
     width: 100%;
     max-width: 100%;
