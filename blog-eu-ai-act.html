@@ -284,10 +284,10 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 .footer-links a:hover{color:var(--text)}
 
 @media(max-width:768px){
-  nav{padding:0 var(--s2)}
+  nav{grid-template-columns:1fr auto;padding:0 var(--s2)}
+  .nav-center,.nav-actions{display:none!important}
+  .nav-hamburger{display:flex!important}
   .smax{padding:0 var(--s2)}
-  .nav-links,.nav-cta{display:none}
-  .nav-hamburger{display:flex}
   .article-hero{padding:5rem 0 2.5rem}
   .pillars-grid,.obligation-grid{grid-template-columns:1fr}
   .author-bio{flex-direction:column}
@@ -298,14 +298,19 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 
 <nav id="main-nav">
   <a href="index.html" class="nav-logo">Anjish <span>Bhondwe</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#experience">Work</a></li>
-    <li><a href="index.html#expertise">Expertise</a></li>
-    <li><a href="blogs.html" class="active">Writing</a></li>
-    <li><a href="index.html#research">Research</a></li>
-  </ul>
-  <a href="https://calendly.com/freelanceanjish/30min?month=2026-06" class="nav-cta" target="_blank" rel="noopener noreferrer">Book a call</a>
+  <div class="nav-center">
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#experience">Work</a></li>
+      <li><a href="index.html#expertise">Expertise</a></li>
+      <li><a href="blogs.html" class="active">Writing</a></li>
+      <li><a href="index.html#research">Research</a></li>
+    </ul>
+  </div>
+  <div class="nav-actions">
+    <a href="https://calendly.com/freelanceanjish/30min?month=2026-06" class="nav-cta" target="_blank" rel="noopener noreferrer">Book a call</a>
+    <a href="https://www.linkedin.com/in/anjish?utm_source=anjishbhondwe&utm_medium=portfolio" class="nav-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">in</a>
+  </div>
   <button class="nav-hamburger" aria-label="Toggle menu" id="hamburger">
     <span></span><span></span><span></span>
   </button>
