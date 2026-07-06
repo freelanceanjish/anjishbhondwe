@@ -133,6 +133,20 @@ nav.scrolled{border-bottom-color:var(--border)}
 .insight-card__tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.5rem}
 .insight-card__tag{font-family:var(--fmono);font-size:.62rem;padding:.15rem .5rem;background:var(--surface);color:var(--text-3);letter-spacing:.16px}
 
+/* RESEARCH SPOTLIGHT */
+.research-card{background:var(--bg2);border:1px solid var(--border-sm);border-top:2px solid var(--teal);padding:var(--s4);margin-bottom:var(--s6)}
+.research-card__eyebrow{display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s2);flex-wrap:wrap}
+.research-card__badge{font-family:var(--fmono);font-size:.65rem;letter-spacing:.32px;text-transform:uppercase;color:var(--teal);background:rgba(61,219,217,.08);padding:.2rem .6rem;border:1px solid rgba(61,219,217,.25)}
+.research-card__topic{font-family:var(--fmono);font-size:.68rem;letter-spacing:.32px;text-transform:uppercase;color:var(--blue-40)}
+.research-card__title{font-family:var(--fserif);font-size:clamp(1.35rem,3vw,1.75rem);font-weight:400;color:var(--text);line-height:1.3;margin-bottom:var(--s2)}
+.research-card__excerpt{font-size:.875rem;color:var(--text-2);line-height:1.7;letter-spacing:.16px;margin-bottom:var(--s3)}
+.research-card__links{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.research-card__btn{display:inline-flex;align-items:center;padding:.65rem 1.25rem;font-family:var(--fmono);font-size:.72rem;letter-spacing:.32px;text-transform:uppercase;transition:all var(--t)}
+.research-card__btn--primary{background:var(--teal);color:#161616}
+.research-card__btn--primary:hover{background:#2bc4c2}
+.research-card__btn--ghost{border:1px solid var(--border-sm);color:var(--text-2)}
+.research-card__btn--ghost:hover{background:var(--surface);color:var(--text)}
+
 /* CTA */
 .cta-section{padding:var(--s8) 0;border-top:1px solid var(--border-sm);text-align:center}
 .cta-section h2{font-family:var(--fserif);font-size:clamp(1.5rem,3vw,2.5rem);font-weight:400;color:var(--text);margin-bottom:var(--s2)}
@@ -216,6 +230,27 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
     </div>
   </div>
 
+  <!-- RESEARCH -->
+  <section class="insights-section" style="padding-bottom:0">
+    <div class="smax">
+      <div class="section-rule reveal">
+        <h2>Research</h2>
+      </div>
+      <article class="research-card reveal">
+        <div class="research-card__eyebrow">
+          <span class="research-card__badge">Ongoing research</span>
+          <span class="research-card__topic">Human Agile Model · agilefragile.com</span>
+        </div>
+        <h2 class="research-card__title">Human first reformation, before transformation</h2>
+        <p class="research-card__excerpt">A human gate before scale, four moves (Human, Adapt, Implement, Scale), and the Human Agile Index — for when enterprise agile spends 55% of attention on delivery and 18% on the people carrying the change. Proposed by Anjish Bhondwe.</p>
+        <div class="research-card__links">
+          <a href="https://agilefragile.com" class="research-card__btn research-card__btn--primary" target="_blank" rel="noopener noreferrer">Explore agilefragile.com →</a>
+          <a href="https://agilefragile.com#index" class="research-card__btn research-card__btn--ghost" target="_blank" rel="noopener noreferrer">Take the Human Agile Index</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- GRID -->
   <section class="insights-section">
     <div class="smax">
@@ -246,6 +281,7 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 <footer>
   <p>© 2025 Anjish Bhondwe. All rights reserved.</p>
   <div class="footer-links">
+    <a href="https://agilefragile.com" target="_blank" rel="noopener noreferrer">Human Agile Model</a>
     <a href="https://www.linkedin.com/in/anjish?utm_source=anjishbhondwe&utm_medium=portfolio" target="_blank" rel="noopener">LinkedIn</a>
     <a href="insights.html">Insights</a>
     <a href="blogs.html">Blogs</a>
