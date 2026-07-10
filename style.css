@@ -893,6 +893,8 @@ section { padding: var(--s8) 0; }
   padding: .2rem .6rem;
 }
 .job-co img { height: 16px; object-fit: contain; }
+.job-co a { color: inherit; text-decoration: none; }
+.job-co a:hover { text-decoration: underline; }
 .job-co-group { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .75rem; }
 .job-loc { font-family: var(--fmono); font-size: .6875rem; color: var(--text-3); letter-spacing: .32px; margin-bottom: var(--s2); }
 .job-bullets { display: flex; flex-direction: column; gap: .5rem; }
@@ -911,6 +913,8 @@ section { padding: var(--s8) 0; }
   padding: .2rem .6rem;
   margin-top: var(--s2);
 }
+.job-award a { color: inherit; text-decoration: none; }
+.job-award a:hover { text-decoration: underline; }
 
 /* ── CLIENTS ── */
 #clients {
