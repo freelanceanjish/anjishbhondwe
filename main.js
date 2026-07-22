@@ -104,10 +104,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* ── TYPEWRITER EFFECT on hero subtitle ── */
 const subtitles = [
-  'Enterprise Agile & AI Governance Leader',
-  'Compliant Velocity Architect',
-  'EU AI Act Delivery Specialist',
-  'Interim Director · Agile CoE Builder',
+  'Enterprise Agile & Delivery Enablement',
+  'Multi-country Agile rollout',
+  'EU AI Act & delivery readiness',
+  'Agile CoE builder · Interim lead',
 ];
 let subIdx = 0, charIdx = 0, deleting = false;
 const titleEl = document.getElementById('hero-typewriter');
