@@ -1,11 +1,11 @@
 /* ============================================================
-   ANJISH BHONDWE — Portfolio
+   ANJISH BHONDWE: Portfolio
    Fonts: Fraunces · Outfit · JetBrains Mono
    ============================================================ */
 
 /* ── DESIGN TOKENS ── */
 :root {
-  /* backgrounds — warm charcoal, not flat IBM gray */
+  /* backgrounds, warm charcoal, not flat IBM gray */
   --bg:        #12141a;
   --bg2:       #1a1d26;
   --surface:   #232733;
@@ -15,7 +15,7 @@
   --border-sm: #2e3340;
   --border:    #454b5a;
 
-  /* Accent — clear blue, slightly warmer */
+  /* Accent, clear blue, slightly warmer */
   --blue:      #3b82f6;
   --blue-h:    #2563eb;
   --blue-20:   #dbeafe;
@@ -27,13 +27,13 @@
   --red:       #f87171;
   --warm:      #f3ebe0;
 
-  /* text — warm off-white */
+  /* text, warm off-white */
   --text:      #f3ebe0;
   --text-2:    #c8c0b4;
   --text-3:    #8f877c;
   --text-inv:  #12141a;
 
-  /* fonts — unmistakably different from IBM Plex */
+  /* fonts, unmistakably different from IBM Plex */
   --fserif: 'Fraunces', Georgia, serif;
   --fsans:  'Outfit',  'Helvetica Neue', Arial, sans-serif;
   --fmono:  'JetBrains Mono',  'Courier New', monospace;
@@ -419,7 +419,7 @@ nav.scrolled { border-bottom-color: var(--border); }
   margin-top: .25rem;
 }
 
-/* hero composite: one browser frame — portrait + agilefragile inside */
+/* hero composite: one browser frame, portrait + agilefragile inside */
 .hero-composite {
   display: block;
   color: inherit;

@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2">
 
-<title>Embedding AI Governance Into Agile Delivery from Day One — Anjish Bhondwe</title>
+<title>Embedding AI Governance Into Agile Delivery from Day One | Anjish Bhondwe</title>
 <meta name="description" content="How to bake EU AI Act compliance into sprint ceremonies, backlog hygiene, and team rituals so governance is never a bolt-on audit event.">
 <meta name="author" content="Anjish Bhondwe">
 <link rel="canonical" href="https://anjishbhondwe.com/blog-ai-governance-agile.html">
@@ -174,7 +174,7 @@ nav.scrolled{border-bottom-color:var(--border)}
 .article-body a{color:var(--blue-40);text-decoration:underline;text-underline-offset:3px}
 .article-body ul,.article-body ol{margin:0 0 1.25rem 0;padding-left:1.5rem;list-style:none}
 .article-body li{font-size:.95rem;color:var(--text-2);line-height:1.75;margin-bottom:.5rem;padding-left:var(--s2);position:relative;letter-spacing:.16px}
-.article-body li::before{content:'—';position:absolute;left:0;color:var(--blue-40);font-size:.7rem;top:.35rem}
+.article-body li::before{content:'›';position:absolute;left:0;color:var(--blue-40);font-size:.7rem;top:.35rem}
 .article-body li strong{color:var(--text)}
 
 /* Pull quote */
@@ -336,28 +336,28 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
       <!-- BODY -->
       <article class="article-body">
 
-        <p>The EU AI Act enforcement timeline is not a distant planning horizon. With the first substantive obligations — prohibited practices bans, GPAI model transparency requirements, and high-risk system conformity assessments — already live or entering force through 2025 and 2026, organisations building AI systems under Agile delivery models face a structural challenge: how do you make compliance a continuous property of the product, rather than a gate-check event that arrives like an audit six months after the code was written?</p>
+        <p>The EU AI Act enforcement timeline is not a distant planning horizon. With the first substantive obligations, prohibited practices bans, GPAI model transparency requirements, and high-risk system conformity assessments, already live or entering force through 2025 and 2026, organisations building AI systems under Agile delivery models face a structural challenge: how do you make compliance a continuous property of the product, rather than a gate-check event that arrives like an audit six months after the code was written?</p>
 
         <p>This post answers that question with the practical mechanics: which sprint ceremonies to modify, how to restructure the backlog to make compliance obligations first-class citizens, and what team rituals make AI governance culturally sticky rather than a grudging compliance tax.</p>
 
         <div class="pull-quote">
-          <p>"Governance bolted on at the end is not governance — it is remediation. The only sustainable model is one where every sprint produces not just working software, but demonstrably compliant working software."</p>
+          <p>"Governance bolted on at the end is not governance, it is remediation. The only sustainable model is one where every sprint produces not just working software, but demonstrably compliant working software."</p>
         </div>
 
         <h2 id="problem">The Bolt-On Problem</h2>
 
-        <p>The standard enterprise response to new regulation is to stand up a programme-level compliance workstream, task it with translating regulatory text into requirements, and hand those requirements to delivery teams as a batch — usually six to twelve months before a compliance deadline. Teams treat them as an unplanned interrupt that competes with product roadmap commitments, the backlog becomes adversarial, and the resulting delivery is technically compliant but organisationally resented and poorly understood by the people maintaining it.</p>
+        <p>The standard enterprise response to new regulation is to stand up a programme-level compliance workstream, task it with translating regulatory text into requirements, and hand those requirements to delivery teams as a batch, usually six to twelve months before a compliance deadline. Teams treat them as an unplanned interrupt that competes with product roadmap commitments, the backlog becomes adversarial, and the resulting delivery is technically compliant but organisationally resented and poorly understood by the people maintaining it.</p>
 
-        <p>Under the EU AI Act, this model is particularly dangerous. The Act requires that certain documentation, testing, and oversight mechanisms be demonstrably part of the <em>development and deployment process</em> — not retroactively attached. Article 9 on risk management systems, Article 10 on data governance, Article 15 on accuracy and robustness: these are not documentation obligations that can be satisfied by writing a policy after the fact. They require evidence that the processes existed during development.</p>
+        <p>Under the EU AI Act, this model is particularly dangerous. The Act requires that certain documentation, testing, and oversight mechanisms be demonstrably part of the <em>development and deployment process</em>, not retroactively attached. Article 9 on risk management systems, Article 10 on data governance, Article 15 on accuracy and robustness: these are not documentation obligations that can be satisfied by writing a policy after the fact. They require evidence that the processes existed during development.</p>
 
         <div class="info-box info-box--red">
           <div class="info-box__label">⚠ Compliance Risk: The Documentation Gap</div>
-          <p>Notified Bodies assessing high-risk AI systems under Annex III will look for evidence that risk management, data governance, and accuracy monitoring were active during development — not just described in post-hoc documentation. Teams that sprint without governance artefacts cannot reconstruct that evidence reliably after the fact.</p>
+          <p>Notified Bodies assessing high-risk AI systems under Annex III will look for evidence that risk management, data governance, and accuracy monitoring were active during development, not just described in post-hoc documentation. Teams that sprint without governance artefacts cannot reconstruct that evidence reliably after the fact.</p>
         </div>
 
         <h2 id="backlog">Restructuring the Backlog</h2>
 
-        <p>The first integration point is backlog design. Most AI product backlogs are structured entirely around capability: the model learns to do X, the API returns Y, the UI displays Z. Governance work — risk assessment, data quality checks, explainability features, human oversight mechanisms — appears as an afterthought if it appears at all.</p>
+        <p>The first integration point is backlog design. Most AI product backlogs are structured entirely around capability: the model learns to do X, the API returns Y, the UI displays Z. Governance work, risk assessment, data quality checks, explainability features, human oversight mechanisms, appears as an afterthought if it appears at all.</p>
 
         <p>The fix is to introduce a parallel governance backlog thread that runs alongside every capability stream and is reviewed in the same ceremonies. This is not a separate backlog or a separate team. It is a set of acceptance criteria and story types that make compliance obligations explicit at the story level.</p>
 
@@ -389,22 +389,22 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
         <p>Backlog structure is necessary but not sufficient. The ceremonies are where governance either becomes embedded practice or remains a paper commitment. Here is how each standard Scrum ceremony can carry governance weight without becoming a compliance theatre performance.</p>
 
         <h3>Sprint Planning</h3>
-        <p>Add a standing governance capacity allocation — typically 10–15% of sprint capacity — explicitly labelled on the planning board. This is not a tax on the team; it is an honest acknowledgement that governance work takes time and, if not planned, will either be skipped or will arrive as crunch work at the end of the sprint when no one has energy for it. Naming the allocation makes it negotiable and visible, both of which are improvements on the status quo.</p>
+        <p>Add a standing governance capacity allocation (typically 10-15% of sprint capacity) explicitly labelled on the planning board. This is not a tax on the team; it is an honest acknowledgement that governance work takes time and, if not planned, will either be skipped or will arrive as crunch work at the end of the sprint when no one has energy for it. Naming the allocation makes it negotiable and visible, both of which are improvements on the status quo.</p>
 
         <h3>Definition of Done</h3>
         <p>The single highest-leverage change available. For AI systems operating in high-risk categories under Annex III, the Definition of Done should include:</p>
 
         <ul>
           <li><strong>Risk register updated</strong> with any new risks introduced by this story's changes</li>
-          <li><strong>Data documentation current</strong> — any new data sources, transformations, or filters are recorded</li>
-          <li><strong>Human oversight pathway confirmed</strong> — for decisions that trigger manual review, the pathway is documented and tested</li>
-          <li><strong>Technical documentation version-bumped</strong> — the Article 11 technical file is updated to reflect the current model state</li>
+          <li><strong>Data documentation current</strong>, any new data sources, transformations, or filters are recorded</li>
+          <li><strong>Human oversight pathway confirmed</strong>, for decisions that trigger manual review, the pathway is documented and tested</li>
+          <li><strong>Technical documentation version-bumped</strong>, the Article 11 technical file is updated to reflect the current model state</li>
         </ul>
 
-        <p>This adds perhaps thirty minutes per sprint story — less if teams build templates. It generates the audit trail that makes conformity assessment assessable rather than reconstructed.</p>
+        <p>This adds perhaps thirty minutes per sprint story, less if teams build templates. It generates the audit trail that makes conformity assessment assessable rather than reconstructed.</p>
 
         <h3>Sprint Review</h3>
-        <p>Invite a compliance or legal stakeholder to the sprint review as a standard participant — not a guest, not an auditor, but a team member with a seat at the table. Their role is not to block acceptance but to maintain awareness of the direction of travel and flag regulatory implications before they become technical debt. This is the cheapest form of legal review available.</p>
+        <p>Invite a compliance or legal stakeholder to the sprint review as a standard participant, not a guest, not an auditor, but a team member with a seat at the table. Their role is not to block acceptance but to maintain awareness of the direction of travel and flag regulatory implications before they become technical debt. This is the cheapest form of legal review available.</p>
 
         <h3>Retrospective</h3>
         <p>Add a standing retrospective question: <em>"Did any governance work slip to the 'next sprint' pile this cycle?"</em> If yes, understand why. Usually it is either under-estimation (add buffer) or prioritisation pressure from product (a conversation to have with the Product Owner about compliance as a non-negotiable, not a nice-to-have). The retrospective is where culture is built; the question signals that governance is as important as velocity.</p>
@@ -415,7 +415,7 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 
         <div class="info-box info-box--gold">
           <div class="info-box__label">✦ Practical Ritual: The "Harm Horizon" Exercise</div>
-          <p>At the start of each PI or programme increment, run a thirty-minute exercise with the full team: for the capabilities planned this increment, who could be harmed if the system behaves unexpectedly, and how would they know? This is not a risk assessment — it is an empathy exercise. Teams that can answer this question coherently tend to write better acceptance criteria, ask better questions about edge cases, and treat governance stories as meaningful rather than bureaucratic.</p>
+          <p>At the start of each PI or programme increment, run a thirty-minute exercise with the full team: for the capabilities planned this increment, who could be harmed if the system behaves unexpectedly, and how would they know? This is not a risk assessment, it is an empathy exercise. Teams that can answer this question coherently tend to write better acceptance criteria, ask better questions about edge cases, and treat governance stories as meaningful rather than bureaucratic.</p>
         </div>
 
         <p>A second cultural practice: make the risk register legible to engineers. Legal and compliance documents are typically written for auditors, not engineers. A team that has never read the risk register for their own system cannot meaningfully contribute to its accuracy. Every quarter, spend thirty minutes in a team session walking through the top three risks in plain language: what the risk is, what is currently being done about it, and whether the team thinks the mitigation is adequate. The answers will often be more honest than what the formal documents say.</p>
@@ -428,17 +428,17 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
           <li>
             <div class="tl-date">Sprint Day 1</div>
             <div class="tl-event">Sprint Planning includes governance capacity allocation</div>
-            <div class="tl-note">Explicitly block 10–15% of capacity for compliance stories. Review any regulatory updates since the last sprint (EU AI Act implementing acts, sector-specific guidance).</div>
+            <div class="tl-note">Explicitly block 10-15% of capacity for compliance stories. Review any regulatory updates since the last sprint (EU AI Act implementing acts, sector-specific guidance).</div>
           </li>
           <li>
-            <div class="tl-date">Sprint Days 1–8</div>
+            <div class="tl-date">Sprint Days 1-8</div>
             <div class="tl-event">Development with governance DoD applied per story</div>
-            <div class="tl-note">Risk register updates, data documentation, and human oversight confirmation are acceptance criteria — not post-sprint activities.</div>
+            <div class="tl-note">Risk register updates, data documentation, and human oversight confirmation are acceptance criteria, not post-sprint activities.</div>
           </li>
           <li>
             <div class="tl-date">Sprint Day 9</div>
             <div class="tl-event">Compliance stakeholder review of governance artefacts</div>
-            <div class="tl-note">30-minute sync with legal/compliance representative. Not a gate — an alignment checkpoint. Surface any emerging concerns before the sprint review.</div>
+            <div class="tl-note">30-minute sync with legal/compliance representative. Not a gate, an alignment checkpoint. Surface any emerging concerns before the sprint review.</div>
           </li>
           <li>
             <div class="tl-date">Sprint Day 10</div>
@@ -448,13 +448,13 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
           <li>
             <div class="tl-date">Sprint Day 10 (cont.)</div>
             <div class="tl-event">Retrospective with governance standing question</div>
-            <div class="tl-note">"Did any governance work slip?" If yes: root cause and resolution. If no: acknowledge it explicitly — this reinforces that the norm is working.</div>
+            <div class="tl-note">"Did any governance work slip?" If yes: root cause and resolution. If no: acknowledge it explicitly, this reinforces that the norm is working.</div>
           </li>
         </ul>
 
         <h2 id="escalation">When Governance and Velocity Conflict</h2>
 
-        <p>The hardest conversations are not about structure or ceremony — they are about what to do when a product manager or business sponsor pushes back on governance work consuming sprint capacity. This happens. It is a natural consequence of organisations that measure teams on velocity rather than compliance-adjusted delivery.</p>
+        <p>The hardest conversations are not about structure or ceremony, they are about what to do when a product manager or business sponsor pushes back on governance work consuming sprint capacity. This happens. It is a natural consequence of organisations that measure teams on velocity rather than compliance-adjusted delivery.</p>
 
         <p>The answer is not to hide governance work in technical stories or deprioritise it silently. The answer is to make the trade-off explicit and escalate it to the right level. A team that makes a conscious, documented, business-owner-approved decision to defer a governance story is in a different legal and operational position than a team that simply forgot to do it.</p>
 
@@ -479,7 +479,7 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
 
         <h2 id="conclusion">The Competitive Upside</h2>
 
-        <p>It is worth ending on a point that often gets lost in compliance conversations: organisations that embed AI governance into their delivery model by default are not just managing risk — they are building a competitive capability. They can respond faster to regulatory evolution (because the compliance infrastructure already exists), they can deploy to regulated customers and markets that require conformity evidence (without a multi-month preparation sprint), and they accumulate the audit trail that increasingly sophisticated institutional clients and regulators will require as a condition of engagement.</p>
+        <p>It is worth ending on a point that often gets lost in compliance conversations: organisations that embed AI governance into their delivery model by default are not just managing risk, they are building a competitive capability. They can respond faster to regulatory evolution (because the compliance infrastructure already exists), they can deploy to regulated customers and markets that require conformity evidence (without a multi-month preparation sprint), and they accumulate the audit trail that increasingly sophisticated institutional clients and regulators will require as a condition of engagement.</p>
 
         <p>Governance-by-design is not a cost centre. In a market where the regulatory bar for AI systems is rising annually, it is a delivery capability that compounds in value with every increment.</p>
 
@@ -488,7 +488,7 @@ footer p{font-family:var(--fmono);font-size:.75rem;color:var(--text-3);letter-sp
           <div>
             <div class="author-bio__name">Anjish Bhondwe</div>
             <div class="author-bio__title">Enterprise Agile · Delivery Enablement · AI Governance</div>
-            <p class="author-bio__desc">Brussels-based. I advise banks and tech organisations on AI governance, EU AI Act readiness, and enterprise Agile — with an eye on what teams can actually run, not only what the policy deck says.</p>
+            <p class="author-bio__desc">Brussels-based. I advise banks and tech organisations on AI governance, EU AI Act readiness, and enterprise Agile, with an eye on what teams can actually run, not only what the policy deck says.</p>
             <div class="author-bio__links">
               <a href="https://www.linkedin.com/in/anjish?utm_source=anjishbhondwe&utm_medium=portfolio" target="_blank" rel="noopener" class="author-bio__link">LinkedIn →</a>
               <a href="blog-eu-ai-act.html" class="author-bio__link">Read: EU AI Act Deep-Dive →</a>
