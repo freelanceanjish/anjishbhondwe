@@ -10,4 +10,4 @@ Last update: 2026-07-22
 Standards: HTML5, CSS3, Schema.org JSON-LD
 Fonts: Fraunces, Outfit, JetBrains Mono
 Hosting: GitHub Pages
-Style rule: no em dashes (—) in visible copy
+Style rule: no em dashes in visible copy
