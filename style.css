@@ -1831,6 +1831,8 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
   .onsite-blogs,
   .articles-grid,
   .comp-grid,
+  .outcomes-grid,
+  .competency-pillars,
   .expertise-cards { grid-template-columns: 1fr !important; }
 
   .onsite-blog-card.featured { grid-column: auto !important; grid-row: auto !important; }
