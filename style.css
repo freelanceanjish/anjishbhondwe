@@ -407,19 +407,21 @@ nav.scrolled { border-bottom-color: var(--border); }
 .stat:last-child { border-right: none; }
 .stat-num {
   font-family: var(--fserif);
-  font-size: 3rem;
-  font-weight: 300;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 500;
   color: var(--text);
-  line-height: 1;
+  line-height: 1.05;
 }
-.stat-num span { color: var(--blue-40); }
+.stat-num span { color: var(--blue-40); font-size: 0.55em; }
 .stat-label {
   font-family: var(--fsans);
-  font-size: .8rem;
+  font-size: .78rem;
   letter-spacing: 0.01em;
   text-transform: none;
   color: var(--text-3);
-  margin-top: .35rem;
+  margin-top: .4rem;
+  max-width: 11rem;
+  line-height: 1.35;
 }
 
 /* hero composite: one browser frame, portrait + agilefragile inside */
@@ -767,8 +769,146 @@ nav.scrolled { border-bottom-color: var(--border); }
 /* ── SECTIONS COMMON ── */
 section { padding: var(--s8) 0; }
 
-/* ── ABOUT ── */
+/* ── PROFESSIONAL PROFILE ── */
 #about { background: var(--bg2); border-top: 1px solid var(--border-sm); }
+.profile-scan {
+  max-width: 720px;
+  margin-top: var(--s4);
+}
+.profile-scan__lead {
+  font-family: var(--fserif);
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  line-height: 1.45;
+  color: var(--warm);
+  margin-bottom: var(--s4);
+  letter-spacing: -0.01em;
+}
+.profile-scan__points {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.profile-scan__points li {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-2);
+  padding-left: 1rem;
+  border-left: 2px solid var(--border);
+}
+.profile-scan__points strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.profile-scan__points a {
+  color: var(--blue-40);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── KEY OUTCOMES ── */
+#outcomes { background: var(--bg); }
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-sm);
+  margin-top: var(--s5, 2.5rem);
+  border: 1px solid var(--border-sm);
+}
+.outcome-card {
+  background: var(--bg2);
+  padding: var(--s4) var(--s3);
+  min-height: 11rem;
+}
+.outcome-card__figure {
+  font-family: var(--fserif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--warm);
+  margin-bottom: var(--s2);
+  letter-spacing: -0.02em;
+}
+.outcome-card__title {
+  font-family: var(--fserif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text);
+  margin-bottom: .65rem;
+}
+.outcome-card__meta {
+  font-size: .88rem;
+  line-height: 1.5;
+  color: var(--text-3);
+}
+
+/* ── CORE COMPETENCIES ── */
+#expertise { background: var(--bg2); border-top: 1px solid var(--border-sm); }
+.competency-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s4);
+  margin-top: var(--s5, 2.5rem);
+}
+.comp-pillar {
+  padding-top: var(--s2);
+  border-top: 2px solid var(--teal);
+}
+.comp-pillar__num {
+  font-family: var(--fserif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--teal);
+  margin-bottom: .75rem;
+}
+.comp-pillar h3 {
+  font-family: var(--fserif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text);
+  margin-bottom: .75rem;
+}
+.comp-pillar p {
+  font-size: .98rem;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin-bottom: .85rem;
+}
+.comp-pillar__proof {
+  font-size: .85rem !important;
+  color: var(--text-3) !important;
+  border-left: 2px solid var(--border);
+  padding-left: .75rem;
+  margin-bottom: 0 !important;
+}
+.comp-support {
+  margin-top: var(--s6);
+  padding-top: var(--s4);
+  border-top: 1px solid var(--border-sm);
+}
+.comp-support__label {
+  font-family: var(--fserif);
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--text-3);
+  margin-bottom: var(--s2);
+}
+.comp-support__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.comp-support__tags span {
+  font-size: .82rem;
+  color: var(--text-2);
+  border: 1px solid var(--border-sm);
+  background: var(--bg);
+  padding: .35rem .7rem;
+}
+
+/* legacy about (kept for any leftover refs) */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1556,6 +1696,8 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
   .onsite-blogs { grid-template-columns: 1fr 1fr; }
   .onsite-blog-card.featured { grid-column: 1 / -1; grid-row: auto; }
   .about-grid, .cred-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .outcomes-grid { grid-template-columns: 1fr 1fr; }
+  .competency-pillars { grid-template-columns: 1fr; gap: var(--s5, 2rem); }
   .articles-grid { grid-template-columns: 1fr 1fr; }
   .acard.featured { grid-column: span 2; }
 }
