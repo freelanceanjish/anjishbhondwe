@@ -6,8 +6,8 @@ Location: Brussels, Belgium
 Contact: freelanceanjish@gmail.com
 
 /* SITE */
-Last update: 2026-07-22
+Last update: 2026-07-29
 Standards: HTML5, CSS3, Schema.org JSON-LD
-Fonts: Fraunces, Outfit, JetBrains Mono
+Fonts: Newsreader, Karla
 Hosting: GitHub Pages
 Style rule: no em dashes in visible copy
