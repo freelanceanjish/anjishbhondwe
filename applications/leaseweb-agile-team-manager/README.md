@@ -10,6 +10,7 @@
 | `anjish-bhondwe-cover-letter-leaseweb.pdf` | Leaseweb — cover letter |
 | `anjish-bhondwe-cv-collibra-tpm.pdf` | Collibra — Technical Program Manager (Brussels) |
 | `anjish-bhondwe-cover-letter-collibra-tpm.pdf` | Collibra — cover letter |
+| `anjish-bhondwe-cv-pearson-technology-delivery.pdf` | Pearson — Specialist, Technology Delivery (Remote, IND) · immediate joiner |
 | `pooja-awasare-cv.pdf` | Pooja Awasare CV (kept in this folder) |
 
 Pooja EngD documents remain under `applications/utwente-engd-circologic/`.
