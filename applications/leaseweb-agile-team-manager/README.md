@@ -6,6 +6,8 @@
 
 | File | Role / notes |
 | --- | --- |
+| `anjish-bhondwe-cv-master.pdf` | Master CV (base source of truth for tailored versions) |
+| `anjish-bhondwe-cv-cloudnation-senior-project-manager.pdf` | CloudNation — Senior Project Manager (Program Manager), Cloud & AI |
 | `anjish-bhondwe-cv-leaseweb.pdf` | Leaseweb — Agile Team Manager |
 | `anjish-bhondwe-cover-letter-leaseweb.pdf` | Leaseweb — cover letter |
 | `anjish-bhondwe-cv-collibra-tpm.pdf` | Collibra — Technical Program Manager (Brussels) |
