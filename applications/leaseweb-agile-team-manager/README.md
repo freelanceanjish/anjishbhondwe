@@ -9,6 +9,8 @@
 | `anjish-bhondwe-cv-master.pdf` | Master CV (base source of truth for tailored versions) |
 | `anjish-bhondwe-cv-cloudnation-senior-project-manager.pdf` | CloudNation — Senior Project Manager (Program Manager), Cloud & AI |
 | `anjish-bhondwe-cover-letter-cloudnation-senior-project-manager.pdf` | CloudNation — cover letter (Benelux context, honest scope on Azure/MLOps) |
+| `anjish-bhondwe-cv-keystone-agile-coach.pdf` | Keystone Solutions — Agile Coach Consultant (Brussels) · Belgian number · available Oct · no work permit |
+| `anjish-bhondwe-cover-letter-keystone-agile-coach.pdf` | Keystone Solutions — cover letter (short; Oct availability, no permit, on-site Brussels) |
 | `anjish-bhondwe-cv-leaseweb.pdf` | Leaseweb — Agile Team Manager |
 | `anjish-bhondwe-cover-letter-leaseweb.pdf` | Leaseweb — cover letter |
 | `anjish-bhondwe-cv-collibra-tpm.pdf` | Collibra — Technical Program Manager (Brussels) |
