@@ -40,7 +40,7 @@ TRUST_STRIP = """
   <div class="smax trust-strip__inner reveal">
     <span class="trust-strip__item"><strong>AIGP</strong> · IAPP</span>
     <span class="trust-strip__sep">|</span>
-    <span class="trust-strip__item"><strong>EU AI Act</strong> · Delft University</span>
+    <span class="trust-strip__item"><strong>EU AI Act</strong> · KU Leuven</span>
     <span class="trust-strip__sep">|</span>
     <span class="trust-strip__item">KU Leuven AI Law · <strong>Completed Mar 2026</strong></span>
     <span class="trust-strip__sep">|</span>
@@ -258,9 +258,8 @@ def patch_index():
         <strong>AI Regulation: Navigating The EU AI Act at Delft University of Technology</strong>, alongside
         studies in <strong>AI Regulation and Law at KU Leuven</strong> and IAPP membership. I help
         organisations build Agile delivery practices fully ready for the EU AI Act before it lands as a crisis.</p>"""
-    new_about = """        <p>I am an <strong>IAPP-certified AI Governance Professional (AIGP)</strong> and am currently studying
-        <strong>AI Regulation: Navigating The EU AI Act at Delft University of Technology, Netherlands</strong>.
-        I completed <strong>AI Regulation and Law at KU Leuven</strong> in <strong>March 2026</strong>. I help
+    new_about = """        <p>I am an <strong>IAPP-certified AI Governance Professional (AIGP)</strong> and completed
+        <strong>AI Regulation and the EU AI Act at KU Leuven</strong> in <strong>March 2026</strong>. I help
         organisations build Agile delivery practices fully ready for the EU AI Act before it lands as a crisis.</p>"""
     if old_about in t:
         t = t.replace(old_about, new_about)
@@ -290,10 +289,19 @@ def patch_index():
             '<h2 class="section-title reveal">Thought <strong>Leadership</strong></h2>\n' + BLOGS_STRIP + '\n    <div class="articles-grid">',
         )
 
-    # Credentials
+    # Credentials: remove legacy Delft education block if present
+    t = t.replace(
+        """        <div class="edu-item active">
+          <div class="edu-deg">AI Regulation: Navigating The EU AI Act</div>
+          <div class="edu-school">Delft University of Technology, Netherlands</div>
+          <div class="edu-wip">Currently learning</div>
+        </div>
+""",
+        "",
+    )
     t = t.replace(
         '<div class="edu-school">Delft University of Technology</div>\n          <div class="edu-wip">Currently learning online</div>',
-        '<div class="edu-school">Delft University of Technology, Netherlands</div>\n          <div class="edu-wip">Currently learning</div>',
+        "",
     )
     t = t.replace(
         """        <div class="edu-item active">
