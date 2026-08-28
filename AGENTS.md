@@ -7,6 +7,7 @@
 - **Always** save new Anjish Bhondwe CVs and cover letters under `applications/leaseweb-agile-team-manager/` (repo path: `anjishbhondwe/applications/leaseweb-agile-team-manager`).
 - Do not create separate per-employer folders for Anjish application PDFs; name files clearly by employer/role (e.g. `anjish-bhondwe-cv-collibra-tpm.pdf`).
 - Pooja Awasare EngD documents stay under `applications/utwente-engd-circologic/`.
+- **Euroclear-only edits from user input:** When Anjish provides corrections or new details in this thread, update only the Euroclear CV and cover letter (`anjish-bhondwe-cv-euroclear-delivery-enablement-lead` and `anjish-bhondwe-cover-letter-euroclear-delivery-enablement-lead` in `.cv-build/` and the matching PDFs in `applications/leaseweb-agile-team-manager/`). Do not propagate those changes to master, Keystone, CloudNation, Collibra, Pearson, Leaseweb, or other tailored documents unless he explicitly asks.
 
 ### Cover letter / CV writing style (Pooja and Anjish)
 
