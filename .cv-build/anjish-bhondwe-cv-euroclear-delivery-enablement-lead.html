@@ -8,30 +8,31 @@
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   @page{size:A4;margin:0;}
-  body{font-family:Georgia,"Times New Roman",serif;color:#1c1c1c;font-size:10.2pt;line-height:1.4;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  .page{width:210mm;height:297mm;padding:15mm 17mm 12mm;background:#fff;overflow:hidden;}
+  body{font-family:Georgia,"Times New Roman",serif;color:#1c1c1c;font-size:10pt;line-height:1.38;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .page{width:210mm;height:297mm;padding:14mm 16mm 11mm;background:#fff;overflow:hidden;}
   .page + .page{page-break-before:always;}
-  .name{margin:0;font-size:22pt;font-weight:700;letter-spacing:.2px;}
-  .role{margin:2px 0 0;font-size:10.5pt;font-style:italic;color:#444;}
-  .contact{margin:7px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:8.6pt;color:#333;}
-  .contact a{color:#1c1c1c;}
-  .avail{margin:3px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:8.6pt;color:#333;}
-  .hr{border:0;border-top:1px solid #222;margin:11px 0 4px;}
-  h2{font-family:Georgia,serif;font-size:11.5pt;font-weight:700;margin:12px 0 5px;padding:0 0 3px;border-bottom:1px solid #ccc;}
-  p{margin:0 0 7px;}
-  .intro{font-size:10pt;line-height:1.38;}
-  .body-sans{font-family:Arial,Helvetica,sans-serif;}
-  .job{margin:0 0 9px;}
-  .job-line{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
-  .job-role{font-weight:700;font-size:10.5pt;}
-  .job-when{font-family:Arial,Helvetica,sans-serif;font-size:8.6pt;color:#555;white-space:nowrap;}
-  .job-org{font-style:italic;color:#444;font-size:9.6pt;margin:1px 0 4px;}
-  .context{margin:0 0 4px;font-size:9.9pt;}
-  ul{margin:0;padding-left:16px;}
-  li{margin:0 0 4px;font-size:9.9pt;}
-  .skills p{margin:0 0 5px;font-size:9.7pt;line-height:1.35;}
-  .compact{margin:0;padding-left:16px;}
-  .compact li{margin:0 0 2px;}
+  .name{margin:0;font-size:21pt;font-weight:700;letter-spacing:.2px;}
+  .role{margin:2px 0 0;font-size:10.3pt;font-style:italic;color:#444;}
+  .contact{margin:6px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:8.5pt;color:#333;}
+  .contact a{color:#1c1c1c;text-decoration:none;}
+  .avail{margin:2px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:8.5pt;color:#333;}
+  .hr{border:0;border-top:1px solid #222;margin:10px 0 0;}
+  h2{font-family:Georgia,serif;font-size:11pt;font-weight:700;margin:11px 0 4px;padding:0 0 2px;border-bottom:1px solid #ccc;}
+  p{margin:0 0 6px;}
+  .intro{font-size:9.9pt;line-height:1.37;}
+  .skills{font-family:Arial,Helvetica,sans-serif;font-size:9.2pt;line-height:1.42;color:#222;margin:0;}
+  .skills b{font-family:Georgia,serif;color:#1c1c1c;}
+  .job{margin:0 0 8px;}
+  .job-line{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+  .job-role{flex:1 1 auto;font-weight:700;font-size:10.2pt;line-height:1.25;}
+  .job-when{flex:0 0 auto;font-family:Arial,Helvetica,sans-serif;font-size:8.4pt;color:#555;white-space:nowrap;}
+  .job-org{font-family:Arial,Helvetica,sans-serif;font-style:italic;color:#444;font-size:9.4pt;margin:1px 0 3px;}
+  .context{margin:0 0 3px;font-size:9.6pt;line-height:1.35;}
+  ul{margin:0;padding-left:15px;}
+  li{margin:0 0 3px;font-size:9.6pt;line-height:1.35;}
+  .meta{font-family:Arial,Helvetica,sans-serif;font-size:9.2pt;line-height:1.38;margin:0;}
+  .meta-block{margin-bottom:7px;}
+  .page2-first h2{margin-top:0;}
 </style>
 </head>
 <body>
@@ -40,8 +41,8 @@
   <h1 class="name">Anjish Bhondwe</h1>
   <div class="role">Delivery Enablement Lead · Regulated Financial Services</div>
   <div class="contact">
-    freelanceanjish@gmail.com &nbsp; +32 489 858 959 &nbsp;
-    <a href="https://www.linkedin.com/in/anjish">linkedin.com/in/anjish</a> &nbsp;
+    freelanceanjish@gmail.com &nbsp;·&nbsp; +32 489 858 959 &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/anjish">linkedin.com/in/anjish</a> &nbsp;·&nbsp;
     <a href="https://anjishbhondwe.com">anjishbhondwe.com</a>
   </div>
   <div class="avail">Available in Brussels from October. I do not need a work permit for Belgium.</div>
@@ -53,10 +54,12 @@
   </p>
 
   <h2>Core Skills</h2>
-  <div class="skills">
-    <p><b>Delivery enablement and agile:</b> <b>delivery enablement, squads and trains, Scrum and SAFe, hybrid delivery, PI planning, intake and capacity, governance and SDLC, delivery KPIs and SteerCo reporting, dependency and risk management, escalation, product owners and scrum masters, tribe ceremonies, outsourcing and onshore-offshore partners</b>.</p>
-    <p><b>Domain and data in regulated markets:</b> <b>settlement, clearing, post-trade processing, T+2 trade settlements, post-trade architecture, trade settlement and lifecycle management, CSD and market infrastructure</b>, <b>risk management infrastructure, CCR, EAD, CVA, Market Risk, Operational Risk, collateral management, margin workflows, Basel Pillar 3, Basel IV, BCBS 239, RWA, AnaCredit</b>, OTC and exchange-traded derivatives, swaps, bonds, equities and securities, <b>BRDs/FRDs, logical data models, source-to-target mapping, financial data architecture, risk systems, regulatory reporting pipelines, data modeling, system design, data lineage, governance, reconciliation and data quality</b>, liquidity and regulatory reporting, GDPR and data governance, insurance (Customer 360), ECB-scrutinised programmes.</p>
-  </div>
+  <p class="skills">
+    <b>Delivery enablement:</b> squads and trains · Scrum · SAFe · intake and capacity · SteerCo · escalation · product owners and scrum masters · outsourcing<br>
+    <b>Post-trade and FMI:</b> settlement · clearing · T+2 · CSD · market infrastructure · trade lifecycle · collateral and margin<br>
+    <b>Risk and regulatory:</b> CCR · EAD · CVA · Basel Pillar 3 · Basel IV · BCBS 239 · RWA · AnaCredit · GDPR<br>
+    <b>Data and analysis:</b> data lineage · governance · reconciliation · BRDs/FRDs · data modeling · source-to-target mapping
+  </p>
 
   <h2>Experience</h2>
 
@@ -93,18 +96,17 @@
   </div>
 </div>
 
-<div class="page">
+<div class="page page2-first">
   <h2>Experience (continued)</h2>
 
-  <div class="job" style="margin-top:0;">
+  <div class="job">
     <div class="job-line">
       <span class="job-role">Product owner and manager, Carbon Zero</span>
       <span class="job-when">October 2020 to September 2021</span>
     </div>
     <div class="job-org">UST Global for Uplight, India (team across the US, Canada and India)</div>
-    <p class="context">Owned a sustainability data product on Google Cloud end to end.</p>
     <ul>
-      <li>Owned roadmap, backlog and release plan; ran priority conversations with the product director and VP of engineering.</li>
+      <li>Owned a sustainability data product on Google Cloud: roadmap, backlog, release plan and priority conversations with the product director and VP of engineering.</li>
     </ul>
   </div>
 
@@ -116,7 +118,7 @@
     <div class="job-org">Credit Suisse, India</div>
     <p class="context">Tier-1 investment banking: CCR, EAD and CVA data quality; post-Brexit regulatory change.</p>
     <ul>
-      <li>Lead BA for <b>data quality and reconciliation</b> in <b>post-trade</b> flows (securities, CDS, RWAs, <b>trade settlement and lifecycle management</b>); end-to-end <b>data lineage and governance</b>; aligned stakeholders and guided tech implementation.</li>
+      <li>Lead BA for <b>data quality and reconciliation</b> in <b>post-trade</b> flows (securities, CDS, RWAs, trade settlement and lifecycle management); end-to-end <b>data lineage and governance</b>; aligned stakeholders and guided tech implementation.</li>
     </ul>
   </div>
 
@@ -137,7 +139,7 @@
       <span class="job-when">2016 to October 2018</span>
     </div>
     <div class="job-org">HSBC and Credit Suisse, India</div>
-    <p class="context">Tier-1 institutions: <b>risk management infrastructure and post-trade architecture</b>. Senior technical business analyst / system analyst on <b>CCR, Market Risk and Operational Risk</b> across OTC and exchange-traded derivatives, swaps, bonds, equities and securities.</p>
+    <p class="context">Tier-1 institutions: <b>risk management infrastructure and post-trade architecture</b>. Senior technical BA / system analyst on <b>CCR, Market Risk and Operational Risk</b> across OTC and exchange-traded derivatives, swaps, bonds, equities and securities.</p>
     <ul>
       <li>End-to-end <b>data lineage, governance and reconciliation</b> across product portfolios for precise risk management and capital calculations.</li>
       <li>Wrote <b>BRDs/FRDs</b> for <b>CCR, EAD and CVA</b> in Tier-1 jurisdictions: UK (PRA), US (Fed/SEC) and Switzerland (FINMA); built <b>logical data models, schemas and system design</b> from requirements to IT implementation.</li>
@@ -159,18 +161,28 @@
     </ul>
   </div>
 
-  <h2>Certifications</h2>
-  <p class="body-sans" style="font-size:9.7pt;margin:0 0 8px;">ICAgile ICP-ACC and ICP-ENT, SAFe SSM and PMPO, CSPO, AIGP, IAPP member for GDPR Practices and AI Governance.</p>
+  <div class="meta-block">
+    <h2>Certifications</h2>
+    <p class="meta">ICAgile ICP-ACC and ICP-ENT · SAFe SSM and PMPO · CSPO · AIGP · IAPP member for GDPR Practices and AI Governance</p>
+  </div>
 
-  <h2>Education</h2>
-  <p class="body-sans" style="font-size:9.5pt;line-height:1.35;margin:0 0 8px;">MBA, Information Technology, RGIMT, 2019 to 2021 · B.E. IT, Savitribai Phule Pune University, 2009 to 2013<br>
-  Design Thinking and Digital Transformation, IBMI Berlin, 2021 · AI Regulation and EU AI Act, KU Leuven, Dec 2025 to Jan 2026</p>
+  <div class="meta-block">
+    <h2>Education</h2>
+    <p class="meta">MBA, Information Technology, RGIMT, 2019 to 2021 · B.E. IT, Savitribai Phule Pune University, 2009 to 2013<br>
+    Design Thinking and Digital Transformation, IBMI Berlin, 2021 · AI Regulation and EU AI Act, KU Leuven, Dec 2025 to Jan 2026</p>
+  </div>
 
-  <h2>Languages</h2>
-  <p class="body-sans" style="font-size:9.5pt;margin:0 0 8px;">English (full professional), Dutch (working proficiency), French (basic), German (basic).</p>
+  <div class="meta-block">
+    <h2>Languages</h2>
+    <p class="meta">English (full professional) · Dutch (working proficiency) · French (basic) · German (basic)</p>
+  </div>
 
-  <h2>References</h2>
-  <p class="body-sans" style="font-size:9pt;line-height:1.35;margin:0;">Bart Adriaensen, former KBC department head. linkedin.com/in/bart-adriaensen-09917a25 · Pradeep Mahajan, EVP APC and Middle East. linkedin.com/in/pradeepm27 · Linda Batson, Principal Officer, WorkSafe Australia. linkedin.com/in/lindabatson</p>
+  <div class="meta-block">
+    <h2>References</h2>
+    <p class="meta">Bart Adriaensen, former KBC department head · linkedin.com/in/bart-adriaensen-09917a25<br>
+    Pradeep Mahajan, EVP APC and Middle East · linkedin.com/in/pradeepm27<br>
+    Linda Batson, Principal Officer, WorkSafe Australia · linkedin.com/in/lindabatson</p>
+  </div>
 </div>
 
 </body>
