@@ -12,7 +12,7 @@
   .page{width:210mm;height:297mm;padding:14mm 16mm 11mm;background:#fff;overflow:hidden;}
   .page + .page{page-break-before:always;}
   .name{margin:0;font-size:21pt;font-weight:700;letter-spacing:.2px;}
-  .role{margin:2px 0 0;font-size:10.3pt;font-style:italic;color:#444;line-height:1.3;}
+  .role{margin:2px 0 0;font-size:10.3pt;font-style:italic;color:#444;}
   .contact{margin:6px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:8.5pt;color:#333;}
   .contact a{color:#1c1c1c;text-decoration:none;}
   .hr{border:0;border-top:1px solid #222;margin:10px 0 0;}
@@ -23,9 +23,9 @@
   .skills-list li{margin:0 0 3px;font-size:9.2pt;line-height:1.42;}
   .skills-list .skill-label{font-family:Georgia,serif;font-weight:700;color:#1c1c1c;}
   .job{margin:0 0 8px;}
-  .job-line{display:table;width:100%;table-layout:fixed;}
-  .job-role{display:table-cell;vertical-align:baseline;font-weight:700;font-size:10.2pt;line-height:1.25;padding-right:8px;}
-  .job-when{display:table-cell;vertical-align:baseline;width:118px;font-family:Arial,Helvetica,sans-serif;font-size:8.4pt;color:#555;text-align:right;white-space:nowrap;}
+  .job-line{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+  .job-role{flex:1 1 auto;font-weight:700;font-size:10.2pt;line-height:1.25;}
+  .job-when{flex:0 0 auto;font-family:Arial,Helvetica,sans-serif;font-size:8.4pt;color:#555;white-space:nowrap;}
   .job-org{font-family:Arial,Helvetica,sans-serif;font-style:italic;color:#444;font-size:9.4pt;margin:1px 0 2px;line-height:1.32;}
   .job-note{font-family:Arial,Helvetica,sans-serif;font-size:9.3pt;color:#444;margin:0 0 3px;line-height:1.32;}
   .nowrap{white-space:nowrap;}
@@ -56,12 +56,12 @@
 
   <h2>Professional Summary</h2>
   <p class="intro">
-    <b>Director and Senior Scrum Master</b> with 13 years in <b>regulated financial services and tier-1 banking</b> at <b>KBC, Credit Suisse, HSBC and Standard Bank</b>, and five years leading <b>Scrum</b> with cross-functional squads across analysis, development and testing. Core Scrum Master work includes <b>Daily Stand-up, Sprint Planning, Sprint Review and Retrospective</b>; <b>Product Backlog</b> support; <b>Definition of Done</b> and <b>Sprint Backlog</b> delivery; <b>team capacity and velocity metrics</b>; and <b>risk and issue management</b>. At <b>KBC</b> in Brussels I led <b>Scrum</b> for data, platform and <b>AI-backed</b> squads, coordinated <b>offshore partners in India</b>, and transferred <b>run and lifecycle management</b> offshore so local teams could focus on change. Since Nov 2024 at <b>iostring</b> I founded the delivery practice and <b>Agile Center of Excellence</b>, coach scrum masters across client tribes, and lead the <b>India operation</b>. <b>AIGP</b> certified with <b>AI governance</b> and EU AI Act training. Expert in <b>Scrum, Kanban</b> and <b>servant leadership</b>.
+    <b>Director, Agile Lead and enterprise coach</b> with 13 years in <b>regulated financial services and tier-1 banking</b> at <b>KBC, Credit Suisse, HSBC and Standard Bank</b>. I build <b>Agile Centers of Excellence</b>, coach scrum masters, product owners and tribe leaders, and lead multi-country delivery under <b>Scrum, SAFe and Scrum@Scale</b>. At <b>KBC</b> in Brussels I ran agile practice for data, platform and <b>AI-backed</b> squads across five countries, coordinated <b>offshore partners in India</b>, and transferred <b>run and lifecycle management</b> offshore so local teams could focus on change. Since Nov 2024 at <b>iostring</b> I founded the delivery practice and <b>CoE</b>, coach client tribes, and lead the <b>India operation</b> including outsourcing transfer. <b>AIGP</b> certified with <b>AI governance</b> and EU AI Act training. I bring banking domain depth, offshore leadership and servant-leadership coaching at tribe and programme level.
   </p>
 
   <h2>Core Skills</h2>
   <ul class="skills-list">
-    <li><span class="skill-label">Scrum and agile:</span> Scrum methodology · Kanban · SAFe · Lean · Ceremonies · Product Backlog · Definition of Done · Sprint Backlog · Velocity and capacity metrics · Risk and issue management · Servant leader · Coaching · Self-organization · Continuous improvement · Agile ambassador</li>
+    <li><span class="skill-label">Scrum and agile:</span> Scrum · SAFe · Scrum@Scale · Kanban · Lean · Agile coaching · Servant leadership · Product ownership support · Delivery metrics · Risk and issue management · Continuous improvement · Agile ambassador</li>
     <li><span class="skill-label">Leadership:</span> Tribe and SteerCo reporting · Communities of practice · Coach-the-coach · People management · Hiring · Performance · Escalation · Cross-squad dependency management · Hybrid and multi-country delivery</li>
     <li><span class="skill-label">Banking and AI:</span> Retail and corporate banking · Investment banking · Liquidity and regulatory reporting (Basel IV, AnaCredit) · GDPR · AI-backed platform delivery · AI governance (AIGP, EU AI Act) · GenAI in regulated financial services</li>
     <li><span class="skill-label">Technical and tooling:</span> Jira · Confluence · Miro · Automated unit testing · Automated functional testing · Continuous integration · CI/CD · DevOps · Software development methodology · Project management methodology</li>
@@ -78,10 +78,10 @@
     <div class="job-org">iostring Technology and Consulting · Belgium and India</div>
     <div class="job-note">Regulated financial services · India operation lead since Sep 2025</div>
     <ul>
-      <li>Founded and lead the <b>Agile Center of Excellence</b> and a <b>community of practice</b> for scrum masters, product owners and chapter leads; harmonise <b>Scrum</b> and <b>Kanban</b> and run coach-the-coach paths.</li>
+      <li>Founded and lead the <b>Agile Center of Excellence</b> and a <b>community of practice</b> for scrum masters, product owners and chapter leads; harmonise ways of working across <b>Scrum, Kanban and SAFe</b> and run coach-the-coach paths.</li>
       <li>Lead the <b>India operation</b> and coordinate <b>offshore partners in India</b> on <b>transfer of activities</b>: move run and <b>lifecycle management</b> work offshore so local squads stay on change.</li>
-      <li>Facilitate <b>Scrum ceremonies</b>, support product owners on the <b>Product Backlog</b>, track <b>team capacity and velocity metrics</b>, and report <b>Scrum methodology</b> deployment to client leadership.</li>
-      <li>Coach squads on <b>Definition of Done</b>, <b>Sprint Backlog</b> and <b>self-organization</b>; manage <b>risk and issue management</b> across dependencies and offshore handover.</li>
+      <li>Coach client squads and report agile deployment, delivery health and risk mitigations to leadership; track flow, capacity and dependencies across offshore handover.</li>
+      <li>Support <b>AI and GenAI</b> programmes for financial services clients with <b>AI governance</b> (AIGP, EU AI Act) embedded in delivery planning and release.</li>
     </ul>
   </div>
 
@@ -93,11 +93,10 @@
     <div class="job-org">KBC Bank and Verzekering · Brussels and Leuven, Belgium</div>
     <div class="job-note">Regulated banking tribe · squads across Belgium, Hungary, Czech Republic, Bulgaria and India</div>
     <ul>
-      <li>Key <b>Scrum Master</b> for cross-functional teams (analysis, development, testing, data science, DevOps); facilitated all <b>Scrum ceremonies</b> every sprint.</li>
+      <li>Agile program lead and <b>Scrum Master</b> for cross-functional teams across a regulated banking tribe; coached squad maturity, self-organization and tribe-level agile practice.</li>
       <li>Led 50+ onshore-offshore members with <b>offshore partners in India</b>; transferred <b>run and lifecycle management</b> offshore so local squads could implement the target vision.</li>
-      <li>Supported product owners on the <b>Product Backlog</b>; tracked <b>team capacity and velocity metrics</b> and reported risks at tribe SteerCo reviews.</li>
-      <li>Coached squads through <b>Definition of Done</b>, <b>Sprint Backlog</b> commitments and <b>self-organization</b>; removed impediments and protected teams from distractions.</li>
-      <li>Worked with engineering squads on <b>Jira</b>, test automation and <b>continuous integration</b> in Definition of Done on Basel IV and AnaCredit programmes.</li>
+      <li>Partnered with product owners on prioritisation and sprint readiness; tracked delivery metrics and reported risks at tribe SteerCo reviews.</li>
+      <li>Removed impediments and protected teams from distractions; worked with engineering on <b>Jira</b>, test automation and CI/CD on Basel IV and AnaCredit programmes.</li>
       <li>Coached the squad that delivered Kate Coin, a blockchain-based <b>AI-backed</b> digital bank coin under ECB constraints.</li>
       <li>Delivered <b>GDPR</b> for Corporate and Retail Banking; coordinated product owners, scrum masters, architects and testers across five countries.</li>
     </ul>
