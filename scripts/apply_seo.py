@@ -263,7 +263,6 @@ def enhance_index(html: str) -> str:
                     "DORA",
                 ],
                 "alumniOf": [
-                    {"@type": "CollegeOrUniversity", "name": "Delft University of Technology"},
                     {"@type": "CollegeOrUniversity", "name": "KU Leuven"},
                 ],
                 "areaServed": ["BE", "NL", "DE", "GB", "EU"],
