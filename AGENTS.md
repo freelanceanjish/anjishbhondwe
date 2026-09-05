@@ -13,6 +13,7 @@
 
 - **Never override Cover letter and CV format.** Keep the existing layout, section structure, typography, spacing, and visual style of the reference CV/letter (e.g. Twente EngD for Pooja). Change content only unless the user explicitly asks to redesign or change format.
 - **Never orphan a section title at the bottom of a page.** A section heading (e.g. Technical Skills) must stay with its content on the same page. If it does not fit, move the whole section to the next page.
+- **CV pages need standard blank header/footer space and page numbers** (e.g. Page 1, Page 2) in the footer. Do not let content sit flush against the page edge.
 - **Never use em dashes** (—). Use commas, periods, colons, or short separate sentences instead.
 - **No AI voice**: write in simple, human English. Avoid filler and polished-but-empty phrases. Prefer concrete sentences like the existing Twente EngD cover letter.
 
