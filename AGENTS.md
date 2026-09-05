@@ -11,6 +11,7 @@
 
 ### Cover letter / CV writing style (Pooja and Anjish)
 
+- **Never override Cover letter and CV format.** Keep the existing layout, section structure, typography, spacing, and visual style of the reference CV/letter (e.g. Twente EngD for Pooja). Change content only unless the user explicitly asks to redesign or change format.
 - **Never use em dashes** (—). Use commas, periods, colons, or short separate sentences instead.
 - **No AI voice**: write in simple, human English. Avoid filler and polished-but-empty phrases. Prefer concrete sentences like the existing Twente EngD cover letter.
 
