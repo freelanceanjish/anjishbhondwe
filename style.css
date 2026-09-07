@@ -1140,6 +1140,13 @@ section { padding: var(--s8) 0; }
   max-width: 170px;
   max-height: 44px;
 }
+.client-card__logo--text {
+  font-family: var(--fserif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--warm);
+  letter-spacing: 0.04em;
+}
 .client-card__name {
   font-family: var(--fmono);
   font-size: .625rem;
