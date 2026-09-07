@@ -854,6 +854,11 @@ section { padding: var(--s8) 0; }
 .competency-pillars--four {
   grid-template-columns: repeat(2, 1fr);
 }
+@media (min-width: 1100px) {
+  .competency-pillars--four {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 .comp-pillar {
   padding-top: var(--s2);
   border-top: 2px solid var(--teal);
