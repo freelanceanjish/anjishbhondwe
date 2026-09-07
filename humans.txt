@@ -1,12 +1,12 @@
 /* TEAM */
 Name: Anjish Bhondwe
-Role: Enterprise Agile & Delivery Enablement · AI Governance
+Role: Agile Delivery & Product Lead · BFSI Risk & Regulatory
 Site: https://anjishbhondwe.com
 Location: Brussels, Belgium
 Contact: freelanceanjish@gmail.com
 
 /* SITE */
-Last update: 2026-07-29
+Last update: 2026-09-07
 Standards: HTML5, CSS3, Schema.org JSON-LD
 Fonts: Newsreader, Karla
 Hosting: GitHub Pages

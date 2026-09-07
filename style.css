@@ -851,6 +851,9 @@ section { padding: var(--s8) 0; }
   gap: var(--s4);
   margin-top: var(--s5, 2.5rem);
 }
+.competency-pillars--four {
+  grid-template-columns: repeat(2, 1fr);
+}
 .comp-pillar {
   padding-top: var(--s2);
   border-top: 2px solid var(--teal);
@@ -1697,7 +1700,8 @@ footer p { font-family: var(--fmono); font-size: .75rem; color: var(--text-3); l
   .onsite-blog-card.featured { grid-column: 1 / -1; grid-row: auto; }
   .about-grid, .cred-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
   .outcomes-grid { grid-template-columns: 1fr 1fr; }
-  .competency-pillars { grid-template-columns: 1fr; gap: var(--s5, 2rem); }
+  .competency-pillars,
+  .competency-pillars--four { grid-template-columns: 1fr; gap: var(--s5, 2rem); }
   .articles-grid { grid-template-columns: 1fr 1fr; }
   .acard.featured { grid-column: span 2; }
 }
