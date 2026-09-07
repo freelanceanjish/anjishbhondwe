@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" role="img" aria-label="Sun Life">
+  <rect width="160" height="48" fill="#0B3D2E"/>
+  <circle cx="22" cy="24" r="10" fill="#F5C518"/>
+  <text x="40" y="30" font-family="Georgia, 'Times New Roman', serif" font-size="16" font-weight="700" fill="#FFFFFF">Sun Life</text>
+</svg>
