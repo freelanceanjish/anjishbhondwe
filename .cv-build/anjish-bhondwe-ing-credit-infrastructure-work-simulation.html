@@ -508,6 +508,132 @@
 
   <h2>15. One-minute pitch (HM open)</h2>
   <p>Credit Infrastructure sits in Risk Platforms under Integrated Risk Management and runs the engines that turn credit risk data into parameters for capital, RWA and LLP. Around it sit the Credit Risk Tribe as demand, Data Management as the lake and quality partner, Business tribes as consumers of indicators and tooling, and Audit on evidence. My role is to lead the squad as Product Owner and to master the credit risk data journey across those tribes: PD, EAD, LGD and related engines, Data Lake regulatory work, flows and tooling, and digitalization. That is the work I have done on calculation engines at KBC and in credit risk data at HSBC and Credit Suisse. I am ready to do it hands-on at ING Belgium.</p>
+</div>
+
+<!-- GLOSSARY PAGE 1 -->
+<div class="page page2-first">
+  <h2>16. Risk keyword glossary (with formulas)</h2>
+  <p class="small">Interview crib sheet. Formulas are standard Basel / IFRS textbook forms. Bank engines implement policy-specific variants. Confirm ING naming (especially DTAI) on day one. <span class="tag">Not bank policy</span></p>
+
+  <h3>Core model parameters (engines you own)</h3>
+  <table>
+    <tr><th>Term</th><th>Definition</th><th>Formula / expression</th></tr>
+    <tr>
+      <td><b>PD</b><br>Probability of Default</td>
+      <td>Likelihood that an obligor (or facility, per model design) defaults within a horizon (often 12 months for IRB; lifetime for IFRS 9 Stage 2/3 logic).</td>
+      <td>0 ≤ PD ≤ 1<br>Often from score/rating: PD = f(score, segment, macro)<br>Portfolio: average PD weighted by exposure</td>
+    </tr>
+    <tr>
+      <td><b>EAD</b><br>Exposure at Default</td>
+      <td>Estimated exposure amount if default occurs. Includes drawn balance plus expected drawdown of undrawn limits.</td>
+      <td><b>EAD ≈ Drawn + CCF × Undrawn</b><br>CCF = Credit Conversion Factor (0 to 1)<br>Product-specific caps and netting may apply</td>
+    </tr>
+    <tr>
+      <td><b>LGD</b><br>Loss Given Default</td>
+      <td>Share of EAD expected to be lost after default, net of recoveries and collateral, usually after costs and discounting.</td>
+      <td><b>LGD = 1 − Recovery Rate</b><br>Recovery Rate ≈ Recoveries (collaterals + cures − costs) / EAD<br>0 ≤ LGD ≤ 1 (floors/caps in IRB)</td>
+    </tr>
+    <tr>
+      <td><b>EL</b><br>Expected Loss</td>
+      <td>Average loss you expect over the horizon. Feeds LLP thinking; capital covers unexpected loss beyond EL.</td>
+      <td><b>EL = PD × EAD × LGD</b><br>(same building blocks your engines produce)</td>
+    </tr>
+    <tr>
+      <td><b>CCF</b><br>Credit Conversion Factor</td>
+      <td>Fraction of undrawn commitment expected to be drawn at default.</td>
+      <td>Used inside EAD: see EAD formula above</td>
+    </tr>
+  </table>
+
+  <h3>Capital, RWA, provisions</h3>
+  <table>
+    <tr><th>Term</th><th>Definition</th><th>Formula / expression</th></tr>
+    <tr>
+      <td><b>RWA</b><br>Risk-Weighted Assets</td>
+      <td>Exposure scaled by risk so capital ratios compare banks. Higher PD/LGD (and lower collateral quality) usually raise RWA.</td>
+      <td>IRB idea: <b>RWA = 12.5 × K × EAD</b><br>K = Basel capital requirement from PD, LGD, maturity, correlation<br>12.5 = 1 / 8% (inverts 8% capital ratio)</td>
+    </tr>
+    <tr>
+      <td><b>K (IRB)</b></td>
+      <td>Regulatory capital charge per unit EAD from the Basel IRB formula (unexpected loss style).</td>
+      <td>K = f(PD, LGD, M, R) − PD × LGD<br>(simplified: UL capital after EL offset; exact Basel formula is longer)</td>
+    </tr>
+    <tr>
+      <td><b>LLP</b><br>Loan Loss Provisions</td>
+      <td>Accounting stock/flow of credit loss allowances on the book (IFRS 9 ECL in modern banks).</td>
+      <td>Linked to ECL (below). Engines’ PD/LGD/EAD (and staging) feed provisioning models</td>
+    </tr>
+    <tr>
+      <td><b>ECL</b><br>Expected Credit Loss (IFRS 9)</td>
+      <td>Probability-weighted credit losses. Stage 1: 12-month ECL. Stage 2/3: lifetime ECL.</td>
+      <td><b>ECL ≈ Σ (PDscenario × EADscenario × LGDscenario × discount) × weight</b><br>Stage drives 12m vs lifetime PD</td>
+    </tr>
+    <tr>
+      <td><b>CET1 / Capital ratio</b></td>
+      <td>Core capital adequacy vs RWA.</td>
+      <td><b>CET1 ratio = CET1 capital / RWA</b></td>
+    </tr>
+  </table>
+</div>
+
+<!-- GLOSSARY PAGE 2 -->
+<div class="page page2-first">
+  <h3>Rule-based engines and lending indicators</h3>
+  <table>
+    <tr><th>Term</th><th>Definition</th><th>Formula / expression</th></tr>
+    <tr>
+      <td><b>DoD</b><br>Definition of Default</td>
+      <td>Policy/regulatory rules that mark an obligor or facility as defaulted (e.g. 90 days past due, unlikely-to-pay, specific forbearance cases). Rule engine, not a PD model.</td>
+      <td>Default flag = 1 if any DoD trigger true<br>Examples: DPD ≥ 90 · UTP · certain forbearance<br>(exact triggers = Credit Risk policy)</td>
+    </tr>
+    <tr>
+      <td><b>EWS</b><br>Early Warning Signal(s)</td>
+      <td>Pre-default watch indicators from behaviour or financial stress so Risk/Business can act before DoD.</td>
+      <td>EWS flag / score = f(arrears trend, utilisation, covenants, …)<br>Thresholds set with Credit Risk</td>
+    </tr>
+    <tr>
+      <td><b>LTV</b><br>Loan to Value</td>
+      <td>How large the loan is versus collateral value. Higher LTV → usually weaker collateral cover for LGD.</td>
+      <td><b>LTV = Loan amount (or exposure) / Property (collateral) value</b></td>
+    </tr>
+    <tr>
+      <td><b>DSTI</b><br>Debt Service to Income</td>
+      <td>Affordability: debt service payments versus income. Used in origination and monitoring.</td>
+      <td><b>DSTI = Debt service (period) / Income (same period)</b></td>
+    </tr>
+    <tr>
+      <td><b>DTAI</b></td>
+      <td>Named in sibling Credit Infrastructure JD with DSTI/LTV. Local name: confirm at ING. Common readings: Debt-to-Assets Indicator, or Debt-to-Available-Income style ratio.</td>
+      <td>If debt-to-assets: <b>DTAI = Total debt / Total assets</b><br>If debt-to-available-income: Debt / Available income<br>Ask SME which ING uses</td>
+    </tr>
+    <tr>
+      <td><b>DPD</b><br>Days Past Due</td>
+      <td>How long payment is overdue. Key DoD input.</td>
+      <td>DPD = days since due date unpaid (product rules apply)</td>
+    </tr>
+    <tr>
+      <td><b>UTP</b><br>Unlikely to Pay</td>
+      <td>Judgemental/default trigger when repayment is unlikely even if not yet 90 DPD.</td>
+      <td>Qualitative + quantitative triggers in DoD policy (no single universal formula)</td>
+    </tr>
+  </table>
+
+  <h3>Portfolio, accounting, regulation (you will hear daily)</h3>
+  <table>
+    <tr><th>Term</th><th>Definition</th><th>Formula / notes</th></tr>
+    <tr><td><b>Forbearance</b></td><td>Concession to a distressed borrower (reschedule, temporary lower rate). Can drive DoD/EWS and staging.</td><td>Policy flags → engine inputs (no single formula)</td></tr>
+    <tr><td><b>NPL</b><br>Non-Performing Loan</td><td>Exposure in default / non-performing per regulatory definition (aligned with DoD in many banks).</td><td><b>NPL ratio ≈ NPL stock / Total loans</b></td></tr>
+    <tr><td><b>Cure</b></td><td>Return from default/non-performing to performing after recovery actions.</td><td>Affects LGD recovery paths and historical LGD calibration</td></tr>
+    <tr><td><b>Collateral coverage</b></td><td>How much exposure is covered by eligible collateral after haircuts.</td><td><b>Coverage ≈ Haircuted collateral value / EAD</b> (feeds LGD)</td></tr>
+    <tr><td><b>IRB</b><br>Internal Ratings-Based</td><td>Basel approach using bank PD/LGD/EAD models for RWA (vs standardised risk weights).</td><td>Uses PD, LGD, EAD, M in Basel K formula</td></tr>
+    <tr><td><b>IFRS 9</b></td><td>Accounting standard for ECL staging (1/2/3) and provisions.</td><td>See ECL formula; staging ≠ DoD but linked</td></tr>
+    <tr><td><b>CRR / CRD</b></td><td>EU Capital Requirements Regulation / Directive: legal frame for RWA and own funds.</td><td>Policy source for capital rules</td></tr>
+    <tr><td><b>AnaCredit</b></td><td>ECB granular credit data reporting. Needs clean facility/counterparty data journeys.</td><td>Reporting requirement; engines/data must align</td></tr>
+    <tr><td><b>Record Bank residual</b></td><td>Legacy product/codes from Record Bank still present in ING Belgium credit data map.</td><td>Mapping problem in landscape (plus on JD)</td></tr>
+  </table>
+
+  <h3>One-line chain (memorise)</h3>
+  <p class="box meta"><b>EL = PD × EAD × LGD</b> · <b>EAD ≈ Drawn + CCF × Undrawn</b> · <b>LGD = 1 − Recovery</b> · <b>LTV = Loan / Value</b> · <b>DSTI = Debt service / Income</b> · <b>RWA ≈ 12.5 × K × EAD</b> · <b>CET1 ratio = CET1 / RWA</b> · DoD/EWS = rule flags that feed models and monitoring</p>
 
   <hr class="hr">
   <p class="note">End of simulation. Sources: public JD REQ-10118811 · sibling Credit Risk Data Engineer (engines DoD/EWS/PD/LGD, Data Management, Risk &amp; Business tribes) · public Credit Risk Tribe lead ING Belgium. Use with CV: anjish-bhondwe-cv-ing-po-risk-data-journey-expert.pdf</p>
