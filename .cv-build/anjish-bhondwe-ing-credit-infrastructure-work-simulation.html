@@ -57,18 +57,146 @@
     <li><b>You:</b> own squad backlog and master the credit risk data journey so engines stay policy-aligned and auditable.</li>
   </ul>
 
-  <h2>3. Roles around you (day to day)</h2>
+  <h2>3. Quick map (detail on next pages)</h2>
+  <p class="box meta"><b>Inside your squad:</b> you (PO + Risk Data Journey Expert) · Credit Risk Data Engineers (BE + PL) · functional analysts / modeler partners · often a Scrum Master / Agile Coach shared. <b>Outside:</b> Credit Risk Tribe · Data Management · Business tribes · Finance · Audit · chapter leads. Full squad functions and the credit risk data journey landscape follow.</p>
+</div>
+
+<!-- PAGE: SQUAD PEOPLE -->
+<div class="page page2-first">
+  <h2>3a. Your Credit Infrastructure squad: people and functions</h2>
+  <p class="small">Simulation of a typical Credit Infrastructure agile squad. Headcount and titles vary; functions are what interviewers expect you to orchestrate. <span class="tag">JD + sibling CR Data Engineer + Orange House sim</span></p>
+
   <table>
-    <tr><th>Role</th><th>What they do</th><th>How they work with you</th></tr>
-    <tr><td><b>You: PO + Risk Data Journey Expert</b></td><td>Backlog; squad delivery; landscape (PD/EAD/LGD + related); lake regulatory; flows/tooling; digitalization; auditor contact</td><td>Centre of the bridge</td></tr>
-    <tr><td>Credit Risk Data Engineers (BE + PL hubs)</td><td>Oracle/SAS/DI jobs, lake pipelines, engine code, mart</td><td>Delivery partners; often capacity from Warsaw hubs</td></tr>
-    <tr><td>Credit Risk Functional Analysts / modelers</td><td>Functional reqs, model logic, monitoring needs</td><td>Clarify what engines and mart must compute</td></tr>
-    <tr><td>Credit Risk (business / tribe)</td><td>Policy, appetite, portfolio priorities, acceptance</td><td>Main demand side</td></tr>
-    <tr><td>Data Management (ops tribe)</td><td>Data Lake, quality, operational data products</td><td>Regulatory landing + lineage dependencies</td></tr>
-    <tr><td>IT / platform engineering</td><td>Non-functionals, integrations, environments</td><td>Capacity and platform constraints</td></tr>
-    <tr><td>Internal / external auditors</td><td>Evidence on engines, lineage, controls</td><td>You are key contact per JD</td></tr>
-    <tr><td>Chapter leads (PO/CJE, DE, analytics)</td><td>Craft standards, coaching, hiring</td><td>Chapter rituals; not daily backlog ownership</td></tr>
+    <tr><th>Person / seat</th><th>Core function in the squad</th><th>Typical week</th><th>Hands off to you when…</th></tr>
+    <tr>
+      <td><b>You: Product Owner (50%)</b></td>
+      <td>Own and prioritise the product backlog; turn Credit Risk / regulatory priorities into delivery plans; protect capacity; escalate cross-tribe blockers; accept or reject done work against criteria</td>
+      <td>Refinement, planning, stakeholder syncs, SteerCo status, trade-off calls</td>
+      <td>Always on: priorities and “what ships this sprint”</td>
+    </tr>
+    <tr>
+      <td><b>You: Senior Risk Data Journey Expert (50%)</b></td>
+      <td>Master the Credit Risk Data Landscape (PD, EAD, LGD + related engines); design end-to-end data journeys; lake regulatory sequencing; flows/tooling for Risk and Business; digitalization; auditor key contact</td>
+      <td>Lineage walkthroughs, lake-engine epic design, audit prep, tooling thin slices</td>
+      <td>Journey design and landscape truth (source → lake → engine → capital)</td>
+    </tr>
+    <tr>
+      <td><b>Credit Risk Data Engineer (Brussels)</b></td>
+      <td>Build/maintain batch engines and jobs (Oracle, SAS EG / DI patterns); implement engine logic; run and stabilise overnight batches; support mart; debug joins and reconciliations</td>
+      <td>Coding, batch ops, peer review, incident triage, story estimates</td>
+      <td>Technical feasibility, runtime risk, “data vs engine” diagnosis</td>
+    </tr>
+    <tr>
+      <td><b>Credit Risk Data Engineer (ING Hubs / Warsaw)</b></td>
+      <td>Same craft as BE engineers: engines, landscape pipelines, tooling for Risk and Business tribes; extend capacity without hallway context</td>
+      <td>Remote ceremonies; pick up well-written stories; pair on complex lineage</td>
+      <td>Needs clear acceptance, samples, and glossary from you</td>
+    </tr>
+    <tr>
+      <td><b>Credit Risk Functional Analyst</b> <span class="tag">often embeds or partners</span></td>
+      <td>Translate policy and model intent into functional requirements; define expected indicator behaviour; support UAT/acceptance with Credit Risk</td>
+      <td>Spec workshops, acceptance cases, edge cases (forbearance, DoD flags)</td>
+      <td>Ambiguous policy language that would block engineers</td>
+    </tr>
+    <tr>
+      <td><b>Modeler / Risk Analytics partner</b> <span class="tag">mart consumer</span></td>
+      <td>Need model data mart features for development and monitoring; challenge data fitness for PD/EAD/LGD use</td>
+      <td>Mart requests, monitoring checks, model change impact</td>
+      <td>Mart backlog pressure vs engine stability trade-offs</td>
+    </tr>
+    <tr>
+      <td><b>Scrum Master / Agile Coach</b> <span class="tag">sim · often shared</span></td>
+      <td>Facilitate ceremonies; remove process blockers; keep flow visible; coach team health</td>
+      <td>Stand-ups, retros, impediment board</td>
+      <td>Does not own backlog priority (you do)</td>
+    </tr>
   </table>
+
+  <h3>How the squad divides a story</h3>
+  <ol>
+    <li><b>You (journey):</b> map the hop (which source, lake field, engine, output, consumer).</li>
+    <li><b>You (PO):</b> cut the epic into lake dependency + engine story + acceptance; sequence on the board.</li>
+    <li><b>Functional analyst / Risk SME:</b> expected behaviour and edge cases.</li>
+    <li><b>Data engineer(s):</b> implement, test, run batch, reconcile.</li>
+    <li><b>Credit Risk:</b> accept parameter impact.</li>
+    <li><b>You:</b> close story; stash audit evidence if capital-relevant.</li>
+  </ol>
+
+  <h3>What “done” means for this squad</h3>
+  <ul>
+    <li>Engine or flow change matches accepted behaviour (not only code merged).</li>
+    <li>Reconciliation or control check passed on the agreed portfolio slice.</li>
+    <li>Dependencies (especially Data Lake) are explicit: done or consciously deferred.</li>
+    <li>If capital/LLP relevant: lineage note ready for auditor questions.</li>
+  </ul>
+</div>
+
+<!-- PAGE: LANDSCAPE + JOURNEY -->
+<div class="page page2-first">
+  <h2>3b. Credit Risk Data Landscape (what “landscape” means)</h2>
+  <p>The landscape is the map of credit risk data and engines that produce parameters for capital, RWA and LLP. Your journey-expert job is to know how each piece connects, not to memorise every table on day one.</p>
+
+  <table>
+    <tr><th>Landscape layer</th><th>What lives here</th><th>Why it matters</th></tr>
+    <tr><td><b>Sources / operational data</b></td><td>Lending products, facilities, collateral, customer behaviour, arrears, forbearance flags; residual Record Bank codes where still present</td><td>Garbage in → wrong DoD/PD/LGD</td></tr>
+    <tr><td><b>Data Lake (regulatory initiatives)</b></td><td>Governed landing of attributes required by regulation or policy; quality rules; lineage start</td><td>JD: you support regulatory initiatives here with Data Management</td></tr>
+    <tr><td><b>Rule-based engines</b></td><td>DoD (definition of default), EWS (early warning), related indicators (DSTI, DTAI, LTV, etc.)</td><td>Policy logic turned into repeatable batch calculation</td></tr>
+    <tr><td><b>Model-driven engines</b></td><td>PD, EAD, LGD (and related model outputs)</td><td>Feed RWA, capital, LLP; model version sensitive</td></tr>
+    <tr><td><b>Model data mart</b></td><td>Curated data for developing and monitoring new models</td><td>Bridge to modelers / validation; JD names this duty</td></tr>
+    <tr><td><b>Outputs &amp; tooling</b></td><td>Parameters and flows used by Risk family and Business tribes; reports; controls</td><td>Digitalization and tooling stories live here</td></tr>
+    <tr><td><b>Downstream consumers</b></td><td>Capital / RWA / LLP, portfolio steering, underwriting/monitoring, Audit</td><td>Your deadlines and evidence pack</td></tr>
+  </table>
+
+  <h2>3c. Credit risk data journey (end to end)</h2>
+  <p class="box meta">Risk / regulatory need → Source readiness → Data Lake land + quality → Engine input contract → Rule or model engine run → Reconciliation / controls → Parameter publish → Capital / RWA / LLP + Risk &amp; Business tooling → Auditor evidence</p>
+
+  <table>
+    <tr><th>Hop</th><th>What happens</th><th>Who leads</th><th>Your journey-expert move</th></tr>
+    <tr><td>1. Need</td><td>Policy or regulator requires a field, rule, or model behaviour by date D</td><td>Credit Risk Tribe</td><td>Capture why, date, portfolio scope, acceptance language</td></tr>
+    <tr><td>2. Source</td><td>Confirm attribute exists in operational systems (or Record residual map)</td><td>Data Management + Business ops</td><td>Flag gaps early; do not start engine story blind</td></tr>
+    <tr><td>3. Lake</td><td>Land attribute, quality rule, catalogue / lineage</td><td>Data Management</td><td>Sequence lake story before engine consumption</td></tr>
+    <tr><td>4. Contract</td><td>Define engine inputs, joins (e.g. facility-collateral), defaults, history</td><td>You + functional analyst + engineer</td><td>Write the journey map for the story</td></tr>
+    <tr><td>5. Engine</td><td>Batch computes DoD/EWS/PD/EAD/LGD (or related)</td><td>Data engineers</td><td>Protect capacity; clarify rule vs model path</td></tr>
+    <tr><td>6. Control</td><td>Reconcile counts, rates, breaks vs prior run or benchmark</td><td>Engineers + Risk</td><td>Insist acceptance includes a control check</td></tr>
+    <tr><td>7. Publish</td><td>Parameters available to capital, LLP, tooling, Business indicators</td><td>Credit Infrastructure + consumers</td><td>Notify Finance/Risk if window risk</td></tr>
+    <tr><td>8. Evidence</td><td>Lineage pack for internal/external audit</td><td>You (key contact) + engineer + Risk SME</td><td>Keep boring, complete evidence; backlog gaps</td></tr>
+  </table>
+</div>
+
+<!-- PAGE: JOURNEY BY ENGINE -->
+<div class="page page2-first">
+  <h2>3d. Journey by engine family (interview showcase)</h2>
+  <table>
+    <tr><th>Engine / indicator</th><th>Journey focus</th><th>Typical consumers</th><th>Squad function that owns build</th></tr>
+    <tr><td><b>DoD</b></td><td>Policy events (arrears, forbearance, unlikely-to-pay) → flags on facilities/customers</td><td>Credit Risk, capital/LLP, monitoring</td><td>Data engineer implements; FA + Risk accept</td></tr>
+    <tr><td><b>EWS</b></td><td>Early signals from behaviour / financial stress → watchlist style outputs</td><td>Credit Risk monitoring, Business follow-up</td><td>Engineer; Risk tunes thresholds with you</td></tr>
+    <tr><td><b>DSTI / DTAI / LTV</b></td><td>Affordability and collateral ratios from income, debt, property values</td><td>Business lending journeys, Credit Risk</td><td>Engineer; Business tribe feels UX impact</td></tr>
+    <tr><td><b>PD</b></td><td>Governed exposures + behaviour → probability of default (model)</td><td>RWA, capital, portfolio steering</td><td>Engineer + modeler; you own journey fitness</td></tr>
+    <tr><td><b>EAD</b></td><td>Drawn/undrawn and conversion factors → exposure at default</td><td>RWA, capital</td><td>Same; facility data quality critical</td></tr>
+    <tr><td><b>LGD</b></td><td>Collateral, recovery, cure paths → loss given default</td><td>LLP, RWA</td><td>Joins (facility-collateral) often the pain point</td></tr>
+    <tr><td><b>Model data mart</b></td><td>Curated history for model build/monitoring</td><td>Modelers, validation</td><td>Engineers deliver mart features you prioritise</td></tr>
+  </table>
+
+  <h3>Landscape view you can draw on a whiteboard in 60 seconds</h3>
+  <p class="box meta">
+    Sources (lending / collateral / behaviour / Record residuals)<br>
+    → Data Lake (regulatory attributes + quality) [Data Management]<br>
+    → Credit engines: DoD · EWS · DSTI/DTAI/LTV · PD · EAD · LGD [your squad]<br>
+    → Model data mart [your squad + modelers]<br>
+    → Outputs to capital / RWA / LLP · Risk tooling · Business indicators<br>
+    → Audit evidence path [you as key contact]
+  </p>
+
+  <h3>Squad swimlane on one journey (example: new forbearance field → PD)</h3>
+  <table>
+    <tr><th>Step</th><th>You (PO)</th><th>You (journey)</th><th>Data engineer</th><th>FA / Risk</th><th>Data Mgmt</th></tr>
+    <tr><td>Scope</td><td>Prioritise epic</td><td>Draw hops</td><td>Estimate</td><td>Policy meaning</td><td>Field exists?</td></tr>
+    <tr><td>Lake</td><td>Sequence board</td><td>Acceptance for land</td><td>Consume later</td><td>Confirm definition</td><td>Land + quality</td></tr>
+    <tr><td>Engine</td><td>Capacity guard</td><td>Input contract</td><td>Code + batch</td><td>Expected PD impact</td><td>Support lineage</td></tr>
+    <tr><td>Done</td><td>Close / escalate</td><td>Evidence note</td><td>Reconcile</td><td>Accept</td><td>Catalogue update</td></tr>
+  </table>
+
+  <p class="small">This is the “credit risk data journey under the landscape”: landscape = the map of layers and engines; journey = how one need travels those layers with clear owners.</p>
 </div>
 
 <!-- PAGE 2: TRIBES -->
@@ -197,8 +325,8 @@
 
 <!-- PAGE 5: JOURNEY + SCENARIOS -->
 <div class="page page2-first">
-  <h2>9. Data journey in JD scope</h2>
-  <p class="box meta">Source / Risk need → Data Lake (regulatory initiatives, Data Management) → Credit Risk Data Landscape (DoD, EWS, PD, EAD, LGD + related engines) → Engine outputs → Capital / RWA / LLP + Risk &amp; Business tooling → Auditor evidence</p>
+  <h2>9. Data journey pointer</h2>
+  <p class="box meta">Full Credit Risk Data Landscape and 8-hop journey are in sections <b>3b to 3d</b> (layers, hops, engine families, squad swimlane). One-line reminder: Source → Lake → Engines (DoD/EWS/PD/EAD/LGD + related) → Mart / tooling → Capital · RWA · LLP → Audit evidence.</p>
 
   <h2>10. Problem scenarios (cross-tribe)</h2>
 
@@ -273,7 +401,15 @@
   </div>
   <div class="qa">
     <p class="q">Q5. Walk me through PD, EAD and LGD in this landscape.</p>
-    <p class="a">A. Core model-based outputs of the credit risk data landscape. Engines consume governed data and produce parameters that drive RWA and LLP. I have worked that chain at HSBC, Credit Suisse and on calculation engines at KBC.</p>
+    <p class="a">A. They sit in the model-driven layer of the Credit Risk Data Landscape. Journey: governed exposures and behaviour land via lake/sources, engines compute PD/EAD/LGD, controls reconcile, then parameters feed RWA and LLP. I have worked that chain at HSBC, Credit Suisse and on calculation engines at KBC.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q5b. What is the difference between landscape and journey?</p>
+    <p class="a">A. Landscape is the map of layers and engines (sources, lake, rule engines, model engines, mart, outputs). Journey is how one regulatory or business need travels those layers with clear owners and acceptance. My JD is to master both.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q5c. Who does what inside your squad on a lake-to-engine change?</p>
+    <p class="a">A. I draw the hops and prioritise. Functional analyst or Risk SME clarifies expected behaviour. Data engineers (Brussels and Warsaw) build and reconcile. Credit Risk accepts. I keep audit evidence if capital-relevant. Scrum Master facilitates; they do not own priority.</p>
   </div>
   <div class="qa">
     <p class="q">Q6. How do you prioritise when Risk, Data Management and IT all say urgent?</p>
