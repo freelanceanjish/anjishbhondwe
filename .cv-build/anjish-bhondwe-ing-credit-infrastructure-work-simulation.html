@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ING Credit Infrastructure work simulation</title>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  @page{size:A4;margin:0;}
+  body{font-family:Georgia,"Times New Roman",serif;color:#1c1c1c;font-size:9.6pt;line-height:1.36;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .page{width:210mm;min-height:297mm;padding:12mm 15mm 11mm;background:#fff;overflow:hidden;}
+  .page + .page{page-break-before:always;}
+  .name{margin:0;font-size:16pt;font-weight:700;}
+  .role{margin:2px 0 0;font-size:10pt;font-style:italic;color:#444;}
+  .note{margin:4px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:8pt;color:#555;}
+  .hr{border:0;border-top:1px solid #222;margin:8px 0 8px;}
+  h2{font-size:11pt;font-weight:700;margin:9px 0 4px;padding:0 0 2px;border-bottom:1px solid #ccc;}
+  h3{font-size:10pt;font-weight:700;margin:8px 0 3px;}
+  p{margin:0 0 5px;}
+  ul,ol{margin:0 0 6px;padding-left:16px;}
+  li{margin:0 0 2px;}
+  .meta{font-family:Arial,Helvetica,sans-serif;font-size:8.6pt;color:#333;line-height:1.35;}
+  .box{border:1px solid #ccc;padding:6px 8px;margin:0 0 7px;}
+  .qa{margin:0 0 7px;}
+  .q{font-weight:700;margin:0 0 2px;}
+  .a{margin:0 0 4px;}
+  .small{font-family:Arial,Helvetica,sans-serif;font-size:8.4pt;color:#444;}
+  table{width:100%;border-collapse:collapse;margin:0 0 7px;font-size:9pt;}
+  th,td{border:1px solid #ccc;padding:3px 5px;vertical-align:top;text-align:left;}
+  th{background:#f3f3f3;font-weight:700;}
+  .page2-first h2:first-child{margin-top:0;}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <h1 class="name">ING Credit Infrastructure: working simulation</h1>
+  <div class="role">Product Owner &amp; Senior Risk Data Journey Expert · REQ-10118811</div>
+  <div class="note">Prep document for Anjish Bhondwe. Realistic reconstruction from the public JD and sibling Credit Infrastructure postings. Not an internal ING document.</div>
+  <hr class="hr">
+
+  <h2>1. Context snapshot</h2>
+  <p><b>Where:</b> ING Belgium, Avenue Marnix · Integrated Risk Management · Credit Infrastructure.</p>
+  <p><b>Domain:</b> Retail and business banking credit risk (not Investment Banking). Engines feed capital, RWA and LLP.</p>
+  <p><b>Stack signals from JD:</b> Oracle Databases · SAS Enterprise Guide · Data Lake · PD, EAD, LGD and related risk engines · regulatory initiatives · auditor contact.</p>
+  <p><b>Your paper role:</b> 50% Product Owner, 50% Senior Risk Data Journey Expert. Internally this feels like PO + risk-data Journey Expert (CJE-style for risk data, not retail customer journeys).</p>
+
+  <h2>2. Roles (including yours)</h2>
+  <table>
+    <tr><th>Role</th><th>What they do</th><th>How they work with you</th></tr>
+    <tr><td><b>You: PO + Risk Data Journey Expert</b></td><td>Own backlog; lead squad delivery on engine enhancements; master credit risk data landscape; lake regulatory work; flows/tooling; digitalization; auditor contact</td><td>Centre of the bridge</td></tr>
+    <tr><td>Credit Risk Data Engineers</td><td>Build/run batch engines, Oracle/SAS jobs, lake pipelines</td><td>Delivery partners on stories</td></tr>
+    <tr><td>Credit Risk Functional Analysts / modelers</td><td>Policy, model logic, functional requirements</td><td>Clarify what engines must compute</td></tr>
+    <tr><td>Credit Risk (business)</td><td>Priorities, portfolio impact, policy owners</td><td>Demand and acceptance</td></tr>
+    <tr><td>Data Management tribe</td><td>Data Lake, quality, operational data</td><td>Regulatory data landing and lineage</td></tr>
+    <tr><td>IT / engineering</td><td>Platform, integrations, non-functional constraints</td><td>Dependencies and capacity</td></tr>
+    <tr><td>Internal / external auditors</td><td>Evidence on engines, lineage, controls</td><td>You are key contact per JD</td></tr>
+    <tr><td>Hiring / chapter lead (CJE or PO chapter)</td><td>Craft standards, coaching</td><td>Chapter rituals, not daily backlog</td></tr>
+  </table>
+
+  <h2>3. Squads and chapters (Orange House picture)</h2>
+  <p class="small">Simulation based on JD language and typical ING agile setup.</p>
+  <ul>
+    <li><b>Your squad:</b> Credit Infrastructure / Credit Engines: batch engines, risk data flows, model data mart support.</li>
+    <li><b>Sibling squads nearby:</b> Model data mart / model-support; Data Lake regulatory delivery; Credit Risk Reporting (reporting adjacency); Portfolio Credit Risk (PI / business insights).</li>
+    <li><b>Chapters:</b> Product / Journey Expert chapter; Data Engineering chapter; Risk Analytics chapter.</li>
+    <li><b>Weekly rhythm:</b> backlog refinement, sprint planning, daily stand-up, Risk/Data/IT sync, incident triage, SteerCo or audit prep when needed.</li>
+  </ul>
+
+  <h2>4. Data journey in JD scope</h2>
+  <p class="box meta">Source / Risk need → Data Lake (regulatory initiatives) → Credit Risk Data Landscape (PD, EAD, LGD + related engines) → Engine outputs → Capital / RWA / LLP → Risk &amp; Business tooling + auditor evidence</p>
+</div>
+
+<div class="page page2-first">
+  <h2>5. Problem scenarios (real-time work)</h2>
+
+  <h3>Scenario A: Regulatory field must land in the Data Lake</h3>
+  <p><b>Trigger:</b> Policy update requires a new forbearance / DoD-related attribute before next reporting window.</p>
+  <p><b>Impact:</b> PD / DoD-related engine cannot stay compliant without lake data.</p>
+  <p><b>Stakeholders:</b> Credit Risk, Data Management, engineers, you (PO + journey).</p>
+  <p><b>Your move:</b> Clarify acceptance criteria with Risk; cut backlog item spanning lake mapping + engine change; sequence lake first; track capacity; report risk to tribe if window slips.</p>
+  <p><b>Outcome:</b> Field in lake, engine uses it, evidence ready for audit.</p>
+
+  <h3>Scenario B: Broken facility–collateral join (LGD / LLP)</h3>
+  <p><b>Trigger:</b> Reconciliation shows collateral not linking to facilities for a product slice.</p>
+  <p><b>Impact:</b> LGD wrong → LLP and capital noise.</p>
+  <p><b>Your move:</b> Separate data defect vs engine bug; raise with Data Management + engineers; protect sprint capacity for the fix; keep Risk informed; document lineage for auditors.</p>
+
+  <h3>Scenario C: Backlog conflict (policy vs tech debt vs model refresh)</h3>
+  <p><b>Trigger:</b> Three “P0” asks in one sprint: policy change, SAS job stabilisation, modeler feature for data mart.</p>
+  <p><b>Your move:</b> Make trade-offs explicit on the backlog; regulatory deadline first if mandatory; park or slice tech debt; agree one modeler story that unblocks without flooding capacity.</p>
+
+  <h3>Scenario D: Auditor asks for RWA-driving parameter evidence</h3>
+  <p><b>Trigger:</b> Internal audit wants lineage from source to engine output for a capital-relevant parameter.</p>
+  <p><b>Your move:</b> Act as key contact; pull journey map (lake → engine → output); involve engineer for technical evidence; schedule walkthrough; backlog any control gap found.</p>
+
+  <h3>Scenario E: Record Bank residual mapping</h3>
+  <p><b>Trigger:</b> Old Record Bank product codes still break a path in history or reporting join.</p>
+  <p><b>Your move:</b> Treat as landscape expertise; map residual codes to ING taxonomy with Risk/Data; backlog a mapping fix; do not pretend day-one Record mastery, show how you ramp.</p>
+
+  <h3>Scenario F: Digitalize a manual Risk spreadsheet</h3>
+  <p><b>Trigger:</b> Risk still reconciles engine outputs in Excel weekly.</p>
+  <p><b>Your move:</b> Design a simple automated flow/tooling story; define acceptance with Risk; ship thin slice; measure time saved; feed digitalization narrative for SteerCo.</p>
+
+  <h2>6. Challenges you should expect</h2>
+  <ul>
+    <li>Legacy Oracle/SAS batch plus Data Lake target architecture at the same time.</li>
+    <li>Regulatory calendars that do not care about sprint boundaries.</li>
+    <li>Many stakeholders, one squad capacity.</li>
+    <li>Auditor evidence must be boringly complete.</li>
+    <li>50/50 split: deep landscape work vs ceremony and backlog ownership.</li>
+  </ul>
+
+  <h2>7. First 90 days (on the job)</h2>
+  <ol>
+    <li>Map PD / EAD / LGD and related engine flows end to end with engineers and Risk.</li>
+    <li>Deliver or materially advance one Data Lake regulatory initiative.</li>
+    <li>Land one flow/tooling improvement for Risk or Business.</li>
+    <li>Earn squad trust: clear priorities, honest capacity, early escalation.</li>
+    <li>Be ready as auditor contact on one engine/control topic.</li>
+  </ol>
+</div>
+
+<div class="page page2-first">
+  <h2>8. Hiring manager Q&amp;A (domain interview)</h2>
+
+  <div class="qa">
+    <p class="q">Q1. What do you think Credit Infrastructure does?</p>
+    <p class="a">A. It develops and maintains the engines that calculate credit-risk indicators and parameters that feed capital, RWA and LLP. It also keeps data infrastructure for future risk models and bridges Credit Risk, Data Management and operational teams. That matches the JD team description.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q2. How do you see the 50/50 split in a normal week?</p>
+    <p class="a">A. Roughly half on backlog, ceremonies, dependencies and stakeholder alignment. Half on landscape: PD/EAD/LGD journeys, lake regulatory work, flows and tooling. When a regulatory window hits, journey and PO work collapse into the same priority list.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q3. Walk me through PD, EAD and LGD in this landscape.</p>
+    <p class="a">A. They are core model-based outputs of the credit risk data landscape. Engines consume governed data (exposures, behaviour, collateral) and produce parameters that drive RWA and LLP. I have worked that chain at HSBC, Credit Suisse and on calculation engines at KBC. Credit risk is not a gap for me.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q4. Give an example of owning an engine backlog under a regulatory deadline.</p>
+    <p class="a">A. At KBC I owned and prioritised Basel IV and AnaCredit calculation engine backlog against NBB and ECB deadlines, keeping RWA, capital reporting and LLP-related windows on track with Risk, Data Management and IT.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q5. How do you prioritise when Risk, Data Management and IT all say urgent?</p>
+    <p class="a">A. Put trade-offs on the backlog in plain language: mandatory regulatory, capital/LLP impact, data defect blocking engines, then improvements. One conversation with the right people early. I did this as escalation point between risk, data and engineering at KBC and Credit Suisse.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q6. What does Risk Data Journey mean to you here?</p>
+    <p class="a">A. How credit risk data moves from need and sources through the Data Lake into PD/EAD/LGD and related engines, then out to capital, RWA, LLP and tooling for Risk and Business, with lineage auditors can follow.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q7. How would you support a regulatory initiative in the Data Lake?</p>
+    <p class="a">A. Clarify required fields and timing with Risk; align Data Management on landing and quality; sequence engine consumption after lake readiness; track delivery; keep audit trail. Same pattern as platform and regulatory programmes at KBC.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q8. Oracle and SAS Enterprise Guide?</p>
+    <p class="a">A. Hands-on from early banking roles (Standard Bank / Nihilent and HSBC) on risk reporting and credit risk data work. Later stacks differed, but Oracle and SAS are where I built foundation in regulated risk data. Ready to work in ING’s Credit Infrastructure stack.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q9. Record Bank data landscape?</p>
+    <p class="a">A. I know Record Bank was integrated into ING Belgium and residual credit data still matters in the map. I do not claim day-one Record table knowledge. I ramp the same way I learned multi-country landscapes at KBC: map sources, joins, and engine impact with the squad.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q10. How do you work with auditors?</p>
+    <p class="a">A. JD asks for key contact. At KBC I was escalation for audit-facing and SteerCo reporting on engine delivery health. I prepare lineage, reconciliations and clear status, and I backlog control gaps instead of defending them.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q11. Your title says Director / CoE. Will you do hands-on PO work?</p>
+    <p class="a">A. Yes. iostring was building delivery practice after KBC. I want long-term ownership again on one credit risk engine domain. This role is that: backlog, squad, landscape, auditors.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q12. What would you digitalize first?</p>
+    <p class="a">A. Whatever still forces Risk into manual reconciliations or spreadsheet controls around engine outputs. Thin automated flow or tooling slice with clear acceptance, then expand. That matches the JD digitalization duty.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q13. How do you measure squad success here?</p>
+    <p class="a">A. Regulatory windows met, engine stability, clear backlog, fewer data defects escaping to LLP/RWA noise, and audit questions answered without fire drill.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q14. When can you join?</p>
+    <p class="a">A. Returning Belgian resident path; docs ready. If offer and filing land in autumn, realistic join is December 2026 or January 2027 after re-entry process and return to Belgium.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q15. Why ING Credit Infrastructure?</p>
+    <p class="a">A. It sits exactly where I am strongest: credit risk engines, PD/EAD/LGD landscape, Risk–Data–IT bridge, and PO ownership under regulation. KBC is the closest twin; HSBC/CS add depth. Belgium is where I am returning.</p>
+  </div>
+</div>
+
+<div class="page page2-first">
+  <h2>9. Day-in-the-life Q&amp;A (on the job)</h2>
+
+  <div class="qa">
+    <p class="q">Q16. Stand-up: engine batch failed overnight. What do you do?</p>
+    <p class="a">A. Confirm impact with engineer (which parameters, which portfolios). If LLP/RWA path is at risk, notify Risk early. Decide: hotfix now vs planned story. Protect focus time; update board; avoid turning every incident into silent overtime.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q17. Risk wants a change mid-sprint. Data Management says no capacity.</p>
+    <p class="a">A. Make the constraint visible. If regulatory mandatory, escalate jointly and renegotiate sprint scope. If not, park on backlog with date. I do not promise both without capacity.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q18. Engineer says the story is “data, not engine.” Risk says “engine is wrong.”</p>
+    <p class="a">A. Journey expert hat: follow lineage one hop at a time (source → lake → engine input → calculation). Assign the fix to the right owner. Update acceptance criteria so the squad is not stuck in blame.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q19. How do you write a good engine story?</p>
+    <p class="a">A. Business/regulatory why; data inputs; engine behaviour change; acceptance including reconciliation or control check; dependency on lake/Data Management if any; audit evidence note if capital-relevant.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q20. SteerCo asks for status in two sentences.</p>
+    <p class="a">A. “Sprint focus is lake field X plus DoD/PD consumption for deadline Y. Risk: Data Management dependency; mitigation: joint refinement tomorrow and a cut scope if not ready by Wednesday.”</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q21. Chapter meeting vs squad work. What do you take where?</p>
+    <p class="a">A. Squad: delivery and backlog. Chapter: craft (how POs/journey experts work, standards, coaching). I do not move capital deadlines into chapter theatre.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q22. Modelers want ten new mart features. Squad has three slots.</p>
+    <p class="a">A. Ask which feature unblocks model monitoring or next validation. Take one or two; sequence the rest. Keep engines stable if a policy deadline is live.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q23. Business asks for a dashboard you do not own.</p>
+    <p class="a">A. If it is Risk/Business tooling on engine outputs, shape a thin story. If it is portfolio reporting owned elsewhere, connect them to the reporting squad and keep your backlog clean.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q24. You are new. How do you build landscape expertise fast?</p>
+    <p class="a">A. Pair with one engineer and one Risk analyst. Draw the PD/EAD/LGD and related engine map. Sit in one batch failure and one lake change. Read one audit finding. Then own a small flow improvement so learning sticks.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q25. Conflict: digitalization roadmap vs this month’s regulatory patch.</p>
+    <p class="a">A. Patch and compliance first. Keep one digitalization slice alive if capacity allows so the roadmap does not die. Explain that openly to stakeholders.</p>
+  </div>
+
+  <h2>10. One-minute pitch (HM open)</h2>
+  <p>Credit Infrastructure runs the engines that turn credit risk data into parameters for capital, RWA and LLP, and keeps the data path for future models. My role is to lead the squad as Product Owner and to master the credit risk data landscape: PD, EAD, LGD and related engines, Data Lake regulatory work, flows and tooling, and digitalization, while bridging Risk, Data Management, IT and auditors. That is the work I have done on calculation engines at KBC and in credit risk data at HSBC and Credit Suisse. I am ready to do it hands-on at ING Belgium.</p>
+
+  <hr class="hr">
+  <p class="note">End of simulation. Use with CV: anjish-bhondwe-cv-ing-po-risk-data-journey-expert.pdf</p>
+</div>
+
+</body>
+</html>
