@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ING Credit Risk formula sheet - Anjish Bhondwe</title>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  @page{size:A4;margin:0;}
+  body{font-family:Georgia,"Times New Roman",serif;color:#1c1c1c;font-size:9.4pt;line-height:1.34;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .page{width:210mm;min-height:297mm;padding:11mm 14mm 10mm;background:#fff;overflow:hidden;}
+  .page + .page{page-break-before:always;}
+  .name{margin:0;font-size:15pt;font-weight:700;}
+  .role{margin:2px 0 0;font-size:10pt;font-style:italic;color:#444;}
+  .note{margin:4px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:7.8pt;color:#555;}
+  .hr{border:0;border-top:1px solid #222;margin:7px 0 7px;}
+  h2{font-size:10.5pt;font-weight:700;margin:8px 0 3px;padding:0 0 2px;border-bottom:1px solid #ccc;}
+  h3{font-size:9.6pt;font-weight:700;margin:7px 0 2px;}
+  p{margin:0 0 4px;}
+  ul,ol{margin:0 0 5px;padding-left:15px;}
+  li{margin:0 0 2px;}
+  .meta{font-family:Arial,Helvetica,sans-serif;font-size:8.4pt;color:#333;line-height:1.32;}
+  .box{border:1px solid #ccc;padding:5px 7px;margin:0 0 6px;}
+  .qa{margin:0 0 6px;}
+  .q{font-weight:700;margin:0 0 1px;}
+  .a{margin:0 0 3px;}
+  .small{font-family:Arial,Helvetica,sans-serif;font-size:8pt;color:#444;}
+  table{width:100%;border-collapse:collapse;margin:0 0 6px;font-size:8.6pt;}
+  th,td{border:1px solid #ccc;padding:2px 4px;vertical-align:top;text-align:left;}
+  th{background:#f3f3f3;font-weight:700;}
+  .page2-first h2:first-child{margin-top:0;}
+  .tag{font-family:Arial,Helvetica,sans-serif;font-size:7.4pt;color:#666;}
+</style>
+</head>
+<body>
+<div class="page">
+  <h1 class="name">ING Credit Risk: formula sheet</h1>
+  <div class="role">Prep for Product Owner &amp; Senior Risk Data Journey Expert · Credit Infrastructure</div>
+  <div class="note">Standalone crib for Anjish Bhondwe. Basel IRB / IFRS 9 textbook forms. Not ING policy. Also included in the full work simulation PDF.</div>
+  <hr class="hr">
+  <p class="box meta" style="font-size:12pt;line-height:1.5;border:2px solid #222;">
+    <b>MUST KNOW:</b> <b style="font-size:14pt;">EL = PD × EAD × LGD</b><br>
+    Expected Loss = Probability of Default × Exposure at Default × Loss Given Default<br>
+    Multiply. Do not add. PD not “PL”.
+  </p>
+</div>
+
+<div class="page page2-first">
+  <h2>16. Formula sheet (all key equations)</h2>
+  <p class="small">One-page crib. Multiply where shown. PD = Probability of Default (not “PL”). Detail and worked numbers follow on the next pages.</p>
+
+  <h3>Loss building blocks</h3>
+  <p class="box meta" style="font-size:11pt;line-height:1.6;border:2px solid #222;">
+    <b>EL = PD × EAD × LGD</b><br>
+    <b>EL% = PD × LGD</b><br>
+    <b>EAD = Drawn + CCF × Undrawn</b> &nbsp;&nbsp;with&nbsp; <b>Undrawn = Limit - Drawn</b><br>
+    <b>LGD = 1 - RR</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>RR = NPV(Recoveries - Costs) / EAD</b><br>
+    <b>CCF = (Bal_default - Bal_ref) / Undrawn_ref</b> &nbsp;(0 to 1, capped)<br>
+    <b>PD = 1 / (1 + e<sup>-z</sup>)</b> &nbsp;(logit score example; z = β0 + β·x)<br>
+    <b>PD_port = Σ (PD_i × EAD_i) / Σ EAD_i</b>
+  </p>
+
+  <h3>Capital / RWA (IRB)</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.55;border:2px solid #222;">
+    <b>R = 0.12 × (1 - e<sup>-50×PD</sup>)/(1 - e<sup>-50</sup>) + 0.24 × [1 - (1 - e<sup>-50×PD</sup>)/(1 - e<sup>-50</sup>)]</b><br>
+    <b>b = (0.11852 - 0.05478 × ln(PD))²</b><br>
+    <b>K = [LGD × N( G(PD)/√(1-R) + √(R/(1-R)) × G(0.999) ) - PD × LGD] × (1+(M-2.5)b)/(1-1.5b)</b><br>
+    <b>RWA = 12.5 × K × EAD</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>Capital ≈ K × EAD</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>CET1 ratio = CET1 / RWA</b><br>
+    Standardised: <b>RWA = RiskWeight × Exposure</b><br>
+    Retail mortgage (common): <b>R = 0.15</b> (fixed)
+  </p>
+
+  <h3>IFRS 9 ECL / LLP</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.55;border:2px solid #222;">
+    Stage 1: <b>ECL_12m ≈ PD_12m × LGD × EAD × DF</b><br>
+    Stage 2/3: <b>ECL_LT = Σ_t [ PD_marg,t × LGD_t × EAD_t / (1+r)<sup>t</sup> ]</b><br>
+    <b>PD_marg,t = Survival_{t-1} × PD_cond,t</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>Survival_t = Π_{s≤t} (1 - PD_cond,s)</b><br>
+    Scenarios: <b>ECL = Σ_s w_s × ECL_s</b> &nbsp;(Σ w_s = 1)<br>
+    <b>LLP charge ≈ ECL_end - ECL_start + write-offs - recoveries</b>
+  </p>
+
+  <h3>Rule engines and lending ratios</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.55;border:2px solid #222;">
+    <b>DoD = 1</b> if (DPD ≥ 90) OR UTP OR specific forbearance (else 0)<br>
+    <b>DPD = ReportDate - OldestUnpaidDueDate</b><br>
+    <b>EWS_score = Σ w_i × signal_i</b> &nbsp;; flag if score ≥ threshold<br>
+    <b>LTV = Loan (or EAD) / Collateral_value</b><br>
+    <b>DSTI = Debt_service / Income</b> &nbsp;(same period)<br>
+    <b>DTAI = Total_debt / Total_assets</b> &nbsp;OR&nbsp; <b>Debt_service / Available_income</b> (confirm ING)<br>
+    <b>Utilisation = Drawn / Limit</b><br>
+    <b>Collateral coverage = Collateral_value × (1 - Haircut) / EAD</b><br>
+    <b>NPL ratio = NPL_gross / Total_loans_gross</b><br>
+    <b>Provision coverage = LLP_stock / NPL_gross</b>
+  </p>
+
+  <h3>Numeric chain (same example everywhere)</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.5;border:2px solid #222;">
+    Limit 100k, Drawn 80k, CCF 50% → <b>EAD = 90k</b><br>
+    PD 2%, LGD 40% → <b>EL = 0.02 × 90k × 0.40 = 720</b><br>
+    LTV on 90k / 120k property = <b>75%</b> · DSTI 1,200 / 4,000 = <b>30%</b><br>
+    IRB (M=2.5): R≈0.164 · K≈8.17% → <b>RWA ≈ 91.9k</b> · capital ≈ <b>7.35k</b>
+  </p>
+</div>
+
+<!-- GLOSSARY DETAIL PAGE 1: CORE + WORKED -->
+<div class="page page2-first">
+  <h2>16a. Formula detail: core parameters</h2>
+  <p class="small">Same equations as the formula sheet, with definitions. <span class="tag">Not bank policy</span></p>
+
+  <h3>A. Core parameters (what your engines produce)</h3>
+  <table>
+    <tr><th>Term</th><th>Definition</th><th>Full formula</th></tr>
+    <tr>
+      <td><b>PD</b></td>
+      <td>Probability of default over horizon T (IRB often 1 year; IFRS 9 Stage 2/3 uses lifetime).</td>
+      <td>0 ≤ PD ≤ 1<br>
+      Rating model (logit example): <b>PD = 1 / (1 + e<sup>-z</sup>)</b> where z = β0 + β1x1 + ...<br>
+      Exposure-weighted portfolio PD: <b>PD<sub>port</sub> = Σ (PD<sub>i</sub> × EAD<sub>i</sub>) / Σ EAD<sub>i</sub></b></td>
+    </tr>
+    <tr>
+      <td><b>CCF</b></td>
+      <td>Share of undrawn limit expected to be drawn at default.</td>
+      <td>0 ≤ CCF ≤ 1<br>
+      Historical: <b>CCF = (Balance_at_default - Balance_at_ref) / Undrawn_at_ref</b> (capped)</td>
+    </tr>
+    <tr>
+      <td><b>EAD</b></td>
+      <td>Exposure if default occurs.</td>
+      <td><b>EAD = Drawn + CCF × Undrawn</b><br>
+      where Undrawn = Limit - Drawn<br>
+      (netting, collateral substitution, product caps may adjust)</td>
+    </tr>
+    <tr>
+      <td><b>LGD</b></td>
+      <td>Loss fraction of EAD after recoveries, costs, discounting.</td>
+      <td><b>LGD = 1 - RR</b><br>
+      <b>RR = NPV(Recoveries - Costs) / EAD</b><br>
+      Workout path example:<br>
+      <b>LGD = [EAD - Σ<sub>t</sub> (Cash<sub>t</sub> - Cost<sub>t</sub>) / (1+r)<sup>t</sup>] / EAD</b><br>
+      Secured intuition: higher effective collateral → lower LGD</td>
+    </tr>
+    <tr>
+      <td><b>EL</b><br>Expected Loss</td>
+      <td>Average credit loss over the horizon. Building block for LLP/ECL thinking. Capital covers unexpected loss above EL.</td>
+      <td style="font-size:10.5pt;"><b>EL = PD × EAD × LGD</b><br>
+      Example: 0.02 × 90,000 × 0.40 = <b>720</b><br>
+      <b>EL% = PD × LGD</b> = 0.02 × 0.40 = 0.80% of EAD<br>
+      Wrong form: EL ≠ PD + LGD + EAD</td>
+    </tr>
+    <tr>
+      <td><b>UL</b></td>
+      <td>Unexpected loss. IRB K approximates a high-percentile UL charge.</td>
+      <td>Concept: UL ≈ Loss_at_99.9% - EL<br>
+      IRB uses formula for K below (not a simple σ formula in retail decks)</td>
+    </tr>
+  </table>
+
+  <h3>B. Worked mini-example (memorise the arithmetic)</h3>
+  <p class="box meta">
+    Drawn = 80,000 · Limit = 100,000 · Undrawn = 20,000 · CCF = 0.50<br>
+    <b>EAD = 80,000 + 0.50 × 20,000 = 90,000</b><br>
+    PD = 2% = 0.02 · LGD = 40% = 0.40<br>
+    <b>EL = 0.02 × 90,000 × 0.40 = 720</b><br>
+    <b>EL% = 0.02 × 0.40 = 0.80% of EAD</b>
+  </p>
+</div>
+
+<!-- GLOSSARY PAGE 2: BASEL IRB FULL -->
+<div class="page page2-first">
+  <h3>C. Capital, RWA: full Basel IRB (ASRF) formulas</h3>
+  <p class="small">Corporate / bank / sovereign style IRB. N(·) = standard normal CDF. G(·) = inverse standard normal. M = effective maturity in years. Retail asset classes use different correlation formulas (see note).</p>
+
+  <p class="box meta">
+    <b>1) Asset correlation R (corporate):</b><br>
+    R = 0.12 × (1 - e<sup>-50×PD</sup>) / (1 - e<sup>-50</sup>)<br>
+    &nbsp;&nbsp;+ 0.24 × [1 - (1 - e<sup>-50×PD</sup>) / (1 - e<sup>-50</sup>)]<br><br>
+    <b>2) Maturity adjustment b:</b><br>
+    b = (0.11852 - 0.05478 × ln(PD))<sup>2</sup><br><br>
+    <b>3) Capital requirement K per unit EAD:</b><br>
+    K = [ LGD × N( (1-R)<sup>-0.5</sup> × G(PD) + (R/(1-R))<sup>0.5</sup> × G(0.999) ) - PD × LGD ]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;× (1 + (M - 2.5) × b) / (1 - 1.5 × b)<br><br>
+    <b>4) RWA and capital:</b><br>
+    <b>RWA = 12.5 × K × EAD</b> &nbsp;&nbsp;(because 12.5 = 1 / 8%)<br>
+    <b>Required capital ≈ K × EAD</b> &nbsp;(at 8% of RWA)<br>
+    <b>CET1 ratio = CET1 capital / RWA</b>
+  </p>
+
+  <p><b>Retail mortgage correlation (common IRB variant):</b> R = 0.15 (fixed in many Basel retail-mortgage specs; other retail classes use PD-dependent R). Same K structure without always applying the corporate maturity term the same way. Check asset class.</p>
+
+  <p><b>Standardised approach (contrast):</b> RWA = RiskWeight × Exposure. RiskWeight from tables (e.g. by rating or LTV bucket), not from PD/LGD models.</p>
+
+  <h3>D. Worked IRB example (PD = 2%, LGD = 40%, M = 2.5, EAD = 90,000)</h3>
+  <p class="box meta">
+    From formula (1): <b>R ≈ 0.1641</b><br>
+    From formula (2): <b>b ≈ 0.1108</b> (maturity factor = 1 when M = 2.5)<br>
+    From formula (3): <b>K ≈ 0.0817</b> (about 8.17% of EAD)<br>
+    <b>RWA = 12.5 × 0.0817 × 90,000 ≈ 91,883</b><br>
+    Required capital ≈ K × EAD ≈ <b>7,351</b><br>
+    Compare EL = <b>720</b> (much smaller than UL-style capital charge at 99.9%)
+  </p>
+
+  <h3>E. IFRS 9 ECL / LLP formulas</h3>
+  <table>
+    <tr><th>Item</th><th>Formula</th></tr>
+    <tr>
+      <td>Stage 1 (12-month ECL)</td>
+      <td><b>ECL<sub>12m</sub> ≈ PD<sub>12m</sub> × LGD × EAD × DF</b><br>DF = discount factor for expected timing of loss</td>
+    </tr>
+    <tr>
+      <td>Stage 2 / 3 (lifetime ECL)</td>
+      <td><b>ECL<sub>LT</sub> = Σ<sub>t=1..T</sub> [ PD<sub>marg,t</sub> × LGD<sub>t</sub> × EAD<sub>t</sub> / (1+r)<sup>t</sup> ]</b><br>
+      PD<sub>marg,t</sub> = survival<sub>t-1</sub> × PD<sub>cond,t</sub><br>
+      Survival<sub>t</sub> = Π<sub>s≤t</sub> (1 - PD<sub>cond,s</sub>)</td>
+    </tr>
+    <tr>
+      <td>Scenario-weighted</td>
+      <td><b>ECL = Σ<sub>s</sub> w<sub>s</sub> × ECL<sub>s</sub></b> &nbsp;with Σ w<sub>s</sub> = 1 (e.g. base / up / down)</td>
+    </tr>
+    <tr>
+      <td>LLP / allowance</td>
+      <td>Stock of credit loss allowance ≈ aggregated ECL (plus management overlays if any)<br>
+      <b>LLP charge (P&amp;L) ≈ ECL<sub>end</sub> - ECL<sub>start</sub> + write-offs - recoveries</b> (simplified)</td>
+    </tr>
+  </table>
+  <p class="small">DoD flags and SICR (significant increase in credit risk) drive staging. Staging ≠ DoD, but DoD usually forces Stage 3.</p>
+</div>
+
+<!-- GLOSSARY PAGE 3: INDICATORS + CHAIN -->
+<div class="page page2-first">
+  <h3>F. Rule engines and lending indicators (explicit calcs)</h3>
+  <table>
+    <tr><th>Term</th><th>Definition</th><th>Calculation</th></tr>
+    <tr>
+      <td><b>DoD</b></td>
+      <td>Definition of Default: rule engine marking default.</td>
+      <td><b>DoD = 1</b> if any trigger true, else 0<br>
+      Typical triggers (policy-specific):<br>
+      DPD ≥ 90 &nbsp;OR&nbsp; UTP = 1 &nbsp;OR&nbsp; specific forbearance<br>
+      Obligor default may contagion to all facilities</td>
+    </tr>
+    <tr>
+      <td><b>DPD</b></td>
+      <td>Days past due.</td>
+      <td><b>DPD = ReportDate - OldestUnpaidDueDate</b> (product rules / grace may apply)</td>
+    </tr>
+    <tr>
+      <td><b>UTP</b></td>
+      <td>Unlikely to pay (judgemental default).</td>
+      <td>UTP = 1 if policy indicators fire (distress, bankruptcy filing, etc.). No single closed formula.</td>
+    </tr>
+    <tr>
+      <td><b>EWS</b></td>
+      <td>Early warning before DoD.</td>
+      <td>Score example: <b>EWS_score = Σ w<sub>i</sub> × signal<sub>i</sub></b><br>
+      Flag if EWS_score ≥ threshold (set with Credit Risk)<br>
+      Signals: arrears trend, utilisation↑, covenant breach, income drop</td>
+    </tr>
+    <tr>
+      <td><b>LTV</b></td>
+      <td>Loan to value.</td>
+      <td><b>LTV = Outstanding_loan (or EAD) / Collateral_value</b><br>
+      Example: 270,000 / 300,000 = <b>0.90 (90%)</b></td>
+    </tr>
+    <tr>
+      <td><b>DSTI</b></td>
+      <td>Debt service to income.</td>
+      <td><b>DSTI = Monthly_debt_service / Monthly_income</b><br>
+      Example: 1,400 / 4,000 = <b>0.35 (35%)</b></td>
+    </tr>
+    <tr>
+      <td><b>DTAI</b></td>
+      <td>Confirm ING label. Common: debt-to-assets or debt-to-available-income.</td>
+      <td>Debt-to-assets: <b>DTAI = Total_debt / Total_assets</b><br>
+      Debt-to-available-income: <b>DTAI = Debt_service / Available_income</b><br>
+      Available_income = Income - taxes - essential living (policy definition)</td>
+    </tr>
+    <tr>
+      <td><b>Utilisation</b></td>
+      <td>How much of limit is drawn.</td>
+      <td><b>Utilisation = Drawn / Limit</b></td>
+    </tr>
+    <tr>
+      <td><b>Collateral coverage</b></td>
+      <td>Cover after haircut.</td>
+      <td><b>Coverage = (Collateral_value × (1 - Haircut)) / EAD</b></td>
+    </tr>
+    <tr>
+      <td><b>NPL ratio</b></td>
+      <td>Non-performing stock vs book.</td>
+      <td><b>NPL ratio = NPL_gross / Total_loans_gross</b></td>
+    </tr>
+    <tr>
+      <td><b>Coverage ratio (provisions)</b></td>
+      <td>Allowance vs NPL.</td>
+      <td><b>Prov. coverage = LLP_stock / NPL_gross</b></td>
+    </tr>
+  </table>
+
+  <h3>G. End-to-end numeric chain (interview whiteboard)</h3>
+  <p class="box meta">
+    Limit 100k, Drawn 80k, CCF 50% → <b>EAD = 90k</b><br>
+    PD 2%, LGD 40% → <b>EL = 0.02 × 90k × 0.40 = 720</b><br>
+    Collateral value 120k, haircut 20% → Cover = 120k×0.8 / 90k = <b>1.067</b><br>
+    LTV on 90k vs 120k property = <b>75%</b><br>
+    Income 4,000/mo, debt service 1,200 → <b>DSTI = 30%</b><br>
+    If K = 8.17% (from worked IRB example) → <b>RWA ≈ 12.5 × 0.0817 × 90k ≈ 91.9k</b> · capital ≈ <b>7.35k</b><br>
+    Stage 1 ECL (ignore DF): ≈ <b>PD12m × LGD × EAD = 720</b> (same building blocks; timing/scenarios adjust)
+  </p>
+
+  <h3>H. Term index (quick definitions)</h3>
+  <p class="small">IRB = Internal Ratings-Based · IFRS 9 = ECL accounting · CRR/CRD = EU capital law · AnaCredit = ECB loan-level reporting · Forbearance = concession to distressed client · Cure = return to performing · Record Bank residual = legacy codes in BE landscape · SICR = significant increase in credit risk (Stage 2 trigger).</p>
+
+  <hr class="hr">
+  <p class="note">End of formula sheet. Pair with: anjish-bhondwe-ing-credit-infrastructure-work-simulation.pdf and CV anjish-bhondwe-cv-ing-po-risk-data-journey-expert.pdf</p>
+</div>
+
+</body>
+</html>
