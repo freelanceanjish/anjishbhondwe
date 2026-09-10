@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ING Credit Infrastructure work simulation</title>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  @page{size:A4;margin:0;}
+  body{font-family:Georgia,"Times New Roman",serif;color:#1c1c1c;font-size:9.4pt;line-height:1.34;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .page{width:210mm;min-height:297mm;padding:11mm 14mm 10mm;background:#fff;overflow:hidden;}
+  .page + .page{page-break-before:always;}
+  .name{margin:0;font-size:15pt;font-weight:700;}
+  .role{margin:2px 0 0;font-size:10pt;font-style:italic;color:#444;}
+  .note{margin:4px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:7.8pt;color:#555;}
+  .hr{border:0;border-top:1px solid #222;margin:7px 0 7px;}
+  h2{font-size:10.5pt;font-weight:700;margin:8px 0 3px;padding:0 0 2px;border-bottom:1px solid #ccc;}
+  h3{font-size:9.6pt;font-weight:700;margin:7px 0 2px;}
+  p{margin:0 0 4px;}
+  ul,ol{margin:0 0 5px;padding-left:15px;}
+  li{margin:0 0 2px;}
+  .meta{font-family:Arial,Helvetica,sans-serif;font-size:8.4pt;color:#333;line-height:1.32;}
+  .box{border:1px solid #ccc;padding:5px 7px;margin:0 0 6px;}
+  .qa{margin:0 0 6px;}
+  .q{font-weight:700;margin:0 0 1px;}
+  .a{margin:0 0 3px;}
+  .small{font-family:Arial,Helvetica,sans-serif;font-size:8pt;color:#444;}
+  table{width:100%;border-collapse:collapse;margin:0 0 6px;font-size:8.6pt;}
+  th,td{border:1px solid #ccc;padding:2px 4px;vertical-align:top;text-align:left;}
+  th{background:#f3f3f3;font-weight:700;}
+  .page2-first h2:first-child{margin-top:0;}
+  .tag{font-family:Arial,Helvetica,sans-serif;font-size:7.4pt;color:#666;}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <h1 class="name">ING Credit Infrastructure: working simulation</h1>
+  <div class="role">Product Owner &amp; Senior Risk Data Journey Expert · REQ-10118811</div>
+  <div class="note">Prep for Anjish Bhondwe. Ecosystem map (tribes, chapters, squads, interactions) reconstructed from the public JD, sibling Credit Infrastructure postings, and public ING Belgium Credit Risk signals. Not an internal ING org chart. Labels: <b>JD</b> = named in posting · <b>Public</b> = public LinkedIn / careers · <b>Sim</b> = realistic Orange House fill-in.</div>
+  <hr class="hr">
+
+  <h2>1. Context snapshot</h2>
+  <p><b>Where:</b> ING Belgium, Avenue Marnix · Integrated Risk Management · Risk Platforms · Credit Infrastructure. <span class="tag">JD</span></p>
+  <p><b>Domain:</b> Retail and business banking credit risk (not Investment Banking). Engines feed capital, RWA and LLP.</p>
+  <p><b>Engines in landscape:</b> rule-based (DoD, EWS, and related: DSTI, DTAI, LTV) and model-driven (PD, EAD, LGD). Plus model data mart. <span class="tag">JD / sibling CR Data Engineer</span></p>
+  <p><b>Your paper role:</b> 50% Product Owner, 50% Senior Risk Data Journey Expert. Bridge between Credit Risk business and operational tribes (especially Data Management), plus tooling for the Risk family and Business tribes. <span class="tag">JD</span></p>
+
+  <h2>2. Where you sit (department stack)</h2>
+  <p class="box meta">CRO / Risk Belgium → <b>Integrated Risk Management (IRM)</b> → <b>Risk Platforms</b> (domain) → <b>Credit Infrastructure</b> (your team / squad home) → Agile squad delivering credit engines + risk data journey work.</p>
+  <ul>
+    <li><b>IRM:</b> connects risk methodologies, platforms and oversight so Belgium can run regulated credit risk at scale.</li>
+    <li><b>Risk Platforms:</b> builds and runs the systems under risk (engines, data paths, tooling), not credit policy itself.</li>
+    <li><b>Credit Infrastructure:</b> batch engines + model data mart + lake regulatory consumption for credit risk parameters.</li>
+    <li><b>You:</b> own squad backlog and master the credit risk data journey so engines stay policy-aligned and auditable.</li>
+  </ul>
+
+  <h2>3. Quick map (detail on next pages)</h2>
+  <p class="box meta"><b>Inside your squad:</b> you (PO + Risk Data Journey Expert) · Credit Risk Data Engineers (BE + PL) · functional analysts / modeler partners · often a Scrum Master / Agile Coach shared. <b>Outside:</b> Credit Risk Tribe · Data Management · Business tribes · Finance · Audit · chapter leads. Full squad functions and the credit risk data journey landscape follow.</p>
+  <h2>Contents (where to find things)</h2>
+  <p class="box meta"><b>Formula sheet:</b> immediately after this page (section 16), and standalone file <b>anjish-bhondwe-ing-credit-risk-formula-sheet.pdf</b>. Memorise: <b>EL = PD × EAD × LGD</b> (multiply, not add).<br>
+  <b>Latest crib:</b> sections <b>10c-10g</b> (regulatory hits, CRR3 approaches, exposure classes/reporting, A-IRB datasets, acronyms).<br>
+  Also in this pack: squad functions · data journey · tribes/chapters · tricky scenarios · interview Q&amp;A.</p>
+</div>
+
+<!-- FORMULA SHEET PAGE (all key equations, large and visible) -->
+<div class="page page2-first">
+  <h2>16. Formula sheet (all key equations)</h2>
+  <p class="note">Placed early in this PDF so you can find it fast. Same content also in standalone formula-sheet PDF.</p>
+  <p class="small">One-page crib. Multiply where shown. PD = Probability of Default (not “PL”). Detail and worked numbers follow on the next pages.</p>
+
+  <h3>Loss building blocks</h3>
+  <p class="box meta" style="font-size:11pt;line-height:1.6;border:2px solid #222;">
+    <b>EL = PD × EAD × LGD</b><br>
+    <b>EL% = PD × LGD</b><br>
+    <b>EAD = Drawn + CCF × Undrawn</b> &nbsp;&nbsp;with&nbsp; <b>Undrawn = Limit - Drawn</b><br>
+    <b>LGD = 1 - RR</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>RR = NPV(Recoveries - Costs) / EAD</b><br>
+    <b>CCF = (Bal_default - Bal_ref) / Undrawn_ref</b> &nbsp;(0 to 1, capped)<br>
+    <b>PD = 1 / (1 + e<sup>-z</sup>)</b> &nbsp;(logit score example; z = β0 + β·x)<br>
+    <b>PD_port = Σ (PD_i × EAD_i) / Σ EAD_i</b>
+  </p>
+
+  <h3>Capital / RWA (IRB)</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.55;border:2px solid #222;">
+    <b>R = 0.12 × (1 - e<sup>-50×PD</sup>)/(1 - e<sup>-50</sup>) + 0.24 × [1 - (1 - e<sup>-50×PD</sup>)/(1 - e<sup>-50</sup>)]</b><br>
+    <b>b = (0.11852 - 0.05478 × ln(PD))²</b><br>
+    <b>K = [LGD × N( G(PD)/√(1-R) + √(R/(1-R)) × G(0.999) ) - PD × LGD] × (1+(M-2.5)b)/(1-1.5b)</b><br>
+    <b>RWA = 12.5 × K × EAD</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>Capital ≈ K × EAD</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>CET1 ratio = CET1 / RWA</b><br>
+    Standardised: <b>RWA = RiskWeight × Exposure</b><br>
+    Retail mortgage (common): <b>R = 0.15</b> (fixed)
+  </p>
+
+  <h3>IFRS 9 ECL / LLP</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.55;border:2px solid #222;">
+    Stage 1: <b>ECL_12m ≈ PD_12m × LGD × EAD × DF</b><br>
+    Stage 2/3: <b>ECL_LT = Σ_t [ PD_marg,t × LGD_t × EAD_t / (1+r)<sup>t</sup> ]</b><br>
+    <b>PD_marg,t = Survival_{t-1} × PD_cond,t</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>Survival_t = Π_{s≤t} (1 - PD_cond,s)</b><br>
+    Scenarios: <b>ECL = Σ_s w_s × ECL_s</b> &nbsp;(Σ w_s = 1)<br>
+    <b>LLP charge ≈ ECL_end - ECL_start + write-offs - recoveries</b>
+  </p>
+
+  <h3>Rule engines and lending ratios</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.55;border:2px solid #222;">
+    <b>DoD = 1</b> if (DPD ≥ 90) OR UTP OR specific forbearance (else 0)<br>
+    <b>DPD = ReportDate - OldestUnpaidDueDate</b><br>
+    <b>EWS_score = Σ w_i × signal_i</b> &nbsp;; flag if score ≥ threshold<br>
+    <b>LTV = Loan (or EAD) / Collateral_value</b><br>
+    <b>DSTI = Debt_service / Income</b> &nbsp;(same period)<br>
+    <b>DTAI = Total_debt / Total_assets</b> &nbsp;OR&nbsp; <b>Debt_service / Available_income</b> (confirm ING)<br>
+    <b>Utilisation = Drawn / Limit</b><br>
+    <b>Collateral coverage = Collateral_value × (1 - Haircut) / EAD</b><br>
+    <b>NPL ratio = NPL_gross / Total_loans_gross</b><br>
+    <b>Provision coverage = LLP_stock / NPL_gross</b>
+  </p>
+
+  <h3>Numeric chain (same example everywhere)</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.5;border:2px solid #222;">
+    Limit 100k, Drawn 80k, CCF 50% → <b>EAD = 90k</b><br>
+    PD 2%, LGD 40% → <b>EL = 0.02 × 90k × 0.40 = 720</b><br>
+    LTV on 90k / 120k property = <b>75%</b> · DSTI 1,200 / 4,000 = <b>30%</b><br>
+    IRB (M=2.5): R≈0.164 · K≈8.17% → <b>RWA ≈ 91.9k</b> · capital ≈ <b>7.35k</b>
+  </p>
+</div>
+
+<!-- GLOSSARY DETAIL PAGE 1: CORE + WORKED -->
+<div class="page page2-first">
+  <h2>16a. Formula detail: core parameters</h2>
+  <p class="small">Same equations as the formula sheet, with definitions. <span class="tag">Not bank policy</span></p>
+
+  <h3>A. Core parameters (what your engines produce)</h3>
+  <table>
+    <tr><th>Term</th><th>Definition</th><th>Full formula</th></tr>
+    <tr>
+      <td><b>PD</b></td>
+      <td>Probability of default over horizon T (IRB often 1 year; IFRS 9 Stage 2/3 uses lifetime).</td>
+      <td>0 ≤ PD ≤ 1<br>
+      Rating model (logit example): <b>PD = 1 / (1 + e<sup>-z</sup>)</b> where z = β0 + β1x1 + ...<br>
+      Exposure-weighted portfolio PD: <b>PD<sub>port</sub> = Σ (PD<sub>i</sub> × EAD<sub>i</sub>) / Σ EAD<sub>i</sub></b></td>
+    </tr>
+    <tr>
+      <td><b>CCF</b></td>
+      <td>Share of undrawn limit expected to be drawn at default.</td>
+      <td>0 ≤ CCF ≤ 1<br>
+      Historical: <b>CCF = (Balance_at_default - Balance_at_ref) / Undrawn_at_ref</b> (capped)</td>
+    </tr>
+    <tr>
+      <td><b>EAD</b></td>
+      <td>Exposure if default occurs.</td>
+      <td><b>EAD = Drawn + CCF × Undrawn</b><br>
+      where Undrawn = Limit - Drawn<br>
+      (netting, collateral substitution, product caps may adjust)</td>
+    </tr>
+    <tr>
+      <td><b>LGD</b></td>
+      <td>Loss fraction of EAD after recoveries, costs, discounting.</td>
+      <td><b>LGD = 1 - RR</b><br>
+      <b>RR = NPV(Recoveries - Costs) / EAD</b><br>
+      Workout path example:<br>
+      <b>LGD = [EAD - Σ<sub>t</sub> (Cash<sub>t</sub> - Cost<sub>t</sub>) / (1+r)<sup>t</sup>] / EAD</b><br>
+      Secured intuition: higher effective collateral → lower LGD</td>
+    </tr>
+    <tr>
+      <td><b>EL</b><br>Expected Loss</td>
+      <td>Average credit loss over the horizon. Building block for LLP/ECL thinking. Capital covers unexpected loss above EL.</td>
+      <td style="font-size:10.5pt;"><b>EL = PD × EAD × LGD</b><br>
+      Example: 0.02 × 90,000 × 0.40 = <b>720</b><br>
+      <b>EL% = PD × LGD</b> = 0.02 × 0.40 = 0.80% of EAD<br>
+      Wrong form: EL ≠ PD + LGD + EAD</td>
+    </tr>
+    <tr>
+      <td><b>UL</b></td>
+      <td>Unexpected loss. IRB K approximates a high-percentile UL charge.</td>
+      <td>Concept: UL ≈ Loss_at_99.9% - EL<br>
+      IRB uses formula for K below (not a simple σ formula in retail decks)</td>
+    </tr>
+  </table>
+
+  <h3>B. Worked mini-example (memorise the arithmetic)</h3>
+  <p class="box meta">
+    Drawn = 80,000 · Limit = 100,000 · Undrawn = 20,000 · CCF = 0.50<br>
+    <b>EAD = 80,000 + 0.50 × 20,000 = 90,000</b><br>
+    PD = 2% = 0.02 · LGD = 40% = 0.40<br>
+    <b>EL = 0.02 × 90,000 × 0.40 = 720</b><br>
+    <b>EL% = 0.02 × 0.40 = 0.80% of EAD</b>
+  </p>
+</div>
+
+<!-- GLOSSARY PAGE 2: BASEL IRB FULL -->
+<div class="page page2-first">
+  <h3>C. Capital, RWA: full Basel IRB (ASRF) formulas</h3>
+  <p class="small">Corporate / bank / sovereign style IRB. N(·) = standard normal CDF. G(·) = inverse standard normal. M = effective maturity in years. Retail asset classes use different correlation formulas (see note).</p>
+
+  <p class="box meta">
+    <b>1) Asset correlation R (corporate):</b><br>
+    R = 0.12 × (1 - e<sup>-50×PD</sup>) / (1 - e<sup>-50</sup>)<br>
+    &nbsp;&nbsp;+ 0.24 × [1 - (1 - e<sup>-50×PD</sup>) / (1 - e<sup>-50</sup>)]<br><br>
+    <b>2) Maturity adjustment b:</b><br>
+    b = (0.11852 - 0.05478 × ln(PD))<sup>2</sup><br><br>
+    <b>3) Capital requirement K per unit EAD:</b><br>
+    K = [ LGD × N( (1-R)<sup>-0.5</sup> × G(PD) + (R/(1-R))<sup>0.5</sup> × G(0.999) ) - PD × LGD ]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;× (1 + (M - 2.5) × b) / (1 - 1.5 × b)<br><br>
+    <b>4) RWA and capital:</b><br>
+    <b>RWA = 12.5 × K × EAD</b> &nbsp;&nbsp;(because 12.5 = 1 / 8%)<br>
+    <b>Required capital ≈ K × EAD</b> &nbsp;(at 8% of RWA)<br>
+    <b>CET1 ratio = CET1 capital / RWA</b>
+  </p>
+
+  <p><b>Retail mortgage correlation (common IRB variant):</b> R = 0.15 (fixed in many Basel retail-mortgage specs; other retail classes use PD-dependent R). Same K structure without always applying the corporate maturity term the same way. Check asset class.</p>
+
+  <p><b>Standardised approach (contrast):</b> RWA = RiskWeight × Exposure. RiskWeight from tables (e.g. by rating or LTV bucket), not from PD/LGD models.</p>
+
+  <h3>D. Worked IRB example (PD = 2%, LGD = 40%, M = 2.5, EAD = 90,000)</h3>
+  <p class="box meta">
+    From formula (1): <b>R ≈ 0.1641</b><br>
+    From formula (2): <b>b ≈ 0.1108</b> (maturity factor = 1 when M = 2.5)<br>
+    From formula (3): <b>K ≈ 0.0817</b> (about 8.17% of EAD)<br>
+    <b>RWA = 12.5 × 0.0817 × 90,000 ≈ 91,883</b><br>
+    Required capital ≈ K × EAD ≈ <b>7,351</b><br>
+    Compare EL = <b>720</b> (much smaller than UL-style capital charge at 99.9%)
+  </p>
+
+  <h3>E. IFRS 9 ECL / LLP formulas</h3>
+  <table>
+    <tr><th>Item</th><th>Formula</th></tr>
+    <tr>
+      <td>Stage 1 (12-month ECL)</td>
+      <td><b>ECL<sub>12m</sub> ≈ PD<sub>12m</sub> × LGD × EAD × DF</b><br>DF = discount factor for expected timing of loss</td>
+    </tr>
+    <tr>
+      <td>Stage 2 / 3 (lifetime ECL)</td>
+      <td><b>ECL<sub>LT</sub> = Σ<sub>t=1..T</sub> [ PD<sub>marg,t</sub> × LGD<sub>t</sub> × EAD<sub>t</sub> / (1+r)<sup>t</sup> ]</b><br>
+      PD<sub>marg,t</sub> = survival<sub>t-1</sub> × PD<sub>cond,t</sub><br>
+      Survival<sub>t</sub> = Π<sub>s≤t</sub> (1 - PD<sub>cond,s</sub>)</td>
+    </tr>
+    <tr>
+      <td>Scenario-weighted</td>
+      <td><b>ECL = Σ<sub>s</sub> w<sub>s</sub> × ECL<sub>s</sub></b> &nbsp;with Σ w<sub>s</sub> = 1 (e.g. base / up / down)</td>
+    </tr>
+    <tr>
+      <td>LLP / allowance</td>
+      <td>Stock of credit loss allowance ≈ aggregated ECL (plus management overlays if any)<br>
+      <b>LLP charge (P&amp;L) ≈ ECL<sub>end</sub> - ECL<sub>start</sub> + write-offs - recoveries</b> (simplified)</td>
+    </tr>
+  </table>
+  <p class="small">DoD flags and SICR (significant increase in credit risk) drive staging. Staging ≠ DoD, but DoD usually forces Stage 3.</p>
+</div>
+
+<!-- GLOSSARY PAGE 3: INDICATORS + CHAIN -->
+<div class="page page2-first">
+  <h3>F. Rule engines and lending indicators (explicit calcs)</h3>
+  <table>
+    <tr><th>Term</th><th>Definition</th><th>Calculation</th></tr>
+    <tr>
+      <td><b>DoD</b></td>
+      <td>Definition of Default: rule engine marking default.</td>
+      <td><b>DoD = 1</b> if any trigger true, else 0<br>
+      Typical triggers (policy-specific):<br>
+      DPD ≥ 90 &nbsp;OR&nbsp; UTP = 1 &nbsp;OR&nbsp; specific forbearance<br>
+      Obligor default may contagion to all facilities</td>
+    </tr>
+    <tr>
+      <td><b>DPD</b></td>
+      <td>Days past due.</td>
+      <td><b>DPD = ReportDate - OldestUnpaidDueDate</b> (product rules / grace may apply)</td>
+    </tr>
+    <tr>
+      <td><b>UTP</b></td>
+      <td>Unlikely to pay (judgemental default).</td>
+      <td>UTP = 1 if policy indicators fire (distress, bankruptcy filing, etc.). No single closed formula.</td>
+    </tr>
+    <tr>
+      <td><b>EWS</b></td>
+      <td>Early warning before DoD.</td>
+      <td>Score example: <b>EWS_score = Σ w<sub>i</sub> × signal<sub>i</sub></b><br>
+      Flag if EWS_score ≥ threshold (set with Credit Risk)<br>
+      Signals: arrears trend, utilisation↑, covenant breach, income drop</td>
+    </tr>
+    <tr>
+      <td><b>LTV</b></td>
+      <td>Loan to value.</td>
+      <td><b>LTV = Outstanding_loan (or EAD) / Collateral_value</b><br>
+      Example: 270,000 / 300,000 = <b>0.90 (90%)</b></td>
+    </tr>
+    <tr>
+      <td><b>DSTI</b></td>
+      <td>Debt service to income.</td>
+      <td><b>DSTI = Monthly_debt_service / Monthly_income</b><br>
+      Example: 1,400 / 4,000 = <b>0.35 (35%)</b></td>
+    </tr>
+    <tr>
+      <td><b>DTAI</b></td>
+      <td>Confirm ING label. Common: debt-to-assets or debt-to-available-income.</td>
+      <td>Debt-to-assets: <b>DTAI = Total_debt / Total_assets</b><br>
+      Debt-to-available-income: <b>DTAI = Debt_service / Available_income</b><br>
+      Available_income = Income - taxes - essential living (policy definition)</td>
+    </tr>
+    <tr>
+      <td><b>Utilisation</b></td>
+      <td>How much of limit is drawn.</td>
+      <td><b>Utilisation = Drawn / Limit</b></td>
+    </tr>
+    <tr>
+      <td><b>Collateral coverage</b></td>
+      <td>Cover after haircut.</td>
+      <td><b>Coverage = (Collateral_value × (1 - Haircut)) / EAD</b></td>
+    </tr>
+    <tr>
+      <td><b>NPL ratio</b></td>
+      <td>Non-performing stock vs book.</td>
+      <td><b>NPL ratio = NPL_gross / Total_loans_gross</b></td>
+    </tr>
+    <tr>
+      <td><b>Coverage ratio (provisions)</b></td>
+      <td>Allowance vs NPL.</td>
+      <td><b>Prov. coverage = LLP_stock / NPL_gross</b></td>
+    </tr>
+  </table>
+
+  <h3>G. End-to-end numeric chain (interview whiteboard)</h3>
+  <p class="box meta">
+    Limit 100k, Drawn 80k, CCF 50% → <b>EAD = 90k</b><br>
+    PD 2%, LGD 40% → <b>EL = 0.02 × 90k × 0.40 = 720</b><br>
+    Collateral value 120k, haircut 20% → Cover = 120k×0.8 / 90k = <b>1.067</b><br>
+    LTV on 90k vs 120k property = <b>75%</b><br>
+    Income 4,000/mo, debt service 1,200 → <b>DSTI = 30%</b><br>
+    If K = 8.17% (from worked IRB example) → <b>RWA ≈ 12.5 × 0.0817 × 90k ≈ 91.9k</b> · capital ≈ <b>7.35k</b><br>
+    Stage 1 ECL (ignore DF): ≈ <b>PD12m × LGD × EAD = 720</b> (same building blocks; timing/scenarios adjust)
+  </p>
+
+  <h3>H. Term index (quick definitions)</h3>
+  <p class="small">IRB = Internal Ratings-Based · IFRS 9 = ECL accounting · CRR/CRD = EU capital law · AnaCredit = ECB loan-level reporting · Forbearance = concession to distressed client · Cure = return to performing · Record Bank residual = legacy codes in BE landscape · SICR = significant increase in credit risk (Stage 2 trigger).</p>
+
+  <hr class="hr">
+  <p class="note">End of formula detail block. Org map, scenarios, CRR3/approaches/reporting and A-IRB datasets continue in later sections.</p>
+</div>
+
+
+<!-- PAGE: SQUAD PEOPLE -->
+<div class="page page2-first">
+  <h2>3a. Your Credit Infrastructure squad: people and functions</h2>
+  <p class="small">Simulation of a typical Credit Infrastructure agile squad. Headcount and titles vary; functions are what interviewers expect you to orchestrate. <span class="tag">JD + sibling CR Data Engineer + Orange House sim</span></p>
+
+  <table>
+    <tr><th>Person / seat</th><th>Core function in the squad</th><th>Typical week</th><th>Hands off to you when...</th></tr>
+    <tr>
+      <td><b>You: Product Owner (50%)</b></td>
+      <td>Own and prioritise the product backlog; turn Credit Risk / regulatory priorities into delivery plans; protect capacity; escalate cross-tribe blockers; accept or reject done work against criteria</td>
+      <td>Refinement, planning, stakeholder syncs, SteerCo status, trade-off calls</td>
+      <td>Always on: priorities and “what ships this sprint”</td>
+    </tr>
+    <tr>
+      <td><b>You: Senior Risk Data Journey Expert (50%)</b></td>
+      <td>Master the Credit Risk Data Landscape (PD, EAD, LGD + related engines); design end-to-end data journeys; lake regulatory sequencing; flows/tooling for Risk and Business; digitalization; auditor key contact</td>
+      <td>Lineage walkthroughs, lake-engine epic design, audit prep, tooling thin slices</td>
+      <td>Journey design and landscape truth (source → lake → engine → capital)</td>
+    </tr>
+    <tr>
+      <td><b>Credit Risk Data Engineer (Brussels)</b></td>
+      <td>Build/maintain batch engines and jobs (Oracle, SAS EG / DI patterns); implement engine logic; run and stabilise overnight batches; support mart; debug joins and reconciliations</td>
+      <td>Coding, batch ops, peer review, incident triage, story estimates</td>
+      <td>Technical feasibility, runtime risk, “data vs engine” diagnosis</td>
+    </tr>
+    <tr>
+      <td><b>Credit Risk Data Engineer (ING Hubs / Warsaw)</b></td>
+      <td>Same craft as BE engineers: engines, landscape pipelines, tooling for Risk and Business tribes; extend capacity without hallway context</td>
+      <td>Remote ceremonies; pick up well-written stories; pair on complex lineage</td>
+      <td>Needs clear acceptance, samples, and glossary from you</td>
+    </tr>
+    <tr>
+      <td><b>Credit Risk Functional Analyst</b> <span class="tag">often embeds or partners</span></td>
+      <td>Translate policy and model intent into functional requirements; define expected indicator behaviour; support UAT/acceptance with Credit Risk</td>
+      <td>Spec workshops, acceptance cases, edge cases (forbearance, DoD flags)</td>
+      <td>Ambiguous policy language that would block engineers</td>
+    </tr>
+    <tr>
+      <td><b>Modeler / Risk Analytics partner</b> <span class="tag">mart consumer</span></td>
+      <td>Need model data mart features for development and monitoring; challenge data fitness for PD/EAD/LGD use</td>
+      <td>Mart requests, monitoring checks, model change impact</td>
+      <td>Mart backlog pressure vs engine stability trade-offs</td>
+    </tr>
+    <tr>
+      <td><b>Scrum Master / Agile Coach</b> <span class="tag">sim · often shared</span></td>
+      <td>Facilitate ceremonies; remove process blockers; keep flow visible; coach team health</td>
+      <td>Stand-ups, retros, impediment board</td>
+      <td>Does not own backlog priority (you do)</td>
+    </tr>
+  </table>
+
+  <h3>How the squad divides a story</h3>
+  <ol>
+    <li><b>You (journey):</b> map the hop (which source, lake field, engine, output, consumer).</li>
+    <li><b>You (PO):</b> cut the epic into lake dependency + engine story + acceptance; sequence on the board.</li>
+    <li><b>Functional analyst / Risk SME:</b> expected behaviour and edge cases.</li>
+    <li><b>Data engineer(s):</b> implement, test, run batch, reconcile.</li>
+    <li><b>Credit Risk:</b> accept parameter impact.</li>
+    <li><b>You:</b> close story; stash audit evidence if capital-relevant.</li>
+  </ol>
+
+  <h3>What “done” means for this squad</h3>
+  <ul>
+    <li>Engine or flow change matches accepted behaviour (not only code merged).</li>
+    <li>Reconciliation or control check passed on the agreed portfolio slice.</li>
+    <li>Dependencies (especially Data Lake) are explicit: done or consciously deferred.</li>
+    <li>If capital/LLP relevant: lineage note ready for auditor questions.</li>
+  </ul>
+</div>
+
+<!-- PAGE: LANDSCAPE + JOURNEY -->
+<div class="page page2-first">
+  <h2>3b. Credit Risk Data Landscape (what “landscape” means)</h2>
+  <p>The landscape is the map of credit risk data and engines that produce parameters for capital, RWA and LLP. Your journey-expert job is to know how each piece connects, not to memorise every table on day one.</p>
+
+  <table>
+    <tr><th>Landscape layer</th><th>What lives here</th><th>Why it matters</th></tr>
+    <tr><td><b>Sources / operational data</b></td><td>Lending products, facilities, collateral, customer behaviour, arrears, forbearance flags; residual Record Bank codes where still present</td><td>Garbage in → wrong DoD/PD/LGD</td></tr>
+    <tr><td><b>Data Lake (regulatory initiatives)</b></td><td>Governed landing of attributes required by regulation or policy; quality rules; lineage start</td><td>JD: you support regulatory initiatives here with Data Management</td></tr>
+    <tr><td><b>Rule-based engines</b></td><td>DoD (definition of default), EWS (early warning), related indicators (DSTI, DTAI, LTV, etc.)</td><td>Policy logic turned into repeatable batch calculation</td></tr>
+    <tr><td><b>Model-driven engines</b></td><td>PD, EAD, LGD (and related model outputs)</td><td>Feed RWA, capital, LLP; model version sensitive</td></tr>
+    <tr><td><b>Model data mart</b></td><td>Curated data for developing and monitoring new models</td><td>Bridge to modelers / validation; JD names this duty</td></tr>
+    <tr><td><b>Outputs &amp; tooling</b></td><td>Parameters and flows used by Risk family and Business tribes; reports; controls</td><td>Digitalization and tooling stories live here</td></tr>
+    <tr><td><b>Downstream consumers</b></td><td>Capital / RWA / LLP, portfolio steering, underwriting/monitoring, Audit</td><td>Your deadlines and evidence pack</td></tr>
+  </table>
+
+  <h2>3c. Credit risk data journey (end to end)</h2>
+  <p class="box meta">Risk / regulatory need → Source readiness → Data Lake land + quality → Engine input contract → Rule or model engine run → Reconciliation / controls → Parameter publish → Capital / RWA / LLP + Risk &amp; Business tooling → Auditor evidence</p>
+
+  <table>
+    <tr><th>Hop</th><th>What happens</th><th>Who leads</th><th>Your journey-expert move</th></tr>
+    <tr><td>1. Need</td><td>Policy or regulator requires a field, rule, or model behaviour by date D</td><td>Credit Risk Tribe</td><td>Capture why, date, portfolio scope, acceptance language</td></tr>
+    <tr><td>2. Source</td><td>Confirm attribute exists in operational systems (or Record residual map)</td><td>Data Management + Business ops</td><td>Flag gaps early; do not start engine story blind</td></tr>
+    <tr><td>3. Lake</td><td>Land attribute, quality rule, catalogue / lineage</td><td>Data Management</td><td>Sequence lake story before engine consumption</td></tr>
+    <tr><td>4. Contract</td><td>Define engine inputs, joins (e.g. facility-collateral), defaults, history</td><td>You + functional analyst + engineer</td><td>Write the journey map for the story</td></tr>
+    <tr><td>5. Engine</td><td>Batch computes DoD/EWS/PD/EAD/LGD (or related)</td><td>Data engineers</td><td>Protect capacity; clarify rule vs model path</td></tr>
+    <tr><td>6. Control</td><td>Reconcile counts, rates, breaks vs prior run or benchmark</td><td>Engineers + Risk</td><td>Insist acceptance includes a control check</td></tr>
+    <tr><td>7. Publish</td><td>Parameters available to capital, LLP, tooling, Business indicators</td><td>Credit Infrastructure + consumers</td><td>Notify Finance/Risk if window risk</td></tr>
+    <tr><td>8. Evidence</td><td>Lineage pack for internal/external audit</td><td>You (key contact) + engineer + Risk SME</td><td>Keep boring, complete evidence; backlog gaps</td></tr>
+  </table>
+</div>
+
+<!-- PAGE: JOURNEY BY ENGINE -->
+<div class="page page2-first">
+  <h2>3d. Journey by engine family (interview showcase)</h2>
+  <table>
+    <tr><th>Engine / indicator</th><th>Journey focus</th><th>Typical consumers</th><th>Squad function that owns build</th></tr>
+    <tr><td><b>DoD</b></td><td>Policy events (arrears, forbearance, unlikely-to-pay) → flags on facilities/customers</td><td>Credit Risk, capital/LLP, monitoring</td><td>Data engineer implements; FA + Risk accept</td></tr>
+    <tr><td><b>EWS</b></td><td>Early signals from behaviour / financial stress → watchlist style outputs</td><td>Credit Risk monitoring, Business follow-up</td><td>Engineer; Risk tunes thresholds with you</td></tr>
+    <tr><td><b>DSTI / DTAI / LTV</b></td><td>Affordability and collateral ratios from income, debt, property values</td><td>Business lending journeys, Credit Risk</td><td>Engineer; Business tribe feels UX impact</td></tr>
+    <tr><td><b>PD</b></td><td>Governed exposures + behaviour → probability of default (model)</td><td>RWA, capital, portfolio steering</td><td>Engineer + modeler; you own journey fitness</td></tr>
+    <tr><td><b>EAD</b></td><td>Drawn/undrawn and conversion factors → exposure at default</td><td>RWA, capital</td><td>Same; facility data quality critical</td></tr>
+    <tr><td><b>LGD</b></td><td>Collateral, recovery, cure paths → loss given default</td><td>LLP, RWA</td><td>Joins (facility-collateral) often the pain point</td></tr>
+    <tr><td><b>Model data mart</b></td><td>Curated history for model build/monitoring</td><td>Modelers, validation</td><td>Engineers deliver mart features you prioritise</td></tr>
+  </table>
+
+  <h3>Landscape view you can draw on a whiteboard in 60 seconds</h3>
+  <p class="box meta">
+    Sources (lending / collateral / behaviour / Record residuals)<br>
+    → Data Lake (regulatory attributes + quality) [Data Management]<br>
+    → Credit engines: DoD · EWS · DSTI/DTAI/LTV · PD · EAD · LGD [your squad]<br>
+    → Model data mart [your squad + modelers]<br>
+    → Outputs to capital / RWA / LLP · Risk tooling · Business indicators<br>
+    → Audit evidence path [you as key contact]
+  </p>
+
+  <h3>Squad swimlane on one journey (example: new forbearance field → PD)</h3>
+  <table>
+    <tr><th>Step</th><th>You (PO)</th><th>You (journey)</th><th>Data engineer</th><th>FA / Risk</th><th>Data Mgmt</th></tr>
+    <tr><td>Scope</td><td>Prioritise epic</td><td>Draw hops</td><td>Estimate</td><td>Policy meaning</td><td>Field exists?</td></tr>
+    <tr><td>Lake</td><td>Sequence board</td><td>Acceptance for land</td><td>Consume later</td><td>Confirm definition</td><td>Land + quality</td></tr>
+    <tr><td>Engine</td><td>Capacity guard</td><td>Input contract</td><td>Code + batch</td><td>Expected PD impact</td><td>Support lineage</td></tr>
+    <tr><td>Done</td><td>Close / escalate</td><td>Evidence note</td><td>Reconcile</td><td>Accept</td><td>Catalogue update</td></tr>
+  </table>
+
+  <p class="small">This is the “credit risk data journey under the landscape”: landscape = the map of layers and engines; journey = how one need travels those layers with clear owners.</p>
+</div>
+
+<!-- PAGE 2: TRIBES -->
+<div class="page page2-first">
+  <h2>4. Tribes: who they are and what they must be doing</h2>
+  <p class="small">ING’s Orange House model: tribes own a value domain; chapters own craft across squads. Names below mix JD anchors with public Belgium Credit Risk signals and typical adjacent tribes you will meet every week.</p>
+
+  <h3>A. Credit Risk Tribe <span class="tag">Public · Gregory Dekimpe, Credit Risk Tribe lead ING Belgium</span></h3>
+  <p><b>Mission (public language):</b> end-to-end credit risk transformation: policies and decision models, analytical insights for portfolios, future-proof data/platforms for sustainable growth.</p>
+  <p><b>What they must be doing:</b></p>
+  <ul>
+    <li>Set and maintain credit policies and risk appetite for retail and business banking books.</li>
+    <li>Own definition of default, forbearance, early warning logic at policy level (you implement engines).</li>
+    <li>Steer portfolios with data (portfolio steering / PI-style work sits here or adjacent under the tribe).</li>
+    <li>Accept engine outputs that affect underwriting, monitoring, LLP narrative, and capital conversations.</li>
+    <li>Area leads by segment (e.g. Business Banking credit risk area lead) translate tribe strategy into segment practice. <span class="tag">Public</span></li>
+  </ul>
+  <p><b>How they interact with you:</b> They are your primary “why.” Policy change → backlog item. Portfolio noise → engine or data defect triage. They sit in refinement and acceptance; you do not rewrite policy for them.</p>
+
+  <h3>B. Your home: Risk Platforms / Credit Infrastructure (under IRM) <span class="tag">JD</span></h3>
+  <p><b>What the tribe/domain must be doing:</b> keep risk calculation and risk-data platforms reliable, compliant, and moving toward target architecture (Data Lake + digital tooling), while legacy Oracle/SAS batches still run.</p>
+  <p><b>Your squad’s slice:</b> credit engines (DoD, EWS, PD, EAD, LGD, related indicators), model data mart, regulatory lake consumption, flows/tools for Risk and Business.</p>
+  <p><b>How other Risk Platforms squads interact (sim):</b> shared platform standards, release calendars, lake patterns, maybe market/ops risk platforms nearby. You sync on dependencies, not on credit policy.</p>
+
+  <h3>C. Data Management tribe (operational) <span class="tag">JD names this tribe</span></h3>
+  <p><b>What they must be doing:</b> own operational data products and the Data Lake: landing zones, quality rules, catalogues, access, and often the pipelines that make regulatory fields available bank-wide.</p>
+  <p><b>How they interact with you:</b> almost every regulatory initiative in the JD hits them first. You sequence: lake readiness → engine consumption. Joint refinement when a field is missing or joins break (facility-collateral, customer-exposure).</p>
+  <p><b>Failure mode:</b> you promise Risk a PD/DoD change before Data Management can land the attribute. Fix: make the dependency visible on the backlog.</p>
+
+  <h3>D. Business tribes (Retail / Private Individuals, Business Banking, and related) <span class="tag">JD: “Business tribes”</span></h3>
+  <p><b>What they must be doing:</b> run customer and product value streams (accounts, lending origination, servicing). They care that risk engines and indicators (LTV, DSTI, EWS, DoD flags) do not block healthy growth or create unfair frictions.</p>
+  <p><b>How they interact with you:</b> less daily than Credit Risk, but they consume tooling and indicators. Digitalization stories (replace spreadsheet controls with flows) often start as Business or Risk pain and land on your backlog as thin tooling slices.</p>
+
+  <h3>E. Finance / CFO reporting adjacency <span class="tag">Sim · capital / RWA / LLP consumers</span></h3>
+  <p><b>What they must be doing:</b> capital, RWA, provisions and regulatory reporting calendars. They are downstream of your parameters.</p>
+  <p><b>How they interact with you:</b> reporting windows become your hard deadlines. When engines slip, Finance feels it. You escalate early with impact language (which parameter, which report, which date).</p>
+</div>
+
+<!-- PAGE 3: MORE TRIBES + CHAPTERS -->
+<div class="page page2-first">
+  <h3>F. Model Risk / Model Validation / Model Strategy adjacency <span class="tag">Sim · group &amp; local model life cycle</span></h3>
+  <p><b>What they must be doing:</b> challenge and oversee IRB / IFRS9 model use, monitoring methodologies, and model life cycle governance. Local modelers and your mart feed that world.</p>
+  <p><b>How they interact with you:</b> mart features for monitoring/validation; evidence when an engine parameter is model-driven; change control when model versions bump. You do not own model approval. You own that data and engines support approved use.</p>
+
+  <h3>G. Audit &amp; Compliance (2nd/3rd line) <span class="tag">JD: auditor key contact</span></h3>
+  <p><b>What they must be doing:</b> test controls, lineage, and regulatory compliance around capital-relevant engines.</p>
+  <p><b>How they interact with you:</b> you are the named bridge. Prepare journey maps, reconciliations, and walkthroughs. Backlog control gaps. Do not improvise policy answers: bring Credit Risk for “why,” engineers for “how.”</p>
+
+  <h3>H. ING Hubs (Poland) delivery capacity <span class="tag">Sibling CR Data Engineer Warsaw</span></h3>
+  <p><b>What they must be doing:</b> supply Credit Risk Data Engineers into the same Credit Infrastructure work (engines, landscape, tooling for Risk and Business tribes).</p>
+  <p><b>How they interact with you:</b> remote squad members in ceremonies; clear stories and acceptance; timezone-aware refinement. Your PO craft shows up in how cleanly Warsaw can pick up work without tribal knowledge only in Brussels.</p>
+
+  <h2>5. Chapters: craft homes (across tribes)</h2>
+  <p class="small">Chapters cut across squads. People report for craft quality here; they deliver in squads. Names are Orange House style sims aligned to JD roles.</p>
+  <table>
+    <tr><th>Chapter</th><th>Who sits there</th><th>What the chapter must be doing</th><th>Touch with you</th></tr>
+    <tr><td><b>Product / Customer (Risk Data) Journey Expert chapter</b></td><td>POs, CJEs, journey experts in risk/data</td><td>Backlog quality, journey mapping standards, stakeholder management craft, hiring bar</td><td>Your chapter home; coaching, peer review of journeys</td></tr>
+    <tr><td><b>Data Engineering chapter</b></td><td>Credit Risk Data Engineers, lake/pipeline engineers</td><td>Coding standards, Oracle/SAS/DI patterns, lake pipelines, DoD for data stories</td><td>Engineers’ craft home; you align story DoD with them</td></tr>
+    <tr><td><b>Risk Analytics / Modelling chapter</b></td><td>Modelers, functional credit risk analysts</td><td>Model monitoring craft, functional specs, analytics methods</td><td>Mart and engine functional clarity</td></tr>
+    <tr><td><b>Credit Risk Management chapters (in Credit Risk Tribe)</b></td><td>Policy, segment CRM, analytics, restructuring (pattern known publicly in ING CRM tribes)</td><td>Policy craft, portfolio analytics, segment expertise (PI, BB, PB/WM patterns)</td><td>Demand quality and acceptance; not your people-manager line</td></tr>
+    <tr><td><b>Data Management chapters</b></td><td>Data stewards, lake POs, quality engineers</td><td>Data product ownership craft, quality SLAs, catalogue discipline</td><td>Joint standards on lineage and field definitions</td></tr>
+  </table>
+  <p><b>Chapter vs squad rule for interviews:</b> squad owns delivery and deadlines. Chapter owns how craft is done. Never put a capital deadline into “chapter theatre.”</p>
+
+  <h2>6. Squads near Credit Infrastructure (simulation map)</h2>
+  <table>
+    <tr><th>Squad (sim name)</th><th>Likely focus</th><th>Interaction with your squad</th></tr>
+    <tr><td><b>Credit Engines / Credit Infrastructure</b> (yours)</td><td>DoD, EWS, PD/EAD/LGD and related batch engines; mart; lake regulatory consumption</td><td>You lead as PO</td></tr>
+    <tr><td>Model Data Mart / Model Support</td><td>Mart features for model development and monitoring</td><td>Shared backlog pressure; often same engineers or sibling squad</td></tr>
+    <tr><td>Data Lake Regulatory / Credit Risk Data Products</td><td>Landing regulatory attributes for risk use</td><td>Hard dependency; joint epics</td></tr>
+    <tr><td>Credit Risk Reporting</td><td>Risk reports and dashboards on portfolio / engine outputs</td><td>Hand off outputs; avoid owning their dashboards</td></tr>
+    <tr><td>Portfolio Credit Risk / Portfolio Steering</td><td>Insights and steering under Credit Risk Tribe <span class="tag">Public tribe signal</span></td><td>Consume parameters; raise data quality issues back to you</td></tr>
+    <tr><td>Lending / Credit Decisioning (Business tribe)</td><td>Origination and decision journeys using LTV/DSTI/EWS signals</td><td>Indicator contracts; change impact assessment</td></tr>
+  </table>
+</div>
+
+<!-- PAGE 4: INTERACTIONS -->
+<div class="page page2-first">
+  <h2>7. How tribes interact with you (operating model)</h2>
+
+  <h3>Demand path</h3>
+  <p class="box meta">Credit Risk Tribe (policy / portfolio need) → you (clarify + backlog) → Data Management (if lake/source) → Credit Infrastructure engineers (build) → Credit Risk acceptance → Finance/Audit consume evidence</p>
+
+  <h3>Who brings what into refinement</h3>
+  <ul>
+    <li><b>Credit Risk:</b> policy text, effective date, portfolio impact, acceptance criteria in risk language.</li>
+    <li><b>Data Management:</b> field availability, quality, lineage, capacity to land attributes.</li>
+    <li><b>Engineers (BE/PL):</b> technical slice, engine runtime risk, regression scope.</li>
+    <li><b>You:</b> one backlog item with clear owner of each dependency; cut scope if capacity is false.</li>
+    <li><b>Modelers:</b> mart or monitoring need; must not silently become ten “P0” features.</li>
+  </ul>
+
+  <h3>Standing forums (realistic week)</h3>
+  <table>
+    <tr><th>Forum</th><th>Who</th><th>Your job</th></tr>
+    <tr><td>Squad ceremonies</td><td>Engineers, SM/facilitator, you</td><td>Priorities, blockers, capacity honesty</td></tr>
+    <tr><td>Risk / Data / IT sync</td><td>Credit Risk, Data Management, IT, you</td><td>Surface cross-tribe dependencies early</td></tr>
+    <tr><td>Chapter huddle</td><td>PO/CJE peers + chapter lead</td><td>Craft only; bring patterns, not panic deadlines</td></tr>
+    <tr><td>Incident triage</td><td>Engineers + Risk on-call style</td><td>Impact language (LLP/RWA/report date)</td></tr>
+    <tr><td>Audit prep / walkthrough</td><td>Audit, Risk, engineer, you</td><td>Key contact; journey map + evidence pack</td></tr>
+    <tr><td>SteerCo / tribe update</td><td>Tribe/domain leads</td><td>Two-sentence status + risk + ask</td></tr>
+  </table>
+
+  <h3>RACI-style (interview-ready)</h3>
+  <table>
+    <tr><th>Topic</th><th>Credit Risk Tribe</th><th>You (CI)</th><th>Data Mgmt</th><th>Engineers</th><th>Audit</th></tr>
+    <tr><td>Policy / DoD definition</td><td>A/R</td><td>C</td><td>I</td><td>I</td><td>I</td></tr>
+    <tr><td>Engine backlog priority</td><td>C</td><td>A/R</td><td>C</td><td>C</td><td>I</td></tr>
+    <tr><td>Lake field landing</td><td>C</td><td>C</td><td>A/R</td><td>C</td><td>I</td></tr>
+    <tr><td>Engine build / batch run</td><td>I</td><td>C</td><td>I</td><td>A/R</td><td>I</td></tr>
+    <tr><td>Acceptance of parameter</td><td>A/R</td><td>C</td><td>I</td><td>C</td><td>I</td></tr>
+    <tr><td>Lineage evidence pack</td><td>C</td><td>A/R</td><td>C</td><td>R</td><td>A (review)</td></tr>
+  </table>
+  <p class="small">A = accountable · R = responsible · C = consulted · I = informed. Soft model for interviews, not an official ING RACI.</p>
+
+  <h2>8. Interaction examples (what “good” looks like)</h2>
+  <ul>
+    <li><b>Credit Risk → you:</b> “Forbearance attribute X must drive DoD/PD from date D.” You translate into lake story + engine story with one acceptance chain.</li>
+    <li><b>You → Data Management:</b> “We need attribute X in lake with quality rule Q by sprint N-1, or engine story slips.”</li>
+    <li><b>You → Warsaw engineer:</b> story with inputs, expected output sample, reconciliation check, rollback note.</li>
+    <li><b>Portfolio steering → you:</b> “Segment Y LLP noise.” You open lineage: source vs engine vs report path.</li>
+    <li><b>Business tribe → you:</b> “EWS floods branch noise.” You check indicator threshold vs data defect vs policy intent with Credit Risk.</li>
+    <li><b>Audit → you:</b> “Show RWA-driving parameter path.” You run the walkthrough with engineer + Risk SME.</li>
+  </ul>
+</div>
+
+<!-- PAGE 5: JOURNEY + SCENARIOS -->
+<div class="page page2-first">
+  <h2>9. Data journey pointer</h2>
+  <p class="box meta">Full Credit Risk Data Landscape and 8-hop journey are in sections <b>3b to 3d</b> (layers, hops, engine families, squad swimlane). One-line reminder: Source → Lake → Engines (DoD/EWS/PD/EAD/LGD + related) → Mart / tooling → Capital · RWA · LLP → Audit evidence.</p>
+
+  <h2>10. Problem scenarios (cross-tribe)</h2>
+
+  <h3>Scenario A: Regulatory field must land in the Data Lake</h3>
+  <p><b>Tribes:</b> Credit Risk (need) · Data Management (land) · Credit Infrastructure (consume) · Finance (window).</p>
+  <p><b>Your move:</b> one epic with two stories (lake then engine); protect sequence; escalate if lake slips before Risk deadline.</p>
+
+  <h3>Scenario B: Broken facility-collateral join (LGD / LLP)</h3>
+  <p><b>Tribes:</b> Data Management + your engineers + Credit Risk + Finance impact.</p>
+  <p><b>Your move:</b> separate data defect vs engine bug; assign owner; protect sprint capacity; document lineage for audit.</p>
+
+  <h3>Scenario C: Backlog conflict (policy vs tech debt vs mart)</h3>
+  <p><b>Tribes:</b> Credit Risk · Risk Analytics/modelers · your chapter craft vs delivery reality.</p>
+  <p><b>Your move:</b> mandatory regulatory first; one mart story that unblocks; park the rest visibly.</p>
+
+  <h3>Scenario D: Auditor asks for RWA-driving parameter evidence</h3>
+  <p><b>Tribes/lines:</b> Audit · Credit Risk · engineers · you as key contact.</p>
+  <p><b>Your move:</b> journey map walkthrough; backlog control gaps; no blame theatre.</p>
+
+  <h3>Scenario E: Record Bank residual mapping</h3>
+  <p><b>Tribes:</b> Credit Risk + Data Management historical products · your landscape role.</p>
+  <p><b>Your move:</b> map residual codes with SMEs; backlog fix; honest ramp (no fake Record mastery).</p>
+
+  <h3>Scenario F: Business tribe tooling ask vs Risk digitalization</h3>
+  <p><b>Tribes:</b> Business tribe pain · Credit Risk consumption · your digitalization duty.</p>
+  <p><b>Your move:</b> thin automated flow on engine outputs; clear acceptance; do not build a full Business reporting product owned by another squad.</p>
+
+  <h3>Scenario G: Warsaw capacity vs Brussels tribal knowledge</h3>
+  <p><b>Tribes:</b> Hubs delivery · local Credit Risk context.</p>
+  <p><b>Your move:</b> write stories hubs can execute; pair on first lake+engine epic; keep glossary of Record/ING codes in the squad wiki.</p>
+</div>
+
+<!-- TRICKY SCENARIOS PAGE 1 -->
+<div class="page page2-first">
+  <h2>10b. Tricky scenarios: what we assume vs what is often true</h2>
+  <p class="small">PO craft: challenge the first diagnosis. Same symptom, different owner. Good for day-to-day triage and interview answers.</p>
+
+  <table>
+    <tr><th>#</th><th>What people assume</th><th>What is often actually true</th><th>PO move / check</th></tr>
+    <tr>
+      <td>1</td>
+      <td>“PD engine is wrong. Fix the model code.”</td>
+      <td>DoD / population changed: more defaults flagged, so PD looks “up.” Or input segment codes shifted after a lake reload.</td>
+      <td>Compare DoD counts, portfolio composition, and PD by segment before/after. Ask: input change or formula change?</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>“LGD model is broken.”</td>
+      <td>Facility-collateral join or haircut table failed. Engine ran “correctly” on bad cover.</td>
+      <td>Reconcile collateral coverage and join rates. Split: data defect vs LGD formula. Do not open a model change by default.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>“Data Lake story is Done. We can consume.”</td>
+      <td>Field landed, but wrong grain, nulls high, or no quality rule. Engine would bake garbage.</td>
+      <td>Acceptance = land + quality check + sample reconcile to source. Sequence: lake ready → then engine story.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>“This regulatory date is immovable.”</td>
+      <td>Sometimes it is an internal SteerCo target, not the supervisor hard date (or the reverse).</td>
+      <td>Ask Credit Risk: hard external vs internal. Put both dates on the epic. Escalate only the real hard one as P0.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>“EL went up, so capital is worse.”</td>
+      <td>EL = PD×EAD×LGD (provisions thinking). Capital/RWA follows IRB K (unexpected loss). They can move differently.</td>
+      <td>Separate LLP/ECL conversation from RWA/CET1. Show both numbers. Do not mix EL and RWA in one SteerCo sentence.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>“IFRS 9 Stage 3 = DoD default.”</td>
+      <td>Usually linked, but staging rules and DoD policy are not always 1:1 (timing, cure, product exceptions).</td>
+      <td>Ask Risk Accounting + Credit Risk for the mapping table. Never code “Stage3 := DoD” without written rule.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>“Forbearance means the client is in default.”</td>
+      <td>Some forbearance is performing; only specific cases trigger DoD.</td>
+      <td>Read DoD policy triggers with FA/Risk. Engine story must name which forbearance types flip the flag.</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>“EWS is too aggressive. Soften thresholds.”</td>
+      <td>Duplicate customers, bad arrears dates, or double-counted facilities inflate signals.</td>
+      <td>Check data quality and population first. Threshold change is a Credit Risk policy call, not a silent engine tweak.</td>
+    </tr>
+  </table>
+</div>
+
+<!-- TRICKY SCENARIOS PAGE 2 -->
+<div class="page page2-first">
+  <table>
+    <tr><th>#</th><th>What people assume</th><th>What is often actually true</th><th>PO move / check</th></tr>
+    <tr>
+      <td>9</td>
+      <td>“Record Bank fields are missing.”</td>
+      <td>Legacy codes remapped; values sit under ING keys. Looks null if you filter old product codes.</td>
+      <td>Use mapping table with Data Management. Prove with a known Sample IBAN/facility from Record era.</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>“EAD is wrong because CCF changed.”</td>
+      <td>Limit not refreshed, undrawn negative, or drawn &gt; limit after product migration.</td>
+      <td>Decompose EAD = Drawn + CCF×Undrawn. Fix inputs before debating CCF calibration.</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>“Engineer said Done. Ship it.”</td>
+      <td>Code merged, batch not reconciled. Capital path still wrong.</td>
+      <td>Done = behaviour + control check on agreed slice + dependency explicit. No reconcile, not Done.</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>“Business wants a dashboard from our squad.”</td>
+      <td>They need reporting owned by Credit Risk Reporting / another squad. Your JD is engines + thin tooling.</td>
+      <td>Clarify outcome. Offer indicator contract or thin flow. Hand full dashboard to the owning squad.</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>“Audit wants a new control.”</td>
+      <td>They often want evidence that an existing control ran (lineage, recon pack), not a new feature.</td>
+      <td>Ask: evidence gap or design gap? First deliver the pack; backlog a control only if design is missing.</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>“Modeler P0: ten mart columns this sprint.”</td>
+      <td>One column unblocks monitoring; nine are nice-to-have for a future model build.</td>
+      <td>Ask which column unblocks validation/monitoring this quarter. Take 1-2. Park the rest with dates.</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>“Skip the lake. Patch SAS/Oracle only. Faster.”</td>
+      <td>Creates dual-run debt; next regulatory change hits twice; digitalization stalls.</td>
+      <td>If emergency patch is mandatory, time-box it and backlog the lake path in the same epic. Make debt visible.</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>“RWA noise = engine bug.”</td>
+      <td>Finance report mapping, exposure class, or CRM filter differs from your engine output grain.</td>
+      <td>Reconcile engine output to report input file. Find the hop where numbers diverge before coding.</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>“PO owns the priority; chapter will decide deadline.”</td>
+      <td>Chapter owns craft. Tribe/domain + PO own delivery dates. Mixing them creates fake commitments.</td>
+      <td>Keep capital deadlines in squad/tribe forums. Bring patterns to chapter, not P0 dates.</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>“Warsaw slow = skill gap.”</td>
+      <td>Stories assume Brussels hallway knowledge (Record codes, who accepts, which recon).</td>
+      <td>Fix story quality and glossary first. Measure cycle time after that before judging capacity.</td>
+    </tr>
+  </table>
+
+  <h3>Interview pattern (use for any of the above)</h3>
+  <p class="box meta">1) Restate symptom. 2) List 2-3 rival explanations (data vs engine vs policy vs report). 3) Name the cheapest check that kills wrong theories. 4) Assign owner. 5) Only then prioritise a build story. Closing line: “I do not open an engine change until lineage shows where the number actually breaks.”</p>
+</div>
+
+
+<!-- REGULATORY IMPACTS ON ENGINES -->
+<div class="page page2-first">
+  <h2>10c. What regulatory changes actually hit calculation engines</h2>
+  <p class="small">Reality check for PO interviews. Regulation rarely says “change the SAS job.” It changes definitions, scopes, floors, or reporting. Engines move because inputs, flags, or parameter logic must follow.</p>
+
+  <table>
+    <tr><th>Regulatory driver</th><th>What changes in practice</th><th>Engines / data usually touched</th></tr>
+    <tr>
+      <td><b>EBA Definition of Default (DoD)</b> + CRR Art. 178<br><span class="tag">Amended GL apply from Oct 2026 (CRR3 alignment)</span></td>
+      <td>When a facility/obligor is defaulted: DPD rules, UTP, forbearance / diminished financial obligation, NPV loss threshold (~1%), probation / cure, factoring past-due exceptions</td>
+      <td><b>DoD rule engine</b> first; then PD/LGD recalibration population; EWS thresholds; IFRS 9 staging maps; lake attributes for forbearance</td>
+    </tr>
+    <tr>
+      <td><b>CRR3 / Basel III final</b> (EU live from Jan 2025; output floor phasing)</td>
+      <td>IRB scope limits (some portfolios forced F-IRB / SA); input floors on PD/LGD/CCF; output floor vs SA; exposure-class landscape; CCF estimation rules evolving (EBA IRB-CCF GLs)</td>
+      <td><b>PD, LGD, EAD/CCF</b> engines and mart; RWA consumers; dual-run SA vs IRB; Data Lake fields for SA risk drivers</td>
+    </tr>
+    <tr>
+      <td><b>IFRS 9 / ECL</b> (accounting, not CRR, but same parameters)</td>
+      <td>Staging (SICR), lifetime vs 12m PD, forward-looking scenarios, overlays</td>
+      <td>PD term structures, LGD/EAD for ECL, staging engines, scenario weights; often separate from IRB but shares DoD</td>
+    </tr>
+    <tr>
+      <td><b>NPE / forbearance</b> (CRR Art. 47a/47b family)</td>
+      <td>Which concessions are forbearance; links to default and NPE stock</td>
+      <td>Forbearance flags in lake; DoD triggers; monitoring/EWS; reporting extracts</td>
+    </tr>
+    <tr>
+      <td><b>ECB TRIM / Guide to internal models</b> + model change materiality</td>
+      <td>Supervisory expectations on PD/LGD/EAD estimation, defaulted exposures, ML use; material model changes need approval path</td>
+      <td>Model code + mart features + monitoring; your backlog often carries “remediation” stories after findings</td>
+    </tr>
+    <tr>
+      <td><b>AnaCredit / FINREP / COREP / local BE reporting</b></td>
+      <td>New attributes, grain, or definitions for loans/collateral/default</td>
+      <td>Lake landing first; then engine inputs; sometimes dedicated reporting marts (not always your squad)</td>
+    </tr>
+    <tr>
+      <td><b>NBB borrower-based measures</b> (BE mortgages: LTV / DSTI / DTI expectations)</td>
+      <td>Soft prudential expectations on high-LTV / high-DSTI production tolerances (owner-occ vs buy-to-let, FTB pockets)</td>
+      <td><b>LTV, DSTI, DTI indicator engines</b> and Business decisioning consumers; monitoring dashboards; not always IRB PD itself</td>
+    </tr>
+    <tr>
+      <td><b>Macroprudential buffers</b> (CCyB, sectoral buffers)</td>
+      <td>Capital add-ons; less often formula change inside PD engine</td>
+      <td>Usually Finance/capital stack; engines may need portfolio tags so buffers apply to right book</td>
+    </tr>
+    <tr>
+      <td><b>ESG / climate risk</b> (growing supervisory pressure)</td>
+      <td>Collateral energy labels, physical risk, transition scores entering credit processes</td>
+      <td>New lake attributes; LTV/collateral data; sometimes PD overlays or EWS signals; digitalization backlog</td>
+    </tr>
+    <tr>
+      <td><b>Crisis measures</b> (e.g. past COVID moratoria)</td>
+      <td>Temporary payment holidays without automatic default; later unwind</td>
+      <td>DoD exceptions, forbearance flags, PD monitoring breaks; high operational risk if not time-boxed</td>
+    </tr>
+  </table>
+
+  <h3>PO reality: how change arrives on your backlog</h3>
+  <ol>
+    <li><b>Policy / reg text</b> interpreted by Credit Risk (and sometimes Finance / Accounting).</li>
+    <li><b>Gap analysis:</b> which flags, fields, engines, reports break.</li>
+    <li><b>Data first</b> if a new attribute is missing (Data Management / lake).</li>
+    <li><b>Rule engine</b> (DoD/EWS/LTV/DSTI) before model recalibration when definitions move.</li>
+    <li><b>PD/EAD/LGD</b> recalibration / redevelopment when default population or CCF rules change.</li>
+    <li><b>Dual run + evidence pack</b> for Audit / ECB / NBB.</li>
+  </ol>
+  <p class="box meta"><b>Interview one-liner:</b> “Most regulatory hits start as definition or scope changes. DoD and forbearance move rule engines and lake fields first; CRR3 floors and IRB landscape move PD/LGD/CCF; IFRS 9 moves staging and lifetime PD; NBB expectations move LTV/DSTI indicators. I sequence lake → rules → models → evidence, not the other way around.”</p>
+</div>
+
+<!-- APPROACHES + CRR3 -->
+<div class="page page2-first">
+  <h2>10d. Credit risk approaches and what CRR3 changed</h2>
+  <p class="small"><b>CRR</b> = Capital Requirements Regulation (EU). <b>CRR3</b> = latest major update implementing Basel III final. <b>Credit-risk parts live from 1 January 2025.</b> Output floor phases toward 72.5%. Some market-risk pieces have later dates.</p>
+
+  <h3>How many approaches?</h3>
+  <p>Two families, or three if you split IRB:</p>
+  <table>
+    <tr><th>Approach</th><th>Full form / meaning</th><th>What the bank models</th></tr>
+    <tr><td><b>SA</b></td><td>Standardised Approach</td><td>Uses supervisory risk weights (by exposure type, rating, LTV bucket, etc.). No own PD/LGD for capital.</td></tr>
+    <tr><td><b>F-IRB</b></td><td>Foundation Internal Ratings-Based</td><td>Own <b>PD</b>; LGD and EAD/CCF mostly supervisory.</td></tr>
+    <tr><td><b>A-IRB</b></td><td>Advanced Internal Ratings-Based</td><td>Own <b>PD + LGD + EAD/CCF</b> (where permitted).</td></tr>
+  </table>
+  <p>Also hear: <b>slotting</b> for some specialised lending; securitisation has its own SEC-SA / SEC-IRBA / SEC-ERBA stack.</p>
+
+  <h3>Portfolio → approach after CRR3</h3>
+  <table>
+    <tr><th>Portfolio</th><th>After CRR3</th><th>Notes</th></tr>
+    <tr><td>Retail (mortgages, consumer, retail SME)</td><td><b>A-IRB still allowed</b> (if approved)</td><td>PD + LGD + EAD/CCF</td></tr>
+    <tr><td>Non-large corporates / Business Banking</td><td><b>A-IRB still allowed</b> (if approved)</td><td>Below large-corporate threshold</td></tr>
+    <tr><td>Large corporates (consolidated sales &gt; €500m)</td><td><b>A-IRB not allowed → F-IRB</b> (or SA)</td><td>Own PD mainly</td></tr>
+    <tr><td>Institutions / banks / financial sector entities</td><td><b>A-IRB not allowed → F-IRB</b> (or SA)</td><td>Own PD mainly</td></tr>
+    <tr><td>Equity</td><td><b>IRB removed → SA</b></td><td>Transition arrangements into late 2020s</td></tr>
+    <tr><td>No IRB permission / residual</td><td><b>SA</b></td><td>Supervisory weights</td></tr>
+  </table>
+
+  <h3>ING (public Pillar 3 picture)</h3>
+  <p>ING runs a <b>mix</b>: <b>A-IRB + F-IRB + SA</b> (plus some slotting). After CRR3, <b>F-IRB grew a lot</b> as large-corporate/institution books left A-IRB. Recent Group credit RWA order of magnitude: A-IRB and F-IRB both large (~€90bn+ each), SA smaller but material (~€45bn).</p>
+
+  <h3>Link to this JD</h3>
+  <p class="box meta">JD talks about <b>PD + LGD + EAD/CCF</b> plus DoD/EWS/LTV/DSTI on <b>retail and business banking</b> (not IB). That matches <b>A-IRB-eligible Retail / Business Banking</b> books, not CRR3-restricted large-corporate/institution A-IRB. Interview line: “This role sits where Advanced IRB parameters are still owned: retail and business-banking engines.”</p>
+</div>
+
+<!-- EXPOSURE CLASSES + REPORTING -->
+<div class="page page2-first">
+  <h2>10e. Exposure classes and mandatory reporting</h2>
+  <p class="small">CRR uses two taxonomies: <b>SA Art. 112</b> (~15+ classes) and <b>IRB Art. 147</b> (~8-12 top classes with subclasses). Wrong class → wrong approach/RWA row.</p>
+
+  <h3>IRB exposure classes (Art. 147) - interview list</h3>
+  <ol>
+    <li>Central governments &amp; central banks</li>
+    <li>Regional governments / local authorities</li>
+    <li>Public sector entities</li>
+    <li>Institutions</li>
+    <li>Corporates (general / specialised lending / purchased receivables)</li>
+    <li>Retail (secured by residential RE / qualifying revolving / other; SME splits in reporting)</li>
+    <li>Equity (mostly SA under CRR3)</li>
+    <li>CIUs</li>
+    <li>Other non-credit-obligation assets</li>
+  </ol>
+  <p>For this role, day-to-day focus: <b>Retail</b> and <b>Corporate / Business Banking</b> assignment.</p>
+
+  <h3>Reports that consume this credit data</h3>
+  <table>
+    <tr><th>Report</th><th>What it is</th><th>Typical cadence</th><th>Engine/data link</th></tr>
+    <tr><td><b>COREP</b></td><td>Prudential capital / RWA / own funds</td><td>Quarterly</td><td>Exposure class, SA/F-IRB/A-IRB, PD/LGD/EAD, defaults, RWA</td></tr>
+    <tr><td><b>FINREP</b></td><td>Supervisory financials (IFRS view)</td><td>Quarterly</td><td>Stages, ECL/LLP, NPE/forbearance</td></tr>
+    <tr><td><b>AnaCredit</b></td><td>Loan-level credit to NCB/ECB</td><td>Monthly</td><td>Instrument, counterparty, protection; PD/LGD/default flags</td></tr>
+    <tr><td><b>Pillar 3</b></td><td>Public disclosure</td><td>Q / H / Y by template</td><td>CR templates by approach &amp; class; output floor</td></tr>
+    <tr><td><b>Large exposures</b></td><td>Concentration limits</td><td>Prudential cycle</td><td>Counterparty aggregation</td></tr>
+    <tr><td><b>Supervisory benchmarking</b></td><td>EBA/ECB model samples</td><td>Periodic</td><td>IRB parameter extracts</td></tr>
+    <tr><td><b>STE / ad-hoc ECB</b></td><td>Short-term exercises</td><td>As asked</td><td>Portfolio cuts, risk metrics</td></tr>
+    <tr><td><b>Local BE / NBB</b></td><td>National mortgage expectations etc.</td><td>As required</td><td>LTV, DSTI, DTI indicators</td></tr>
+  </table>
+  <p class="box meta"><b>PO point:</b> Credit Infrastructure does not “file COREP,” but DoD/PD/EAD/LGD and class codes must stay consistent across COREP, FINREP and AnaCredit or supervisors see breaks.</p>
+</div>
+
+<!-- A-IRB DATASETS -->
+<div class="page page2-first">
+  <h2>10f. Datasets mandated under A-IRB (for credit engines)</h2>
+  <p class="small">A-IRB needs long, auditable history to estimate and apply PD, LGD and EAD/CCF. Not one legal CSV list, but CRR/EBA/ECB expect these data families.</p>
+
+  <table>
+    <tr><th>Dataset</th><th>Why required</th><th>Typical contents</th></tr>
+    <tr><td><b>PD / rating history</b></td><td>Estimate &amp; backtest PD</td><td>Obligor/facility, grade/score, PD, segment, date, default Y/N</td></tr>
+    <tr><td><b>Default / DoD history</b></td><td>Art. 178 definition drives all models</td><td>Default flag/date, trigger (90 DPD/UTP/forbearance), cure/probation</td></tr>
+    <tr><td><b>LGD / recovery (workout)</b></td><td>Own LGD</td><td>EAD at default, collateral, recoveries, costs, timing, discounted LGD</td></tr>
+    <tr><td><b>EAD / CCF history</b></td><td>Own conversion factors</td><td>Limit, drawn, undrawn, balance at default, product, horizon path</td></tr>
+    <tr><td><b>Exposure / facility master</b></td><td>Class &amp; rating unit</td><td>Product, exposure class, on/off-balance, maturity, currency</td></tr>
+    <tr><td><b>Collateral / protection</b></td><td>LGD &amp; CRM</td><td>Type, value, valuation date, haircut, lien, coverage</td></tr>
+    <tr><td><b>Obligor / customer ref</b></td><td>Consistent entity</td><td>Customer/group ID, SME flag, industry, country</td></tr>
+    <tr><td><b>Arrears / DPD series</b></td><td>DoD &amp; EWS</td><td>Days past due over time</td></tr>
+    <tr><td><b>Forbearance events</b></td><td>Default &amp; NPE logic</td><td>Concession type, dates, NPV impact</td></tr>
+    <tr><td><b>Model data mart</b></td><td>JD: model build/monitor</td><td>Joined clean history for modelers/validation</td></tr>
+  </table>
+
+  <h3>Engine → dataset map (this JD)</h3>
+  <ul>
+    <li><b>DoD:</b> DPD, UTP, forbearance, materiality</li>
+    <li><b>PD:</b> rating history + default outcomes</li>
+    <li><b>EAD/CCF:</b> limits, drawn/undrawn, drawdown-to-default</li>
+    <li><b>LGD:</b> defaults + collateral + recovery cashflows</li>
+    <li><b>EWS / LTV / DSTI:</b> behaviour, collateral value, income/debt service</li>
+  </ul>
+  <p class="box meta"><b>Interview one-liner:</b> “A-IRB mandated spine is stable DoD history, PD rating history, LGD workout recoveries, and EAD/CCF utilisation paths on a governed facility/obligor/collateral master, plus a model mart for estimation and monitoring.”</p>
+</div>
+
+<!-- ACRONYM CRIB -->
+<div class="page page2-first">
+  <h2>10g. Acronym crib (latest discussion)</h2>
+  <table>
+    <tr><th>Acronym</th><th>Full form</th></tr>
+    <tr><td>CRR / CRD / CRR3</td><td>Capital Requirements Regulation / Directive / third major CRR update</td></tr>
+    <tr><td>SA / F-IRB / A-IRB</td><td>Standardised / Foundation IRB / Advanced IRB</td></tr>
+    <tr><td>PD / EAD / LGD / EL / CCF</td><td>Probability of Default / Exposure at Default / Loss Given Default / Expected Loss / Credit Conversion Factor</td></tr>
+    <tr><td>DoD / DPD / UTP / EWS</td><td>Definition of Default / Days Past Due / Unlikely To Pay / Early Warning Signal(s)</td></tr>
+    <tr><td>LTV / DSTI / DTI / DTAI</td><td>Loan to Value / Debt Service to Income / Debt to Income / Debt-to-Assets or Debt-to-Available-Income (confirm ING label)</td></tr>
+    <tr><td>RWA / CET1 / CCyB</td><td>Risk-Weighted Assets / Common Equity Tier 1 / Countercyclical Capital Buffer</td></tr>
+    <tr><td>IFRS 9 / ECL / SICR / LLP</td><td>Int’l Financial Reporting Standard 9 / Expected Credit Loss / Significant Increase in Credit Risk / Loan Loss Provisions</td></tr>
+    <tr><td>NPL / NPE</td><td>Non-Performing Loan / Exposure</td></tr>
+    <tr><td>EBA / ECB / NBB / SSM / TRIM</td><td>European Banking Authority / European Central Bank / National Bank of Belgium / Single Supervisory Mechanism / Targeted Review of Internal Models</td></tr>
+    <tr><td>COREP / FINREP / AnaCredit</td><td>Common Reporting / Financial Reporting / Analytical Credit Datasets</td></tr>
+    <tr><td>IRM / PO / CJE</td><td>Integrated Risk Management / Product Owner / Customer Journey Expert</td></tr>
+  </table>
+  <p class="box meta"><b>Must-know chain:</b> CRR3 live <b>1 Jan 2025</b> → approaches SA / F-IRB / A-IRB → ING uses all three → JD PD+LGD+EAD implies <b>A-IRB Retail/Business Banking</b> → data spine DoD + PD + LGD workout + EAD/CCF + mart → reports COREP / FINREP / AnaCredit / Pillar 3 / NBB.</p>
+</div>
+
+
+<!-- PAGE: challenges + 90 days (was continuation of page 5) -->
+<div class="page page2-first">
+  <h2>11. Challenges you should expect</h2>
+  <ul>
+    <li>Legacy Oracle/SAS batch plus Data Lake target architecture at the same time.</li>
+    <li>Regulatory calendars that ignore sprint boundaries.</li>
+    <li>Many tribes, one squad capacity (Risk, Data, Business, Finance, Audit).</li>
+    <li>Auditor evidence must be boringly complete.</li>
+    <li>50/50 split: deep landscape work vs ceremony and backlog ownership.</li>
+    <li>Chapter craft pressure vs tribe delivery pressure: protect both without mixing them.</li>
+  </ul>
+
+  <h2>12. First 90 days (on the job)</h2>
+  <ol>
+    <li>Map tribes: who is Credit Risk Area SME, Data Management PO, chapter leads, Warsaw leads.</li>
+    <li>Map PD / EAD / LGD and related engine flows end to end with engineers and Risk.</li>
+    <li>Deliver or materially advance one Data Lake regulatory initiative with Data Management.</li>
+    <li>Land one flow/tooling improvement for Risk or Business.</li>
+    <li>Earn squad trust: clear priorities, honest capacity, early escalation.</li>
+    <li>Be ready as auditor contact on one engine/control topic.</li>
+  </ol>
+</div>
+
+<!-- PAGE 6: Q&A domain -->
+<div class="page page2-first">
+  <h2>13. Hiring manager Q&amp;A (domain + org)</h2>
+
+  <div class="qa">
+    <p class="q">Q1. What do you think Credit Infrastructure does?</p>
+    <p class="a">A. It develops and maintains the engines that calculate credit-risk indicators and parameters that feed capital, RWA and LLP. It keeps data infrastructure for future risk models and bridges Credit Risk, Data Management and operational teams. That matches the JD.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q2. Name the tribes you expect to work with.</p>
+    <p class="a">A. Credit Risk Tribe as demand and acceptance. Data Management as the operational tribe for lake and quality. Business tribes as consumers of indicators and tooling. My home is Risk Platforms / Credit Infrastructure under IRM. Finance and Audit sit adjacent on capital and evidence.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q3. How do chapters differ from tribes here?</p>
+    <p class="a">A. Tribes own value and priorities in a domain. Chapters own craft across squads (PO/journey, data engineering, risk analytics). I deliver in the squad for the tribe/domain; I improve craft in the chapter.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q4. How do you see the 50/50 split in a normal week?</p>
+    <p class="a">A. Half on backlog, ceremonies, dependencies and stakeholder alignment across tribes. Half on landscape: PD/EAD/LGD journeys, lake regulatory work, flows and tooling. When a regulatory window hits, both halves collapse into one priority list.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q5. Walk me through PD, EAD and LGD in this landscape.</p>
+    <p class="a">A. They sit in the model-driven layer of the Credit Risk Data Landscape. Journey: governed exposures and behaviour land via lake/sources, engines compute PD/EAD/LGD, controls reconcile, then parameters feed RWA and LLP. I have worked that chain at HSBC, Credit Suisse and on calculation engines at KBC.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q5b. What is the difference between landscape and journey?</p>
+    <p class="a">A. Landscape is the map of layers and engines (sources, lake, rule engines, model engines, mart, outputs). Journey is how one regulatory or business need travels those layers with clear owners and acceptance. My JD is to master both.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q5c. Who does what inside your squad on a lake-to-engine change?</p>
+    <p class="a">A. I draw the hops and prioritise. Functional analyst or Risk SME clarifies expected behaviour. Data engineers (Brussels and Warsaw) build and reconcile. Credit Risk accepts. I keep audit evidence if capital-relevant. Scrum Master facilitates; they do not own priority.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q6. How do you prioritise when Risk, Data Management and IT all say urgent?</p>
+    <p class="a">A. Put trade-offs on the backlog: mandatory regulatory, capital/LLP impact, data defect blocking engines, then improvements. One early conversation with the right people from each tribe.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q7. What does Risk Data Journey mean to you here?</p>
+    <p class="a">A. How credit risk data moves from need and sources through the Data Lake into PD/EAD/LGD and related engines, then out to capital, RWA, LLP and tooling for Risk and Business, with lineage auditors can follow.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q8. How would you support a regulatory initiative in the Data Lake?</p>
+    <p class="a">A. Clarify fields and timing with Credit Risk; align Data Management on landing and quality; sequence engine consumption after lake readiness; keep an audit trail.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q9. Oracle and SAS Enterprise Guide?</p>
+    <p class="a">A. Hands-on from early banking roles on risk reporting and credit risk data. Later stacks differed, but Oracle and SAS are foundation I built in regulated risk data. Ready for ING’s stack.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q10. Record Bank data landscape?</p>
+    <p class="a">A. Residual credit data still matters after integration. I do not claim day-one Record table knowledge. I ramp by mapping sources, joins and engine impact with Risk and Data Management.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q11. How do you work with auditors?</p>
+    <p class="a">A. JD asks for key contact. Prepare lineage, reconciliations and clear status with Risk SME and engineer. Backlog control gaps instead of defending them.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q12. Your title says Director / CoE. Will you do hands-on PO work?</p>
+    <p class="a">A. Yes. I want long-term ownership on one credit risk engine domain: backlog, squad, landscape, auditors.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q13. What would you digitalize first?</p>
+    <p class="a">A. Whatever still forces Risk or Business into manual reconciliations around engine outputs. Thin automated flow with clear acceptance, then expand.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q14. How do you measure squad success here?</p>
+    <p class="a">A. Regulatory windows met, engine stability, clear backlog across tribes, fewer defects escaping to LLP/RWA noise, audit questions answered without fire drill.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q15. Why ING Credit Infrastructure?</p>
+    <p class="a">A. It sits where I am strongest: credit risk engines, PD/EAD/LGD landscape, Risk, Data and IT bridge, and PO ownership under regulation. KBC is the closest twin. Belgium is where I am returning.</p>
+  </div>
+</div>
+
+<!-- PAGE 7: day-in-life + pitch -->
+<div class="page page2-first">
+  <h2>14. Day-in-the-life Q&amp;A (on the job)</h2>
+
+  <div class="qa">
+    <p class="q">Q16. Stand-up: engine batch failed overnight. What do you do?</p>
+    <p class="a">A. Confirm impact with engineer. If LLP/RWA path is at risk, notify Credit Risk and Finance early. Decide hotfix vs planned story. Update the board.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q17. Risk wants a change mid-sprint. Data Management says no capacity.</p>
+    <p class="a">A. Make the constraint visible. If mandatory, escalate jointly and renegotiate sprint scope. If not, park with a date. I do not promise both without capacity.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q18. Engineer says “data, not engine.” Risk says “engine is wrong.”</p>
+    <p class="a">A. Journey expert hat: follow lineage (source → lake → engine input → calculation). Assign the fix to the right tribe/squad. Update acceptance so blame stops.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q19. How do you write a good engine story?</p>
+    <p class="a">A. Business/regulatory why; data inputs; engine behaviour change; acceptance including reconciliation; lake/Data Management dependency if any; audit evidence note if capital-relevant.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q20. SteerCo asks for status in two sentences.</p>
+    <p class="a">A. “Sprint focus is lake field X plus DoD/PD consumption for deadline Y. Risk: Data Management dependency; mitigation: joint refinement tomorrow and cut scope if not ready by Wednesday.”</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q21. Chapter meeting vs squad work?</p>
+    <p class="a">A. Squad: delivery and backlog for Credit Infrastructure. Chapter: craft standards for POs/journey experts. Capital deadlines stay in the squad/tribe path.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q22. Modelers want ten mart features. Squad has three slots.</p>
+    <p class="a">A. Ask which feature unblocks monitoring or next validation. Take one or two. Keep engines stable if a policy deadline is live.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q23. Business tribe asks for a dashboard you do not own.</p>
+    <p class="a">A. If it is thin tooling on engine outputs in JD scope, shape a small story. If it is portfolio reporting owned elsewhere, connect them to the reporting squad and keep your backlog clean.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q24. You are new. How do you learn the tribe map fast?</p>
+    <p class="a">A. Ask for the org sketch on day one. Meet Credit Risk Area SME, Data Management PO, chapter lead, Warsaw lead. Draw the engine map. Sit in one batch failure and one lake change. Then own a small cross-tribe story.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q25. Conflict: digitalization roadmap vs this month’s regulatory patch.</p>
+    <p class="a">A. Patch and compliance first. Keep one digitalization slice alive if capacity allows. Explain that openly to Credit Risk and Business stakeholders.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q26. Who is “Accountable” when a lake field is late?</p>
+    <p class="a">A. Data Management owns landing. I own making the dependency and engine impact visible. Credit Risk owns whether the business date can move. We escalate together, not in silence.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q27. How do Warsaw hubs change your PO style?</p>
+    <p class="a">A. Stories must be executable without hallway context. Shared glossary, examples, and acceptance. Pair early on complex lineage. Respect ceremony times across locations.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q28. Risk says “PD is wrong.” What is your first move?</p>
+    <p class="a">A. I do not open a model change first. I check whether DoD counts, portfolio mix, or lake inputs changed. Rival theories: data vs population vs formula. Cheapest check wins before backlog.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q29. EL went up. Stakeholder says capital is worse. Your answer?</p>
+    <p class="a">A. EL = PD × EAD × LGD feeds provisions thinking. RWA/CET1 follows IRB K. They can move differently. I show both numbers and keep LLP and capital as separate conversations.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q30. Data Management marks the lake story Done. Do you start the engine?</p>
+    <p class="a">A. Only if Done includes quality and a sample reconcile to source, not just “field exists.” Wrong grain or high nulls will poison the engine. Sequence: lake ready, then consume.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q31. Is IFRS 9 Stage 3 the same as DoD?</p>
+    <p class="a">A. Often linked, not always identical. Timing, cure, and product exceptions exist. I use the written mapping from Risk Accounting and Credit Risk. I never hard-code Stage3 := DoD from assumption.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q32. Audit asks for a “new control.” What do you clarify?</p>
+    <p class="a">A. Evidence gap vs design gap. Many audits need the lineage/recon pack for a control that already exists. I deliver evidence first; I only backlog a new control if design is missing.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q33. Give an example where the engine was fine but LLP looked wrong.</p>
+    <p class="a">A. Facility-collateral join broke. LGD engine calculated correctly on incomplete cover. Fix was data/join, not LGD formula. That is why I reconcile joins before model changes.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q34. Business wants a dashboard this sprint. Do you take it?</p>
+    <p class="a">A. I clarify the outcome. If they need thin tooling on engine outputs in our scope, yes as a small slice. If it is portfolio reporting owned elsewhere, I connect them to that squad and keep our backlog on engines.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q35. Closing interview line when diagnosis is unclear?</p>
+    <p class="a">A. “I do not open an engine change until lineage shows where the number actually breaks: data, policy, engine, or report.”</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q36. What is CRR / CRR3 and when did CRR3 credit risk go live?</p>
+    <p class="a">A. CRR is the EU Capital Requirements Regulation. CRR3 is the Basel III final update. Credit-risk parts apply from 1 January 2025, with output-floor phasing afterward.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q37. SA vs F-IRB vs A-IRB in one sentence each?</p>
+    <p class="a">A. SA uses supervisory risk weights. F-IRB: own PD, supervisory LGD/EAD. A-IRB: own PD, LGD and EAD/CCF where still allowed.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q38. After CRR3, which books stay A-IRB?</p>
+    <p class="a">A. Retail and non-large corporate / Business Banking can stay A-IRB if approved. Large corporates over €500m sales and institutions move off A-IRB to F-IRB (or SA). Equity goes to SA.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q39. Why does this JD imply Retail / Business Banking A-IRB?</p>
+    <p class="a">A. It owns PD + LGD + EAD/CCF plus DoD/EWS/LTV/DSTI on retail and business banking, not IB. That is A-IRB parameter ownership on CRR3-eligible books.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q40. Name the main reports that use this engine data.</p>
+    <p class="a">A. COREP (capital/RWA), FINREP (IFRS/ECL/NPE), AnaCredit (loan-level monthly), Pillar 3 disclosures, plus NBB mortgage indicator reporting and ad-hoc ECB exercises. Same DoD/parameters must stay consistent across them.</p>
+  </div>
+
+  <h2>15. One-minute pitch (HM open)</h2>
+  <p>Credit Infrastructure sits in Risk Platforms under Integrated Risk Management and runs the engines that turn credit risk data into parameters for capital, RWA and LLP. Around it sit the Credit Risk Tribe as demand, Data Management as the lake and quality partner, Business tribes as consumers of indicators and tooling, and Audit on evidence. My role is to lead the squad as Product Owner and to master the credit risk data journey across those tribes: PD, EAD, LGD and related engines, Data Lake regulatory work, flows and tooling, and digitalization. That is the work I have done on calculation engines at KBC and in credit risk data at HSBC and Credit Suisse. I am ready to do it hands-on at ING Belgium.</p>
+
+  <hr class="hr">
+  <p class="note">End of simulation. Includes tribes/chapters, journey, tricky scenarios, formula sheet, regulatory engine hits (10c), CRR3 approaches and ING mix (10d), exposure classes/reporting (10e), A-IRB datasets (10f), acronym crib (10g), Q&amp;A through Q40. Sources: public JD · sibling CR Data Engineer · public Pillar 3 / CRR3. Use with CV and standalone formula-sheet PDF.</p>
+</div>
+
+</body>
+</html>
