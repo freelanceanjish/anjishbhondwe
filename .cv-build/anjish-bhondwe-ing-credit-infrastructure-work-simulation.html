@@ -762,6 +762,79 @@
   <p class="box meta">1) Restate symptom. 2) List 2-3 rival explanations (data vs engine vs policy vs report). 3) Name the cheapest check that kills wrong theories. 4) Assign owner. 5) Only then prioritise a build story. Closing line: “I do not open an engine change until lineage shows where the number actually breaks.”</p>
 </div>
 
+
+<!-- REGULATORY IMPACTS ON ENGINES -->
+<div class="page page2-first">
+  <h2>10c. What regulatory changes actually hit calculation engines</h2>
+  <p class="small">Reality check for PO interviews. Regulation rarely says “change the SAS job.” It changes definitions, scopes, floors, or reporting. Engines move because inputs, flags, or parameter logic must follow.</p>
+
+  <table>
+    <tr><th>Regulatory driver</th><th>What changes in practice</th><th>Engines / data usually touched</th></tr>
+    <tr>
+      <td><b>EBA Definition of Default (DoD)</b> + CRR Art. 178<br><span class="tag">Amended GL apply from Oct 2026 (CRR3 alignment)</span></td>
+      <td>When a facility/obligor is defaulted: DPD rules, UTP, forbearance / diminished financial obligation, NPV loss threshold (~1%), probation / cure, factoring past-due exceptions</td>
+      <td><b>DoD rule engine</b> first; then PD/LGD recalibration population; EWS thresholds; IFRS 9 staging maps; lake attributes for forbearance</td>
+    </tr>
+    <tr>
+      <td><b>CRR3 / Basel III final</b> (EU live from Jan 2025; output floor phasing)</td>
+      <td>IRB scope limits (some portfolios forced F-IRB / SA); input floors on PD/LGD/CCF; output floor vs SA; exposure-class landscape; CCF estimation rules evolving (EBA IRB-CCF GLs)</td>
+      <td><b>PD, LGD, EAD/CCF</b> engines and mart; RWA consumers; dual-run SA vs IRB; Data Lake fields for SA risk drivers</td>
+    </tr>
+    <tr>
+      <td><b>IFRS 9 / ECL</b> (accounting, not CRR, but same parameters)</td>
+      <td>Staging (SICR), lifetime vs 12m PD, forward-looking scenarios, overlays</td>
+      <td>PD term structures, LGD/EAD for ECL, staging engines, scenario weights; often separate from IRB but shares DoD</td>
+    </tr>
+    <tr>
+      <td><b>NPE / forbearance</b> (CRR Art. 47a/47b family)</td>
+      <td>Which concessions are forbearance; links to default and NPE stock</td>
+      <td>Forbearance flags in lake; DoD triggers; monitoring/EWS; reporting extracts</td>
+    </tr>
+    <tr>
+      <td><b>ECB TRIM / Guide to internal models</b> + model change materiality</td>
+      <td>Supervisory expectations on PD/LGD/EAD estimation, defaulted exposures, ML use; material model changes need approval path</td>
+      <td>Model code + mart features + monitoring; your backlog often carries “remediation” stories after findings</td>
+    </tr>
+    <tr>
+      <td><b>AnaCredit / FINREP / COREP / local BE reporting</b></td>
+      <td>New attributes, grain, or definitions for loans/collateral/default</td>
+      <td>Lake landing first; then engine inputs; sometimes dedicated reporting marts (not always your squad)</td>
+    </tr>
+    <tr>
+      <td><b>NBB borrower-based measures</b> (BE mortgages: LTV / DSTI / DTI expectations)</td>
+      <td>Soft prudential expectations on high-LTV / high-DSTI production tolerances (owner-occ vs buy-to-let, FTB pockets)</td>
+      <td><b>LTV, DSTI, DTI indicator engines</b> and Business decisioning consumers; monitoring dashboards; not always IRB PD itself</td>
+    </tr>
+    <tr>
+      <td><b>Macroprudential buffers</b> (CCyB, sectoral buffers)</td>
+      <td>Capital add-ons; less often formula change inside PD engine</td>
+      <td>Usually Finance/capital stack; engines may need portfolio tags so buffers apply to right book</td>
+    </tr>
+    <tr>
+      <td><b>ESG / climate risk</b> (growing supervisory pressure)</td>
+      <td>Collateral energy labels, physical risk, transition scores entering credit processes</td>
+      <td>New lake attributes; LTV/collateral data; sometimes PD overlays or EWS signals; digitalization backlog</td>
+    </tr>
+    <tr>
+      <td><b>Crisis measures</b> (e.g. past COVID moratoria)</td>
+      <td>Temporary payment holidays without automatic default; later unwind</td>
+      <td>DoD exceptions, forbearance flags, PD monitoring breaks; high operational risk if not time-boxed</td>
+    </tr>
+  </table>
+
+  <h3>PO reality: how change arrives on your backlog</h3>
+  <ol>
+    <li><b>Policy / reg text</b> interpreted by Credit Risk (and sometimes Finance / Accounting).</li>
+    <li><b>Gap analysis:</b> which flags, fields, engines, reports break.</li>
+    <li><b>Data first</b> if a new attribute is missing (Data Management / lake).</li>
+    <li><b>Rule engine</b> (DoD/EWS/LTV/DSTI) before model recalibration when definitions move.</li>
+    <li><b>PD/EAD/LGD</b> recalibration / redevelopment when default population or CCF rules change.</li>
+    <li><b>Dual run + evidence pack</b> for Audit / ECB / NBB.</li>
+  </ol>
+  <p class="box meta"><b>Interview one-liner:</b> “Most regulatory hits start as definition or scope changes. DoD and forbearance move rule engines and lake fields first; CRR3 floors and IRB landscape move PD/LGD/CCF; IFRS 9 moves staging and lifetime PD; NBB expectations move LTV/DSTI indicators. I sequence lake → rules → models → evidence, not the other way around.”</p>
+</div>
+
+
 <!-- PAGE: challenges + 90 days (was continuation of page 5) -->
 <div class="page page2-first">
   <h2>11. Challenges you should expect</h2>
