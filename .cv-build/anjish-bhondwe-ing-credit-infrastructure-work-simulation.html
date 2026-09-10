@@ -61,6 +61,7 @@
   <p class="box meta"><b>Inside your squad:</b> you (PO + Risk Data Journey Expert) · Credit Risk Data Engineers (BE + PL) · functional analysts / modeler partners · often a Scrum Master / Agile Coach shared. <b>Outside:</b> Credit Risk Tribe · Data Management · Business tribes · Finance · Audit · chapter leads. Full squad functions and the credit risk data journey landscape follow.</p>
   <h2>Contents (where to find things)</h2>
   <p class="box meta"><b>Formula sheet:</b> immediately after this page (section 16), and standalone file <b>anjish-bhondwe-ing-credit-risk-formula-sheet.pdf</b>. Memorise: <b>EL = PD × EAD × LGD</b> (multiply, not add).<br>
+  <b>Latest crib:</b> sections <b>10c-10g</b> (regulatory hits, CRR3 approaches, exposure classes/reporting, A-IRB datasets, acronyms).<br>
   Also in this pack: squad functions · data journey · tribes/chapters · tricky scenarios · interview Q&amp;A.</p>
 </div>
 
@@ -332,7 +333,7 @@
   <p class="small">IRB = Internal Ratings-Based · IFRS 9 = ECL accounting · CRR/CRD = EU capital law · AnaCredit = ECB loan-level reporting · Forbearance = concession to distressed client · Cure = return to performing · Record Bank residual = legacy codes in BE landscape · SICR = significant increase in credit risk (Stage 2 trigger).</p>
 
   <hr class="hr">
-  <p class="note">End of simulation. Sources: public JD REQ-10118811 · sibling Credit Risk Data Engineer · public Credit Risk Tribe lead ING Belgium. Formulas: Basel IRB ASRF / IFRS 9 textbook. Use with CV: anjish-bhondwe-cv-ing-po-risk-data-journey-expert.pdf</p>
+  <p class="note">End of formula detail block. Org map, scenarios, CRR3/approaches/reporting and A-IRB datasets continue in later sections.</p>
 </div>
 
 
@@ -834,6 +835,123 @@
   <p class="box meta"><b>Interview one-liner:</b> “Most regulatory hits start as definition or scope changes. DoD and forbearance move rule engines and lake fields first; CRR3 floors and IRB landscape move PD/LGD/CCF; IFRS 9 moves staging and lifetime PD; NBB expectations move LTV/DSTI indicators. I sequence lake → rules → models → evidence, not the other way around.”</p>
 </div>
 
+<!-- APPROACHES + CRR3 -->
+<div class="page page2-first">
+  <h2>10d. Credit risk approaches and what CRR3 changed</h2>
+  <p class="small"><b>CRR</b> = Capital Requirements Regulation (EU). <b>CRR3</b> = latest major update implementing Basel III final. <b>Credit-risk parts live from 1 January 2025.</b> Output floor phases toward 72.5%. Some market-risk pieces have later dates.</p>
+
+  <h3>How many approaches?</h3>
+  <p>Two families, or three if you split IRB:</p>
+  <table>
+    <tr><th>Approach</th><th>Full form / meaning</th><th>What the bank models</th></tr>
+    <tr><td><b>SA</b></td><td>Standardised Approach</td><td>Uses supervisory risk weights (by exposure type, rating, LTV bucket, etc.). No own PD/LGD for capital.</td></tr>
+    <tr><td><b>F-IRB</b></td><td>Foundation Internal Ratings-Based</td><td>Own <b>PD</b>; LGD and EAD/CCF mostly supervisory.</td></tr>
+    <tr><td><b>A-IRB</b></td><td>Advanced Internal Ratings-Based</td><td>Own <b>PD + LGD + EAD/CCF</b> (where permitted).</td></tr>
+  </table>
+  <p>Also hear: <b>slotting</b> for some specialised lending; securitisation has its own SEC-SA / SEC-IRBA / SEC-ERBA stack.</p>
+
+  <h3>Portfolio → approach after CRR3</h3>
+  <table>
+    <tr><th>Portfolio</th><th>After CRR3</th><th>Notes</th></tr>
+    <tr><td>Retail (mortgages, consumer, retail SME)</td><td><b>A-IRB still allowed</b> (if approved)</td><td>PD + LGD + EAD/CCF</td></tr>
+    <tr><td>Non-large corporates / Business Banking</td><td><b>A-IRB still allowed</b> (if approved)</td><td>Below large-corporate threshold</td></tr>
+    <tr><td>Large corporates (consolidated sales &gt; €500m)</td><td><b>A-IRB not allowed → F-IRB</b> (or SA)</td><td>Own PD mainly</td></tr>
+    <tr><td>Institutions / banks / financial sector entities</td><td><b>A-IRB not allowed → F-IRB</b> (or SA)</td><td>Own PD mainly</td></tr>
+    <tr><td>Equity</td><td><b>IRB removed → SA</b></td><td>Transition arrangements into late 2020s</td></tr>
+    <tr><td>No IRB permission / residual</td><td><b>SA</b></td><td>Supervisory weights</td></tr>
+  </table>
+
+  <h3>ING (public Pillar 3 picture)</h3>
+  <p>ING runs a <b>mix</b>: <b>A-IRB + F-IRB + SA</b> (plus some slotting). After CRR3, <b>F-IRB grew a lot</b> as large-corporate/institution books left A-IRB. Recent Group credit RWA order of magnitude: A-IRB and F-IRB both large (~€90bn+ each), SA smaller but material (~€45bn).</p>
+
+  <h3>Link to this JD</h3>
+  <p class="box meta">JD talks about <b>PD + LGD + EAD/CCF</b> plus DoD/EWS/LTV/DSTI on <b>retail and business banking</b> (not IB). That matches <b>A-IRB-eligible Retail / Business Banking</b> books, not CRR3-restricted large-corporate/institution A-IRB. Interview line: “This role sits where Advanced IRB parameters are still owned: retail and business-banking engines.”</p>
+</div>
+
+<!-- EXPOSURE CLASSES + REPORTING -->
+<div class="page page2-first">
+  <h2>10e. Exposure classes and mandatory reporting</h2>
+  <p class="small">CRR uses two taxonomies: <b>SA Art. 112</b> (~15+ classes) and <b>IRB Art. 147</b> (~8-12 top classes with subclasses). Wrong class → wrong approach/RWA row.</p>
+
+  <h3>IRB exposure classes (Art. 147) - interview list</h3>
+  <ol>
+    <li>Central governments &amp; central banks</li>
+    <li>Regional governments / local authorities</li>
+    <li>Public sector entities</li>
+    <li>Institutions</li>
+    <li>Corporates (general / specialised lending / purchased receivables)</li>
+    <li>Retail (secured by residential RE / qualifying revolving / other; SME splits in reporting)</li>
+    <li>Equity (mostly SA under CRR3)</li>
+    <li>CIUs</li>
+    <li>Other non-credit-obligation assets</li>
+  </ol>
+  <p>For this role, day-to-day focus: <b>Retail</b> and <b>Corporate / Business Banking</b> assignment.</p>
+
+  <h3>Reports that consume this credit data</h3>
+  <table>
+    <tr><th>Report</th><th>What it is</th><th>Typical cadence</th><th>Engine/data link</th></tr>
+    <tr><td><b>COREP</b></td><td>Prudential capital / RWA / own funds</td><td>Quarterly</td><td>Exposure class, SA/F-IRB/A-IRB, PD/LGD/EAD, defaults, RWA</td></tr>
+    <tr><td><b>FINREP</b></td><td>Supervisory financials (IFRS view)</td><td>Quarterly</td><td>Stages, ECL/LLP, NPE/forbearance</td></tr>
+    <tr><td><b>AnaCredit</b></td><td>Loan-level credit to NCB/ECB</td><td>Monthly</td><td>Instrument, counterparty, protection; PD/LGD/default flags</td></tr>
+    <tr><td><b>Pillar 3</b></td><td>Public disclosure</td><td>Q / H / Y by template</td><td>CR templates by approach &amp; class; output floor</td></tr>
+    <tr><td><b>Large exposures</b></td><td>Concentration limits</td><td>Prudential cycle</td><td>Counterparty aggregation</td></tr>
+    <tr><td><b>Supervisory benchmarking</b></td><td>EBA/ECB model samples</td><td>Periodic</td><td>IRB parameter extracts</td></tr>
+    <tr><td><b>STE / ad-hoc ECB</b></td><td>Short-term exercises</td><td>As asked</td><td>Portfolio cuts, risk metrics</td></tr>
+    <tr><td><b>Local BE / NBB</b></td><td>National mortgage expectations etc.</td><td>As required</td><td>LTV, DSTI, DTI indicators</td></tr>
+  </table>
+  <p class="box meta"><b>PO point:</b> Credit Infrastructure does not “file COREP,” but DoD/PD/EAD/LGD and class codes must stay consistent across COREP, FINREP and AnaCredit or supervisors see breaks.</p>
+</div>
+
+<!-- A-IRB DATASETS -->
+<div class="page page2-first">
+  <h2>10f. Datasets mandated under A-IRB (for credit engines)</h2>
+  <p class="small">A-IRB needs long, auditable history to estimate and apply PD, LGD and EAD/CCF. Not one legal CSV list, but CRR/EBA/ECB expect these data families.</p>
+
+  <table>
+    <tr><th>Dataset</th><th>Why required</th><th>Typical contents</th></tr>
+    <tr><td><b>PD / rating history</b></td><td>Estimate &amp; backtest PD</td><td>Obligor/facility, grade/score, PD, segment, date, default Y/N</td></tr>
+    <tr><td><b>Default / DoD history</b></td><td>Art. 178 definition drives all models</td><td>Default flag/date, trigger (90 DPD/UTP/forbearance), cure/probation</td></tr>
+    <tr><td><b>LGD / recovery (workout)</b></td><td>Own LGD</td><td>EAD at default, collateral, recoveries, costs, timing, discounted LGD</td></tr>
+    <tr><td><b>EAD / CCF history</b></td><td>Own conversion factors</td><td>Limit, drawn, undrawn, balance at default, product, horizon path</td></tr>
+    <tr><td><b>Exposure / facility master</b></td><td>Class &amp; rating unit</td><td>Product, exposure class, on/off-balance, maturity, currency</td></tr>
+    <tr><td><b>Collateral / protection</b></td><td>LGD &amp; CRM</td><td>Type, value, valuation date, haircut, lien, coverage</td></tr>
+    <tr><td><b>Obligor / customer ref</b></td><td>Consistent entity</td><td>Customer/group ID, SME flag, industry, country</td></tr>
+    <tr><td><b>Arrears / DPD series</b></td><td>DoD &amp; EWS</td><td>Days past due over time</td></tr>
+    <tr><td><b>Forbearance events</b></td><td>Default &amp; NPE logic</td><td>Concession type, dates, NPV impact</td></tr>
+    <tr><td><b>Model data mart</b></td><td>JD: model build/monitor</td><td>Joined clean history for modelers/validation</td></tr>
+  </table>
+
+  <h3>Engine → dataset map (this JD)</h3>
+  <ul>
+    <li><b>DoD:</b> DPD, UTP, forbearance, materiality</li>
+    <li><b>PD:</b> rating history + default outcomes</li>
+    <li><b>EAD/CCF:</b> limits, drawn/undrawn, drawdown-to-default</li>
+    <li><b>LGD:</b> defaults + collateral + recovery cashflows</li>
+    <li><b>EWS / LTV / DSTI:</b> behaviour, collateral value, income/debt service</li>
+  </ul>
+  <p class="box meta"><b>Interview one-liner:</b> “A-IRB mandated spine is stable DoD history, PD rating history, LGD workout recoveries, and EAD/CCF utilisation paths on a governed facility/obligor/collateral master, plus a model mart for estimation and monitoring.”</p>
+</div>
+
+<!-- ACRONYM CRIB -->
+<div class="page page2-first">
+  <h2>10g. Acronym crib (latest discussion)</h2>
+  <table>
+    <tr><th>Acronym</th><th>Full form</th></tr>
+    <tr><td>CRR / CRD / CRR3</td><td>Capital Requirements Regulation / Directive / third major CRR update</td></tr>
+    <tr><td>SA / F-IRB / A-IRB</td><td>Standardised / Foundation IRB / Advanced IRB</td></tr>
+    <tr><td>PD / EAD / LGD / EL / CCF</td><td>Probability of Default / Exposure at Default / Loss Given Default / Expected Loss / Credit Conversion Factor</td></tr>
+    <tr><td>DoD / DPD / UTP / EWS</td><td>Definition of Default / Days Past Due / Unlikely To Pay / Early Warning Signal(s)</td></tr>
+    <tr><td>LTV / DSTI / DTI / DTAI</td><td>Loan to Value / Debt Service to Income / Debt to Income / Debt-to-Assets or Debt-to-Available-Income (confirm ING label)</td></tr>
+    <tr><td>RWA / CET1 / CCyB</td><td>Risk-Weighted Assets / Common Equity Tier 1 / Countercyclical Capital Buffer</td></tr>
+    <tr><td>IFRS 9 / ECL / SICR / LLP</td><td>Int’l Financial Reporting Standard 9 / Expected Credit Loss / Significant Increase in Credit Risk / Loan Loss Provisions</td></tr>
+    <tr><td>NPL / NPE</td><td>Non-Performing Loan / Exposure</td></tr>
+    <tr><td>EBA / ECB / NBB / SSM / TRIM</td><td>European Banking Authority / European Central Bank / National Bank of Belgium / Single Supervisory Mechanism / Targeted Review of Internal Models</td></tr>
+    <tr><td>COREP / FINREP / AnaCredit</td><td>Common Reporting / Financial Reporting / Analytical Credit Datasets</td></tr>
+    <tr><td>IRM / PO / CJE</td><td>Integrated Risk Management / Product Owner / Customer Journey Expert</td></tr>
+  </table>
+  <p class="box meta"><b>Must-know chain:</b> CRR3 live <b>1 Jan 2025</b> → approaches SA / F-IRB / A-IRB → ING uses all three → JD PD+LGD+EAD implies <b>A-IRB Retail/Business Banking</b> → data spine DoD + PD + LGD workout + EAD/CCF + mart → reports COREP / FINREP / AnaCredit / Pillar 3 / NBB.</p>
+</div>
+
 
 <!-- PAGE: challenges + 90 days (was continuation of page 5) -->
 <div class="page page2-first">
@@ -1016,9 +1134,32 @@
     <p class="q">Q35. Closing interview line when diagnosis is unclear?</p>
     <p class="a">A. “I do not open an engine change until lineage shows where the number actually breaks: data, policy, engine, or report.”</p>
   </div>
+  <div class="qa">
+    <p class="q">Q36. What is CRR / CRR3 and when did CRR3 credit risk go live?</p>
+    <p class="a">A. CRR is the EU Capital Requirements Regulation. CRR3 is the Basel III final update. Credit-risk parts apply from 1 January 2025, with output-floor phasing afterward.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q37. SA vs F-IRB vs A-IRB in one sentence each?</p>
+    <p class="a">A. SA uses supervisory risk weights. F-IRB: own PD, supervisory LGD/EAD. A-IRB: own PD, LGD and EAD/CCF where still allowed.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q38. After CRR3, which books stay A-IRB?</p>
+    <p class="a">A. Retail and non-large corporate / Business Banking can stay A-IRB if approved. Large corporates over €500m sales and institutions move off A-IRB to F-IRB (or SA). Equity goes to SA.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q39. Why does this JD imply Retail / Business Banking A-IRB?</p>
+    <p class="a">A. It owns PD + LGD + EAD/CCF plus DoD/EWS/LTV/DSTI on retail and business banking, not IB. That is A-IRB parameter ownership on CRR3-eligible books.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q40. Name the main reports that use this engine data.</p>
+    <p class="a">A. COREP (capital/RWA), FINREP (IFRS/ECL/NPE), AnaCredit (loan-level monthly), Pillar 3 disclosures, plus NBB mortgage indicator reporting and ad-hoc ECB exercises. Same DoD/parameters must stay consistent across them.</p>
+  </div>
 
   <h2>15. One-minute pitch (HM open)</h2>
   <p>Credit Infrastructure sits in Risk Platforms under Integrated Risk Management and runs the engines that turn credit risk data into parameters for capital, RWA and LLP. Around it sit the Credit Risk Tribe as demand, Data Management as the lake and quality partner, Business tribes as consumers of indicators and tooling, and Audit on evidence. My role is to lead the squad as Product Owner and to master the credit risk data journey across those tribes: PD, EAD, LGD and related engines, Data Lake regulatory work, flows and tooling, and digitalization. That is the work I have done on calculation engines at KBC and in credit risk data at HSBC and Credit Suisse. I am ready to do it hands-on at ING Belgium.</p>
+
+  <hr class="hr">
+  <p class="note">End of simulation. Includes tribes/chapters, journey, tricky scenarios, formula sheet, regulatory engine hits (10c), CRR3 approaches and ING mix (10d), exposure classes/reporting (10e), A-IRB datasets (10f), acronym crib (10g), Q&amp;A through Q40. Sources: public JD · sibling CR Data Engineer · public Pillar 3 / CRR3. Use with CV and standalone formula-sheet PDF.</p>
 </div>
 
 </body>
