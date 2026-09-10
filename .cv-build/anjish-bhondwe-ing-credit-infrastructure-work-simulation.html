@@ -357,7 +357,138 @@
   <h3>Scenario G: Warsaw capacity vs Brussels tribal knowledge</h3>
   <p><b>Tribes:</b> Hubs delivery · local Credit Risk context.</p>
   <p><b>Your move:</b> write stories hubs can execute; pair on first lake+engine epic; keep glossary of Record/ING codes in the squad wiki.</p>
+</div>
 
+<!-- TRICKY SCENARIOS PAGE 1 -->
+<div class="page page2-first">
+  <h2>10b. Tricky scenarios: what we assume vs what is often true</h2>
+  <p class="small">PO craft: challenge the first diagnosis. Same symptom, different owner. Good for day-to-day triage and interview answers.</p>
+
+  <table>
+    <tr><th>#</th><th>What people assume</th><th>What is often actually true</th><th>PO move / check</th></tr>
+    <tr>
+      <td>1</td>
+      <td>“PD engine is wrong. Fix the model code.”</td>
+      <td>DoD / population changed: more defaults flagged, so PD looks “up.” Or input segment codes shifted after a lake reload.</td>
+      <td>Compare DoD counts, portfolio composition, and PD by segment before/after. Ask: input change or formula change?</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>“LGD model is broken.”</td>
+      <td>Facility-collateral join or haircut table failed. Engine ran “correctly” on bad cover.</td>
+      <td>Reconcile collateral coverage and join rates. Split: data defect vs LGD formula. Do not open a model change by default.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>“Data Lake story is Done. We can consume.”</td>
+      <td>Field landed, but wrong grain, nulls high, or no quality rule. Engine would bake garbage.</td>
+      <td>Acceptance = land + quality check + sample reconcile to source. Sequence: lake ready → then engine story.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>“This regulatory date is immovable.”</td>
+      <td>Sometimes it is an internal SteerCo target, not the supervisor hard date (or the reverse).</td>
+      <td>Ask Credit Risk: hard external vs internal. Put both dates on the epic. Escalate only the real hard one as P0.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>“EL went up, so capital is worse.”</td>
+      <td>EL = PD×EAD×LGD (provisions thinking). Capital/RWA follows IRB K (unexpected loss). They can move differently.</td>
+      <td>Separate LLP/ECL conversation from RWA/CET1. Show both numbers. Do not mix EL and RWA in one SteerCo sentence.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>“IFRS 9 Stage 3 = DoD default.”</td>
+      <td>Usually linked, but staging rules and DoD policy are not always 1:1 (timing, cure, product exceptions).</td>
+      <td>Ask Risk Accounting + Credit Risk for the mapping table. Never code “Stage3 := DoD” without written rule.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>“Forbearance means the client is in default.”</td>
+      <td>Some forbearance is performing; only specific cases trigger DoD.</td>
+      <td>Read DoD policy triggers with FA/Risk. Engine story must name which forbearance types flip the flag.</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>“EWS is too aggressive. Soften thresholds.”</td>
+      <td>Duplicate customers, bad arrears dates, or double-counted facilities inflate signals.</td>
+      <td>Check data quality and population first. Threshold change is a Credit Risk policy call, not a silent engine tweak.</td>
+    </tr>
+  </table>
+</div>
+
+<!-- TRICKY SCENARIOS PAGE 2 -->
+<div class="page page2-first">
+  <table>
+    <tr><th>#</th><th>What people assume</th><th>What is often actually true</th><th>PO move / check</th></tr>
+    <tr>
+      <td>9</td>
+      <td>“Record Bank fields are missing.”</td>
+      <td>Legacy codes remapped; values sit under ING keys. Looks null if you filter old product codes.</td>
+      <td>Use mapping table with Data Management. Prove with a known Sample IBAN/facility from Record era.</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>“EAD is wrong because CCF changed.”</td>
+      <td>Limit not refreshed, undrawn negative, or drawn &gt; limit after product migration.</td>
+      <td>Decompose EAD = Drawn + CCF×Undrawn. Fix inputs before debating CCF calibration.</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>“Engineer said Done. Ship it.”</td>
+      <td>Code merged, batch not reconciled. Capital path still wrong.</td>
+      <td>Done = behaviour + control check on agreed slice + dependency explicit. No reconcile, not Done.</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>“Business wants a dashboard from our squad.”</td>
+      <td>They need reporting owned by Credit Risk Reporting / another squad. Your JD is engines + thin tooling.</td>
+      <td>Clarify outcome. Offer indicator contract or thin flow. Hand full dashboard to the owning squad.</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>“Audit wants a new control.”</td>
+      <td>They often want evidence that an existing control ran (lineage, recon pack), not a new feature.</td>
+      <td>Ask: evidence gap or design gap? First deliver the pack; backlog a control only if design is missing.</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>“Modeler P0: ten mart columns this sprint.”</td>
+      <td>One column unblocks monitoring; nine are nice-to-have for a future model build.</td>
+      <td>Ask which column unblocks validation/monitoring this quarter. Take 1-2. Park the rest with dates.</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>“Skip the lake. Patch SAS/Oracle only. Faster.”</td>
+      <td>Creates dual-run debt; next regulatory change hits twice; digitalization stalls.</td>
+      <td>If emergency patch is mandatory, time-box it and backlog the lake path in the same epic. Make debt visible.</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>“RWA noise = engine bug.”</td>
+      <td>Finance report mapping, exposure class, or CRM filter differs from your engine output grain.</td>
+      <td>Reconcile engine output to report input file. Find the hop where numbers diverge before coding.</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>“PO owns the priority; chapter will decide deadline.”</td>
+      <td>Chapter owns craft. Tribe/domain + PO own delivery dates. Mixing them creates fake commitments.</td>
+      <td>Keep capital deadlines in squad/tribe forums. Bring patterns to chapter, not P0 dates.</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>“Warsaw slow = skill gap.”</td>
+      <td>Stories assume Brussels hallway knowledge (Record codes, who accepts, which recon).</td>
+      <td>Fix story quality and glossary first. Measure cycle time after that before judging capacity.</td>
+    </tr>
+  </table>
+
+  <h3>Interview pattern (use for any of the above)</h3>
+  <p class="box meta">1) Restate symptom. 2) List 2-3 rival explanations (data vs engine vs policy vs report). 3) Name the cheapest check that kills wrong theories. 4) Assign owner. 5) Only then prioritise a build story. Closing line: “I do not open an engine change until lineage shows where the number actually breaks.”</p>
+</div>
+
+<!-- PAGE: challenges + 90 days (was continuation of page 5) -->
+<div class="page page2-first">
   <h2>11. Challenges you should expect</h2>
   <ul>
     <li>Legacy Oracle/SAS batch plus Data Lake target architecture at the same time.</li>
@@ -504,6 +635,38 @@
   <div class="qa">
     <p class="q">Q27. How do Warsaw hubs change your PO style?</p>
     <p class="a">A. Stories must be executable without hallway context. Shared glossary, examples, and acceptance. Pair early on complex lineage. Respect ceremony times across locations.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q28. Risk says “PD is wrong.” What is your first move?</p>
+    <p class="a">A. I do not open a model change first. I check whether DoD counts, portfolio mix, or lake inputs changed. Rival theories: data vs population vs formula. Cheapest check wins before backlog.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q29. EL went up. Stakeholder says capital is worse. Your answer?</p>
+    <p class="a">A. EL = PD × EAD × LGD feeds provisions thinking. RWA/CET1 follows IRB K. They can move differently. I show both numbers and keep LLP and capital as separate conversations.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q30. Data Management marks the lake story Done. Do you start the engine?</p>
+    <p class="a">A. Only if Done includes quality and a sample reconcile to source, not just “field exists.” Wrong grain or high nulls will poison the engine. Sequence: lake ready, then consume.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q31. Is IFRS 9 Stage 3 the same as DoD?</p>
+    <p class="a">A. Often linked, not always identical. Timing, cure, and product exceptions exist. I use the written mapping from Risk Accounting and Credit Risk. I never hard-code Stage3 := DoD from assumption.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q32. Audit asks for a “new control.” What do you clarify?</p>
+    <p class="a">A. Evidence gap vs design gap. Many audits need the lineage/recon pack for a control that already exists. I deliver evidence first; I only backlog a new control if design is missing.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q33. Give an example where the engine was fine but LLP looked wrong.</p>
+    <p class="a">A. Facility-collateral join broke. LGD engine calculated correctly on incomplete cover. Fix was data/join, not LGD formula. That is why I reconcile joins before model changes.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q34. Business wants a dashboard this sprint. Do you take it?</p>
+    <p class="a">A. I clarify the outcome. If they need thin tooling on engine outputs in our scope, yes as a small slice. If it is portfolio reporting owned elsewhere, I connect them to that squad and keep our backlog on engines.</p>
+  </div>
+  <div class="qa">
+    <p class="q">Q35. Closing interview line when diagnosis is unclear?</p>
+    <p class="a">A. “I do not open an engine change until lineage shows where the number actually breaks: data, policy, engine, or report.”</p>
   </div>
 
   <h2>15. One-minute pitch (HM open)</h2>
