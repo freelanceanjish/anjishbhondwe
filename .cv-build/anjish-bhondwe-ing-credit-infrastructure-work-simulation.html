@@ -515,6 +515,17 @@
   <h2>16. Risk keyword glossary: definitions and full formulas</h2>
   <p class="small">Interview crib sheet with explicit calculations. Basel IRB / IFRS 9 textbook forms. Bank engines use policy-specific variants, floors, and caps. Confirm ING parameterisation on day one. <span class="tag">Not bank policy</span></p>
 
+  <p class="box meta" style="font-size:11pt;line-height:1.55;border:2px solid #222;padding:8px 10px;">
+    <b>MUST KNOW (multiply, do not add)</b><br><br>
+    <b style="font-size:13pt;">EL = PD × EAD × LGD</b><br>
+    <span class="small">Expected Loss = Probability of Default × Exposure at Default × Loss Given Default</span><br>
+    Also: <b>EL% = PD × LGD</b> (EL as a % of EAD)<br><br>
+    <b>EAD = Drawn + CCF × Undrawn</b> &nbsp;&nbsp;(Undrawn = Limit - Drawn)<br>
+    <b>LGD = 1 - Recovery Rate</b><br>
+    <b>RWA = 12.5 × K × EAD</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>CET1 ratio = CET1 / RWA</b><br><br>
+    <span class="small">Note: it is <b>PD</b> (Probability of Default), not “PL”. Components are <b>multiplied</b>, not added: EL ≠ PD + LGD + EAD.</span>
+  </p>
+
   <h3>A. Core parameters (what your engines produce)</h3>
   <table>
     <tr><th>Term</th><th>Definition</th><th>Full formula</th></tr>
@@ -548,10 +559,12 @@
       Secured intuition: higher effective collateral → lower LGD</td>
     </tr>
     <tr>
-      <td><b>EL</b></td>
-      <td>Expected loss (average). Capital targets unexpected loss above EL.</td>
-      <td><b>EL = PD × EAD × LGD</b> &nbsp;(amount)<br>
-      <b>EL% = PD × LGD</b> &nbsp;(as % of EAD)</td>
+      <td><b>EL</b><br>Expected Loss</td>
+      <td>Average credit loss over the horizon. Building block for LLP/ECL thinking. Capital covers unexpected loss above EL.</td>
+      <td style="font-size:10.5pt;"><b>EL = PD × EAD × LGD</b><br>
+      Example: 0.02 × 90,000 × 0.40 = <b>720</b><br>
+      <b>EL% = PD × LGD</b> = 0.02 × 0.40 = 0.80% of EAD<br>
+      Wrong form: EL ≠ PD + LGD + EAD</td>
     </tr>
     <tr>
       <td><b>UL</b></td>
