@@ -67,7 +67,7 @@
   <p class="small">Simulation of a typical Credit Infrastructure agile squad. Headcount and titles vary; functions are what interviewers expect you to orchestrate. <span class="tag">JD + sibling CR Data Engineer + Orange House sim</span></p>
 
   <table>
-    <tr><th>Person / seat</th><th>Core function in the squad</th><th>Typical week</th><th>Hands off to you when…</th></tr>
+    <tr><th>Person / seat</th><th>Core function in the squad</th><th>Typical week</th><th>Hands off to you when...</th></tr>
     <tr>
       <td><b>You: Product Owner (50%)</b></td>
       <td>Own and prioritise the product backlog; turn Credit Risk / regulatory priorities into delivery plans; protect capacity; escalate cross-tribe blockers; accept or reject done work against criteria</td>
@@ -510,21 +510,68 @@
   <p>Credit Infrastructure sits in Risk Platforms under Integrated Risk Management and runs the engines that turn credit risk data into parameters for capital, RWA and LLP. Around it sit the Credit Risk Tribe as demand, Data Management as the lake and quality partner, Business tribes as consumers of indicators and tooling, and Audit on evidence. My role is to lead the squad as Product Owner and to master the credit risk data journey across those tribes: PD, EAD, LGD and related engines, Data Lake regulatory work, flows and tooling, and digitalization. That is the work I have done on calculation engines at KBC and in credit risk data at HSBC and Credit Suisse. I am ready to do it hands-on at ING Belgium.</p>
 </div>
 
-<!-- GLOSSARY PAGE 1: CORE + WORKED -->
+<!-- FORMULA SHEET PAGE (all key equations, large and visible) -->
 <div class="page page2-first">
-  <h2>16. Risk keyword glossary: definitions and full formulas</h2>
-  <p class="small">Interview crib sheet with explicit calculations. Basel IRB / IFRS 9 textbook forms. Bank engines use policy-specific variants, floors, and caps. Confirm ING parameterisation on day one. <span class="tag">Not bank policy</span></p>
+  <h2>16. Formula sheet (all key equations)</h2>
+  <p class="small">One-page crib. Multiply where shown. PD = Probability of Default (not “PL”). Detail and worked numbers follow on the next pages.</p>
 
-  <p class="box meta" style="font-size:11pt;line-height:1.55;border:2px solid #222;padding:8px 10px;">
-    <b>MUST KNOW (multiply, do not add)</b><br><br>
-    <b style="font-size:13pt;">EL = PD × EAD × LGD</b><br>
-    <span class="small">Expected Loss = Probability of Default × Exposure at Default × Loss Given Default</span><br>
-    Also: <b>EL% = PD × LGD</b> (EL as a % of EAD)<br><br>
-    <b>EAD = Drawn + CCF × Undrawn</b> &nbsp;&nbsp;(Undrawn = Limit - Drawn)<br>
-    <b>LGD = 1 - Recovery Rate</b><br>
-    <b>RWA = 12.5 × K × EAD</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>CET1 ratio = CET1 / RWA</b><br><br>
-    <span class="small">Note: it is <b>PD</b> (Probability of Default), not “PL”. Components are <b>multiplied</b>, not added: EL ≠ PD + LGD + EAD.</span>
+  <h3>Loss building blocks</h3>
+  <p class="box meta" style="font-size:11pt;line-height:1.6;border:2px solid #222;">
+    <b>EL = PD × EAD × LGD</b><br>
+    <b>EL% = PD × LGD</b><br>
+    <b>EAD = Drawn + CCF × Undrawn</b> &nbsp;&nbsp;with&nbsp; <b>Undrawn = Limit - Drawn</b><br>
+    <b>LGD = 1 - RR</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>RR = NPV(Recoveries - Costs) / EAD</b><br>
+    <b>CCF = (Bal_default - Bal_ref) / Undrawn_ref</b> &nbsp;(0 to 1, capped)<br>
+    <b>PD = 1 / (1 + e<sup>-z</sup>)</b> &nbsp;(logit score example; z = β0 + β·x)<br>
+    <b>PD_port = Σ (PD_i × EAD_i) / Σ EAD_i</b>
   </p>
+
+  <h3>Capital / RWA (IRB)</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.55;border:2px solid #222;">
+    <b>R = 0.12 × (1 - e<sup>-50×PD</sup>)/(1 - e<sup>-50</sup>) + 0.24 × [1 - (1 - e<sup>-50×PD</sup>)/(1 - e<sup>-50</sup>)]</b><br>
+    <b>b = (0.11852 - 0.05478 × ln(PD))²</b><br>
+    <b>K = [LGD × N( G(PD)/√(1-R) + √(R/(1-R)) × G(0.999) ) - PD × LGD] × (1+(M-2.5)b)/(1-1.5b)</b><br>
+    <b>RWA = 12.5 × K × EAD</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>Capital ≈ K × EAD</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>CET1 ratio = CET1 / RWA</b><br>
+    Standardised: <b>RWA = RiskWeight × Exposure</b><br>
+    Retail mortgage (common): <b>R = 0.15</b> (fixed)
+  </p>
+
+  <h3>IFRS 9 ECL / LLP</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.55;border:2px solid #222;">
+    Stage 1: <b>ECL_12m ≈ PD_12m × LGD × EAD × DF</b><br>
+    Stage 2/3: <b>ECL_LT = Σ_t [ PD_marg,t × LGD_t × EAD_t / (1+r)<sup>t</sup> ]</b><br>
+    <b>PD_marg,t = Survival_{t-1} × PD_cond,t</b> &nbsp;&nbsp;·&nbsp;&nbsp; <b>Survival_t = Π_{s≤t} (1 - PD_cond,s)</b><br>
+    Scenarios: <b>ECL = Σ_s w_s × ECL_s</b> &nbsp;(Σ w_s = 1)<br>
+    <b>LLP charge ≈ ECL_end - ECL_start + write-offs - recoveries</b>
+  </p>
+
+  <h3>Rule engines and lending ratios</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.55;border:2px solid #222;">
+    <b>DoD = 1</b> if (DPD ≥ 90) OR UTP OR specific forbearance (else 0)<br>
+    <b>DPD = ReportDate - OldestUnpaidDueDate</b><br>
+    <b>EWS_score = Σ w_i × signal_i</b> &nbsp;; flag if score ≥ threshold<br>
+    <b>LTV = Loan (or EAD) / Collateral_value</b><br>
+    <b>DSTI = Debt_service / Income</b> &nbsp;(same period)<br>
+    <b>DTAI = Total_debt / Total_assets</b> &nbsp;OR&nbsp; <b>Debt_service / Available_income</b> (confirm ING)<br>
+    <b>Utilisation = Drawn / Limit</b><br>
+    <b>Collateral coverage = Collateral_value × (1 - Haircut) / EAD</b><br>
+    <b>NPL ratio = NPL_gross / Total_loans_gross</b><br>
+    <b>Provision coverage = LLP_stock / NPL_gross</b>
+  </p>
+
+  <h3>Numeric chain (same example everywhere)</h3>
+  <p class="box meta" style="font-size:10.5pt;line-height:1.5;border:2px solid #222;">
+    Limit 100k, Drawn 80k, CCF 50% → <b>EAD = 90k</b><br>
+    PD 2%, LGD 40% → <b>EL = 0.02 × 90k × 0.40 = 720</b><br>
+    LTV on 90k / 120k property = <b>75%</b> · DSTI 1,200 / 4,000 = <b>30%</b><br>
+    IRB (M=2.5): R≈0.164 · K≈8.17% → <b>RWA ≈ 91.9k</b> · capital ≈ <b>7.35k</b>
+  </p>
+</div>
+
+<!-- GLOSSARY DETAIL PAGE 1: CORE + WORKED -->
+<div class="page page2-first">
+  <h2>16a. Formula detail: core parameters</h2>
+  <p class="small">Same equations as the formula sheet, with definitions. <span class="tag">Not bank policy</span></p>
 
   <h3>A. Core parameters (what your engines produce)</h3>
   <table>
