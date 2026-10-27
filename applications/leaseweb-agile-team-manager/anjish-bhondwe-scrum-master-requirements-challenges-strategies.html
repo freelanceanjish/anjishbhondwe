@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scrum Master Requirements Challenges and Agile Strategies</title>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  @page{size:A4;margin:0;}
+  body{font-family:Georgia,"Times New Roman",serif;color:#1c1c1c;font-size:9.6pt;line-height:1.34;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .page{width:210mm;min-height:297mm;height:297mm;padding:11mm 13mm 16mm;background:#fff;overflow:hidden;position:relative;}
+  .page + .page{page-break-before:always;}
+  h1{margin:0;font-size:14.5pt;font-weight:700;}
+  .sub{margin:3px 0 0;font-size:9pt;font-style:italic;color:#444;}
+  .meta{margin:5px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:8pt;color:#555;}
+  .hr{border:0;border-top:1px solid #222;margin:7px 0 7px;}
+  h2{font-size:10.5pt;font-weight:700;margin:7px 0 4px;padding:0 0 2px;border-bottom:1px solid #ccc;}
+  h3{font-size:9.5pt;font-weight:700;margin:6px 0 2px;}
+  p{margin:0 0 4px;}
+  ul,ol{margin:0 0 4px;padding-left:15px;}
+  li{margin:0 0 2px;font-size:8.9pt;line-height:1.28;}
+  .box{border:1px solid #ccc;padding:5px 7px;margin:5px 0;background:#fafafa;}
+  .tag{font-family:Arial,Helvetica,sans-serif;font-size:7.5pt;color:#666;text-transform:uppercase;letter-spacing:.3px;}
+  .footer{position:absolute;bottom:7mm;left:13mm;right:13mm;font-family:Arial,Helvetica,sans-serif;font-size:7.5pt;color:#666;display:flex;justify-content:space-between;border-top:0.6px solid #ccc;padding-top:3px;}
+  table{width:100%;border-collapse:collapse;font-size:8.2pt;margin:3px 0 6px;}
+  th,td{border:1px solid #ccc;padding:3px 4px;vertical-align:top;text-align:left;}
+  th{background:#f3f3f3;font-family:Arial,Helvetica,sans-serif;font-size:7.6pt;}
+  .req{font-weight:700;}
+  .val{font-family:Arial,Helvetica,sans-serif;font-size:7.4pt;color:#444;}
+  .chip{display:inline-block;border:1px solid #bbb;padding:0 4px;margin:0 2px 2px 0;border-radius:2px;font-family:Arial,Helvetica,sans-serif;font-size:7.2pt;background:#f7f7f7;}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <h1>Scrum Master JD · Challenges &amp; Agile Strategies</h1>
+  <div class="sub">Every requirement mapped to real-time challenges and value-based ways of working</div>
+  <div class="meta">Anjish Bhondwe · Foundational Agile values (Manifesto) + Scrum values · Interview / day-1 reference</div>
+  <hr class="hr">
+
+  <h2>0. Foundational values (use these as your compass)</h2>
+  <div class="box">
+    <p><strong>Agile Manifesto:</strong> Individuals and interactions over processes and tools · Working software over comprehensive documentation · Customer collaboration over contract negotiation · Responding to change over following a plan</p>
+    <p style="margin:4px 0 0;"><strong>Scrum values:</strong> <span class="chip">Commitment</span><span class="chip">Focus</span><span class="chip">Openness</span><span class="chip">Respect</span><span class="chip">Courage</span></p>
+    <p style="margin:4px 0 0;">For every challenge below, the strategy should make one or more of these values visible in behaviour, not only in slides.</p>
+  </div>
+
+  <h2>A. Key responsibilities</h2>
+
+  <h3>1. Facilitate Scrum ceremonies (Daily, Planning, Review, Retro)</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Stand-up becomes a status report to the SM or manager</li>
+          <li>Planning turns into estimation theatre; backlog not ready</li>
+          <li>Review is a demo of unfinished work or no stakeholder feedback</li>
+          <li>Retro is blame, silence, or actions that never get done</li>
+          <li>Meetings run long; people multitask; offshore join late or drop</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Stand-up: team speaks to each other on progress toward the Sprint Goal; SM listens for impediments</li>
+          <li>Planning: protect Sprint Goal first, then capacity-based selection; timebox refinement upstream so Planning is decision, not discovery</li>
+          <li>Review: invite real users/stakeholders; capture feedback as backlog input the same day</li>
+          <li>Retro: one inspected problem, few concrete experiments, owner + check-in next Sprint</li>
+          <li>Rotate facilitators; keep agenda visible; agree remote etiquette (camera, mute, parking lot)</li>
+        </ul>
+      </td>
+      <td class="val">Focus · Openness · Respect · Commitment · Interactions over process</td>
+    </tr>
+  </table>
+
+  <h3>2. Ensure proper adoption and application of Agile / Scrum</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>“Scrumfall”: Sprint labels on a waterfall plan</li>
+          <li>Skipping Definition of Done, Sprint Goal, or Product Goal</li>
+          <li>Managers still assign tasks person by person</li>
+          <li>Tool compliance mistaken for agility</li>
+          <li>Multiple frameworks mixed without agreement</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Teach the “why” of each event/accountable role with short working agreements, not big training dumps</li>
+          <li>Make Sprint Goal and Definition of Done visible; inspect them every Review/Retro</li>
+          <li>Coach managers to ask for outcomes and impediments, not task lists</li>
+          <li>Use Jira to support transparency; do not let ticket hygiene replace conversation</li>
+          <li>Start with Scrum done well; add Kanban practices only where flow needs them (WIP limits, cycle time)</li>
+        </ul>
+      </td>
+      <td class="val">Courage · Openness · Commitment · Responding to change · Working software</td>
+    </tr>
+  </table>
+
+  <h3>3. Support Product Owners with backlog management</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>PO is overloaded, absent, or proxy-only</li>
+          <li>Backlog is a dumping ground; no order, no sizing, vague stories</li>
+          <li>Stakeholders bypass PO and push work into the Sprint</li>
+          <li>Tech debt and quality never get ordered against features</li>
+          <li>Offshore team unclear on “ready” and acceptance</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Protect PO time for refinement cadence; SM facilitates readiness, PO owns order and value</li>
+          <li>Agree a light Definition of Ready; split large items; clarify acceptance criteria before Planning</li>
+          <li>Route mid-Sprint requests through PO; make trade-offs explicit against Sprint Goal</li>
+          <li>Keep a visible quality/debt slice in the Product Goal conversation</li>
+          <li>Joint refinement with local + offshore; record decisions in the item, not only in chat</li>
+        </ul>
+      </td>
+      <td class="val">Respect · Focus · Customer collaboration · Commitment · Openness</td>
+    </tr>
+  </table>
+
+  <div class="footer"><span>Scrum Master JD · Challenges &amp; strategies · Anjish Bhondwe</span><span>Page 1</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <h3>4. Monitor team capacity, velocity, and sprint progress</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Velocity used as a performance KPI or to compare teams</li>
+          <li>Capacity ignored (holidays, support load, onboarding)</li>
+          <li>Burndown gamed; work hidden outside the board</li>
+          <li>Scope added silently mid-Sprint</li>
+          <li>Metrics discussed only with management, not the team</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Treat velocity as a forecasting aid for the same team over time, never as a target or ranking tool</li>
+          <li>Plan with real capacity (focus factor, support%, leave); revisit in Planning</li>
+          <li>Keep one board of truth; daily inspect Sprint Goal progress, not only story points left</li>
+          <li>Any scope change needs PO + team trade-off; update Sprint Goal if needed</li>
+          <li>Share charts in Review/Retro with the team first; ask “what does this tell us?”</li>
+        </ul>
+      </td>
+      <td class="val">Openness · Focus · Respect · Commitment · Individuals &amp; interactions</td>
+    </tr>
+  </table>
+
+  <h3>5. Remove impediments and protect teams from distractions</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>SM becomes a ticket dispatcher instead of an impediment remover</li>
+          <li>Escalations stuck in politics; no owner</li>
+          <li>“Quick asks” from leadership break focus every day</li>
+          <li>Environment, access, environments, licenses block delivery for days</li>
+          <li>Team learns learned helplessness: waits for SM to solve everything</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Visible impediment board: owner, age, next action; escalate by impact on Sprint Goal</li>
+          <li>Coach the team to try first (within agreement), then escalate together</li>
+          <li>Create a focus agreement with stakeholders: intake path, quiet hours, who can interrupt</li>
+          <li>Partner with platform/ops early; track mean time to unblock as a health signal</li>
+          <li>Protect Sprint Goal publicly; say no or “not now” with a clear trade-off, not silence</li>
+        </ul>
+      </td>
+      <td class="val">Courage · Focus · Servant leadership · Respect · Commitment</td>
+    </tr>
+  </table>
+
+  <h3>6. Coach teams, stakeholders, and business partners on Agile practices</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Stakeholders want certainty dates without backlog clarity</li>
+          <li>Business partners treat Sprints as mini-waterfalls with fixed scope + date</li>
+          <li>Team resists coaching (“we already know Scrum”)</li>
+          <li>Offshore and local have different maturity and habits</li>
+          <li>Coaching seen as process police</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Coach with outcomes: forecasts as ranges, assumptions visible, Inspect &amp; Adapt checkpoints</li>
+          <li>Run short stakeholder workshops: roles, Sprint Goal, Review purpose, how to give useful feedback</li>
+          <li>Use observation + questions before advice; teach in the moment during events</li>
+          <li>Align one working agreement across sites; pair facilitators; share retro themes across locations</li>
+          <li>Frame coaching as enabling delivery and reducing waste, not enforcing ceremony for its own sake</li>
+        </ul>
+      </td>
+      <td class="val">Respect · Openness · Courage · Customer collaboration · Individuals &amp; interactions</td>
+    </tr>
+  </table>
+
+  <h3>7. Promote continuous improvement and agile culture</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Retro actions die; same problems return</li>
+          <li>Fear of failure; no psychological safety</li>
+          <li>Improvement work never gets capacity</li>
+          <li>Culture is posters and slogans only</li>
+          <li>Local improvements never scale across teams</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Limit WIP on improvements; put 1–2 experiments in the Sprint backlog with acceptance checks</li>
+          <li>Model blameless language; celebrate learning from failed experiments</li>
+          <li>Reserve a small, explicit improvement capacity each Sprint</li>
+          <li>Make culture visible in behaviours: how we handle conflict, feedback, and unfinished work</li>
+          <li>Share patterns in communities of practice; invite other teams to Reviews when useful</li>
+        </ul>
+      </td>
+      <td class="val">Openness · Courage · Commitment · Respect · Responding to change</td>
+    </tr>
+  </table>
+
+  <div class="footer"><span>Scrum Master JD · Challenges &amp; strategies · Anjish Bhondwe</span><span>Page 2</span></div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h3>8. Support risk and issue management</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Risks live in a separate PMO register nobody looks at</li>
+          <li>Issues raised late; Sprint Goal already at risk</li>
+          <li>Delivery risk confused with people blame</li>
+          <li>Dependencies on other teams discovered mid-Sprint</li>
+          <li>Offshore timezone delays issue response</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Keep risks/impediments next to the backlog and Sprint board; review in Daily and Planning</li>
+          <li>Early warning signals: aging WIP, blocked items, rising cycle time, unfinished Goal</li>
+          <li>Separate “what failed” from “who failed”; inspect system causes in Retro</li>
+          <li>Map dependencies in refinement; negotiate handoffs before Planning commits</li>
+          <li>Agree follow-the-sun escalation contacts and response SLAs between sites</li>
+        </ul>
+      </td>
+      <td class="val">Openness · Courage · Focus · Commitment · Transparency</td>
+    </tr>
+  </table>
+
+  <h2>B. Required experience &amp; skills</h2>
+
+  <h3>9. Minimum 3 years relevant Scrum Master experience</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Years counted, but depth is thin (ceremony-only SM)</li>
+          <li>Interview / role expects multi-team or org coaching beyond your past scope</li>
+          <li>Context switch into a new domain (banking, logistics, AI) with little runway</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Show evidence of outcomes: flow, predictability, quality, engagement, not only “ran Scrums”</li>
+          <li>Be honest about scale; propose a 30–60–90 day listen-and-stabilize plan before big redesign</li>
+          <li>Learn domain language fast via PO pairing and stakeholder map; stay humble on content, strong on process</li>
+        </ul>
+      </td>
+      <td class="val">Openness · Respect · Courage · Commitment</td>
+    </tr>
+  </table>
+
+  <h3>10. Strong knowledge of Agile methodologies (Scrum, Kanban)</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Team wants Scrum events but Kanban flow problems (queues, multitasking)</li>
+          <li>Push to “do SAFe / Spotify” without team readiness</li>
+          <li>Rigid purity debates (“that’s not Scrum”) blocking useful change</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Use Scrum for complex product work; add Kanban for flow: WIP limits, classes of service, explicit policies</li>
+          <li>Fit framework to problem size; start with team-level empiricism before scaling theatre</li>
+          <li>Judge practices by Inspect &amp; Adapt results, not textbook purity</li>
+        </ul>
+      </td>
+      <td class="val">Focus · Responding to change · Working software · Openness</td>
+    </tr>
+  </table>
+
+  <h3>11. Experience with JIRA or similar Agile tools</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Over-configured workflows; team works around the tool</li>
+          <li>Dashboards for leadership diverge from team reality</li>
+          <li>Ticket spam; no conversation; offshore updates board only</li>
+          <li>Permissions and scheme chaos across projects</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Keep workflow simple (To Do / Doing / Done + blocked); match Definition of Done in status meaning</li>
+          <li>One source of truth; same board used in Daily and Review</li>
+          <li>Tool supports transparency; decisions still happen in conversation</li>
+          <li>Partner with Jira admin; minimize custom fields; document a thin team convention</li>
+        </ul>
+      </td>
+      <td class="val">Individuals &amp; interactions over tools · Openness · Focus</td>
+    </tr>
+  </table>
+
+  <h3>12. Understanding of software development methodologies</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>SM cannot spot when “done” is risky (no review, no test, big-bang merge)</li>
+          <li>Devs dismiss SM as non-technical</li>
+          <li>Waterfall habits inside the Sprint (code all Sprint, test last day)</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Learn enough of the delivery path to ask sharp questions without owning design</li>
+          <li>Earn respect by removing tech impediments and protecting quality time</li>
+          <li>Encourage thin vertical slices each Sprint; “done” means potentially releasable per Definition of Done</li>
+        </ul>
+      </td>
+      <td class="val">Working software · Respect · Focus · Courage</td>
+    </tr>
+  </table>
+
+  <div class="footer"><span>Scrum Master JD · Challenges &amp; strategies · Anjish Bhondwe</span><span>Page 3</span></div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <h3>13. Understanding of automated testing and CI/CD practices</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Manual testing bottleneck at Sprint end</li>
+          <li>Broken pipeline treated as “someone else’s problem”</li>
+          <li>Fear of release; rare deployments</li>
+          <li>SM pressed to commit dates while build is red</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Make pipeline health a Sprint Goal risk; include test automation and fix-flaky-tests as backlog items</li>
+          <li>Definition of Done includes automated checks where the team agrees they are needed</li>
+          <li>Partner with tech leads on small, frequent integration; celebrate green builds and safe deploys</li>
+          <li>Never hide a red build to protect a date; make the trade-off visible (Courage + Openness)</li>
+        </ul>
+      </td>
+      <td class="val">Working software · Courage · Openness · Commitment · Focus</td>
+    </tr>
+  </table>
+
+  <h3>14. Understanding of project management methodologies</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>PMO expects Gantt certainty, RAG status, and fixed scope</li>
+          <li>SM pulled into classic PM role (task assignment, reporting hero)</li>
+          <li>Hybrid programs: some waterfall vendors, some Agile teams</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Translate: provide forecasts, risks, and outcome progress without fake precision</li>
+          <li>Stay in SM accountability: coach and facilitate; do not become the single point of delivery control</li>
+          <li>Agree integration points (milestones as learning points); keep team Sprint Goals intact inside the program</li>
+        </ul>
+      </td>
+      <td class="val">Responding to change · Customer collaboration · Courage · Respect</td>
+    </tr>
+  </table>
+
+  <h3>15. Excellent communication and stakeholder management</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Mixed messages to team vs leadership</li>
+          <li>Stakeholders only hear bad news late</li>
+          <li>Conflict avoided until it explodes</li>
+          <li>Language/cultural noise with offshore partners</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Same transparent story for all: Goal, progress, risks, asks</li>
+          <li>Cadence of Reviews + short written heartbeats; no surprise escalation</li>
+          <li>Facilitate conflict early with respect; separate interests from positions</li>
+          <li>Confirm understanding; prefer written decisions after verbal agreement across timezones</li>
+        </ul>
+      </td>
+      <td class="val">Openness · Respect · Courage · Individuals &amp; interactions</td>
+    </tr>
+  </table>
+
+  <h2>C. Soft skills</h2>
+
+  <h3>16. Servant leadership mindset</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Team expects the SM to decide and assign</li>
+          <li>Leadership equates servant leadership with “soft” or passive</li>
+          <li>SM over-serves and burns out; team never owns</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Serve the team’s effectiveness: remove blocks, grow ownership, hold the process lightly but firmly</li>
+          <li>Be firm on Sprint Goal and Definition of Done; gentle on ego and blame</li>
+          <li>Ask “how can I help you succeed?” then step back so the team still owns the work</li>
+        </ul>
+      </td>
+      <td class="val">Respect · Commitment · Focus · Courage</td>
+    </tr>
+  </table>
+
+  <h3>17. Strong coaching and facilitation abilities</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Facilitation becomes lecturing</li>
+          <li>Dominant voices own the room; quiet / offshore voices lost</li>
+          <li>Coaching advice ignored under delivery pressure</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Design events so the team does the thinking; SM holds timebox and purpose</li>
+          <li>Use round-robin, silent writing, breakouts; call on remote first sometimes</li>
+          <li>Coach in small experiments tied to pain the team already feels</li>
+        </ul>
+      </td>
+      <td class="val">Respect · Openness · Individuals &amp; interactions · Focus</td>
+    </tr>
+  </table>
+
+  <h3>18. Proactive and solution-oriented approach</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Proactivity mistaken for taking over PO or tech lead work</li>
+          <li>Jumping to solutions before understanding the system</li>
+          <li>Optimism that hides real risk</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Act early on impediments and clarity gaps; stay in SM lane</li>
+          <li>Diagnose with data and listening first; then propose options with trade-offs</li>
+          <li>Pair honesty with options: “Here is the risk, here are two paths”</li>
+        </ul>
+      </td>
+      <td class="val">Courage · Openness · Focus · Commitment</td>
+    </tr>
+  </table>
+
+  <div class="footer"><span>Scrum Master JD · Challenges &amp; strategies · Anjish Bhondwe</span><span>Page 4</span></div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <h3>19. Foster collaboration, trust, and continuous improvement</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Silos between dev, test, ops, business</li>
+          <li>Low trust after missed dates or blame culture</li>
+          <li>Improvement feels like extra meetings</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Shared Sprint Goal and joint ownership of Done; cross-role pairing</li>
+          <li>Rebuild trust with small kept promises and transparent metrics</li>
+          <li>Fold improvement into existing events; measure if the pain reduced</li>
+        </ul>
+      </td>
+      <td class="val">Respect · Openness · Commitment · Customer collaboration</td>
+    </tr>
+  </table>
+
+  <h3>20. Team-player mentality: knowledge sharing and empowerment</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Hero culture; knowledge in few heads</li>
+          <li>People withhold know-how for job security</li>
+          <li>Empowerment without clarity becomes chaos</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Pairing, swarming, docs as part of Done; rotate module ownership</li>
+          <li>Reward teaching and backup coverage in feedback conversations</li>
+          <li>Empower within clear goals, Definition of Done, and working agreements</li>
+        </ul>
+      </td>
+      <td class="val">Respect · Commitment · Openness · Courage</td>
+    </tr>
+  </table>
+
+  <h2>D. Language requirements</h2>
+
+  <h3>21. Fluent English with local and offshore teams</h3>
+  <table>
+    <tr><th style="width:32%">Real-time challenges</th><th style="width:48%">Agile tackling strategies</th><th style="width:20%">Values</th></tr>
+    <tr>
+      <td>
+        <ul>
+          <li>Accent, speed, or jargon leaves offshore unclear</li>
+          <li>Decisions made in hallway chats local-only</li>
+          <li>Written English in tickets is vague; rework follows</li>
+          <li>Timezones shrink overlap; handoffs fail</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Speak plainly; check understanding; avoid idioms in critical decisions</li>
+          <li>Record decisions in backlog items / shared notes the same day</li>
+          <li>Definition of Ready includes clear acceptance language both sites can use</li>
+          <li>Design overlap windows for Planning/Refinement/Review; async updates for Daily where needed</li>
+        </ul>
+      </td>
+      <td class="val">Respect · Openness · Individuals &amp; interactions · Focus</td>
+    </tr>
+  </table>
+
+  <div class="box">
+    <span class="tag">How to use this in interview or first 90 days</span>
+    <ul style="margin:4px 0 0;">
+      <li>Pick 2–3 requirements they care about most and tell a story: challenge you faced → value you held → strategy → result.</li>
+      <li>Do not recite the Manifesto. Show the value in the behaviour (“We protected Focus by…”, “Openness meant we showed the red build…”).</li>
+      <li>If they use hybrid / PMO language, translate without abandoning empiricism: forecast, inspect, adapt.</li>
+    </ul>
+  </div>
+
+  <div class="footer"><span>Scrum Master JD · Challenges &amp; strategies · Anjish Bhondwe</span><span>Page 5</span></div>
+</div>
+
+</body>
+</html>
